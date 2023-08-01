@@ -1,33 +1,39 @@
-// import jwt_decode from 'jwt-decode';
+export const defineTitle = (title) => {
+    document.title =title + ' | App CSMC'
+}
 
-// export const dataParamsPagination = ( data) => {
-//     return "?page=" + data.page + "&paginacion="+ data.paginacion + "&buscar=" +data.buscar;
-// }
-// export const getConfigHeader = () => {
+export const getdataParamsPagination = ( data) => {
+    return "?page=" + data.page + "&paginacion="+ data.paginacion + "&buscar=" +data.buscar;
+}
 
-//     if(localStorage.getItem('token-api'))
-//     {
-//          let token = jwt_decode(localStorage.getItem('token-api')).token
+export const getConfigHeader = () => {
 
-//         return {
-//             headers:{
-//                 'Authorization': 'Bearer ' + token
-//             }
-//         }
-//     }
-// }
+    if(localStorage.getItem('token-api'))
+    {
+        let decode = JSON.parse(localStorage.getItem('token-api')||"")
+        let token = decode.access
 
-// export const getConfigHeaderUpload = () => {
+        return {
+            headers:{
+                'Authorization': 'JWT ' + token
+            }
+        }
+    }
+}
 
-//     if(localStorage.getItem('token-api'))
-//     {
-//          let token = jwt_decode(localStorage.getItem('token-api')).token
 
-//         return {
-//             headers:{
-//                 'Authorization': 'Bearer ' + token,
-//                 'Content-Type': 'multipart/form-data'
-//             }
-//         }
-//     }
-// }
+export const getConfigHeaderPost = () => {
+    if(localStorage.getItem('token-api'))
+    {
+        let decode = JSON.parse(localStorage.getItem('token-api')||"")
+        let token = decode.access
+
+        return {
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'JWT ' + token
+            }
+        }
+    }
+}

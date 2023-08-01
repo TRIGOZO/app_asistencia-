@@ -1,26 +1,34 @@
-import { ref, inject } from 'vue';
+import { inject } from 'vue';
 
-export * from './body'
+export * from './body';
 
-export * from './methods'
+export * from './methods';
 
 export default function useHelper() {
-
     const Swal = inject('Swal');
 
-    const defineTitle = (title) => {
-        let sistema = "Api-Sistema";
-        document.title = title +" | "+sistema
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1200,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    const openModal = (modal_nombre) => {
+        const myModal = bootstrap.Modal.getOrCreateInstance(modal_nombre);
+        myModal.show();
     }
-    const mostrarresultadoalert = (mytitle) => {
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: mytitle,
-            showConfirmButton: false,
-            timer: 1500
-        })
+
+    const hideModal = (modal_nombre) => {
+        const myModal = bootstrap.Modal.getOrCreateInstance(modal_nombre);
+        myModal.hide();
     }
+
     const soloNumeros = (evt) => {
         evt = (evt) ? evt : window.event
         var charCode = (evt.which) ? evt.which : evt.keyCode
@@ -32,33 +40,65 @@ export default function useHelper() {
             return true
         }
     }
-    const slugify = (text) => {
-        return text
-        .toString()
-        .normalize()
-        .toLowerCase()
-        .trim()
-        .replace(/\s+/g,'-')
-        .replace(/[^\w\-]+/g,'')
-        .replace(/\-\-+/g, '-')
-    }
 
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
+    const calcularEdad = (fecha) => {
+        // Si la fecha es correcta, calculamos la edad
+
+        if (typeof fecha != "string" && fecha && esNumero(fecha.getTime())) {
+            fecha = formatDate(fecha, "yyyy-MM-dd");
         }
-    })
 
-    const carpetaFotoUsuarios =  'storage/usuarios/';
+        var values = fecha.split("-");
+        var dia = values[2];
+        var mes = values[1];
+        var ano = values[0];
+
+        // cogemos los valores actuales
+        var fecha_hoy = new Date();
+        var ahora_ano = fecha_hoy.getYear();
+        var ahora_mes = fecha_hoy.getMonth() + 1;
+        var ahora_dia = fecha_hoy.getDate();
+
+        // realizamos el calculo
+        var edad = (ahora_ano + 1900) - ano;
+        if (ahora_mes < mes) {
+            edad--;
+        }
+        if ((mes == ahora_mes) && (ahora_dia < dia)) {
+            edad--;
+        }
+        if (edad > 1900) {
+            edad -= 1900;
+        }
+
+        // calculamos los meses
+        var meses = 0;
+
+        if (ahora_mes > mes && dia > ahora_dia)
+            meses = ahora_mes - mes - 1;
+        else if (ahora_mes > mes)
+            meses = ahora_mes - mes
+        if (ahora_mes < mes && dia < ahora_dia)
+            meses = 12 - (mes - ahora_mes);
+        else if (ahora_mes < mes)
+            meses = 12 - (mes - ahora_mes + 1);
+        if (ahora_mes == mes && dia > ahora_dia)
+            meses = 11;
+
+        // calculamos los dias
+        var dias = 0;
+        if (ahora_dia > dia)
+            dias = ahora_dia - dia;
+        if (ahora_dia < dia) {
+            ultimoDiaMes = new Date(ahora_ano, ahora_mes - 1, 0);
+            dias = ultimoDiaMes.getDate() - (dia - ahora_dia);
+        }
+
+        return edad + " años, " + meses + " meses y " + dias + " días";
+    }
 
     return {
-        Swal, Toast,carpetaFotoUsuarios,
-        soloNumeros, defineTitle, slugify, mostrarresultadoalert,
+        Swal, Toast, openModal, hideModal, soloNumeros, calcularEdad
     }
+
 }

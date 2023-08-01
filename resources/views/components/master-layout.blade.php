@@ -1,25 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Sistema de Asistencia">
-        <meta name="author" content="cristian figueroa ferrer">
-        <title>SISTEMA DE ASISTENCIA</title>
-        <link rel="icon" type="image/x-icon" href="plantilla/assets/img/favicon.png">
-        <link href="plantilla/css/styles.css" rel="stylesheet">
-        <script src="plantilla/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
-        <script src="plantilla/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+         <!-- Google Font: Source Sans Pro -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ asset("adminlte4/plugins/overlayscrollbars/css/overlayscrollbars.min.css") }}">
+
+        <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/plugins/fontawesome-free/css/all.min.css") }}">
+
+        <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/plugins/steps/steps.css") }}">
+
+        <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/css/adminlte.min.css") }}">
+
+        <!-- Scripts -->
+        {{-- @routes --}}
         @vite(['resources/js/app.js'])
     </head>
-    <body class="nav-fixed">
-        <div id="wrapper">
+    <body>
+        <div class="wrapper" id="wrapper">
             <App></App>
+
+            <script src="{{ asset("adminlte4/plugins/overlayscrollbars/js/overlayscrollbars.browser.es6.min.js") }}"></script>
+            <script src="{{ asset("adminlte4/plugins/popper/popper.min.js") }}"></script>
+            <script src="{{ asset("adminlte4/plugins/bootstrap/js/bootstrap.min.js") }}"></script>
+            <script src="{{ asset("adminlte4/js/adminlte.min.js") }}"></script>
+            <script src="{{ asset("adminlte4/plugins/steps/steps.js") }}"></script>
+
+            <script>
+                const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
+                const Default = {
+                    scrollbarTheme: "os-theme-light",
+                    scrollbarAutoHide: "leave",
+                    scrollbarClickScroll: true,
+                };
+
+                document.addEventListener("DOMContentLoaded", function() {
+                    const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+                    if (
+                        sidebarWrapper &&
+                        typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
+                    ) {
+                        OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+                            scrollbars: {
+                                theme: Default.scrollbarTheme,
+                                autoHide: Default.scrollbarAutoHide,
+                                clickScroll: Default.scrollbarClickScroll,
+                            },
+                        });
+                    }
+                });
+            </script>
         </div>
-        <script src="plantilla/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-        <script src="plantilla/npm/bootstrap%405.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="plantilla/js/scripts.js"></script>
-        <script src="plantilla/js/sb-customizer.js"></script>
     </body>
 </html>

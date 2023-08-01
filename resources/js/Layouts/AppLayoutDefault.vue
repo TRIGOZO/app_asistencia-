@@ -1,34 +1,25 @@
-<template>
-<MainHeader />
-<div id="layoutSidenav">
-    <Sidebar />
-    <div id="layoutSidenav_content">
-        <router-view></router-view>
-        <Footer />
-    </div>
-</div>
-</template>
 
-<script>
+<script setup>
+import { cargarClasesPrincipalLayout } from '@/Helpers';
 import { onMounted } from 'vue';
-import { cargarClasesDefaultLayout } from '@/Helpers';
-import MainHeader from '@/Componentes/partials/MainHeader.vue';
-import Sidebar from '@/Componentes/partials/Sidebar.vue';
+// import PreLoader from '@/Components/PreLoader.vue';
+import NavBar from '@/Componentes/partials/MainHeader.vue';
+import SideBar from '@/Componentes/partials/Sidebar.vue';
 import Footer from '@/Componentes/partials/Footer.vue';
-
-
-export default {
-    components:{
-        Sidebar, MainHeader, Footer
-    },
-    setup() {
-        onMounted(() => {
-            cargarClasesDefaultLayout()
-        });
-
-        return {
-
-        }
-    },
-}
+onMounted(() => {
+    cargarClasesPrincipalLayout();
+})
 </script>
+
+<template>
+    <div class="app-wrapper">
+        <!-- <PreLoader></PreLoader> -->
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <main class="app-main">
+            <router-view></router-view>
+        </main>
+        <Footer></Footer>
+        <!-- <Aside></Aside> -->
+    </div>
+</template>

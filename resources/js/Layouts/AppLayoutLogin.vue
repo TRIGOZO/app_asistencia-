@@ -1,20 +1,14 @@
-<template>
-
-
-
-
-
-    <router-view></router-view>
-</template>
-
-<script>
-import { onMounted } from 'vue';
+<script setup>
 import { cargarClasesLoginLayout } from '@/Helpers';
-export default {
-    setup() {
-        onMounted(() => {
-            cargarClasesLoginLayout()
-        })
-    },
-}
+import { onMounted } from 'vue';
+
+    onMounted(() => {
+        cargarClasesLoginLayout();
+    })
 </script>
+
+<template>
+    <div class="login-box">
+        <router-view></router-view>
+    </div>
+</template>

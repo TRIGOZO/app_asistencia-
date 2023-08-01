@@ -1,20 +1,24 @@
-//main-body app sidebar-mini ltr
-//ltr error-page1 main-body bg-light text-dark error-3 login-img
-
 export const cargarClasesLoginLayout = () => {
-    const partbody = document.body
-    if(partbody)
+    const partBody = document.body
+    if(partBody)
     {
-        partbody.classList.remove('nav-fixed')
-        partbody.classList.add('bg-primary')
+        partBody.classList.remove('layout-fixed');
+        partBody.classList.remove('sidebar-expand-lg');
+        partBody.classList.remove('sidebar-mini');        
+        partBody.classList.add('login-page');
+        partBody.classList.add('bg-body-secondary');
     }
 }
 
-export const cargarClasesDefaultLayout = () => {
-    const partbody = document.body
-    if(partbody)
+export const cargarClasesPrincipalLayout = () => {
+    const partBody = document.body
+    if(partBody)
     {
-        partbody.classList.remove('bg-primary')
-        partbody.classList.add('nav-fixed')
+        partBody.classList.remove('login-page');
+        partBody.classList.add('layout-fixed');
+        partBody.classList.add('sidebar-expand-lg');
+        partBody.classList.add('sidebar-mini');
+        partBody.classList.remove('bg-body-secondary');
+        
     }
 }

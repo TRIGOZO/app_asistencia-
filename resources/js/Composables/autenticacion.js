@@ -3,7 +3,7 @@ import { ref,provide } from 'vue';
 import useHelper from '@/Helpers';
 
 
-export default function useAutenticacion() {
+export const useAutenticacion = () => {
     const errors = ref('');
     const {Swal } = useHelper();
 

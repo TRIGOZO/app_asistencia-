@@ -176,7 +176,7 @@
     </nav>
 </template>
 <script>
-    import useAutenticacion from '@/Composables/autenticacion'
+    import { useAutenticacion } from '@/Composables/autenticacion'
     import useDatosSession  from '@/Composables/session';
     export default {
         setup() {

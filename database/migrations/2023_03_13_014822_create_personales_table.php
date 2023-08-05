@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('personales', function (Blueprint $table) {
             $table->id();
             $table->string('numero_dni',15)->unique();
+            $table->char('pin', 4)->default('1111');
             $table->string('nombres');
             $table->string('apellido_paterno')->nullable();
             $table->string('apellido_materno')->nullable();

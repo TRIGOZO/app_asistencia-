@@ -17,13 +17,16 @@ class DatabaseSeeder extends Seeder
             OficinaSeeder::class,
             TipoPermisoSeeder::class,
             CargoSeeder::class,
+            EstadoCivilSeeder::class,
             RedSeeder::class,
             MicroRedSeeder::class,
             EstablecimientoSeeder::class,
             RoleSeeder::class,
+            PersonalSeeder::class,
             UserSeeder::class,
             EstadoCivilSeeder::class,
-            MenuSeeder::class
+            MenuSeeder::class,
+            ProfesionSeeder::class
         ]);
     }
 }

@@ -9,4 +9,5 @@ class MicroRed extends Model
 {
     protected $table = "microredes";
     use HasFactory;
+    protected $fillable=['id', 'nombre'];
 }

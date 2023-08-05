@@ -6,8 +6,8 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
+        <title>{{ config('app.name', 'Asistencia APP') }}</title>
+        <link rel="icon" type="image/jpg" href="img/redhcologo.png"/>
          <!-- Google Font: Source Sans Pro -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,10 @@
         <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/plugins/fontawesome-free/css/all.min.css") }}">
 
         <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/plugins/steps/steps.css") }}">
+
+        <!--begin::Third Party Plugin(Bootstrap Icons)-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" integrity="sha256-BicZsQAhkGHIoR//IB2amPN5SrRb3fHB8tFsnqRAwnk=" crossorigin="anonymous">
+        <!--end::Third Party Plugin(Bootstrap Icons)-->
 
         <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/css/adminlte.min.css") }}">
 

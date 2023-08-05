@@ -20,8 +20,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('establecimiento_id')->nullable()->constrained('establecimientos')->onDelete('set null')
                 ->onUpdate('cascade');
-            $table->foreignId('cargo_id')->nullable()->constrained('cargos')->onDelete('set null')
-                ->onUpdate('cascade');
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->tinyInteger('es_activo')->default(1);
             $table->timestamps();

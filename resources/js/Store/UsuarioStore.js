@@ -1,17 +1,25 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
 
 export const useUsuarioStore = defineStore("usuario", {
 
     state: () => ({
         usuario: {},
         menus:[],
-        role:{}
+        role:{},
     }),
     actions: {
-        async cargarDatosSession(id){
-            this.usuario = await axios.get('usuario-session-data/',{params:{id:id}}).then((respuesta) => respuesta.data)
-            this.role = this.usuario.role
+        async cargarDatosSession(){
+            const user_id = localStorage.getItem('userSession') ? 
+                JSON.parse( JSON.stringify(jwt_decode(localStorage.getItem('userSession')).user)) 
+                : null;
+            this.usuario = await axios.get('usuario-session-data/',{params:{id:user_id}}).then((respuesta) => respuesta.data)
+            if(this.usuario)
+            
+            {
+                this.role = this.usuario.role
+            }
         },
         modificarFoto(foto) {
             this.usuario.foto = foto
@@ -24,8 +32,8 @@ export const useUsuarioStore = defineStore("usuario", {
         },
         limpiarEstados() {
             this.usuario = {};
-            this.menus = [];
-            role:{}
+            this.menus = [this.menus];
+            role:{};
         }
     }
 })

@@ -1,221 +1,101 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import { defineTitle } from '@/Helpers';
+import ContentHeader from '@/Componentes/ContentHeader.vue';
+
+const titleHeader = ref({
+    titulo: "Dashboard",
+    subTitulo: "",
+    icon: "",
+    vista: ""
+});
+
+onMounted(() => {
+    defineTitle(titleHeader.value.titulo)
+})
+
+</script>
+
 <template>
-    <main>
-        <header class="py-10 mb-4 bg-gradient-primary-to-secondary">
-            <div class="container-xl px-4">
-                <div class="text-center">
-                    <h1 class="text-white">Bienvenido a App Asistencia</h1>
-                    <p class="lead mb-0 text-white-50">Panel Principal de Administracion Web</p>
-                </div>
-            </div>
-        </header>
-        <!-- Main page content-->
-        <div class="container-xl px-4">
-            <h2 class="mt-5 mb-0">Dashboards</h2>
-            <p>Three dashboard examples to get you started!</p>
-            <hr class="mt-0 mb-4">
+    <ContentHeader :title-header="titleHeader"></ContentHeader>
+    <div class="app-content">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="dashboard-1.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/dashboards/default.png" alt="..."></a>
-                    <div class="text-center small">Default Dashboard</div>
-                </div>
-                <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="dashboard-3.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/dashboards/affiliate.png" alt="..."></a>
-                    <div class="text-center small">Affiliate Dashboard</div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="dashboard-2.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/dashboards/multipurpose.png" alt="..."></a>
-                    <div class="text-center small">Multipurpose Dashboard</div>
-                </div>
-            </div>
-            <h2 class="mt-5 mb-0">App Pages</h2>
-            <p>App pages to cover common use pages to help build your app!</p>
-            <hr class="mt-0 mb-4">
-            <div class="row">
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="account-billing.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/account-billing.png" alt="..."></a>
-                    <div class="text-center small">Account - Billing</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="account-notifications.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/account-notifications.png" alt="..."></a>
-                    <div class="text-center small">Account - Notifications</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="account-profile.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/account-profile.png" alt="..."></a>
-                    <div class="text-center small">Account - Profile</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="account-security.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/account-security.png" alt="..."></a>
-                    <div class="text-center small">Account - Security</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="auth-login-basic.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/auth-login-basic.png" alt="..."></a>
-                    <div class="text-center small">Auth - Login</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="auth-login-social.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/auth-login-social.png" alt="..."></a>
-                    <div class="text-center small">Auth - Login (Social)</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="multi-tenant-select.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/auth-mutli-tenant.png" alt="..."></a>
-                    <div class="text-center small">Auth - Multi Tenant</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="auth-password-basic.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/auth-password-basic.png" alt="..."></a>
-                    <div class="text-center small">Auth - Password</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="auth-password-social.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/auth-password-social.png" alt="..."></a>
-                    <div class="text-center small">Auth - Password (Social)</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="auth-register-basic.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/auth-register-basic.png" alt="..."></a>
-                    <div class="text-center small">Auth - Register</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="auth-register-social.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/auth-register-social.png" alt="..."></a>
-                    <div class="text-center small">Auth - Register (Social)</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="invoice.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/invoice.png" alt="..."></a>
-                    <div class="text-center small">Invoice</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="knowledge-base-article.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/knowledgebase-article.png" alt="..."></a>
-                    <div class="text-center small">Knowledgebase - Article</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="knowledge-base-category.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/knowledgebase-category.png" alt="..."></a>
-                    <div class="text-center small">Knowledgebase - Category</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="knowledge-base-home-1.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/knowledgebase-home-1.png" alt="..."></a>
-                    <div class="text-center small">Knowledgebase - Home 1</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="knowledge-base-home-2.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/knowledgebase-home-2.png" alt="..."></a>
-                    <div class="text-center small">Knowledgebase - Home 2</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="pricing.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/pricing.png" alt="..."></a>
-                    <div class="text-center small">Pricing</div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 mb-4">
-                    <a class="d-block lift rounded overflow-hidden mb-2" href="wizard.html"><img class="img-fluid" src="plantilla/img/screenshots-product-pages/sb-admin-pro/pages/wizard.png" alt="..."></a>
-                    <div class="text-center small">Wizard</div>
-                </div>
-            </div>
-            <h2 class="mt-5 mb-0">Starter Layouts</h2>
-            <p>Layouts for creating new pages within your project!</p>
-            <hr class="mt-0 mb-4">
-            <div class="row">
-                <div class="col-sm-6 col-md-4 mb-4">
-                    <div class="small mb-1">Navigation</div>
-                    <div class="list-group mb-4">
-                        <a class="list-group-item list-group-item-action p-3" href="layout-static.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Static Sidenav
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="layout-dark.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Dark Sidenav
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="layout-rtl.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                RTL Layout
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
+                <!--begin::Col-->
+                <div class="col-lg-3 col-6">
+                    <!--begin::Small Box Widget 1-->
+                    <div class="small-box text-bg-primary">
+                        <div class="inner">
+                            <h3>150</h3>
+
+                            <p>New Orders</p>
+                        </div>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"></path>
+                        </svg>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fa-solid fa-arrow-circle-right"></i>
                         </a>
                     </div>
-                    <div class="small mb-1">Container Options</div>
-                    <div class="list-group">
-                        <a class="list-group-item list-group-item-action p-3" href="layout-boxed.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Boxed Layouts
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="layout-fluid.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Fluid Layout
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
+                    <!--end::Small Box Widget 1-->
+                </div>
+                <!--end::Col-->
+                <div class="col-lg-3 col-6">
+                    <!--begin::Small Box Widget 2-->
+                    <div class="small-box text-bg-success">
+                        <div class="inner">
+                            <h3>53<sup class="fs-5">%</sup></h3>
+
+                            <p>Bounce Rate</p>
+                        </div>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"></path>
+                        </svg>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fa-solid fa-arrow-circle-right"></i>
                         </a>
                     </div>
+                    <!--end::Small Box Widget 2-->
                 </div>
-                <div class="col-sm-6 col-md-4 mb-4">
-                    <div class="small mb-1">Page Headers</div>
-                    <div class="list-group">
-                        <a class="list-group-item list-group-item-action p-3" href="header-simplified.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Simplified
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="header-compact.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Compact
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="header-overlap.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Content Overlap
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="header-breadcrumbs.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Breadcrumbs
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="header-light.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Light
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
+                <!--end::Col-->
+                <div class="col-lg-3 col-6">
+                    <!--begin::Small Box Widget 3-->
+                    <div class="small-box text-bg-warning">
+                        <div class="inner">
+                            <h3>44</h3>
+
+                            <p>User Registrations</p>
+                        </div>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"></path>
+                        </svg>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fa-solid fa-arrow-circle-right"></i>
                         </a>
                     </div>
+                    <!--end::Small Box Widget 3-->
                 </div>
-                <div class="col-sm-6 col-md-4 mb-4">
-                    <div class="small mb-1">Starter Layouts</div>
-                    <div class="list-group mb-4">
-                        <a class="list-group-item list-group-item-action p-3" href="starter-default.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Default
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action p-3" href="starter-minimal.html">
-                            <div class="d-flex align-items-center justify-content-between">
-                                Minimal
-                                <i class="text-muted" data-feather="arrow-right"></i>
-                            </div>
+                <!--end::Col-->
+                <div class="col-lg-3 col-6">
+                    <!--begin::Small Box Widget 4-->
+                    <div class="small-box text-bg-danger">
+                        <div class="inner">
+                            <h3>65</h3>
+
+                            <p>Unique Visitors</p>
+                        </div>
+                        <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path clip-rule="evenodd" fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"></path>
+                            <path clip-rule="evenodd" fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"></path>
+                        </svg>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fa-solid fa-arrow-circle-right"></i>
                         </a>
                     </div>
+                    <!--end::Small Box Widget 4-->
                 </div>
+                <!--end::Col-->
             </div>
         </div>
-    </main>
-
+    </div>
 </template>
-<script>
-import { onMounted } from 'vue';
-
-export default {
-//   setup() {
-//     onMounted(() => {
-//       const script = document.createElement('script');
-//       script.src = 'plantilla/js/demo/chart-area-demo.js';
-//       document.body.appendChild(script);
-//       const script2 = document.createElement('script');
-//       script2.src = 'plantilla/js/demo/chart-pie-demo.js';
-//       document.body.appendChild(script2);
-//     });
-//   }
-}
-</script>

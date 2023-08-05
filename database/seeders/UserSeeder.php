@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\Cargo;
+use App\Models\Personal;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,7 +19,8 @@ class UserSeeder extends Seeder
             'username' => 'ilandbz',
             'password' => Hash::make('818949'),
             'establecimiento_id' => 27,
-            'role_id'   => 1
+            'role_id'   => 1,
+            'personal_id'   => 1
         ]);
     }
 }

@@ -21,21 +21,8 @@ trait LoginTrait
                     $user = auth()->user();
                     $usuario = User::where('id',$user->id)->first();
                     $success['user'] = $usuario->id;
-                    // $permiso = [];
-                    // $menu = [];
-                    // foreach($usuario->roles as $role)
-                    // {
-                    //     $permisos = $usuario->obtenerPermisos($role->id)->toArray();
-                    //     array_merge($permisos,$permiso);
-
-                    //     $menus = $usuario->obtenerMenus($role->id)->toArray();
-                    //     array_merge($menus,$menu);
-                    // }
-                    // $success['user']['permisos'] = $permisos;
-                    // $success['user']['menus'] = $menus;
                     $success=JWT::encode($success,env('VITE_SECRET_KEY'), 'HS256' );
                     return response()->json($success,200);
-
                 } else {
                     return response()->json([
                         'errors' => ['username' => 'Usuario Suspendido']

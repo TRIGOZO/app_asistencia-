@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class EstadoCivil extends Model
 {
@@ -11,5 +12,8 @@ class EstadoCivil extends Model
     protected $table = "estados_civiles";
     protected $fillable = [ 'id', 'nombre'];
 
-
+    public function personales(): HasMany
+    {
+        return $this->hasMany(Personal::class);
+    }
 }

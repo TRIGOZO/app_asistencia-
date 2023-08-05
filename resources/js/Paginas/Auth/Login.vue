@@ -5,7 +5,8 @@ import {useAutenticacion} from '@/Composables/autenticacion';
     const user = ref({
         username:'',
         pasword:'',
-        remember:false
+        remember:false,
+        errors:[]
     });
 
     const {errors, loginUsuario } = useAutenticacion();
@@ -17,7 +18,8 @@ import {useAutenticacion} from '@/Composables/autenticacion';
 
 <template>
     <div class="login-logo">
-        <a href="/"><b>Admin</b>LTE</a>
+        <img src="img/redhcologo.png">
+        <a href="/"><b>ASISTENCIA </b>APP</a>
     </div>
     <div class="card">
         <div class="card-body login-card-body">
@@ -28,12 +30,12 @@ import {useAutenticacion} from '@/Composables/autenticacion';
                         <div class="input-group ">
                             <input type="text" class="form-control" placeholder="Nombre de Usuario"
                                 v-model="user.username"
-                                :class="{ 'is-invalid' : errors.name }"/>
+                                :class="{ 'is-invalid' : errors.username }"/>
                             <div class="input-group-text">
                                 <span class="fa-solid fa-user"></span>
                             </div>
                         </div>
-                        <small class="text-danger" v-for="error in errors.name"
+                        <small class="text-danger" v-for="error in errors.username"
                             :key="error">{{ error }}</small>
                     </div>
                 </div>

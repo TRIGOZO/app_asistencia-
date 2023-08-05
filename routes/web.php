@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+
 use App\Http\Controllers\MenuController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SistemaAsistenciaController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +27,13 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::post('/logout',[AuthController::class,'logout']);
     Route::get('/usuario-session-data',[UserController::class,'mostrarDatoUsuario']);
     Route::get('/obtener-menu-slug',[MenuController::class,'mostrarmenuslug']);
+    Route::post('/actualizar-perfil',[UserController::class,'actualizarperfil']);
+    Route::post('/cambiar-clave',[UserController::class,'cambiarclaveperfil']);
 });
+
+require __DIR__."/crudscomunes.php";
+
+
 
 Route::get('/{path}',[SistemaAsistenciaController::class,'index'])->where('path','.*');
 

@@ -1,5 +1,5 @@
 export const defineTitle = (title) => {
-    document.title =title + ' | App CSMC'
+    document.title =title + ' | RED SALUD HCO'
 }
 
 export const getdataParamsPagination = ( data) => {
@@ -11,7 +11,7 @@ export const getConfigHeader = () => {
     if(localStorage.getItem('token-api'))
     {
         let decode = JSON.parse(localStorage.getItem('token-api')||"")
-        let token = decode.access
+        let token = decode.token
 
         return {
             headers:{

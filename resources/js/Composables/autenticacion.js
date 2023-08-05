@@ -6,22 +6,19 @@ import useHelper from '@/Helpers';
 export const useAutenticacion = () => {
     const errors = ref('');
     const {Swal } = useHelper();
-
-
     const loginUsuario = async (data) => {
         errors.value = ''
         try {
             const respuesta = await axios.post('login',data)
-
             if(respuesta.data)
             {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Acceso Correcto',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                // Swal.fire({
+                //     position: 'center',
+                //     icon: 'success',
+                //     title: 'Acceso Correcto',
+                //     showConfirmButton: false,
+                //     timer: 1500
+                // })
                 localStorage.setItem('userSession',respuesta.data);
                 window.location.href = 'principal';
             }

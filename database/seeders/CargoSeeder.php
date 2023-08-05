@@ -12,12 +12,13 @@ class CargoSeeder extends Seeder
      */
     public function run(): void
     {
-        $estadocivil = Cargo::firstOrCreate(['nombre'=> 'TRABAJADOR']);
-        $estadocivil = Cargo::firstOrCreate(['nombre'=> 'JEFE DE SERVICIO']);
-        $estadocivil = Cargo::firstOrCreate(['nombre'=> 'JEFE DE RR. HH. ESTABLECIMIENTO']);
-        $estadocivil = Cargo::firstOrCreate(['nombre'=> 'JEFE DE RR. HH. MICRORED']);
-        $estadocivil = Cargo::firstOrCreate(['nombre'=> 'JEFE DE RR. HH. RED']);
-        $estadocivil = Cargo::firstOrCreate(['nombre'=> 'DIRECTOR ESTABLECIMIENTO']);
-        $estadocivil = Cargo::firstOrCreate(['nombre'=> 'DIRECTOR RED']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'SUPER']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'TRABAJADOR']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'JEFE DE SERVICIO']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'JEFE DE RR. HH. ESTABLECIMIENTO']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'JEFE DE RR. HH. MICRORED']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'JEFE DE RR. HH. RED']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'DIRECTOR ESTABLECIMIENTO']);
+        $cargo = Cargo::firstOrCreate(['nombre'=> 'DIRECTOR RED']);
     }
 }

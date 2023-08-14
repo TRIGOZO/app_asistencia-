@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Establecimiento;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\establecimientos\StoreEstablecimientoRequest;
+use App\Http\Requests\establecimientos\UpdateEstablecimientoRequest;
 class EstablecimientoController extends Controller
 {
     /**
@@ -17,32 +19,68 @@ class EstablecimientoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEstablecimientoRequest $request)
     {
-        //
+        $request->validated();
+        $establecimiento = Establecimiento::create([
+            'nombre'    => $request->nombre,
+        ]);
+
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Establecimiento Registrado satisfactoriamente'
+        ],200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $establecimiento = Establecimiento::where('id', $request->id)->first();
+        return $establecimiento;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateEstablecimientoRequest $request)
     {
-        //
+        $request->validated();
+
+        $establecimiento = Establecimiento::where('id',$request->id)->first();
+
+        $establecimiento->nombre           = $request->nombre;
+        $establecimiento->save();
+
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Establecimiento modificado satisfactoriamente'
+        ],200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $establecimiento = Establecimiento::where('id', $request->id)->first();
+        $establecimiento->delete();
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Establecimiento eliminado satisfactoriamente'
+        ],200);
     }
+
+    public function todos(){
+        $establecimientos = Establecimiento::get();
+        return $establecimientos;
+    }
+    public function listar(Request $request){
+        $buscar = mb_strtoupper($request->buscar);
+        $paginacion = $request->paginacion;
+        return Establecimiento::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+            ->paginate($paginacion);
+    }
+
 }

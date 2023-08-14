@@ -17,6 +17,11 @@
       icon: "",
       vista: ""
     });
+    const dato = ref({
+        page:'',
+        buscar:'',
+        paginacion: 10
+    });
     const form = ref({
         id:'',
         nombre:'',
@@ -88,11 +93,7 @@
         return cargos.value.current_page
     }
     const offset = 2;
-    const dato = ref({
-        page:'',
-        buscar:'',
-        paginacion: 10
-    });
+
     const buscar = () => {
         listarCargos()
     }

@@ -24,7 +24,7 @@ class UpdateCargoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'               => 'required|string',
+            'nombre'               => 'required|string|unique:cargos,nombre,'.$this->id,
         ];
     }
 

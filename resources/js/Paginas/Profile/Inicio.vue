@@ -53,6 +53,7 @@
   }
 
   const EditarPerfil = () => {
+    obtenerdatospersonal()
     openModal('#modalusuario')
     var titulo = document.getElementById("modalusuarioLabel");
     titulo.textContent = 'Editar Datos Personales';
@@ -71,7 +72,7 @@
     form.value.email = personal.value.email,
     form.value.tienehijos = personal.value.tienehijos,      
     form.value.profesion_id = personal.value.profesion_id,   
-    form.value.cargo_id = personal.value.cargo_id     
+    form.value.cargo_id = personal.value.cargo_id  
   }
 const formcambiarclave = () => {
   openModal('#modalupdatepassword')

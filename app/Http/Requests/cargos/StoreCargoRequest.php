@@ -24,7 +24,7 @@ class StoreCargoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'               => 'required|string',
+            'nombre'               => 'required|string|unique:cargos,nombre',
         ];
     }
 
@@ -35,7 +35,7 @@ class StoreCargoRequest extends FormRequest
             'max' => 'Ingrese Máximo :max caracteres',
             'string' => 'Ingrese caracteres alfanuméricos',
             'number' => 'Ingrese solo numeros',
-            'unique' => 'El :email ya existe'
+            'unique' => 'El :nombre ya existe'
         ];
     }
 

@@ -14,6 +14,9 @@ class UserController extends Controller
 {
     public function actualizarperfil(UpdateProfileRequest $request){
         $request->validated();
+        $usuario = User::find(Auth::user()->id);
+        $usuario->username = $request->username;
+        $usuario->save();
         $persona = Personal::findOrFail($request->id);
         $persona->fill([
             'nombres'           => $request->nombres,

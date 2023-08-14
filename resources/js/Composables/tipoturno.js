@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
-export default function useCargo() {
-    const cargos = ref([])
+export default function useTipoTurno() {
+    const tipoturnos = ref([])
     const errors = ref('')
-    const cargo = ref({})
+    const tipoturno = ref({})
     const respuesta = ref([])
     
-    const obtenerCargo = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+    const obtenerTipoTurno = async(id) => {
+        let respuesta = await axios.get('tipo-turno/mostrar?id='+id,getConfigHeader())
+        tipoturno.value = respuesta.data
     }
-    const listaCargos = async()=>{
-        let respuesta = await axios.get('cargo/todos',getConfigHeader())
-        cargos.value = respuesta.data        
+    const listaTipoTurnos = async()=>{
+        let respuesta = await axios.get('tipo-turno/todos',getConfigHeader())
+        tipoturnos.value = respuesta.data        
     }
-    const obtenerCargos = async(data) => {
-        let respuesta = await axios.get('cargo/listar' + getdataParamsPagination(data),getConfigHeader())
-        cargos.value =respuesta.data
+    const obtenerTipoTurnos = async(data) => {
+        let respuesta = await axios.get('tipo-turno/listar' + getdataParamsPagination(data),getConfigHeader())
+        tipoturnos.value =respuesta.data
     }
-    const agregarCargo = async(data) => {
+    const agregarTipoTurno = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('tipo-turno/guardar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -34,10 +34,10 @@ export default function useCargo() {
             }
         }
     }
-    const actualizarCargo = async(data) => {
+    const actualizarTipoTurno = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/actualizar',data,getConfigHeader())
+            let respond = await axios.post('tipo-turno/actualizar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -50,15 +50,15 @@ export default function useCargo() {
             }
         }
     }
-    const eliminarCargo = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+    const eliminartipoturno = async(id) => {
+        const respond = await axios.post('tipo-turno/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, cargos, listaCargos, cargo, obtenerCargo, obtenerCargos, 
-        agregarCargo, actualizarCargo, eliminarCargo, respuesta
+        errors, tipoturnos, listaTipoTurnos, tipoturno, obtenerTipoTurno, obtenerTipoTurnos, 
+        agregarTipoTurno, actualizarTipoTurno, eliminartipoturno, respuesta
     }
 }

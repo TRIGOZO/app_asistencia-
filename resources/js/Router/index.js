@@ -11,27 +11,9 @@ import Principal from '@/Paginas/Principal.vue'
 import Usuario from '@/Paginas/usuarios/Inicio.vue'
 import Login from '@/Paginas/Auth/Login.vue'
 import Profile from '@/Paginas/Profile/Inicio.vue'
+import Profesion from '@/Paginas/profesiones/Inicio.vue'
 import Cargo from '@/Paginas/cargos/Inicio.vue'
-
-//const { menus } = useDatosSession();
-
-//const userStore = usuarioStore();
-
-//console.log(user_id);
-
-// const { menus } = storeToRefs(useUsuarioStore())
-
-// const { cargarDatosSession, cargarMenus, } = useUsuarioStore()
-
-// const obtenerUsuarioSesion = async() => {
-//     if(user_id != null)
-//     {
-//         await cargarDatosSession();
-//         cargarMenus();
-//     }
-// }
-
-//console.log(menus.value)
+import TipoTurno from '@/Paginas/tipoturno/Inicio.vue'
 
 const routes = [
     {
@@ -53,7 +35,16 @@ const routes = [
     {
         path: '/cargo', name:'Cargo', component: Cargo ,
         meta:{layout: LayoutDefault}
-    },       
+    },
+    {
+        path: '/profesion', name:'Profesion', component: Profesion ,
+        meta:{layout: LayoutDefault}
+    },   
+    {
+        path: '/tipo-turno', name:'Tipo Turno', component: TipoTurno ,
+        meta:{layout: LayoutDefault}
+    },     
+    
 ]
 
 export default createRouter({

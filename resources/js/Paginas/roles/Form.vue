@@ -3,11 +3,11 @@ import { toRefs, onMounted } from 'vue';
 import useCargo from '@/Composables/cargos.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
-const { form, currentPage } = toRefs(props)
 const props = defineProps({
     form: Object,
     currentPage : Number
 });
+const { form, currentPage } = toRefs(props)
 const {
     errors, respuesta, agregarCargo, actualizarCargo
 } = useCargo();
@@ -24,7 +24,9 @@ const crud = {
             form.value.errors = []
             hideModal('#modalcargo')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
-            emit('onListar', currentPage)
+            emit('onListar', currentPage.value)
+
+            
         }
     },
     'editar': async() => {
@@ -38,7 +40,7 @@ const crud = {
             form.value.errors = []
             hideModal('#modalcargo')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
-            emit('onListar', currentPage)
+            emit('onListar', currentPage.value)
         }
     }
 }
@@ -58,7 +60,7 @@ const guardar = () => {
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
+                        <label for="nombre" class="form-label">Nombre </label>
                         <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }">
                         <small class="text-danger" v-for="error in form.errors.nombre" :key="error">{{ error
                                 }}</small>

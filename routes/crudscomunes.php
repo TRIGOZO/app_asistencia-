@@ -39,8 +39,6 @@ Route::group(['prefix' => 'cargo', 'middleware' => 'auth'], function () {
     Route::get('listar',[CargoController::class,'listar']);
 });
 
-
-
 Route::group(['prefix' => 'establecimiento', 'middleware' => 'auth'], function () {
     Route::get('todos', [EstablecimientoController::class, 'todos']);
     Route::get('mostrar', [EstablecimientoController::class, 'show']);

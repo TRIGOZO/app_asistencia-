@@ -19,7 +19,7 @@ export default function useprofesion() {
         let respuesta = await axios.get('profesion/listar' + getdataParamsPagination(data),getConfigHeader())
         profesiones.value =respuesta.data
     }
-    const agregarprofesion = async(data) => {
+    const agregarProfesion = async(data) => {
         errors.value = ''
         try {
             let respond = await axios.post('profesion/guardar',data,getConfigHeader())
@@ -34,7 +34,7 @@ export default function useprofesion() {
             }
         }
     }
-    const actualizarprofesion = async(data) => {
+    const actualizarProfesion = async(data) => {
         errors.value = ''
         try {
             let respond = await axios.post('profesion/actualizar',data,getConfigHeader())
@@ -50,7 +50,7 @@ export default function useprofesion() {
             }
         }
     }
-    const eliminarprofesion = async(id) => {
+    const eliminarProfesion = async(id) => {
         const respond = await axios.post('profesion/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
@@ -59,6 +59,6 @@ export default function useprofesion() {
     }
     return {
         errors, profesiones, listaProfesiones, profesion, obtenerProfesion, obtenerProfesiones, 
-        agregarprofesion, actualizarprofesion, eliminarprofesion, respuesta
+        agregarProfesion, actualizarProfesion, eliminarProfesion, respuesta
     }
 }

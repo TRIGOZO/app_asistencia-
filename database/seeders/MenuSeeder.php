@@ -115,7 +115,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'nombre' => 'Profesiones',
-                'slug' => 'profesiones',
+                'slug' => 'profesion',
                 'icono' => 'fas fa-university',
                 'padre_id' => Menu::where('nombre', 'Personal')->value('id'),
                 'orden' => Menu::where('nombre', 'Personal')->max('id')+1,

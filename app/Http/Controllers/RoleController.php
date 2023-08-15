@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
+use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Http\Requests\cargos\StoreCargoRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
+use App\Http\Requests\roles\StoreRoleRequest;
+use App\Http\Requests\roles\UpdateRolesRequest;
 use Illuminate\Support\Facades\DB;
 class RoleController extends Controller
 {
@@ -20,16 +20,16 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCargoRequest $request)
+    public function store(StoreRoleRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
+        $role = Role::create([
             'nombre'    => $request->nombre,
         ]);
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Role Registrado satisfactoriamente'
         ],200);
     }
 
@@ -38,25 +38,25 @@ class RoleController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        return $cargo;
+        $role = Role::where('id', $request->id)->first();
+        return $role;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdateRolesRequest $request)
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $role = Role::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $role->nombre           = $request->nombre;
+        $role->save();
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Rol modificado satisfactoriamente'
         ],200);
     }
 
@@ -65,22 +65,22 @@ class RoleController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        $cargo->delete();
+        $role = Role::where('id', $request->id)->first();
+        $role->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Rol eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
-        return $cargos;
+        $roles = Role::get();
+        return $roles;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return Role::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

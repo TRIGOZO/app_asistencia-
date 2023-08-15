@@ -210,6 +210,7 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th>Abreviatura</th>
                                         <th>Nombre</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -222,6 +223,7 @@
                                     </tr>
                                     <tr v-else v-for="(tipoturno,index) in tipoturnos.data" :key="tipoturno.id">
                                         <td class="text-center">{{ index + tipoturnos.from }}</td>
+                                        <td>{{ tipoturno.abreviatura }}</td>
                                         <td>{{ tipoturno.nombre }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Tipo Turno" @click.prevent="editar(tipoturno.id)">

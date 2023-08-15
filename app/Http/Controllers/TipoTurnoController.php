@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
+use App\Models\TipoTurno;
 use Illuminate\Http\Request;
 use App\Http\Requests\tipoturno\StoreTipoTurnoRequest;
 use App\Http\Requests\tipoturno\UpdateTipoTurnoRequest;
@@ -23,13 +23,15 @@ class TipoTurnoController extends Controller
     public function store(StoreTipoTurnoRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
+        $nombre = str_replace(' ', '', $request->nombre);
+        $abreviatura = strtoupper(substr($nombre, 0, 4)); 
+        $tipoturno = TipoTurno::create([
+            'abreviatura' => $abreviatura,
             'nombre'    => $request->nombre,
         ]);
-
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Tipo de Turno Registrado satisfactoriamente'
         ],200);
     }
 
@@ -38,8 +40,8 @@ class TipoTurnoController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        return $cargo;
+        $tipoturno = TipoTurno::where('id', $request->id)->first();
+        return $tipoturno;
     }
 
     /**
@@ -49,14 +51,14 @@ class TipoTurnoController extends Controller
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $tipoturno = TipoTurno::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $tipoturno->nombre           = $request->nombre;
+        $tipoturno->save();
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Tipo Turno modificado satisfactoriamente'
         ],200);
     }
 
@@ -65,22 +67,22 @@ class TipoTurnoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        $cargo->delete();
+        $tipoturno = TipoTurno::where('id', $request->id)->first();
+        $tipoturno->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Tipo Turno eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
-        return $cargos;
+        $tipoturnos = TipoTurno::get();
+        return $tipoturnos;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return TipoTurno::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

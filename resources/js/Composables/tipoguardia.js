@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
-export default function useCargo() {
-    const cargos = ref([])
+export default function useTipoGuardia() {
+    const tipoguardias = ref([])
     const errors = ref('')
-    const cargo = ref({})
+    const tipoguardia = ref({})
     const respuesta = ref([])
     
-    const obtenerCargo = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+    const obtenerTipoGuardia = async(id) => {
+        let respuesta = await axios.get('tipo-guardia/mostrar?id='+id,getConfigHeader())
+        tipoguardia.value = respuesta.data
     }
-    const listaCargos = async()=>{
-        let respuesta = await axios.get('cargo/todos',getConfigHeader())
-        cargos.value = respuesta.data        
+    const listaTipoGuardias = async()=>{
+        let respuesta = await axios.get('tipo-guardia/todos',getConfigHeader())
+        tipoguardias.value = respuesta.data        
     }
-    const obtenerCargos = async(data) => {
-        let respuesta = await axios.get('cargo/listar' + getdataParamsPagination(data),getConfigHeader())
-        cargos.value =respuesta.data
+    const obtenerTipoGuardias = async(data) => {
+        let respuesta = await axios.get('tipo-guardia/listar' + getdataParamsPagination(data),getConfigHeader())
+        tipoguardias.value =respuesta.data
     }
-    const agregarCargo = async(data) => {
+    const agregarTipoGuardia = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('tipo-guardia/guardar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -34,10 +34,10 @@ export default function useCargo() {
             }
         }
     }
-    const actualizarCargo = async(data) => {
+    const actualizarTipoGuardia = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/actualizar',data,getConfigHeader())
+            let respond = await axios.post('tipo-guardia/actualizar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -50,15 +50,15 @@ export default function useCargo() {
             }
         }
     }
-    const eliminarCargo = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+    const eliminarTipoGuardia = async(id) => {
+        const respond = await axios.post('tipo-guardia/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, cargos, listaCargos, cargo, obtenerCargo, obtenerCargos, 
-        agregarCargo, actualizarCargo, eliminarCargo, respuesta
+        errors, tipoguardias, listaTipoGuardias, tipoguardia, obtenerTipoGuardia, obtenerTipoGuardias, 
+        agregarTipoGuardia, actualizarTipoGuardia, eliminarTipoGuardia, respuesta
     }
 }

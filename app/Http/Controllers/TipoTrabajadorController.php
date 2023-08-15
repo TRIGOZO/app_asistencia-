@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
+use App\Models\TipoTrabajador;
 use Illuminate\Http\Request;
-use App\Http\Requests\cargos\StoreCargoRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
+use App\Http\Requests\tipotrabajador\StoreTipoTrabajadorRequest;
+use App\Http\Requests\tipotrabajador\UpdateTipoTrabajadorRequest;
 use Illuminate\Support\Facades\DB;
 class TipoTrabajadorController extends Controller
 {
@@ -20,16 +20,16 @@ class TipoTrabajadorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCargoRequest $request)
+    public function store(StoreTipoTrabajadorRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
+        $tipotrabajador = TipoTrabajador::create([
             'nombre'    => $request->nombre,
         ]);
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Tipo de Trabajador Registrado satisfactoriamente'
         ],200);
     }
 
@@ -38,25 +38,25 @@ class TipoTrabajadorController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        return $cargo;
+        $tipotrabajador = TipoTrabajador::where('id', $request->id)->first();
+        return $tipotrabajador;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdateTipoTrabajadorRequest $request)
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $tipotrabajador = TipoTrabajador::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $tipotrabajador->nombre           = $request->nombre;
+        $tipotrabajador->save();
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Tipo de Trabajador modificado satisfactoriamente'
         ],200);
     }
 
@@ -65,22 +65,22 @@ class TipoTrabajadorController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        $cargo->delete();
+        $tipotrabajador = TipoTrabajador::where('id', $request->id)->first();
+        $tipotrabajador->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Tipo de Trabajador eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
-        return $cargos;
+        $tipotrabajadors = TipoTrabajador::get();
+        return $tipotrabajadors;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return TipoTrabajador::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

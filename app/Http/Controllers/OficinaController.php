@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
+use App\Models\Oficina;
 use Illuminate\Http\Request;
-use App\Http\Requests\cargos\StoreCargoRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
+use App\Http\Requests\oficinas\StoreOficinaRequest;
+use App\Http\Requests\oficinas\UpdateOficinaRequest;
 use Illuminate\Support\Facades\DB;
 class OficinaController extends Controller
 {
@@ -20,16 +20,16 @@ class OficinaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCargoRequest $request)
+    public function store(StoreOficinaRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
+        $oficina = Oficina::create([
             'nombre'    => $request->nombre,
         ]);
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Oficina Registrado satisfactoriamente'
         ],200);
     }
 
@@ -38,25 +38,25 @@ class OficinaController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        return $cargo;
+        $oficina = Oficina::where('id', $request->id)->first();
+        return $oficina;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdateOficinaRequest $request)
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $oficina = Oficina::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $oficina->nombre           = $request->nombre;
+        $oficina->save();
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Oficina modificado satisfactoriamente'
         ],200);
     }
 
@@ -65,22 +65,22 @@ class OficinaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        $cargo->delete();
+        $oficina = Oficina::where('id', $request->id)->first();
+        $oficina->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Oficina eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
-        return $cargos;
+        $oficinas = Oficina::get();
+        return $oficinas;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return Oficina::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

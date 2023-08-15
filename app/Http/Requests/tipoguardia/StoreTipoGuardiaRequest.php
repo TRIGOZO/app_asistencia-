@@ -24,7 +24,7 @@ class StoreTipoGuardiaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'               => 'required|string|unique:tipo_guardias,nombre',
+            'nombre'   => 'required|string|unique:tipo_guardias,nombre|max:10',
         ];
     }
 

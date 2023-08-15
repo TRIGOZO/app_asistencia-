@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
+use App\Models\TipoGuardia;
 use Illuminate\Http\Request;
-use App\Http\Requests\cargos\StoreCargoRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
+use App\Http\Requests\tipoguardia\StoreTipoGuardiaRequest;
+use App\Http\Requests\tipoguardia\UpdateTipoGuardiaRequest;
 use Illuminate\Support\Facades\DB;
 class TipoGuardiaController extends Controller
 {
@@ -20,16 +20,20 @@ class TipoGuardiaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCargoRequest $request)
+    public function store(StoreTipoGuardiaRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
+        $nombre = str_replace(' ', '', $request->nombre);
+        $abreviatura = strtoupper(substr($nombre, 0, 4)); 
+
+        $cargo = TipoGuardia::create([
+            'abreviatura'   => $abreviatura,
             'nombre'    => $request->nombre,
         ]);
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Tipo Guardia Registrado satisfactoriamente'
         ],200);
     }
 
@@ -38,25 +42,25 @@ class TipoGuardiaController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
+        $cargo = TipoGuardia::where('id', $request->id)->first();
         return $cargo;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdateTipoGuardiaRequest $request)
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $cargo = TipoGuardia::where('id',$request->id)->first();
 
         $cargo->nombre           = $request->nombre;
         $cargo->save();
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Tipo Guardia modificado satisfactoriamente'
         ],200);
     }
 
@@ -65,22 +69,22 @@ class TipoGuardiaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
+        $cargo = TipoGuardia::where('id', $request->id)->first();
         $cargo->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Tipo Guardia eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
+        $cargos = TipoGuardia::get();
         return $cargos;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return TipoGuardia::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

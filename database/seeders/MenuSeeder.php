@@ -107,6 +107,13 @@ class MenuSeeder extends Seeder
                 'orden' => Menu::where('nombre', 'Sistema')->max('id')+1,
             ],
             [
+                'nombre' => 'Role',
+                'slug' => 'role',
+                'icono' => 'fas fa-university',
+                'padre_id' => Menu::where('nombre', 'Sistema')->value('id'),
+                'orden' => Menu::where('nombre', 'Sistema')->max('id')+1,
+            ], 
+            [
                 'nombre' => 'Personales',
                 'slug' => 'personales',
                 'icono' => 'fas fa-user-circle',
@@ -140,7 +147,7 @@ class MenuSeeder extends Seeder
                 'icono' => 'fas fa-university',
                 'padre_id' => Menu::where('nombre', 'Personal')->value('id'),
                 'orden' => Menu::where('nombre', 'Personal')->max('id')+1,
-            ],                           
+            ],                                       
         ];
         
         foreach ($menusData as $menuData) {

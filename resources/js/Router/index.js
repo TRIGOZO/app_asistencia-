@@ -14,6 +14,8 @@ import Profile from '@/Paginas/Profile/Inicio.vue'
 import Profesion from '@/Paginas/profesiones/Inicio.vue'
 import Cargo from '@/Paginas/cargos/Inicio.vue'
 import TipoTurno from '@/Paginas/tipoturno/Inicio.vue'
+import TipoGuardia from '@/Paginas/tipoguardia/Inicio.vue'
+import Role from '@/Paginas/roles/Inicio.vue'
 
 const routes = [
     {
@@ -43,8 +45,15 @@ const routes = [
     {
         path: '/tipo-turno', name:'Tipo Turno', component: TipoTurno ,
         meta:{layout: LayoutDefault}
-    },     
-    
+    },  
+    {
+        path: '/tipo-guardia', name:'Tipo Guardia', component: TipoGuardia ,
+        meta:{layout: LayoutDefault}
+    },      
+    {
+        path: '/role', name:'Role', component: Role ,
+        meta:{layout: LayoutDefault}
+    },  
 ]
 
 export default createRouter({

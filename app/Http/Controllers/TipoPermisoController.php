@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
+use App\Models\TipoPermiso;
 use Illuminate\Http\Request;
-use App\Http\Requests\cargos\StoreCargoRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
+use App\Http\Requests\tipopermisos\StoreTipoPermisosRequest;
+use App\Http\Requests\tipopermisos\UpdateTipoPermisosRequest;
 use Illuminate\Support\Facades\DB;
 class TipoPermisoController extends Controller
 {
@@ -20,16 +20,16 @@ class TipoPermisoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCargoRequest $request)
+    public function store(StoreTipoPermisosRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
+        $cargo = TipoPermiso::create([
             'nombre'    => $request->nombre,
         ]);
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Tipo Permiso Registrado satisfactoriamente'
         ],200);
     }
 
@@ -38,25 +38,25 @@ class TipoPermisoController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
+        $cargo = TipoPermiso::where('id', $request->id)->first();
         return $cargo;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdateTipoPermisosRequest $request)
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $cargo = TipoPermiso::where('id',$request->id)->first();
 
         $cargo->nombre           = $request->nombre;
         $cargo->save();
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Tipo Permiso modificado satisfactoriamente'
         ],200);
     }
 
@@ -65,22 +65,22 @@ class TipoPermisoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
+        $cargo = TipoPermiso::where('id', $request->id)->first();
         $cargo->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Tipo Permiso eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
+        $cargos = TipoPermiso::get();
         return $cargos;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return TipoPermiso::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

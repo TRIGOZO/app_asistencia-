@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
+use App\Models\TipoNivel;
 use Illuminate\Http\Request;
-use App\Http\Requests\cargos\StoreCargoRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\tiponiveles\StoreTipoNivelesRequest;
+use App\Http\Requests\tiponiveles\UpdateTipoNivelesRequest;
 class TipoNivelController extends Controller
 {
     /**
@@ -20,16 +19,16 @@ class TipoNivelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCargoRequest $request)
+    public function store(StoreTipoNivelesRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
+        $tiponivel = TipoNivel::create([
             'nombre'    => $request->nombre,
         ]);
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Tipo Nivel Registrado satisfactoriamente'
         ],200);
     }
 
@@ -38,25 +37,25 @@ class TipoNivelController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        return $cargo;
+        $tiponivel = TipoNivel::where('id', $request->id)->first();
+        return $tiponivel;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdateTipoNivelesRequest $request)
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $tiponivel = TipoNivel::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $tiponivel->nombre           = $request->nombre;
+        $tiponivel->save();
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Tipo Nivel modificado satisfactoriamente'
         ],200);
     }
 
@@ -65,22 +64,22 @@ class TipoNivelController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        $cargo->delete();
+        $tiponivel = TipoNivel::where('id', $request->id)->first();
+        $tiponivel->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Tipo Nivel eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
-        return $cargos;
+        $tiponivels = TipoNivel::get();
+        return $tiponivels;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return TipoNivel::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

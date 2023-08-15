@@ -9,6 +9,6 @@ class TipoPermiso extends Model
 {
     use HasFactory;
     protected $table = "tipo_permisos";
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'abreviatura'];
 
 }

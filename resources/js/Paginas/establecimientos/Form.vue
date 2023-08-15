@@ -1,6 +1,6 @@
 <script setup>
 import { toRefs, onMounted } from 'vue';
-import useCargo from '@/Composables/cargos.js';
+import useEstablecimiento from '@/Composables/establecimientos.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
 const props = defineProps({
@@ -9,12 +9,12 @@ const props = defineProps({
 });
 const { form, currentPage } = toRefs(props)
 const {
-    errors, respuesta, agregarCargo, actualizarCargo
-} = useCargo();
+    errors, respuesta, agregarEstablecimiento, actualizarEstablecimiento
+} = useEstablecimiento();
 const  emit  =defineEmits(['onListar'])
 const crud = {
     'nuevo': async() => {
-        await agregarCargo(form.value)
+        await agregarEstablecimiento(form.value)
         form.value.errors = []
         if(errors.value)
         {
@@ -22,7 +22,7 @@ const crud = {
         }
         if(respuesta.value.ok==1){
             form.value.errors = []
-            hideModal('#modalcargo')
+            hideModal('#modalestablecimiento')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
 
@@ -30,7 +30,7 @@ const crud = {
         }
     },
     'editar': async() => {
-        await actualizarCargo(form.value)
+        await actualizarEstablecimiento(form.value)
         form.value.errors = []
         if(errors.value)
         {
@@ -38,7 +38,7 @@ const crud = {
         }
         if(respuesta.value.ok==1){
             form.value.errors = []
-            hideModal('#modalcargo')
+            hideModal('#modalestablecimiento')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
         }
@@ -50,12 +50,12 @@ const guardar = () => {
 </script>
 <template>
     <form @submit.prevent="guardar">
-    <div class="modal fade" id="modalcargo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="modalcargoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalestablecimiento" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalestablecimientoLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalcargoLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="modalestablecimientoLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

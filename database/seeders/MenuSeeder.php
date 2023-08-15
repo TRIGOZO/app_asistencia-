@@ -67,7 +67,7 @@ class MenuSeeder extends Seeder
             [
                 'nombre' => 'Role',
                 'slug' => 'role',
-                'icono' => 'fas fa-university',
+                'icono' => 'fas fa-user-lock',
                 'padre_id' => Menu::where('nombre', 'Sistema')->value('id'),
                 'orden' => Menu::where('nombre', 'Sistema')->max('id')+1,
             ], 
@@ -100,6 +100,13 @@ class MenuSeeder extends Seeder
                 'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
             ], 
             [
+                'nombre' => 'Establecimiento',
+                'slug' => 'establecimiento',
+                'icono' => 'fas fa-briefcase',
+                'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
+                'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
+            ],             
+            [
                 'nombre' => 'Profesiones',
                 'slug' => 'profesion',
                 'icono' => 'fas fa-university',
@@ -126,7 +133,42 @@ class MenuSeeder extends Seeder
                 'icono' => 'fas fa-university',
                 'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
                 'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
-            ],                      
+            ],
+            [
+                'nombre' => 'Tipo Trabajador',
+                'slug' => 'tipo-trabajador',
+                'icono' => 'fas fa-hard-hat',
+                'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
+                'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
+            ], 
+            [
+                'nombre' => 'Tipo Permisos',
+                'slug' => 'tipo-permiso',
+                'icono' => 'fas fa-shield-alt',
+                'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
+                'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
+            ],
+            [
+                'nombre' => 'Feriados',
+                'slug' => 'feriado',
+                'icono' => 'fas fa-umbrella-beach',
+                'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
+                'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
+            ],      
+            [
+                'nombre' => 'Tipo de Niveles',
+                'slug' => 'tipo-nivel',
+                'icono' => 'fas fa-sitemap',
+                'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
+                'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
+            ],
+            [
+                'nombre' => 'Niveles',
+                'slug' => 'nivel',
+                'icono' => 'fas fa-sitemap-branch',
+                'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
+                'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
+            ],                                                         
             [
                 'nombre' => 'Personales',
                 'slug' => 'personales',
@@ -134,6 +176,7 @@ class MenuSeeder extends Seeder
                 'padre_id' => Menu::where('nombre', 'Personal')->value('id'),
                 'orden' => Menu::where('nombre', 'Personal')->max('id')+1,
             ],
+         
 
                                       
         ];

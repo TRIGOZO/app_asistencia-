@@ -16,7 +16,15 @@ import Cargo from '@/Paginas/cargos/Inicio.vue'
 import TipoTurno from '@/Paginas/tipoturno/Inicio.vue'
 import TipoGuardia from '@/Paginas/tipoguardia/Inicio.vue'
 import Role from '@/Paginas/roles/Inicio.vue'
-
+import Menu from '@/Paginas/menus/Inicio.vue'
+import MenuRole from '@/Paginas/menu-role/Inicio.vue'
+import Red from '@/Paginas/redes/Inicio.vue'
+import MicroRed from '@/Paginas/microredes/Inicio.vue'
+import TipoTrabajador from '@/Paginas/tipotrabajador/Inicio.vue'
+import TipoPermiso from '@/Paginas/tipopermisos/Inicio.vue'
+import Feriado from '@/Paginas/feriados/Inicio.vue'
+import TipoNivel from '@/Paginas/tiponiveles/Inicio.vue'
+import Establecimiento from '@/Paginas/establecimientos/Inicio.vue'
 const routes = [
     {
         path: '/',name: 'Login', component: Login,
@@ -54,6 +62,43 @@ const routes = [
         path: '/role', name:'Role', component: Role ,
         meta:{layout: LayoutDefault}
     },  
+    {
+        path: '/menus', name:'Menu', component: Menu ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/menus-roles', name:'MenuRole', component: MenuRole ,
+        meta:{layout: LayoutDefault}
+    },  
+    {
+        path: '/red', name:'Red', component: Red ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/microred', name:'Micro Red', component: MicroRed ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/tipo-trabajador', name:'Tipo Trabajador', component: TipoTrabajador ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/tipo-permiso', name:'Tipo Permiso', component: TipoPermiso ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/feriado', name:'Feriado', component: Feriado ,
+        meta:{layout: LayoutDefault}
+    },    
+    {
+        path: '/tipo-nivel', name:'Tipo Nivel', component: TipoNivel ,
+        meta:{layout: LayoutDefault}
+    },   
+    {
+        path: '/Establecimiento', name:'Establecimiento', component: Establecimiento ,
+        meta:{layout: LayoutDefault}
+    },   
+    
 ]
 
 export default createRouter({

@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
-export default function useCargo() {
-    const cargos = ref([])
+export default function useMicroRed() {
+    const microredes = ref([])
     const errors = ref('')
-    const cargo = ref({})
+    const microred = ref({})
     const respuesta = ref([])
     
-    const obtenerCargo = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+    const obtenerMicroRed = async(id) => {
+        let respuesta = await axios.get('micro-red/mostrar?id='+id,getConfigHeader())
+        microred.value = respuesta.data
     }
-    const listaCargos = async()=>{
-        let respuesta = await axios.get('cargo/todos',getConfigHeader())
-        cargos.value = respuesta.data        
+    const listaMicroRedes = async()=>{
+        let respuesta = await axios.get('micro-red/todos',getConfigHeader())
+        microredes.value = respuesta.data        
     }
-    const obtenerCargos = async(data) => {
-        let respuesta = await axios.get('cargo/listar' + getdataParamsPagination(data),getConfigHeader())
-        cargos.value =respuesta.data
+    const obtenerMicroRedes = async(data) => {
+        let respuesta = await axios.get('micro-red/listar' + getdataParamsPagination(data),getConfigHeader())
+        microredes.value =respuesta.data
     }
-    const agregarCargo = async(data) => {
+    const agregarMicroRed = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('micro-red/guardar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -34,10 +34,10 @@ export default function useCargo() {
             }
         }
     }
-    const actualizarCargo = async(data) => {
+    const actualizarMicroRed = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/actualizar',data,getConfigHeader())
+            let respond = await axios.post('micro-red/actualizar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -50,15 +50,15 @@ export default function useCargo() {
             }
         }
     }
-    const eliminarCargo = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+    const eliminarMicroRed = async(id) => {
+        const respond = await axios.post('micro-red/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, cargos, listaCargos, cargo, obtenerCargo, obtenerCargos, 
-        agregarCargo, actualizarCargo, eliminarCargo, respuesta
+        errors, microredes, listaMicroRedes, microred, obtenerMicroRed, obtenerMicroRedes, 
+        agregarMicroRed, actualizarMicroRed, eliminarMicroRed, respuesta
     }
 }

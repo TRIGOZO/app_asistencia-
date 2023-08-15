@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
-export default function useCargo() {
-    const cargos = ref([])
+export default function useRed() {
+    const redes = ref([])
     const errors = ref('')
-    const cargo = ref({})
+    const red = ref({})
     const respuesta = ref([])
     
-    const obtenerCargo = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+    const obtenerRed = async(id) => {
+        let respuesta = await axios.get('red/mostrar?id='+id,getConfigHeader())
+        red.value = respuesta.data
     }
-    const listaCargos = async()=>{
-        let respuesta = await axios.get('cargo/todos',getConfigHeader())
-        cargos.value = respuesta.data        
+    const listaRedes = async()=>{
+        let respuesta = await axios.get('red/todos',getConfigHeader())
+        redes.value = respuesta.data        
     }
-    const obtenerCargos = async(data) => {
-        let respuesta = await axios.get('cargo/listar' + getdataParamsPagination(data),getConfigHeader())
-        cargos.value =respuesta.data
+    const obtenerRedes = async(data) => {
+        let respuesta = await axios.get('red/listar' + getdataParamsPagination(data),getConfigHeader())
+        redes.value =respuesta.data
     }
-    const agregarCargo = async(data) => {
+    const agregarRed = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('red/guardar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -34,10 +34,10 @@ export default function useCargo() {
             }
         }
     }
-    const actualizarCargo = async(data) => {
+    const actualizarRed = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/actualizar',data,getConfigHeader())
+            let respond = await axios.post('red/actualizar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -50,15 +50,15 @@ export default function useCargo() {
             }
         }
     }
-    const eliminarCargo = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+    const eliminarRed = async(id) => {
+        const respond = await axios.post('red/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, cargos, listaCargos, cargo, obtenerCargo, obtenerCargos, 
-        agregarCargo, actualizarCargo, eliminarCargo, respuesta
+        errors, redes, listaRedes, red, obtenerRed, obtenerRedes, 
+        agregarRed, actualizarRed, eliminarRed, respuesta
     }
 }

@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
-export default function useCargo() {
-    const cargos = ref([])
+export default function useEstablecimiento() {
+    const establecimientos = ref([])
     const errors = ref('')
-    const cargo = ref({})
+    const establecimiento = ref({})
     const respuesta = ref([])
     
-    const obtenerCargo = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+    const obtenerEstablecimiento = async(id) => {
+        let respuesta = await axios.get('establecimiento/mostrar?id='+id,getConfigHeader())
+        establecimiento.value = respuesta.data
     }
-    const listaCargos = async()=>{
-        let respuesta = await axios.get('cargo/todos',getConfigHeader())
-        cargos.value = respuesta.data        
+    const listaEstablecimientos = async()=>{
+        let respuesta = await axios.get('establecimiento/todos',getConfigHeader())
+        establecimientos.value = respuesta.data        
     }
-    const obtenerCargos = async(data) => {
-        let respuesta = await axios.get('cargo/listar' + getdataParamsPagination(data),getConfigHeader())
-        cargos.value =respuesta.data
+    const obtenerEstablecimientos = async(data) => {
+        let respuesta = await axios.get('establecimiento/listar' + getdataParamsPagination(data),getConfigHeader())
+        establecimientos.value =respuesta.data
     }
-    const agregarCargo = async(data) => {
+    const agregarEstablecimiento = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('establecimiento/guardar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -34,10 +34,10 @@ export default function useCargo() {
             }
         }
     }
-    const actualizarCargo = async(data) => {
+    const actualizarEstablecimiento = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/actualizar',data,getConfigHeader())
+            let respond = await axios.post('establecimiento/actualizar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -50,15 +50,15 @@ export default function useCargo() {
             }
         }
     }
-    const eliminarCargo = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+    const eliminarEstablecimiento = async(id) => {
+        const respond = await axios.post('establecimiento/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, cargos, listaCargos, cargo, obtenerCargo, obtenerCargos, 
-        agregarCargo, actualizarCargo, eliminarCargo, respuesta
+        errors, establecimientos, listaEstablecimientos, establecimiento, obtenerEstablecimiento, obtenerEstablecimientos, 
+        agregarEstablecimiento, actualizarEstablecimiento, eliminarEstablecimiento, respuesta
     }
 }

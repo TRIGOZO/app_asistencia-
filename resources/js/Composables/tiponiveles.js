@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
-export default function useCargo() {
-    const cargos = ref([])
+export default function useTipoNivel() {
+    const tiponiveles = ref([])
     const errors = ref('')
-    const cargo = ref({})
+    const tiponivel = ref({})
     const respuesta = ref([])
     
-    const obtenerCargo = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+    const obtenerTipoNivel = async(id) => {
+        let respuesta = await axios.get('tipo-nivel/mostrar?id='+id,getConfigHeader())
+        tiponivel.value = respuesta.data
     }
-    const listaCargos = async()=>{
-        let respuesta = await axios.get('cargo/todos',getConfigHeader())
-        cargos.value = respuesta.data        
+    const listaTipoNiveles = async()=>{
+        let respuesta = await axios.get('tipo-nivel/todos',getConfigHeader())
+        tiponiveles.value = respuesta.data        
     }
-    const obtenerCargos = async(data) => {
-        let respuesta = await axios.get('cargo/listar' + getdataParamsPagination(data),getConfigHeader())
-        cargos.value =respuesta.data
+    const obtenerTipoNiveles = async(data) => {
+        let respuesta = await axios.get('tipo-nivel/listar' + getdataParamsPagination(data),getConfigHeader())
+        tiponiveles.value =respuesta.data
     }
-    const agregarCargo = async(data) => {
+    const agregarTipoNivel = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('tipo-nivel/guardar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -34,10 +34,10 @@ export default function useCargo() {
             }
         }
     }
-    const actualizarCargo = async(data) => {
+    const actualizarTipoNivel = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/actualizar',data,getConfigHeader())
+            let respond = await axios.post('tipo-nivel/actualizar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -50,15 +50,15 @@ export default function useCargo() {
             }
         }
     }
-    const eliminarCargo = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+    const eliminarTipoNivel = async(id) => {
+        const respond = await axios.post('tipo-nivel/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, cargos, listaCargos, cargo, obtenerCargo, obtenerCargos, 
-        agregarCargo, actualizarCargo, eliminarCargo, respuesta
+        errors, tiponiveles, listaTipoNiveles, tiponivel, obtenerTipoNivel, obtenerTipoNiveles, 
+        agregarTipoNivel, actualizarTipoNivel, eliminarTipoNivel, respuesta
     }
 }

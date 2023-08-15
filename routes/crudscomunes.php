@@ -4,6 +4,8 @@ use App\Http\Controllers\CargoController;
 use App\Http\Controllers\CondicionLaboralController;
 use App\Http\Controllers\EstablecimientoController;
 use App\Http\Controllers\FeriadoController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MenuRoleController;
 use App\Http\Controllers\MicroRedController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\OficinaController;
@@ -138,6 +140,15 @@ Route::group(['prefix' => 'tipo-guardia', 'middleware' => 'auth'], function () {
     Route::get('listar', [TipoGuardiaController::class, 'listar']);
 });
 
+Route::group(['prefix' => 'menu', 'middleware' => 'auth'], function () {
+    Route::get('todos', [MenuController::class, 'todos']);
+    Route::get('mostrar', [MenuController::class, 'show']);
+    Route::post('actualizar', [MenuController::class, 'update']);
+    Route::post('eliminar', [MenuController::class, 'destroy']);
+    Route::post('guardar', [MenuController::class, 'store']);
+    Route::get('listar', [MenuController::class, 'listar']);
+});
+
 Route::group(['prefix' => 'micro-red', 'middleware' => 'auth'], function () {
     Route::get('todos', [MicroRedController::class, 'todos']);
     Route::get('mostrar', [MicroRedController::class, 'show']);
@@ -163,4 +174,13 @@ Route::group(['prefix' => 'nivel', 'middleware' => 'auth'], function () {
     Route::post('eliminar', [NivelController::class, 'destroy']);
     Route::post('guardar', [NivelController::class, 'store']);
     Route::get('listar', [NivelController::class, 'listar']);
+});
+
+
+//MENU ROLE
+
+Route::group(['prefix' => 'menu-role', 'middleware' => 'auth'], function () {
+    Route::get('menu-roles',[MenuRoleController::class,'mostrarRoleMenus']);
+    Route::get('mostrar-menus',[MenuRoleController::class,'mostrarMenus']);
+    Route::post('menu-role-guardar',[MenuRoleController::class,'guardarRoleMenu']);
 });

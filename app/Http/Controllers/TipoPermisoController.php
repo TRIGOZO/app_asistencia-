@@ -23,8 +23,15 @@ class TipoPermisoController extends Controller
     public function store(StoreTipoPermisosRequest $request)
     {
         $request->validated();
-        $cargo = TipoPermiso::create([
+
+        $request->validated();
+        $nombre = str_replace(' ', '', $request->nombre);
+        $abreviatura = strtoupper(substr($nombre, 0, 4)); 
+
+
+        $tipopermiso = TipoPermiso::create([
             'nombre'    => $request->nombre,
+            'abreviatura'   => $abreviatura
         ]);
 
         return response()->json([
@@ -38,8 +45,8 @@ class TipoPermisoController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = TipoPermiso::where('id', $request->id)->first();
-        return $cargo;
+        $tipopermiso = TipoPermiso::where('id', $request->id)->first();
+        return $tipopermiso;
     }
 
     /**
@@ -49,10 +56,10 @@ class TipoPermisoController extends Controller
     {
         $request->validated();
 
-        $cargo = TipoPermiso::where('id',$request->id)->first();
+        $tipopermiso = TipoPermiso::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $tipopermiso->nombre           = $request->nombre;
+        $tipopermiso->save();
 
         return response()->json([
             'ok' => 1,
@@ -65,8 +72,8 @@ class TipoPermisoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = TipoPermiso::where('id', $request->id)->first();
-        $cargo->delete();
+        $tipopermiso = TipoPermiso::where('id', $request->id)->first();
+        $tipopermiso->delete();
         return response()->json([
             'ok' => 1,
             'mensaje' => 'Tipo Permiso eliminado satisfactoriamente'
@@ -74,8 +81,8 @@ class TipoPermisoController extends Controller
     }
 
     public function todos(){
-        $cargos = TipoPermiso::get();
-        return $cargos;
+        $tipopermisos = TipoPermiso::get();
+        return $tipopermisos;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);

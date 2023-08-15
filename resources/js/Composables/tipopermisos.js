@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
-export default function useCargo() {
-    const cargos = ref([])
+export default function useTipoPermiso() {
+    const tipopermisos = ref([])
     const errors = ref('')
-    const cargo = ref({})
+    const tipopermiso = ref({})
     const respuesta = ref([])
     
-    const obtenerCargo = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+    const obtenerTipoPermiso = async(id) => {
+        let respuesta = await axios.get('tipo-permiso/mostrar?id='+id,getConfigHeader())
+        tipopermiso.value = respuesta.data
     }
-    const listaCargos = async()=>{
-        let respuesta = await axios.get('cargo/todos',getConfigHeader())
-        cargos.value = respuesta.data        
+    const listaTipoPermisos = async()=>{
+        let respuesta = await axios.get('tipo-permiso/todos',getConfigHeader())
+        tipopermisos.value = respuesta.data        
     }
-    const obtenerCargos = async(data) => {
-        let respuesta = await axios.get('cargo/listar' + getdataParamsPagination(data),getConfigHeader())
-        cargos.value =respuesta.data
+    const obtenerTipoPermisos = async(data) => {
+        let respuesta = await axios.get('tipo-permiso/listar' + getdataParamsPagination(data),getConfigHeader())
+        tipopermisos.value =respuesta.data
     }
-    const agregarCargo = async(data) => {
+    const agregarTipoPermiso = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('tipo-permiso/guardar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -34,10 +34,10 @@ export default function useCargo() {
             }
         }
     }
-    const actualizarCargo = async(data) => {
+    const actualizarTipoPermiso = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/actualizar',data,getConfigHeader())
+            let respond = await axios.post('tipo-permiso/actualizar',data,getConfigHeader())
             errors.value =''
             if(respond.data.ok==1){
                 respuesta.value=respond.data
@@ -50,15 +50,15 @@ export default function useCargo() {
             }
         }
     }
-    const eliminarCargo = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+    const eliminarTipoPermiso = async(id) => {
+        const respond = await axios.post('tipo-permiso/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, cargos, listaCargos, cargo, obtenerCargo, obtenerCargos, 
-        agregarCargo, actualizarCargo, eliminarCargo, respuesta
+        errors, tipopermisos, listaTipoPermisos, tipopermiso, obtenerTipoPermiso, obtenerTipoPermisos, 
+        agregarTipoPermiso, actualizarTipoPermiso, eliminarTipoPermiso, respuesta
     }
 }

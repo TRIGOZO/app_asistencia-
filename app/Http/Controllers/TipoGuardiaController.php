@@ -26,7 +26,7 @@ class TipoGuardiaController extends Controller
         $nombre = str_replace(' ', '', $request->nombre);
         $abreviatura = strtoupper(substr($nombre, 0, 4)); 
 
-        $cargo = TipoGuardia::create([
+        $tipoguardia = TipoGuardia::create([
             'abreviatura'   => $abreviatura,
             'nombre'    => $request->nombre,
         ]);
@@ -42,8 +42,8 @@ class TipoGuardiaController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = TipoGuardia::where('id', $request->id)->first();
-        return $cargo;
+        $tipoguardia = TipoGuardia::where('id', $request->id)->first();
+        return $tipoguardia;
     }
 
     /**
@@ -53,10 +53,10 @@ class TipoGuardiaController extends Controller
     {
         $request->validated();
 
-        $cargo = TipoGuardia::where('id',$request->id)->first();
+        $tipoguardia = TipoGuardia::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $tipoguardia->nombre           = $request->nombre;
+        $tipoguardia->save();
 
         return response()->json([
             'ok' => 1,
@@ -69,8 +69,8 @@ class TipoGuardiaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = TipoGuardia::where('id', $request->id)->first();
-        $cargo->delete();
+        $tipoguardia = TipoGuardia::where('id', $request->id)->first();
+        $tipoguardia->delete();
         return response()->json([
             'ok' => 1,
             'mensaje' => 'Tipo Guardia eliminado satisfactoriamente'
@@ -78,8 +78,8 @@ class TipoGuardiaController extends Controller
     }
 
     public function todos(){
-        $cargos = TipoGuardia::get();
-        return $cargos;
+        $tipoguardias = TipoGuardia::get();
+        return $tipoguardias;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);

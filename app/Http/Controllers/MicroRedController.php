@@ -74,13 +74,13 @@ class MicroRedController extends Controller
     }
 
     public function todos(){
-        $microredes = MicroRed::get();
+        $microredes = MicroRed::with('red:id,nombre')->get();
         return $microredes;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return MicroRed::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return MicroRed::with('red:id,nombre')->whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

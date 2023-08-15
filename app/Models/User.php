@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Sanctum\HasApiTokens;
 use App\Http\Traits\MenuFacadeTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -18,6 +19,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use SoftDeletes;
     protected $fillable = [
         'name',
         'email',
@@ -50,16 +52,16 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function persona(): BelongsTo
+    public function personal(): BelongsTo
     {
-        return $this->belongsTo(Persona::class);
+        return $this->belongsTo(Personal::class, 'personal_id');
     }
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
-    public function cargo(): BelongsTo
-    {
-        return $this->belongsTo(Cargo::class);
-    }    
+    // public function cargo(): BelongsTo
+    // {
+    //     return $this->belongsTo(Cargo::class);
+    // }    
 }

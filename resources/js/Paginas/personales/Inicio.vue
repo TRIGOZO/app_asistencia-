@@ -1,72 +1,101 @@
 <script setup>
-  import jwt_decode from 'jwt-decode'
-  import { ref, onMounted } from 'vue';
-  import { defineTitle } from '@/Helpers';
+  import useUsuario from '@/Composables/usuario.js';
+  import PersonalForm from './Form.vue'
   import useHelper from '@/Helpers';  
-  import useNivel from '@/Composables/niveles.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
-  import NivelForm from './Form.vue'
+  import { ref, onMounted } from 'vue';
   const { openModal, Toast, Swal } = useHelper();
   const {
-        niveles, errors, nivel, respuesta,
-        obtenerNiveles, obtenerNivel, eliminarNivel,
-    } = useNivel();
+        errors, usuarios, usuario, 
+        obtenerUsuario, obtenerUsuarios, 
+        eliminarUsuario, respuesta, resetClaveUsuario
+    } = useUsuario();
+    const show_tipo = ref("Habilitados")
     const titleHeader = ref({
-      titulo: "Nivel",
+      titulo: "Personal",
       subTitulo: "Inicio",
       icon: "",
       vista: ""
     });
-    const dato = ref({
-        page:'',
-        buscar:'',
-        paginacion: 10
-    });
     const form = ref({
         id:'',
-        nombre:'',
-        tipo_nivel_id: '',
+        username:'',
+        establecimiento_id:'',
+        role_id:'',
+        email:'',        
+        foto:'',
+        tipo_documento_codigo: '',
+        numero_documento : '',
+        nombres : '',
+        apellido_paterno : '',
+        apellido_materno : '',
+        sexo_id : '',
+        telefono : '',
+        direccion : '',        
         estadoCrud:'',
         errors:[]
+
     });
     const limpiar = ()=> {
-        form.value.id =""
-        form.value.nombre=''
-        form.value.tipo_nivel_id=''
+        form.value.id='',
+        form.value.username='',
+        form.value.establecimiento_id='',
+        form.value.email='',
+        form.value.role_id='',
+        form.value.foto='',
+        form.value.tipo_documento_codigo= '',
+        form.value.numero_documento = '',
+        form.value.nombres = '',
+        form.value.apellido_paterno = '',
+        form.value.apellido_materno = '',
+        form.value.sexo_id = '',
+        form.value.telefono = '', 
+        form.value.direccion = '',               
         form.value.errors = []
         errors.value = []
     }
     const obtenerDatos = async(id) => {
-        await obtenerNivel(id);
-        if(nivel.value)
+        await obtenerUsuario(id);
+        if(usuario.value)
         {
-            form.value.id=nivel.value.id
-            form.value.nombre=nivel.value.nombre
-            form.value.tipo_nivel_id=nivel.value.tipo_nivel_id
+            form.value.id=usuario.value.id;
+            form.value.username=usuario.value.username;
+            form.value.establecimiento_id=usuario.value.establecimiento_id;
+            form.value.email=usuario.value.email;
+            form.value.role_id=usuario.value.role_id;
+            form.value.foto=usuario.value.foto;
+            form.value.tipo_documento_codigo= usuario.value.persona.tipo_documento_codigo;
+            form.value.numero_documento = usuario.value.persona.numero_documento;
+            form.value.nombres = usuario.value.persona.nombres;
+            form.value.apellido_paterno = usuario.value.persona.apellido_paterno;
+            form.value.apellido_materno = usuario.value.persona.apellido_materno;
+            form.value.sexo_id = usuario.value.persona.sexo_id;
+            form.value.telefono = usuario.value.persona.telefono;
+            form.value.direccion = usuario.value.persona.direccion;        
         }
     }
     const editar = (id) => {
         limpiar();
         obtenerDatos(id)
         form.value.estadoCrud = 'editar'
-        document.getElementById("modalnivelLabel").innerHTML = 'Editar Nivel';
-        openModal('#modalnivel')
+        document.getElementById("modalusuarioLabel").innerHTML = 'Editar Usuario';
+        openModal('#modalusuario')
     }
     const nuevo = () => {
         limpiar()
         form.value.estadoCrud = 'nuevo'
-        openModal('#modalnivel')
-        document.getElementById("modalnivelLabel").innerHTML = 'Nuevo Nivel';
+        openModal('#modalusuario')
+        document.getElementById("modalusuarioLabel").innerHTML = 'Nuevo Usuario';
         //titulo.textContent = 'Editar Datos Personales';
     }
-    const listarNiveles = async(page=1) => {
+    const listarUsuarios = async(page=1) => {
         dato.value.page= page
-        await obtenerNiveles(dato.value)
+        await obtenerUsuarios(dato.value)
     }
     const eliminar = (id) => {
         Swal.fire({
             title: '¿Estás seguro de Eliminar?',
-            text: "Nivel",
+            text: "Usuario",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -79,7 +108,7 @@
         })
     }
     const elimina = async(id) => {
-        await eliminarNivel(id)
+        await eliminarUsuario(id)
         form.value.errors = []
         if(errors.value)
         {
@@ -88,32 +117,77 @@
         if(respuesta.value.ok==1){
             form.value.errors = []
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
-            listarNiveles(niveles.value.current_page)
+            listarUsuarios(usuarios.value.current_page)
         }
     }
-    // PAGINACION
+
+    const resetear = async(id) => {
+        Swal.fire({
+            title: '¿Estás seguro de Resetear la clave?',
+            text: "Usuarios",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                resetearclaveUsuario(id)
+            }
+        })
+    }
+    const resetearclaveUsuario = async(id) => {
+        await resetClaveUsuario(id)
+        if(respuesta.value.ok==1)
+        {
+            Toast.fire({icon:'success', title:respuesta.value.mensaje})
+            //dato.value.show_tipo = 'habilitados'
+            listarUsuarios()
+        }
+    }
+    const mostrarTodos = async () => {
+        show_tipo.value = 'Todos'
+        dato.value.show_tipo = 'todos'
+        listarUsuarios()
+    }
+    const mostrarHabilitados = async () => {
+        show_tipo.value = 'Habilitados'
+        dato.value.show_tipo = 'habilitados'
+        listarUsuarios()
+    }
+    const mostrarEliminados = async () => {
+        show_tipo.value = 'Eliminados'
+        dato.value.show_tipo = 'eliminados'
+        listarUsuarios()
+    }
+    //paginacion
     const isActived = () => {
-        return niveles.value.current_page
+        return usuarios.value.current_page
     }
     const offset = 2;
-
+    const dato = ref({
+        page:'',
+        buscar:'',
+        show_tipo : 'habilitados',
+        paginacion: 10
+    });
     const buscar = () => {
-        listarNiveles()
+        listarUsuarios()
     }
     const cambiarPaginacion = () => {
-        listarNiveles()
+        listarUsuarios()
     }
     const cambiarPagina =(pagina) => {
-        listarNiveles(pagina)
+        listarUsuarios(pagina)
     }
     const pagesNumber = () => {
-        if(!niveles.value.to){
+        if(!usuarios.value.to){
             return []
         }
-        let from = niveles.value.current_page - offset
+        let from = usuarios.value.current_page - offset
         if(from < 1) from = 1
         let to = from + (offset*2)
-        if( to >= niveles.value.last_page) to = niveles.value.last_page
+        if( to >= usuarios.value.last_page) to = usuarios.value.last_page
         let pagesArray = []
         while(from <= to) {
             pagesArray.push(from)
@@ -123,18 +197,17 @@
     }
     // CARGA
     onMounted(() => {
-        defineTitle(titleHeader.value.titulo)
-        listarNiveles()
+        listarUsuarios()
     })
 </script>
 <template>
     <ContentHeader :title-header="titleHeader"></ContentHeader>
     <div class="app-content">
       <div class="container-fluid">
-        <div class="card card-primary card-outline">
+        <div class="card card-primary card-outline mt-2">
             <div class="card-header">
                 <h6 class="card-title">
-                    Listado de Nivleles
+                    Listado de Trabajadores
                 </h6>
             </div>
             <div class="card-body">
@@ -157,6 +230,16 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <button data-bs-toggle="dropdown" class="btn btn-indigo btn-block">
+                            Mostrar <i class="icon ion-ios-arrow-down tx-11 mg-l-3"></i>{{usuario.buscar}}
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="" class="dropdown-item" @click.prevent="mostrarTodos">Todos</a>
+                            <a href="" class="dropdown-item" @click.prevent="mostrarHabilitados">Habilitados</a>
+                            <a href="" class="dropdown-item" @click.prevent="mostrarEliminados">Eliminados</a>
+                        </div>
+                    </div>
                     <div class="col-md-5">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">Buscar</span>
@@ -167,17 +250,17 @@
                     <div class="col-md-4 mb-1">
                         <nav>
                             <ul class="pagination">
-                                <li v-if="niveles.current_page >= 2" class="page-item">
+                                <li v-if="usuarios.current_page >= 2" class="page-item">
                                     <a href="#" aria-label="Previous" class="page-link"
                                         title="Primera Página"
                                         @click.prevent="cambiarPagina(1)">
                                         <span><i class="fas fa-backward-fast"></i></span>
                                     </a>
                                 </li>
-                                <li v-if="niveles.current_page > 1" class="page-item">
+                                <li v-if="usuarios.current_page > 1" class="page-item">
                                     <a href="#" aria-label="Previous" class="page-link"
                                         title="Página Anterior"
-                                        @click.prevent="cambiarPagina(niveles.current_page - 1)">
+                                        @click.prevent="cambiarPagina(usuarios.current_page - 1)">
                                         <span><i class="fas fa-angle-left"></i></span>
                                     </a>
                                 </li>
@@ -188,16 +271,16 @@
                                     <a href="#" class="page-link"
                                         @click.prevent="cambiarPagina(page)">{{ page }}</a>
                                 </li>
-                                <li v-if="niveles.current_page < niveles.last_page" class="page-item">
+                                <li v-if="usuarios.current_page < usuarios.last_page" class="page-item">
                                     <a href="#" aria-label="Next" class="page-link"
                                         title="Página Siguiente"
-                                        @click.prevent="cambiarPagina(niveles.current_page + 1)">
+                                        @click.prevent="cambiarPagina(usuarios.current_page + 1)">
                                         <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
                                     </a>
                                 </li>
-                                    <li v-if="niveles.current_page <= niveles.last_page-1" class="page-item">
+                                    <li v-if="usuarios.current_page <= usuarios.last_page-1" class="page-item">
                                     <a href="#" aria-label="Next" class="page-link"
-                                        @click.prevent="cambiarPagina(niveles.last_page)"
+                                        @click.prevent="cambiarPagina(usuarios.last_page)"
                                         title="Última Página">
                                         <span aria-hidden="true"><i class="fas fa-forward-fast"></i></span>
                                     </a>
@@ -212,28 +295,40 @@
                             <table class="table table-bordered table-hover table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
+                                        <th colspan="7" class="text-center">Usuarios {{ show_tipo }}</th>
+                                    </tr>
+                                    <tr>
                                         <th class="text-center">#</th>
-                                        <th>Nombre</th>
-                                        <th>Tipo Nivel</th>
+                                        <th>Name</th>
+                                        <th>Documento</th>
+                                        <th>Ape. Paterno</th>
+                                        <th>Ape. Materno</th>
+                                        <th>Nombres</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-if="niveles.total == 0">
+                                    <tr v-if="usuarios.total == 0">
                                         <td class="text-danger text-center" colspan="7">
                                             -- Datos No Registrados - Tabla Vacía --
                                         </td>
                                     </tr>
-                                    <tr v-else v-for="(nivel,index) in niveles.data" :key="nivel.id">
-                                        <td class="text-center">{{ index + niveles.from }}</td>
-                                        <td>{{ nivel.nombre }}</td>
-                                        <td>{{ nivel.tiponivel.nombre }}</td>
+                                    <tr v-else v-for="(usuario,index) in usuarios.data" :key="usuario.id">
+                                        <td class="text-center">{{ index + usuarios.from }}</td>
+                                        <td>{{ usuario.username }}</td>
+                                        <td>{{ usuario.personal.numero_dni }}</td>
+                                        <td>{{ usuario.personal.apellido_paterno }}</td>
+                                        <td>{{ usuario.personal.apellido_materno }}</td>
+                                        <td>{{ usuario.personal.nombres }}</td>
                                         <td>
-                                            <button class="btn btn-warning btn-sm" title="Editar Nivel" @click.prevent="editar(nivel.id)">
+                                            <button class="btn btn-warning btn-sm" title="Editar Usuario" @click.prevent="editar(usuario.id)">
                                                 <i class="fas fa-edit"></i>
                                             </button>&nbsp;
-                                            <button class="btn btn-danger btn-sm" title="Eliminar Nivel" @click.prevent="eliminar(nivel.id)">
+                                            <button class="btn btn-danger btn-sm" title="Eliminar Usuario" @click.prevent="eliminar(usuario.id)">
                                                 <i class="fas fa-trash"></i>
+                                            </button>&nbsp;
+                                            <button class="btn btn-success btn-sm" title="Reset Clave" @click.prevent="resetear(usuario.id)">
+                                                <i class="fas fa-key"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -244,12 +339,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-5 mb-1">
-                        Mostrando <b>{{niveles.from}}</b> a <b>{{ niveles.to }}</b> de <b>{{ niveles.total}}</b> Registros
+                        Mostrando <b>{{usuarios.from}}</b> a <b>{{ usuarios.to }}</b> de <b>{{ usuarios.total}}</b> Registros
                     </div>
                     <div class="col-md-7 mb-1 text-right">
                         <nav>
                             <ul class="pagination">
-                                <li v-if="niveles.current_page >= 2" class="page-item">
+                                <li v-if="usuarios.current_page >= 2" class="page-item">
                                     <a href="#" aria-label="Previous" class="page-link"
                                         title="Primera Página"
                                         @click.prevent="cambiarPagina(1)">
@@ -257,10 +352,10 @@
                                         <span><i class="fas fa-backward-fast"></i></span>
                                     </a>
                                 </li>
-                                <li v-if="niveles.current_page > 1" class="page-item">
+                                <li v-if="usuarios.current_page > 1" class="page-item">
                                     <a href="#" aria-label="Previous" class="page-link"
                                         title="Página Anterior"
-                                        @click.prevent="cambiarPagina(niveles.current_page - 1)">
+                                        @click.prevent="cambiarPagina(usuarios.current_page - 1)">
 
                                         <span><i class="fas fa-angle-left"></i></span>
                                     </a>
@@ -272,16 +367,16 @@
                                     <a href="#" class="page-link"
                                         @click.prevent="cambiarPagina(page)">{{ page }}</a>
                                 </li>
-                                <li v-if="niveles.current_page < niveles.last_page" class="page-item">
+                                <li v-if="usuarios.current_page < usuarios.last_page" class="page-item">
                                     <a href="#" aria-label="Next" class="page-link"
                                         title="Página Siguiente"
-                                        @click.prevent="cambiarPagina(niveles.current_page + 1)">
+                                        @click.prevent="cambiarPagina(usuarios.current_page + 1)">
                                         <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
                                     </a>
                                 </li>
-                                    <li v-if="niveles.current_page <= niveles.last_page-1" class="page-item">
+                                    <li v-if="usuarios.current_page <= usuarios.last_page-1" class="page-item">
                                     <a href="#" aria-label="Next" class="page-link"
-                                        @click.prevent="cambiarPagina(niveles.last_page)"
+                                        @click.prevent="cambiarPagina(usuarios.last_page)"
                                         title="Última Página">
                                         <span aria-hidden="true"><i class="fas fa-forward-fast"></i></span>
                                     </a>
@@ -294,9 +389,5 @@
         </div>
       </div>
     </div>
-    <NivelForm :form="form" @onListar="listarNiveles" :currentPage="niveles.current_page"></NivelForm>
+    <PersonalForm :form="form" @onListar="listarUsuarios" :currentPage="listarUsuarios.current_page"></PersonalForm>
 </template>
-
-
-
-

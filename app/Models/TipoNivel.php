@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TipoNivel extends Model
 {
     use HasFactory;
-    protected $tabla = 'tipo_niveles';
+    protected $table = 'tipo_niveles';
     protected $fillable = [
         'nombre'
     ];

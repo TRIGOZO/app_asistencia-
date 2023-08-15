@@ -25,6 +25,7 @@ class UpdateEstablecimientoRequest extends FormRequest
     {
         return [
             'nombre'               => 'required|string',
+            'microred_id'          => 'required'
         ];
     }
 

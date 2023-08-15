@@ -25,20 +25,25 @@
     const form = ref({
         id:'',
         nombre:'',
+        fecha:'',
+        establecimiento_id:'',
         estadoCrud:'',
         errors:[]
     });
     const limpiar = ()=> {
         form.value.id =""
+        form.value.establecimiento_id =""
         form.value.nombre=''
+        form.value.fecha=''
         form.value.errors = []
         errors.value = []
     }
     const obtenerDatos = async(id) => {
         await obtenerFeriado(id);
-        if(feriado.value)
-        {
+        if(feriado.value){
             form.value.id=feriado.value.id
+            form.value.fecha=feriado.value.fecha
+            form.value.establecimiento_id=feriado.value.establecimiento_id
             form.value.nombre=feriado.value.nombre
         }
     }
@@ -211,6 +216,8 @@
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Establecimiento</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -223,6 +230,8 @@
                                     <tr v-else v-for="(feriado,index) in feriados.data" :key="feriado.id">
                                         <td class="text-center">{{ index + feriados.from }}</td>
                                         <td>{{ feriado.nombre }}</td>
+                                        <td>{{ feriado.fecha }}</td>
+                                        <td>{{ feriado.establecimiento.nombre }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Feriado" @click.prevent="editar(feriado.id)">
                                                 <i class="fas fa-edit"></i>

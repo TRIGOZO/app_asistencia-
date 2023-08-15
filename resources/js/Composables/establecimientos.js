@@ -19,6 +19,10 @@ export default function useEstablecimiento() {
         let respuesta = await axios.get('establecimiento/listar' + getdataParamsPagination(data),getConfigHeader())
         establecimientos.value =respuesta.data
     }
+    const obtenerEstablecimientosLista = async(data) => {
+        let respuesta = await axios.get('establecimiento/todos_general',getConfigHeader())
+        establecimientos.value =respuesta.data
+    }    
     const agregarEstablecimiento = async(data) => {
         errors.value = ''
         try {
@@ -59,6 +63,6 @@ export default function useEstablecimiento() {
     }
     return {
         errors, establecimientos, listaEstablecimientos, establecimiento, obtenerEstablecimiento, obtenerEstablecimientos, 
-        agregarEstablecimiento, actualizarEstablecimiento, eliminarEstablecimiento, respuesta
+        agregarEstablecimiento, actualizarEstablecimiento, eliminarEstablecimiento, respuesta, obtenerEstablecimientosLista
     }
 }

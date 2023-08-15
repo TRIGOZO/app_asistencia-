@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->tinyInteger('es_activo')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

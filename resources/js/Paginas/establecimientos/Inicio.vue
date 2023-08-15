@@ -24,12 +24,14 @@
     });
     const form = ref({
         id:'',
+        microred_id:'',
         nombre:'',
         estadoCrud:'',
         errors:[]
     });
     const limpiar = ()=> {
-        form.value.id =""
+        form.value.id =''
+        form.value.microred_id =''
         form.value.nombre=''
         form.value.errors = []
         errors.value = []
@@ -39,7 +41,9 @@
         if(establecimiento.value)
         {
             form.value.id=establecimiento.value.id
+            form.value.microred_id=establecimiento.value.microred_id
             form.value.nombre=establecimiento.value.nombre
+
         }
     }
     const editar = (id) => {
@@ -211,6 +215,7 @@
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Nombre</th>
+                                        <th>MicroRed</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -223,6 +228,7 @@
                                     <tr v-else v-for="(establecimiento,index) in establecimientos.data" :key="establecimiento.id">
                                         <td class="text-center">{{ index + establecimientos.from }}</td>
                                         <td>{{ establecimiento.nombre }}</td>
+                                        <td>{{ establecimiento.microred.nombre }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Establecimiento" @click.prevent="editar(establecimiento.id)">
                                                 <i class="fas fa-edit"></i>

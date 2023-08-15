@@ -17,6 +17,7 @@ use App\Http\Controllers\TipoNivelController;
 use App\Http\Controllers\TipoPermisoController;
 use App\Http\Controllers\TipoTrabajadorController;
 use App\Http\Controllers\TipoTurnoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
@@ -48,6 +49,7 @@ Route::group(['prefix' => 'establecimiento', 'middleware' => 'auth'], function (
     Route::post('eliminar', [EstablecimientoController::class, 'destroy']);
     Route::post('guardar', [EstablecimientoController::class, 'store']);
     Route::get('listar', [EstablecimientoController::class, 'listar']);
+    Route::get('todos_general', [EstablecimientoController::class, 'todos_general']);
 });
 
 Route::group(['prefix' => 'oficina', 'middleware' => 'auth'], function () {
@@ -174,6 +176,19 @@ Route::group(['prefix' => 'nivel', 'middleware' => 'auth'], function () {
     Route::post('eliminar', [NivelController::class, 'destroy']);
     Route::post('guardar', [NivelController::class, 'store']);
     Route::get('listar', [NivelController::class, 'listar']);
+});
+
+
+//USUARIOS
+Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
+    Route::get('listar-habilitados',[UserController::class,'habilitados']);
+    Route::get('listar-eliminados',[UserController::class,'eliminados']);
+    Route::get('listar-todos',[UserController::class,'todos']);
+    Route::get('mostrar', [UserController::class, 'show']);
+    Route::post('actualizar', [UserController::class, 'update']);
+    Route::post('eliminar', [UserController::class, 'destroy']);
+    Route::post('guardar', [UserController::class, 'store']);
+    Route::get('listar', [UserController::class, 'listar']);
 });
 
 

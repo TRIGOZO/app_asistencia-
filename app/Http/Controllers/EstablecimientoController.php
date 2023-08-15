@@ -24,6 +24,7 @@ class EstablecimientoController extends Controller
         $request->validated();
         $establecimiento = Establecimiento::create([
             'nombre'    => $request->nombre,
+            'microred_id' => $request->microred_id
         ]);
 
         return response()->json([
@@ -73,13 +74,17 @@ class EstablecimientoController extends Controller
     }
 
     public function todos(){
+        $establecimientos = Establecimiento::with('microred:id,nombre')->get();
+        return $establecimientos;
+    }
+    public function todos_general(){
         $establecimientos = Establecimiento::get();
         return $establecimientos;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Establecimiento::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return Establecimiento::with('microred:id,nombre')->whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

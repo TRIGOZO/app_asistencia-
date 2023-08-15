@@ -1,6 +1,7 @@
 <script setup>
 import { toRefs, onMounted } from 'vue';
 import useEstablecimiento from '@/Composables/establecimientos.js';
+import useMicroRed from '@/Composables/microredes.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
 const props = defineProps({
@@ -11,6 +12,9 @@ const { form, currentPage } = toRefs(props)
 const {
     errors, respuesta, agregarEstablecimiento, actualizarEstablecimiento
 } = useEstablecimiento();
+const {
+    listaMicroRedes, microredes
+} = useMicroRed();
 const  emit  =defineEmits(['onListar'])
 const crud = {
     'nuevo': async() => {
@@ -47,6 +51,9 @@ const crud = {
 const guardar = () => {
     crud[form.value.estadoCrud]()
 }
+onMounted(() => {
+    listaMicroRedes()
+})
 </script>
 <template>
     <form @submit.prevent="guardar">
@@ -59,6 +66,18 @@ const guardar = () => {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="microred_id" class="form-label">Micro Red </label>
+                        <select class="form-control" v-model="form.microred_id" :class="{ 'is-invalid': form.errors.microred_id }">
+                            <option value="">--Seleccione--</option>
+                            <option v-for="microred in microredes" :key="microred.id" :value="microred.id"
+                                :title="microred.nombre">
+                                {{ microred.nombre }}
+                            </option>
+                        </select>
+                        <small class="text-danger" v-for="error in form.errors.microred_id" :key="error">{{ error
+                                }}</small>
+                    </div>                    
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre </label>
                         <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }">

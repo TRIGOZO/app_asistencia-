@@ -22,8 +22,10 @@ class FeriadoController extends Controller
     public function store(StoreFeriadosRequest $request)
     {
         $request->validated();
-        $cargo = Feriado::create([
+        $feriado = Feriado::create([
             'nombre'    => $request->nombre,
+            'fecha'     => $request->fecha,
+            'establecimiento_id'    => $request->establecimiento_id
         ]);
 
         return response()->json([
@@ -37,8 +39,8 @@ class FeriadoController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Feriado::where('id', $request->id)->first();
-        return $cargo;
+        $feriado = Feriado::where('id', $request->id)->first();
+        return $feriado;
     }
 
     /**
@@ -48,10 +50,12 @@ class FeriadoController extends Controller
     {
         $request->validated();
 
-        $cargo = Feriado::where('id',$request->id)->first();
+        $feriado = Feriado::where('id',$request->id)->first();
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $feriado->nombre           = $request->nombre;
+        $feriado->fecha                    = $request->fecha;
+        $feriado->establecimiento_id       = $request->establecimiento_id;
+        $feriado->save();
 
         return response()->json([
             'ok' => 1,
@@ -64,8 +68,8 @@ class FeriadoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Feriado::where('id', $request->id)->first();
-        $cargo->delete();
+        $feriado = Feriado::where('id', $request->id)->first();
+        $feriado->delete();
         return response()->json([
             'ok' => 1,
             'mensaje' => 'Feriado eliminado satisfactoriamente'
@@ -73,13 +77,13 @@ class FeriadoController extends Controller
     }
 
     public function todos(){
-        $cargos = Feriado::get();
-        return $cargos;
+        $feriados = Feriado::with('establecimiento:id,nombre')->get();
+        return $feriados;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Feriado::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return Feriado::with('establecimiento:id,nombre')->whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

@@ -211,6 +211,7 @@
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Nombre</th>
+                                        <th>Red</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -223,6 +224,7 @@
                                     <tr v-else v-for="(microred,index) in microredes.data" :key="microred.id">
                                         <td class="text-center">{{ index + microredes.from }}</td>
                                         <td>{{ microred.nombre }}</td>
+                                        <td>{{ microred.red.nombre }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Micro Red" @click.prevent="editar(microred.id)">
                                                 <i class="fas fa-edit"></i>

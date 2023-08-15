@@ -1,20 +1,24 @@
 <script setup>
 import { toRefs, onMounted } from 'vue';
-import useCargo from '@/Composables/cargos.js';
+import useNivel from '@/Composables/niveles.js';
+import useTipoNivel from '@/Composables/tiponiveles.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
 const props = defineProps({
     form: Object,
     currentPage : Number
 });
+const {
+        tiponiveles, listaTipoNiveles
+    } = useTipoNivel();
 const { form, currentPage } = toRefs(props)
 const {
-    errors, respuesta, agregarCargo, actualizarCargo
-} = useCargo();
+    errors, respuesta, agregarNivel, actualizarNivel
+} = useNivel();
 const  emit  =defineEmits(['onListar'])
 const crud = {
     'nuevo': async() => {
-        await agregarCargo(form.value)
+        await agregarNivel(form.value)
         form.value.errors = []
         if(errors.value)
         {
@@ -22,7 +26,7 @@ const crud = {
         }
         if(respuesta.value.ok==1){
             form.value.errors = []
-            hideModal('#modalcargo')
+            hideModal('#modalnivel')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
 
@@ -30,7 +34,7 @@ const crud = {
         }
     },
     'editar': async() => {
-        await actualizarCargo(form.value)
+        await actualizarNivel(form.value)
         form.value.errors = []
         if(errors.value)
         {
@@ -38,7 +42,7 @@ const crud = {
         }
         if(respuesta.value.ok==1){
             form.value.errors = []
-            hideModal('#modalcargo')
+            hideModal('#modalnivel')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
         }
@@ -47,18 +51,33 @@ const crud = {
 const guardar = () => {
     crud[form.value.estadoCrud]()
 }
+onMounted(() => {
+    listaTipoNiveles()
+})
 </script>
 <template>
     <form @submit.prevent="guardar">
-    <div class="modal fade" id="modalcargo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="modalcargoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalnivel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalnivelLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalcargoLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="modalnivelLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tipo_nivel_id" class="form-label">Tipo de Nivel </label>
+                        <select class="form-control" v-model="form.tipo_nivel_id" :class="{ 'is-invalid': form.errors.tipo_nivel_id }">
+                            <option value="">--Seleccione--</option>
+                            <option v-for="tiponivel in tiponiveles" :key="tiponivel.id" :value="tiponivel.id"
+                                :title="tiponivel.nombre">
+                                {{ tiponivel.nombre }}
+                            </option>
+                        </select>
+                        <small class="text-danger" v-for="error in form.errors.tipo_nivel_id" :key="error">{{ error
+                                }}</small>
+                    </div>                    
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre </label>
                         <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }">

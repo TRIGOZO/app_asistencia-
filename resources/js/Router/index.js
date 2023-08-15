@@ -25,6 +25,8 @@ import TipoPermiso from '@/Paginas/tipopermisos/Inicio.vue'
 import Feriado from '@/Paginas/feriados/Inicio.vue'
 import TipoNivel from '@/Paginas/tiponiveles/Inicio.vue'
 import Establecimiento from '@/Paginas/establecimientos/Inicio.vue'
+import Nivel from '@/Paginas/niveles/Inicio.vue'
+import Personal from '@/Paginas/personales/Inicio.vue'
 const routes = [
     {
         path: '/',name: 'Login', component: Login,
@@ -98,7 +100,14 @@ const routes = [
         path: '/Establecimiento', name:'Establecimiento', component: Establecimiento ,
         meta:{layout: LayoutDefault}
     },   
-    
+    {
+        path: '/nivel', name:'Nivel', component: Nivel ,
+        meta:{layout: LayoutDefault}
+    },  
+    {
+        path: '/personales', name:'Personal', component: Personal ,
+        meta:{layout: LayoutDefault}
+    },       
 ]
 
 export default createRouter({

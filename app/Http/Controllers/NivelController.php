@@ -24,7 +24,8 @@ class NivelController extends Controller
     {
         $request->validated();
         $nivel = Nivel::create([
-            'nombre'    => $request->nombre,
+            'nombre'        => $request->nombre,
+            'tipo_nivel_id' => $request->tipo_nivel_id
         ]);
 
         return response()->json([
@@ -52,6 +53,7 @@ class NivelController extends Controller
         $nivel = Nivel::where('id',$request->id)->first();
 
         $nivel->nombre           = $request->nombre;
+        $nivel->tipo_nivel_id           = $request->tipo_nivel_id;
         $nivel->save();
 
         return response()->json([
@@ -80,7 +82,7 @@ class NivelController extends Controller
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Nivel::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return Nivel::with('tiponivel:id,nombre')->whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

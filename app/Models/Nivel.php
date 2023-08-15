@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Nivel extends Model
 {
     use HasFactory;
-    protected $tabla = 'niveles';
+    protected $table = 'niveles';
     protected $fillable = [
         'abreviatura',
-        'nombre'
+        'nombre',
+        'tipo_nivel_id'
     ];
+    public function tiponivel()
+    {
+        return $this->belongsTo(TipoNivel::class, 'tipo_nivel_id');
+    }
 }

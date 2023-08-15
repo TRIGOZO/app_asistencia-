@@ -1,6 +1,7 @@
 <script setup>
 import { toRefs, onMounted } from 'vue';
 import useFeriado from '@/Composables/feriados.js';
+import useEstablecimiento from '@/Composables/establecimientos.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
 const props = defineProps({
@@ -11,6 +12,9 @@ const { form, currentPage } = toRefs(props)
 const {
     errors, respuesta, agregarFeriado, actualizarFeriado
 } = useFeriado();
+const {
+    obtenerEstablecimientosLista, establecimientos
+} = useEstablecimiento();
 const  emit  =defineEmits(['onListar'])
 const crud = {
     'nuevo': async() => {
@@ -25,8 +29,6 @@ const crud = {
             hideModal('#modalferiado')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
-
-            
         }
     },
     'editar': async() => {
@@ -47,6 +49,9 @@ const crud = {
 const guardar = () => {
     crud[form.value.estadoCrud]()
 }
+onMounted(() => {
+    obtenerEstablecimientosLista()
+})
 </script>
 <template>
     <form @submit.prevent="guardar">
@@ -59,6 +64,24 @@ const guardar = () => {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="establecimiento_id" class="form-label">Establecimiento </label>
+                        <select class="form-control" v-model="form.establecimiento_id" :class="{ 'is-invalid': form.errors.establecimiento_id }">
+                            <option value="">--Seleccione--</option>
+                            <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id"
+                                :title="establecimiento.nombre">
+                                {{ establecimiento.nombre }}
+                            </option>
+                        </select>
+                        <small class="text-danger" v-for="error in form.errors.establecimiento_id" :key="error">{{ error
+                                }}</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha </label>
+                        <input type="date" class="form-control" v-model="form.fecha" :class="{ 'is-invalid': form.errors.fecha }">
+                        <small class="text-danger" v-for="error in form.errors.fecha" :key="error">{{ error
+                                }}</small>
+                    </div>                    
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre </label>
                         <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }">

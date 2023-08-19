@@ -18,7 +18,7 @@ import {useAutenticacion} from '@/Composables/autenticacion';
 
 <template>
     <div class="login-logo">
-        <img src="img/redhcologo.png">
+        <img src="/img/redhcologo.png">
         <a href="/"><b>ASISTENCIA </b>APP</a>
     </div>
     <div class="card">

@@ -19,7 +19,7 @@ import imgLogo from '../../../../public/img/redhcologo.png';
 
 <template>
     <div class="login-logo">
-        <img :rc="imgLogo">
+        <img :src="imgLogo">
         <a href="/"><b>ASISTENCIA </b>APP</a>
     </div>
     <div class="card">

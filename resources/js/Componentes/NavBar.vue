@@ -2,7 +2,7 @@
 import { ref, toRefs } from 'vue';
 import useHelper from '@/Helpers';
 import { useAutenticacion } from '@/Composables/autenticacion';
-
+import imgAvatar from '../../../public/img/avatar.png';
 
     const props = defineProps({
         usuario: Object
@@ -57,13 +57,13 @@ import { useAutenticacion } from '@/Composables/autenticacion';
                 <!--begin::User Menu Dropdown-->
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img src="img/avatar.png" class="user-image rounded-circle shadow" alt="User Image">
+                        <img :src="imgAvatar" class="user-image rounded-circle shadow" alt="User Image">
                         <span class="d-none d-md-inline">{{ usuario.username }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                         <!--begin::User Image-->
                         <li class="user-header text-bg-primary">
-                            <img src="img/avatar.png" class="rounded-circle shadow" alt="User Image">
+                            <img :src="imgAvatar" class="rounded-circle shadow" alt="User Image">
                             <p>
                                 {{ usuario.username }}
                             </p>

@@ -1,7 +1,7 @@
 <script setup>
 import { toRefs } from 'vue';
 import {useRoute } from 'vue-router';
-
+import AdminLTELogo from '../../../public/adminlte4/assets/img/AdminLTELogo.png'
 const props = defineProps({
     usuario: Object,
     menus: Array
@@ -20,7 +20,7 @@ const ruta = (String(route.path).toLowerCase()).substring(1);
             <!--begin::Brand Link-->
             <a href="/principal" class="brand-link">
                 <!--begin::Brand Image-->
-                <img src="adminlte4/assets/img/AdminLTELogo.png" alt="SufragioADP Logo"
+                <img :src="AdminLTELogo" alt="SufragioADP Logo"
                     class="brand-image opacity-75 shadow rounded-circle" />
                 <!--end::Brand Image-->
                 <!--begin::Brand Text-->

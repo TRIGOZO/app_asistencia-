@@ -49,5 +49,5 @@ class Personal extends Model
     public function cargo(): BelongsTo
     {
         return $this->belongsTo(Cargo::class, 'cargo_id');
-    }        
+    }
 }

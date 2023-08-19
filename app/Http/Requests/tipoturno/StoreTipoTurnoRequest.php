@@ -25,6 +25,15 @@ class StoreTipoTurnoRequest extends FormRequest
     {
         return [
             'nombre'               => 'required|string|unique:tipo_turnos,nombre',
+            'diastolerancia'        => 'required',
+            'descuento'     => 'required',
+            'guardia'       => 'required',
+            'permiso'       => 'required',
+            'horasantesdescansa'        => 'required',
+            'horasdespuesdescansa'      => 'required',
+            'horaasistencial'       => 'required',
+            'horaadministrativo'        => 'required',
+            'nroturnos'     => 'required',
         ];
     }
 

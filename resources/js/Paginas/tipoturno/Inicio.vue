@@ -4,13 +4,20 @@
   import { defineTitle } from '@/Helpers';
   import useHelper from '@/Helpers';  
   import useTipoTurno from '@/Composables/tipoturno.js';
+  import useHorarioTurno from '@/Composables/horarioturno.js';  
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import TipoTurnoForm from './Form.vue'
+  import HorarioForm from './Horario.vue'
   const { openModal, Toast, Swal } = useHelper();
   const {
         tipoturnos, errors, tipoturno, respuesta,
         obtenerTipoTurnos, obtenerTipoTurno, eliminarTipoTurno,
     } = useTipoTurno();
+
+  const {
+        obtenerHorario, horario
+    } = useHorarioTurno();
+    
     const titleHeader = ref({
       titulo: "Tipo Turno",
       subTitulo: "Inicio",
@@ -25,21 +32,122 @@
     const form = ref({
         id:'',
         nombre:'',
+        diastolerancia:'',
+        descuento:'',
+        guardia:'',
+        permiso:'',
+        horasantesdescansa:'',
+        horasdespuesdescansa:'',
+        horaasistencial:'',
+        horaadministrativo:'',
+        nroturnos:'',
         estadoCrud:'',
         errors:[]
     });
+    const formhorario = ref({
+        id:'',
+        tipo_turno_nombre:'',
+        tipo_turno_id:'',
+        horaentrada:'',
+        horasalida:'',
+        toleranciaantes:'',
+        toleranciadespues:'',
+        inicioentrada:'',
+        finentrada:'',
+        iniciosalida:'',
+        finsalida:'',
+        dialunes:'',
+        diamartes:'',
+        diamiercoles:'',
+        diajueves:'',
+        diaviernes:'',
+        diasabado:'',
+        diadomingo:'0',
+        totalhoras:'',
+        estadoCrud:'',
+        errors:[]
+    });    
     const limpiar = ()=> {
         form.value.id =""
         form.value.nombre=''
+        form.value.diastolerancia=''
+        form.value.descuento=''
+        form.value.guardia=''
+        form.value.permiso=''
+        form.value.horasantesdescansa=''
+        form.value.horasdespuesdescansa=''
+        form.value.horaasistencial=''
+        form.value.horaadministrativo=''
+        form.value.nroturnos=''
         form.value.errors = []
         errors.value = []
     }
+    const limpiarFormHorario = ()=> {
+        formhorario.value.id ='';
+        formhorario.value.tipo_turno_nombre='';
+        formhorario.value.tipo_turno_id='';
+        formhorario.value.horaentrada='';
+        formhorario.value.horasalida='';
+        formhorario.value.toleranciaantes='';
+        formhorario.value.toleranciadespues='';
+        formhorario.value.inicioentrada='';
+        formhorario.value.finentrada='';
+        formhorario.value.iniciosalida='';
+        formhorario.value.finsalida='';
+        formhorario.value.dialunes='';
+        formhorario.value.diamartes='';
+        formhorario.value.diamiercoles='';
+        formhorario.value.diajueves='';
+        formhorario.value.diaviernes='';
+        formhorario.value.diasabado='';
+        formhorario.value.diadomingo='0';
+        formhorario.value.totalhoras='';
+        form.value.errors = []
+        errors.value = []
+    }
+    
     const obtenerDatos = async(id) => {
         await obtenerTipoTurno(id);
         if(tipoturno.value)
         {
+            formhorario.value.tipo_turno_nombre=tipoturno.value.nombre;
+            formhorario.value.tipo_turno_id=tipoturno.value.id;
             form.value.id=tipoturno.value.id
             form.value.nombre=tipoturno.value.nombre
+            form.value.diastolerancia=tipoturno.value.diastolerancia
+            form.value.descuento=tipoturno.value.descuento
+            form.value.guardia=tipoturno.value.guardia
+            form.value.permiso=tipoturno.value.permiso
+            form.value.horasantesdescansa=tipoturno.value.horasantesdescansa
+            form.value.horasdespuesdescansa=tipoturno.value.horasdespuesdescansa
+            form.value.horaasistencial=tipoturno.value.horaasistencial
+            form.value.horaadministrativo=tipoturno.value.horaadministrativo
+            form.value.nroturnos=tipoturno.value.nroturnos
+        }
+    }
+    const obtenerDatosHorario = async(id) => {
+        await obtenerHorario(id);
+        if(tipoturno.value)
+        {
+            formhorario.value.id =horario.value.id;
+            formhorario.value.tipo_turno_nombre=horario.value.tipo_turno.nombre;
+            formhorario.value.tipo_turno_id=horario.value.tipo_turno_id;
+            formhorario.value.horaentrada=horario.value.horaentrada;
+            formhorario.value.horasalida=horario.value.horasalida;
+            formhorario.value.toleranciaantes=horario.value.toleranciaantes;
+            formhorario.value.toleranciadespues=horario.value.toleranciadespues;
+            formhorario.value.inicioentrada=horario.value.inicioentrada;
+            formhorario.value.finentrada=horario.value.finentrada;
+            formhorario.value.iniciosalida=horario.value.iniciosalida;
+            formhorario.value.finsalida=horario.value.finsalida;
+            formhorario.value.dialunes=horario.value.dialunes;
+            formhorario.value.diamartes=horario.value.diamartes;
+            formhorario.value.diamiercoles=horario.value.diamiercoles;
+            formhorario.value.diajueves=horario.value.diajueves;
+            formhorario.value.diaviernes=horario.value.diaviernes;
+            formhorario.value.diasabado=horario.value.diasabado;
+            formhorario.value.diadomingo=horario.value.diadomingo;
+            formhorario.value.totalhoras=horario.value.totalhoras;
         }
     }
     const editar = (id) => {
@@ -48,6 +156,20 @@
         form.value.estadoCrud = 'editar'
         document.getElementById("modaltipoturnoLabel").innerHTML = 'Editar Tipo Turno';
         openModal('#modaltipoturno')
+    }
+    const EditarHorario = (id) => {
+        limpiarFormHorario();
+        obtenerDatosHorario(id)
+        form.value.estadoCrud = 'editar'
+        document.getElementById("modalhorarioLabel").innerHTML = 'Editar Horario';
+        openModal('#modalhorario')
+    }
+    const nuevoHorario = (id) => {
+        limpiarFormHorario()
+        obtenerDatos(id)
+        formhorario.value.estadoCrud = 'nuevo'
+        openModal('#modalhorario')
+        document.getElementById("modalhorarioLabel").innerHTML = 'Nuevo Horario';
     }
     const nuevo = () => {
         limpiar()
@@ -212,6 +334,16 @@
                                         <th class="text-center">#</th>
                                         <th>Abreviatura</th>
                                         <th>Nombre</th>
+                                        <th>Dias Tolerancia</th>
+                                        <th>Descuento</th>
+                                        <th>Guardia</th>
+                                        <th>Permiso</th>
+                                        <th>Horas antes de Descansar</th>
+                                        <th>Horas despues de Descansar</th>
+                                        <th>Hora Asistencial</th>
+                                        <th>Hora Administrativo</th>
+                                        <th>Nro Turnos</th>
+                                        <th>count</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -225,12 +357,25 @@
                                         <td class="text-center">{{ index + tipoturnos.from }}</td>
                                         <td>{{ tipoturno.abreviatura }}</td>
                                         <td>{{ tipoturno.nombre }}</td>
+                                        <td>{{ tipoturno.diastolerancia }}</td>
+                                        <td>{{ tipoturno.descuento }}</td>
+                                        <td>{{ tipoturno.guardia==1 ? 'SI' : 'NO' }}</td>
+                                        <td>{{ tipoturno.permiso==1 ? 'SI' : 'NO' }}</td>
+                                        <td>{{ tipoturno.horasantesdescansa }}</td>
+                                        <td>{{ tipoturno.horasdespuesdescansa }}</td>
+                                        <td>{{ tipoturno.horaasistencial }}</td>
+                                        <td>{{ tipoturno.horaadministrativo }}</td>
+                                        <td>{{ tipoturno.nroturnos }}</td>
+                                        <td>{{ tipoturno.horario_count }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Tipo Turno" @click.prevent="editar(tipoturno.id)">
                                                 <i class="fas fa-edit"></i>
                                             </button>&nbsp;
                                             <button class="btn btn-danger btn-sm" title="Eliminar Tipo Turno" @click.prevent="eliminar(tipoturno.id)">
                                                 <i class="fas fa-trash"></i>
+                                            </button>&nbsp;
+                                            <button class="btn btn-info btn-sm" :title="tipoturno.horario_count > 0 ? 'Editar Horario' : 'Nuevo Horario'" @click.prevent="tipoturno.horario_count > 0 ? EditarHorario(tipoturno.id) : nuevoHorario(tipoturno.id)">
+                                                <i class="fas fa-clock"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -292,6 +437,7 @@
       </div>
     </div>
     <TipoTurnoForm :form="form" @onListar="listarTipoTurnos" :currentPage="tipoturnos.current_page"></TipoTurnoForm>
+    <HorarioForm :form="formhorario" @onListar="listarTipoTurnos" :currentPage="tipoturnos.current_page"></HorarioForm >
 </template>
 
 

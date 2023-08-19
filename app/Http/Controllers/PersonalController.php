@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cargo;
 use Illuminate\Http\Request;
-use App\Http\Requests\cargos\StoreCargoRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
+use App\Http\Requests\Personal\StorePersonalRequest;
+use App\Http\Requests\Personal\UpdatePersonalRequest;
 use App\Models\EstadoCivil;
 use App\Models\Personal;
 use Illuminate\Support\Facades\DB;
@@ -22,16 +21,37 @@ class PersonalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCargoRequest $request)
+    public function store(StorePersonalRequest $request)
     {
         $request->validated();
-        $cargo = Cargo::create([
-            'nombre'    => $request->nombre,
+        $personal = Personal::create([
+            'numero_dni'            => $request->numero_dni,
+            'nombres'               => $request->nombres,
+            'apellido_paterno'      => $request->apellido_paterno,
+            'apellido_materno'      => $request->apellido_materno,
+            'sexo'                  => $request->sexo,
+            'fecha_nacimiento'      => $request->fecha_nacimiento,
+            'estado_civil_id'       => $request->estado_civil_id,
+            'celular'               => $request->celular,
+            'email'                 => $request->email,
+            'tipo_trabajador_id'    => $request->tipo_trabajador_id,
+            'tienehijos'            => $request->tienehijos,
+            'profesion_id'          => $request->profesion_id,
+            'cargo_id'              => $request->cargo_id,
+            'nivel_id'              => $request->nivel_id,
+            'sueldo'                => $request->sueldo,
+            'condicion_laboral_id'  => $request->condicion_laboral_id,
+            'fecha_inicio'          => $request->fecha_inicio,
+            'fecha_fin'             => $request->fecha_fin,
+            'establecimiento_id'    => $request->establecimiento_id,
+            'direccion'             => $request->direccion,
+            'telefono'              => $request->telefono,
+
         ]);
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo Registrado satisfactoriamente'
+            'mensaje' => 'Personal Registrado satisfactoriamente'
         ],200);
     }
 
@@ -40,21 +60,42 @@ class PersonalController extends Controller
      */
     public function show(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        return $cargo;
+        $personal = Personal::where('id', $request->id)->first();
+        return $personal;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdatePersonalRequest $request)
     {
         $request->validated();
 
-        $cargo = Cargo::where('id',$request->id)->first();
+        $personal = Personal::findOrFail($request->id);
 
-        $cargo->nombre           = $request->nombre;
-        $cargo->save();
+        $personal->update([
+            'numero_dni'            => $request->numero_dni,
+            'nombres'               => $request->nombres,
+            'apellido_paterno'      => $request->apellido_paterno,
+            'apellido_materno'      => $request->apellido_materno,
+            'sexo'                  => $request->sexo,
+            'fecha_nacimiento'      => $request->fecha_nacimiento,
+            'estado_civil_id'       => $request->estado_civil_id,
+            'celular'               => $request->celular,
+            'email'                 => $request->email,
+            'tipo_trabajador_id'    => $request->tipo_trabajador_id,
+            'tienehijos'            => $request->tienehijos,
+            'profesion_id'          => $request->profesion_id,
+            'cargo_id'              => $request->cargo_id,
+            'nivel_id'              => $request->nivel_id,
+            'sueldo'                => $request->sueldo,
+            'condicion_laboral_id'  => $request->condicion_laboral_id,
+            'fecha_inicio'          => $request->fecha_inicio,
+            'fecha_fin'             => $request->fecha_fin,
+            'establecimiento_id'    => $request->establecimiento_id,
+            'direccion'             => $request->direccion,
+            'telefono'              => $request->telefono,
+        ]);
 
         return response()->json([
             'ok' => 1,
@@ -67,22 +108,22 @@ class PersonalController extends Controller
      */
     public function destroy(Request $request)
     {
-        $cargo = Cargo::where('id', $request->id)->first();
-        $cargo->delete();
+        $personal = Personal::where('id', $request->id)->first();
+        $personal->delete();
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo eliminado satisfactoriamente'
+            'mensaje' => 'Personal eliminado satisfactoriamente'
         ],200);
     }
 
     public function todos(){
-        $cargos = Cargo::get();
-        return $cargos;
+        $personals = Personal::get();
+        return $personals;
     }
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Cargo::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return Personal::with(['estado_civil:id,nombre', 'profesion:id,nombre', 'cargo:id,nombre'])->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
     public function mostrarpersonadetalle(Request $request){

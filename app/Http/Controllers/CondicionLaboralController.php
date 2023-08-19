@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CondicionLaboral;
 use Illuminate\Http\Request;
 use App\Http\Requests\condicionlaboral\StoreCondicionLaboralRequest;
-use App\Http\Requests\cargos\UpdateCargoRequest;
+use App\Http\Requests\condicionlaboral\UpdateCondicionLaboralRequest;
 class CondicionLaboralController extends Controller
 {
     /**
@@ -44,7 +44,7 @@ class CondicionLaboralController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCargoRequest $request)
+    public function update(UpdateCondicionLaboralRequest $request)
     {
         $request->validated();
 

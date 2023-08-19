@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             EstadoCivilSeeder::class,
             MenuSeeder::class,
-            ProfesionSeeder::class
+            ProfesionSeeder::class,
+            TipoTurnoSeeder::class
         ]);
     }
 }

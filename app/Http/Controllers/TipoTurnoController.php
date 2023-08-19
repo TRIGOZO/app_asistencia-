@@ -28,6 +28,15 @@ class TipoTurnoController extends Controller
         $tipoturno = TipoTurno::create([
             'abreviatura' => $abreviatura,
             'nombre'    => $request->nombre,
+            'diastolerancia' => $request->diastolerancia,
+            'descuento' => $request->descuento,
+            'guardia' => $request->guardia,
+            'permiso' => $request->permiso,
+            'horasantesdescansa' => $request->horasantesdescansa,
+            'horasdespuesdescansa' => $request->horasdespuesdescansa,
+            'horaasistencial' => $request->horaasistencial,
+            'horaadministrativo' => $request->horaadministrativo,
+            'nroturnos' => $request->nroturnos
         ]);
         return response()->json([
             'ok' => 1,
@@ -40,7 +49,7 @@ class TipoTurnoController extends Controller
      */
     public function show(Request $request)
     {
-        $tipoturno = TipoTurno::where('id', $request->id)->first();
+        $tipoturno = TipoTurno::withCount('horario')->where('id', $request->id)->first();
         return $tipoturno;
     }
 
@@ -52,10 +61,21 @@ class TipoTurnoController extends Controller
         $request->validated();
 
         $tipoturno = TipoTurno::where('id',$request->id)->first();
-
-        $tipoturno->nombre           = $request->nombre;
-        $tipoturno->save();
-
+        $nombre = str_replace(' ', '', $request->nombre);
+        $abreviatura = strtoupper(substr($nombre, 0, 4)); 
+        $tipoturno->update([
+            'abreviatura' => $abreviatura,
+            'nombre'    => $request->nombre,
+            'diastolerancia' => $request->diastolerancia,
+            'descuento' => $request->descuento,
+            'guardia' => $request->guardia,
+            'permiso' => $request->permiso,
+            'horasantesdescansa' => $request->horasantesdescansa,
+            'horasdespuesdescansa' => $request->horasdespuesdescansa,
+            'horaasistencial' => $request->horaasistencial,
+            'horaadministrativo' => $request->horaadministrativo,
+            'nroturnos' => $request->nroturnos
+        ]);
         return response()->json([
             'ok' => 1,
             'mensaje' => 'Tipo Turno modificado satisfactoriamente'
@@ -82,7 +102,7 @@ class TipoTurnoController extends Controller
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return TipoTurno::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
+        return TipoTurno::withCount('horario')->whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
 

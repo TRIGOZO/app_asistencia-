@@ -4,6 +4,7 @@ use App\Http\Controllers\CargoController;
 use App\Http\Controllers\CondicionLaboralController;
 use App\Http\Controllers\EstablecimientoController;
 use App\Http\Controllers\FeriadoController;
+use App\Http\Controllers\HorarioTurnoController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuRoleController;
 use App\Http\Controllers\MicroRedController;
@@ -193,9 +194,22 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
 
 
 //MENU ROLE
-
 Route::group(['prefix' => 'menu-role', 'middleware' => 'auth'], function () {
     Route::get('menu-roles',[MenuRoleController::class,'mostrarRoleMenus']);
     Route::get('mostrar-menus',[MenuRoleController::class,'mostrarMenus']);
     Route::post('menu-role-guardar',[MenuRoleController::class,'guardarRoleMenu']);
 });
+
+
+
+
+//HORARIO TURNO
+Route::group(['prefix' => 'horario-turno', 'middleware' => 'auth'], function () {
+    Route::get('mostrar',[HorarioTurnoController::class,'show']);
+    Route::post('guardar',[HorarioTurnoController::class,'store']);
+    Route::post('actualizar', [HorarioTurnoController::class, 'update']);
+});
+
+
+
+

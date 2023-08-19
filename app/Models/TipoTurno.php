@@ -11,6 +11,19 @@ class TipoTurno extends Model
     protected $tabla = 'tipo_turnos';
     protected $fillable = [
         'abreviatura',
-        'nombre'
+        'nombre',
+        'diastolerancia',
+        'descuento',
+        'guardia',
+        'permiso',
+        'horasantesdescansa',
+        'horasdespuesdescansa',
+        'horaasistencial',
+        'horaadministrativo',
+        'nroturnos',
     ];
+    public function horario()
+    {
+        return $this->hasMany(HorarioTurno::class);
+    }
 }

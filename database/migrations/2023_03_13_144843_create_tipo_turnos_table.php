@@ -15,6 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('abreviatura', 4)->unique();
             $table->string('nombre');
+            $table->integer('diastolerancia');
+            $table->integer('descuento');
+            $table->integer('guardia');
+            $table->integer('permiso');
+            $table->integer('horasantesdescansa');
+            $table->integer('horasdespuesdescansa');
+            $table->integer('horaasistencial');
+            $table->integer('horaadministrativo');
+            $table->integer('nroturnos');
             $table->timestamps();
         });
     }

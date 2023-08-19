@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CondicionLaboral extends Model
 {
     use HasFactory;
+    protected $table='condicion_laborales';
+    protected $fillable=['nombre'];
 }

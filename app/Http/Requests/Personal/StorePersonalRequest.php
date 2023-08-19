@@ -38,7 +38,7 @@ class StorePersonalRequest extends FormRequest
             'profesion_id'          => 'required',
             'cargo_id'              => 'required',
             'nivel_id'              => 'required',
-            'sueldo'                => 'required|numeric',
+            'sueldo'                => 'required|numeric|max:1264',
             'condicion_laboral_id'  => 'required',
             'fecha_inicio'          => 'required|date',
             'fecha_fin'             => 'required|date',
@@ -50,7 +50,7 @@ class StorePersonalRequest extends FormRequest
     {
         return [
             'required' => '* Dato Obligatorio',
-            'max' => 'Ingrese Máximo :max caracteres',
+            'max' => 'Ingrese Máximo :max',
             'string' => 'Ingrese caracteres alfanuméricos',
             'number' => 'Ingrese solo numeros',
             'unique' => 'El :email ya existe'

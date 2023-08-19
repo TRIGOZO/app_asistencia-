@@ -27,6 +27,11 @@ import TipoNivel from '@/Paginas/tiponiveles/Inicio.vue'
 import Establecimiento from '@/Paginas/establecimientos/Inicio.vue'
 import Nivel from '@/Paginas/niveles/Inicio.vue'
 import Personal from '@/Paginas/personales/Inicio.vue'
+import CondicionLaboral from '@/Paginas/condicionlaboral/Inicio.vue'
+import Permiso from '@/Paginas/permisos/Inicio.vue'
+import RoleTurno from '@/Paginas/roles-turnos/Inicio.vue'
+import CambioTurno from '@/Paginas/cambio-turno/Inicio.vue'
+import Marcacion from '@/Paginas/marcaciones/Inicio.vue'
 const routes = [
     {
         path: '/',name: 'Login', component: Login,
@@ -107,7 +112,27 @@ const routes = [
     {
         path: '/personales', name:'Personal', component: Personal ,
         meta:{layout: LayoutDefault}
-    },       
+    },
+    {
+        path: '/condicion-laboral', name:'Condicion Laboral', component: CondicionLaboral ,
+        meta:{layout: LayoutDefault}
+    },     
+    {
+        path: '/permisos', name:'Permiso', component: Permiso ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/rol', name:'RolTurno', component: RoleTurno ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/cambio-turno', name:'CambioTurno', component: CambioTurno ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/marcacion', name:'Marcacion', component: Marcacion ,
+        meta:{layout: LayoutDefault}
+    },
 ]
 
 export default createRouter({

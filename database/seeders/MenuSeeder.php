@@ -52,6 +52,13 @@ class MenuSeeder extends Seeder
                 'padre_id' => null,
                 'orden' => 4,
             ],
+            [
+                'nombre' => 'Reportes',
+                'slug' => 'reportes',
+                'icono' => 'fas fa-chart-bar',
+                'padre_id' => null,
+                'orden' => 4,
+            ],            
         ];
         foreach ($menuspadres as $menuData) {
             $menu = Menu::firstOrCreate($menuData);
@@ -168,7 +175,14 @@ class MenuSeeder extends Seeder
                 'icono' => 'fas fa-sitemap-branch',
                 'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
                 'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
-            ],                                                         
+            ],   
+            [
+                'nombre' => 'Condicion Laboral',
+                'slug' => 'condicion-laboral',
+                'icono' => 'fas fa-sitemap-branch',
+                'padre_id' => Menu::where('nombre', 'Configuraciones')->value('id'),
+                'orden' => Menu::where('nombre', 'Configuraciones')->max('id')+1,
+            ],                                                                     
             [
                 'nombre' => 'Personales',
                 'slug' => 'personales',
@@ -176,8 +190,34 @@ class MenuSeeder extends Seeder
                 'padre_id' => Menu::where('nombre', 'Personal')->value('id'),
                 'orden' => Menu::where('nombre', 'Personal')->max('id')+1,
             ],
-         
-
+            [
+                'nombre' => 'Permisos', //SOLICITUD DE PERMISO DESDE EL USUARIO, ME GUIARE DE LA PAPELETA
+                'slug' => 'permisos',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
+                'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
+            ],
+            [
+                'nombre' => 'Rol de Turnos', //establecer al administrativo y poner a que turno pertenece
+                'slug' => 'rol',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
+                'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
+            ],
+            [
+                'nombre' => 'Marcaciones', //establecer al administrativo y poner a que turno pertenece
+                'slug' => 'marcacion',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
+                'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
+            ],
+            [
+                'nombre' => 'Cambio de Turno', //establecer al administrativo y poner a que turno pertenece
+                'slug' => 'cambio-turno',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
+                'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
+            ],
                                       
         ];
         

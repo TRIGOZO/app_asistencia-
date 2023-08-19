@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\tipoturno;
+namespace App\Http\Requests\permiso;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTipoTurnoRequest extends FormRequest
+class UpdatePermisoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,7 @@ class UpdateTipoTurnoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'               => 'required|string|unique:tipo_turnos,nombre,'.$this->id,
-            'diastolerancia'        => 'required',
-            'descuento'     => 'required',
-            'guardia'       => 'required',
-            'permiso'       => 'required',
-            'horasantesdescansa'        => 'required',
-            'horasdespuesdescansa'      => 'required',
-            'horaasistencial'       => 'required',
-            'horaadministrativo'        => 'required',
-            'nroturnos'     => 'required',
+            'nombre'               => 'required|string|unique:cargos,nombre,'.$this->id,
         ];
     }
 
@@ -44,7 +35,7 @@ class UpdateTipoTurnoRequest extends FormRequest
             'max' => 'Ingrese Máximo :max caracteres',
             'string' => 'Ingrese caracteres alfanuméricos',
             'number' => 'Ingrese solo numeros',
-            'unique' => 'El :nombre ya existe'
+            'unique' => 'El :email ya existe'
         ];
     }
 

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import {useAutenticacion} from '@/Composables/autenticacion';
+import imgLogo from '../../../../public/img/redhcologo.png';
 
     const user = ref({
         username:'',
@@ -18,7 +19,7 @@ import {useAutenticacion} from '@/Composables/autenticacion';
 
 <template>
     <div class="login-logo">
-        <img src="/img/redhcologo.png">
+        <img :rc="imgLogo">
         <a href="/"><b>ASISTENCIA </b>APP</a>
     </div>
     <div class="card">

@@ -16,6 +16,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TipoGuardiaController;
 use App\Http\Controllers\TipoNivelController;
 use App\Http\Controllers\TipoPermisoController;
+use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\TipoTrabajadorController;
 use App\Http\Controllers\TipoTurnoController;
 use App\Http\Controllers\UserController;
@@ -96,6 +97,14 @@ Route::group(['prefix' => 'tipo-permiso', 'middleware' => 'auth'], function () {
     Route::post('eliminar', [TipoPermisoController::class, 'destroy']);
     Route::post('guardar', [TipoPermisoController::class, 'store']);
     Route::get('listar', [TipoPermisoController::class, 'listar']);
+});
+
+Route::group(['prefix' => 'permiso', 'middleware' => 'auth'], function () {
+    Route::get('mostrar', [PermisoController::class, 'show']);
+    Route::post('actualizar', [PermisoController::class, 'update']);
+    Route::post('eliminar', [PermisoController::class, 'destroy']);
+    Route::post('guardar', [PermisoController::class, 'store']);
+    Route::get('listar-hoy', [PermisoController::class, 'listarhoy']);
 });
 
 Route::group(['prefix' => 'feriado', 'middleware' => 'auth'], function () {

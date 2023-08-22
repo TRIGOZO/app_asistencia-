@@ -23,7 +23,15 @@ class PermisoController extends Controller
     {
         $request->validated();
         $permiso = Permiso::create([
-            'nombre'    => $request->nombre,
+            'personal_id' => $request->personal_id,
+            'fecha_desde' => $request->fecha_desde,
+            'hora_inicio' => $request->hora_inicio,
+            'fecha_hasta' => $request->fecha_hasta,
+            'hora_hasta' => $request->hora_hasta,
+            'tipo_permiso_id' => $request->tipo_permiso_id,
+            'motivo' => $request->motivo,
+            'establecimiento_id' => $request->establecimiento_id,
+
         ]);
 
         return response()->json([
@@ -37,7 +45,7 @@ class PermisoController extends Controller
      */
     public function show(Request $request)
     {
-        $permiso = Permiso::where('id', $request->id)->first();
+        $permiso = Permiso::with('personal')->where('id', $request->id)->first();
         return $permiso;
     }
 
@@ -49,9 +57,16 @@ class PermisoController extends Controller
         $request->validated();
 
         $permiso = Permiso::where('id',$request->id)->first();
-
-        $permiso->nombre           = $request->nombre;
-        $permiso->save();
+        $permiso->update([
+            'personal_id' => $request->personal_id,
+            'fecha_desde' => $request->fecha_desde,
+            'hora_inicio' => $request->hora_inicio,
+            'fecha_hasta' => $request->fecha_hasta,
+            'hora_hasta' => $request->hora_hasta,
+            'tipo_permiso_id' => $request->tipo_permiso_id,
+            'motivo' => $request->motivo,
+            'establecimiento_id' => $request->establecimiento_id,
+        ]);
 
         return response()->json([
             'ok' => 1,
@@ -71,7 +86,12 @@ class PermisoController extends Controller
             'mensaje' => 'Cargo eliminado satisfactoriamente'
         ],200);
     }
-
+    public function listarhoy(){
+        $permisos = Permiso::with(['personal', 'tipopermiso'])
+        ->whereDate('created_at', now()->format('Y-m-d'))
+        ->get();
+        return $permisos;        
+    }
     public function todos(){
         $permisos = Permiso::get();
         return $permisos;

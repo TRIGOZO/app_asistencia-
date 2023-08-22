@@ -24,7 +24,14 @@ class UpdatePermisoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'               => 'required|string|unique:cargos,nombre,'.$this->id,
+            'personal_id' => 'required',
+            'fecha_desde' => 'required|date',
+            'hora_inicio' => 'required',
+            'fecha_hasta' => 'required|date',
+            'hora_hasta' => 'required',
+            'tipo_permiso_id' => 'required',
+            'motivo' => 'required',
+            'establecimiento_id' => 'required',
         ];
     }
 

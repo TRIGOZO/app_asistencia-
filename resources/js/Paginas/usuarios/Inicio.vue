@@ -23,27 +23,25 @@
         establecimiento_id:'',
         role_id:'',
         email:'',        
-        foto:'',
-        tipo_documento_codigo: '',
-        numero_documento : '',
+        sexo : 'M',
+        numero_dni: '',
         nombres : '',
         apellido_paterno : '',
         apellido_materno : '',
-        sexo_id : '',
         telefono : '',
         direccion : '',        
         estadoCrud:'',
         errors:[]
 
     });
+
     const limpiar = ()=> {
         form.value.id='',
         form.value.username='',
         form.value.establecimiento_id='',
         form.value.email='',
         form.value.role_id='',
-        form.value.foto='',
-        form.value.tipo_documento_codigo= '',
+        form.value.numero_dni= '',
         form.value.numero_documento = '',
         form.value.nombres = '',
         form.value.apellido_paterno = '',
@@ -64,14 +62,13 @@
             form.value.email=usuario.value.email;
             form.value.role_id=usuario.value.role_id;
             form.value.foto=usuario.value.foto;
-            form.value.tipo_documento_codigo= usuario.value.persona.tipo_documento_codigo;
-            form.value.numero_documento = usuario.value.persona.numero_documento;
-            form.value.nombres = usuario.value.persona.nombres;
-            form.value.apellido_paterno = usuario.value.persona.apellido_paterno;
-            form.value.apellido_materno = usuario.value.persona.apellido_materno;
-            form.value.sexo_id = usuario.value.persona.sexo_id;
-            form.value.telefono = usuario.value.persona.telefono;
-            form.value.direccion = usuario.value.persona.direccion;        
+            form.value.numero_dni= usuario.value.personal.numero_dni;
+            form.value.nombres = usuario.value.personal.nombres;
+            form.value.apellido_paterno = usuario.value.personal.apellido_paterno;
+            form.value.apellido_materno = usuario.value.personal.apellido_materno;
+            form.value.sexo_id = usuario.value.personal.sexo_id;
+            form.value.telefono = usuario.value.personal.telefono;
+            form.value.direccion = usuario.value.personal.direccion;        
         }
     }
     const editar = (id) => {

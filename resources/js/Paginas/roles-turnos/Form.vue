@@ -1,8 +1,9 @@
 <script setup>
 import { toRefs, onMounted } from 'vue';
 import useCargo from '@/Composables/cargos.js';
-import useHelper from '@/Helpers';  
-const { hideModal, Toast } = useHelper();
+import useHelper from '@/Helpers'; 
+import useTipoTurno from '@/Composables/tipoturno.js';
+const { hideModal, Toast, meses } = useHelper();
 const props = defineProps({
     form: Object,
     currentPage : Number
@@ -11,6 +12,9 @@ const { form, currentPage } = toRefs(props)
 const {
     errors, respuesta, agregarCargo, actualizarCargo
 } = useCargo();
+const {
+    listaTipoTurnos, tipoturnos
+} = useTipoTurno();
 const  emit  =defineEmits(['onListar'])
 const crud = {
     'nuevo': async() => {
@@ -22,7 +26,7 @@ const crud = {
         }
         if(respuesta.value.ok==1){
             form.value.errors = []
-            hideModal('#modalcargo')
+            hideModal('#modalformlroleturno')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
 
@@ -38,7 +42,7 @@ const crud = {
         }
         if(respuesta.value.ok==1){
             form.value.errors = []
-            hideModal('#modalcargo')
+            hideModal('#modalformlroleturno')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
         }
@@ -47,15 +51,19 @@ const crud = {
 const guardar = () => {
     crud[form.value.estadoCrud]()
 }
+
+onMounted(() => {
+    listaTipoTurnos()
+})
 </script>
 <template>
     <form @submit.prevent="guardar">
-    <div class="modal fade" id="modalcargo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="modalcargoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalformlroleturno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalformlroleturnoLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalcargoLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="modalformlroleturnoLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -65,6 +73,26 @@ const guardar = () => {
                         <small class="text-danger" v-for="error in form.errors.nombre" :key="error">{{ error
                                 }}</small>
                     </div>
+                    <div class="mb-3">
+                        <label for="mes" class="form-label">Mes </label>
+                        <select class="form-control" v-model="form.mes">
+                            <option value="" disabled>Selecciona un mes</option>
+                            <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">{{ mes.nombre }} - {{ mes.numero }}</option>
+                        </select>
+                        <small class="text-danger" v-for="error in form.errors.nombre" :key="error">{{ error
+                                }}</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mes" class="form-label">Tipo de Turno </label>
+                        <select class="form-control" v-model="form.tipo_turno_id">
+                            <option value="" disabled>Selecciona</option>
+                            <option v-for="tipoturno in tipoturnos" :key="tipoturno.numero" :value="tipoturno.id">{{ tipoturno.nombre }}</option>
+                        </select>
+                    </div>
+                     <div class="mb-3">
+                        <label for="mes" class="form-label">Fecha Desde </label>
+
+                    </div>                                 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

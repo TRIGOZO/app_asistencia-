@@ -118,6 +118,6 @@ class EstablecimientoSeeder extends Seeder
         $establecimiento = Establecimiento::firstOrCreate(['nombre' => 'P. S. MUÑA', 'microred_id' => 25]);
         $establecimiento = Establecimiento::firstOrCreate(['nombre' => 'P. S. HUALLMISH', 'microred_id' => 4]);
         $establecimiento = Establecimiento::firstOrCreate(['nombre' => 'P. S. SANTA ISABEL', 'microred_id' => 6]);
-        $establecimiento = Establecimiento::firstOrCreate(['nombre' => 'P. S. DE SAN PEDRO DE PILLAO', 'microred_id' => 6]);
+        $establecimiento = Establecimiento::firstOrCreate(['nombre' => 'P. S. DE SAN PEDRO DE PILLAO', 'microred_id' => 6]);        
     }
 }

@@ -60,7 +60,6 @@ onMounted(() => {
     listaRoles()
     listaEstablecimientos()
 })
-
 </script>
 <template>
     <form @submit.prevent="guardar">
@@ -137,35 +136,18 @@ onMounted(() => {
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tipo_documento_codigo" class="form-label">TIPO DE DOCUMENTO</label>
-                                        <select v-model="form.tipo_documento_codigo" class="form-control"
-                                            :class="{ 'is-invalid': form.errors.sexo_id }">
-                                            <option value="">--Seleccione--</option>
-                                            <option v-for="tipodocumento in tipodocumentos" :key="tipodocumento.codigo" :value="tipodocumento.codigo"
-                                                :title="tipodocumento.descripcion">
-                                                {{ tipodocumento.descripcion }}
-                                            </option>
-                                        </select>
-                                        <small class="text-danger" v-for="error in form.errors.tipo_documento_codigo" :key="error">{{ error
+                                        <label for="numero_dni" class="form-label">DNI</label>
+                                        <input type="text" class="form-control" v-model="form.numero_dni" :class="{ 'is-invalid': form.errors.numero_dni }" placeholder="dni">
+                                        <small class="text-danger" v-for="error in form.errors.numero_dni" :key="error">{{ error
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="numero_documento" class="form-label">Nro Documento</label>
-                                        <input type="text" class="form-control" v-model="form.numero_documento" :class="{ 'is-invalid': form.errors.numero_documento }" placeholder="Nro de Documento">
-                                        <small class="text-danger" v-for="error in form.errors.numero_documento" :key="error">{{ error
-                                                }}</small>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="sexo_id" class="form-label">Sexo</label>
-                                        <select v-model="form.sexo_id" class="form-control"
-                                            :class="{ 'is-invalid': form.errors.sexo_id }">
-                                            <option value="">--Seleccione--</option>
-                                            <option v-for="sexo in sexos" :key="sexo.id" :value="sexo.id"
-                                                :title="sexo.nombre">
-                                                {{ sexo.nombre }}
-                                            </option>
+                                        <label for="sexo" class="form-label">Sexo</label>
+                                        <select v-model="form.sexo" class="form-control" :class="{ 'is-invalid': form.errors.sexo }">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
                                         </select>
-                                        <small class="text-danger" v-for="error in form.errors.sexo_id" :key="error">{{ error
+                                        <small class="text-danger" v-for="error in form.errors.sexo" :key="error">{{ error
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">

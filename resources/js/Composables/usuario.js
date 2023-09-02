@@ -8,7 +8,7 @@ export default function useUsuario() {
     const respuesta = ref([])
 
     const obtenerUsuario = async(id) => {
-        let respuesta = await axios.get('api/usuario-mostrar?id='+id,getConfigHeader())
+        let respuesta = await axios.get('usuario/mostrar?id='+id,getConfigHeader())
         usuario.value = respuesta.data
     }
     const listaUsuarios = async()=>{

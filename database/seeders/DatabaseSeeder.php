@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             EstadoCivilSeeder::class,
             MenuSeeder::class,
             ProfesionSeeder::class,
-            TipoTurnoSeeder::class
+            TipoTurnoSeeder::class,
+            UbigeoSeeder::class,
         ]);
     }
 }

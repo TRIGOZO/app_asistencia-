@@ -1,4 +1,8 @@
 import { inject } from 'vue';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone  from 'dayjs/plugin/timezone';
+import advanced from 'dayjs/plugin/advancedFormat';
 
 export * from './body';
 
@@ -18,7 +22,20 @@ export default function useHelper() {
           toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
     })
-
+    const meses= [
+        { numero: 1, nombre: 'Enero' },
+        { numero: 2, nombre: 'Febrero' },
+        { numero: 3, nombre: 'Marzo' },
+        { numero: 4, nombre: 'Abril' },
+        { numero: 5, nombre: 'Mayo' },
+        { numero: 6, nombre: 'Junio' },
+        { numero: 7, nombre: 'Julio' },
+        { numero: 8, nombre: 'Agosto' },
+        { numero: 9, nombre: 'Septiembre' },
+        { numero: 10, nombre: 'Octubre' },
+        { numero: 11, nombre: 'Noviembre' },
+        { numero: 12, nombre: 'Diciembre' }
+      ];
     const openModal = (modal_nombre) => {
         const myModal = bootstrap.Modal.getOrCreateInstance(modal_nombre);
         myModal.show();
@@ -97,8 +114,19 @@ export default function useHelper() {
         return edad + " años, " + meses + " meses y " + dias + " días";
     }
 
+    const formatoFecha = (fecha,formato) => {
+        dayjs.extend(utc);
+        dayjs.extend(timezone);
+        dayjs.extend(advanced);
+
+        let time_zone = import.meta.env.VITE_TIME_ZONE
+
+        return (![null,'', undefined].includes(fecha)) ? dayjs(fecha).tz(time_zone).format(formato) 
+            : dayjs().tz(time_zone).format(formato)
+    }
+
     return {
-        Swal, Toast, openModal, hideModal, soloNumeros, calcularEdad
+        Swal, Toast, openModal, hideModal, soloNumeros, calcularEdad, formatoFecha, meses
     }
 
 }

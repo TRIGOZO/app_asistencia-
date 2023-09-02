@@ -38,7 +38,7 @@ return new class extends Migration
                 ->onUpdate('cascade');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->foreignId('establecimiento_id')->nullable()->constrained('establecimientos')->onDelete('set null')
+            $table->foreignId('establecimiento_id')->constrained('establecimientos')->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreignId('cargo_id')->nullable()->constrained('cargos')->onDelete('set null')
                 ->onUpdate('cascade');

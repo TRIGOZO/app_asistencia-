@@ -7,6 +7,7 @@ export const cargarClasesLoginLayout = () => {
         partBody.classList.remove('sidebar-mini');        
         partBody.classList.add('login-page');
         partBody.classList.add('bg-body-secondary');
+        partBody.classList.add('fondologin');
     }
 }
 
@@ -19,6 +20,7 @@ export const cargarClasesPrincipalLayout = () => {
         partBody.classList.add('sidebar-expand-lg');
         partBody.classList.add('sidebar-mini');
         partBody.classList.remove('bg-body-secondary');
+        partBody.classList.remove('fondologin');
         
     }
 }

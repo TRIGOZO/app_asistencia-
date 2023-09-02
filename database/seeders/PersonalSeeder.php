@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Cargo;
+use App\Models\Establecimiento;
 use App\Models\EstadoCivil;
 use App\Models\Personal;
 use App\Models\Profesion;
@@ -28,8 +29,11 @@ class PersonalSeeder extends Seeder
             'fecha_inicio'  => '1994-01-01',
             'fecha_fin'  => '1994-01-01',
             'cargo_id'  => Cargo::where('nombre', 'SUPER')->value('id'),
-            'profesion_id' => Profesion::where('nombre', 'INFORMATICO')->value('id')
+            'profesion_id' => Profesion::where('nombre', 'INFORMATICO')->value('id'),
+            'establecimiento_id' => Establecimiento::where('nombre', 'C.S. CARLOS SHOWING FERRARI')->value('id'),
         ]);
+
+
 
     }
 }

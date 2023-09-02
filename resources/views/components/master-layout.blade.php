@@ -24,6 +24,7 @@
         <!--end::Third Party Plugin(Bootstrap Icons)-->
 
         <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/css/adminlte.min.css") }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset("adminlte4/css/miestilo.css") }}">
 
         <!-- Scripts -->
         {{-- @routes --}}

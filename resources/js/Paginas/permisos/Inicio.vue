@@ -7,7 +7,9 @@
   import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import PermisoForm from './Form.vue'
-  const { openModal, Toast, Swal } = useHelper();
+
+  const { openModal, Toast, Swal, formatoFecha } = useHelper();
+
   const {
         personales,
         obtenerPersonales,obtenerPersonal, personal
@@ -16,7 +18,10 @@
         permisos,
         listarHoy,
         obtenerPermiso,
-        permiso
+        permiso,
+        eliminarPermiso,
+        errors,
+        respuesta
     } = usePermiso();    
     const titleHeader = ref({
       titulo: "Solicitud Permisos",
@@ -24,20 +29,24 @@
       icon: "",
       vista: ""
     });
+
     const dato = ref({
         page:'',
         buscar:'',
         paginacion: 10
     });
-    const hoy=new Date().toISOString().split('T')[0];
+    //const hoy=new Date().toISOString().split('T')[0];
+    const hoy= formatoFecha(null,"YYYY-MM-DD")
+    const horaHoy = formatoFecha(null,"HH:mm")
+
     const form = ref({
         id:'',
         personal_id:'',
         nombre:'',
         fecha_desde: hoy,
-        hora_inicio:'',
+        hora_inicio:horaHoy,
         fecha_hasta:hoy,
-        hora_hasta:'',
+        hora_hasta:horaHoy,
         tipo_permiso_id:'',
         motivo:'',
         establecimiento_id:'',
@@ -49,10 +58,10 @@
         form.value.id =''
         form.value.personal_id='',
         form.value.nombre=''
-        form.value.fecha_desde='',
-        form.value.hora_inicio='',
-        form.value.fecha_hasta='',
-        form.value.hora_hasta='',
+        form.value.fecha_desde=hoy,
+        form.value.hora_inicio=horaHoy,
+        form.value.fecha_hasta=hoy,
+        form.value.hora_hasta=horaHoy,
         form.value.tipo_permiso_id='',
         form.value.motivo='',
         form.value.establecimiento_id='',        
@@ -73,6 +82,34 @@
         document.getElementById("modalpermisoLabel").innerHTML = 'Editar Permiso';
         openModal('#modalpermiso')        
     }
+    const eliminar = (id) => {
+        Swal.fire({
+            title: '¿Estás seguro de Eliminar?',
+            text: "Permiso",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminalo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                elimina(id)
+            }
+        })
+    }
+    const elimina = async(id) => {
+        await eliminarPermiso(id)
+        form.value.errors = []
+        if(errors.value){
+            form.value.errors = errors.value
+        }
+        if(respuesta.value.ok==1){
+            form.value.errors = []
+            Toast.fire({icon:'success', title:respuesta.value.mensaje})
+            listarPermisos()
+        }
+    }
+
     const obtenerDatos = async(id) => {
         limpiar()
         await obtenerPersonal(id);
@@ -138,27 +175,24 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 mb-1">
-                        <div class="table-responsive">         
+                        <div class="table-responsive" v-if="personales.total> 0">         
                             <table class="table table-bordered table-hover table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Nombre</th>
+                                        <th>Cargo</th>
                                         <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-if="personales.total == 0">
-                                        <td class="text-danger text-center" colspan="7">
-                                            -- Datos No Registrados - Tabla Vacía --
-                                        </td>
-                                    </tr>
-                                    <tr v-else v-for="(personal,index) in personales.data" :key="personal.id">
+                                    <tr v-for="(personal,index) in personales.data" :key="personal.id">
                                         <td class="text-center">{{ index + personales.from }}</td>
                                         <td>{{ personal.nombres }}</td>
+                                        <td>{{ personal.cargo.nombre }}</td>
                                         <td>
-                                            <button class="btn btn-info btn-sm" title="Generar Horario" @click.prevent="solicitar(personal.id)">
-                                                <i class="fas fa-clock"></i>
+                                            <button class="btn btn-info btn-sm" title="Solicitar Permiso" @click.prevent="solicitar(personal.id)">
+                                                <i class="fas fa-hand-paper"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -190,6 +224,7 @@
                                         <th>Fecha Hasta</th>
                                         <th>Hora Hasta</th>
                                         <th>Tipo Permiso</th>
+                                        <th>Motivo</th>
                                         <th>Accion</th>
                                     </tr>
                                 </thead>
@@ -207,10 +242,14 @@
                                         <td>{{ permiso.fecha_hasta }}</td>
                                         <td>{{ permiso.hora_hasta }}</td>
                                         <td>{{ permiso.tipopermiso.nombre }}</td>
+                                        <td>{{ permiso.motivo }}</td>
                                         <td>
-                                            <button class="btn btn-info btn-sm" title="Generar Horario" @click.prevent="editar(permiso.id)">
-                                                <i class="fas fa-clock"></i>
-                                            </button>
+                                            <button class="btn btn-warning btn-sm" title="Editar Permiso" @click.prevent="editar(permiso.id)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>&nbsp;
+                                            <button class="btn btn-danger btn-sm" title="Eliminar Permiso" @click.prevent="eliminar(permiso.id)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>                                            
                                         </td>
                                     </tr>
                                 </tbody>
@@ -220,7 +259,6 @@
                 </div>
             </div>
         </div>
-
       </div>
     </div>
     <PermisoForm :form="form" @onListar="listarPermisos" :currentPage="personales.current_page"></PermisoForm>

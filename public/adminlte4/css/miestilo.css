@@ -1,0 +1,7 @@
+.fondologin{
+    background-image: url('../../img/bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    height: 100vh; 
+}

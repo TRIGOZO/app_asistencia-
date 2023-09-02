@@ -50,4 +50,8 @@ class Personal extends Model
     {
         return $this->belongsTo(Cargo::class, 'cargo_id');
     }
+    public function establecimiento(): BelongsTo
+    {
+        return $this->belongsTo(Establecimiento::class, 'establecimiento_id');
+    }    
 }

@@ -22,13 +22,14 @@
         username:'',
         establecimiento_id:'',
         role_id:'',
+        numero_dni: '',
+        personal_id: '',
         email:'',        
         sexo : 'M',
-        numero_dni: '',
         nombres : '',
         apellido_paterno : '',
         apellido_materno : '',
-        telefono : '',
+        celular : '',
         direccion : '',        
         estadoCrud:'',
         errors:[]
@@ -42,12 +43,13 @@
         form.value.email='',
         form.value.role_id='',
         form.value.numero_dni= '',
-        form.value.numero_documento = '',
+        form.value.personal_id='',
         form.value.nombres = '',
         form.value.apellido_paterno = '',
         form.value.apellido_materno = '',
         form.value.sexo_id = '',
-        form.value.telefono = '', 
+        form.value.email = '', 
+        form.value.celular = '', 
         form.value.direccion = '',               
         form.value.errors = []
         errors.value = []
@@ -59,7 +61,7 @@
             form.value.id=usuario.value.id;
             form.value.username=usuario.value.username;
             form.value.establecimiento_id=usuario.value.establecimiento_id;
-            form.value.email=usuario.value.email;
+            form.value.personal_id=usuario.value.personal_id;
             form.value.role_id=usuario.value.role_id;
             form.value.foto=usuario.value.foto;
             form.value.numero_dni= usuario.value.personal.numero_dni;
@@ -67,7 +69,8 @@
             form.value.apellido_paterno = usuario.value.personal.apellido_paterno;
             form.value.apellido_materno = usuario.value.personal.apellido_materno;
             form.value.sexo_id = usuario.value.personal.sexo_id;
-            form.value.telefono = usuario.value.personal.telefono;
+            form.value.email = usuario.value.personal.email;
+            form.value.celular = usuario.value.personal.celular;
             form.value.direccion = usuario.value.personal.direccion;        
         }
     }

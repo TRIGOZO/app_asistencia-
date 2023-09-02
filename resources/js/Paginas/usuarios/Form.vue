@@ -151,9 +151,9 @@ onMounted(() => {
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="telefono" class="form-label">Telefono</label>
-                                        <input type="text" class="form-control" v-model="form.telefono" :class="{ 'is-invalid': form.errors.telefono }" placeholder="999999999">
-                                        <small class="text-danger" v-for="error in form.errors.telefono" :key="error">{{ error
+                                        <label for="celular" class="form-label">Celular</label>
+                                        <input type="text" class="form-control" v-model="form.celular" :class="{ 'is-invalid': form.errors.celular }" placeholder="999999999">
+                                        <small class="text-danger" v-for="error in form.errors.celular" :key="error">{{ error
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">

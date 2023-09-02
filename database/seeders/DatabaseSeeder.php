@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CargoSeeder::class,
             EstadoCivilSeeder::class,
             RedSeeder::class,
+            CondicionSeeder::class,
             MicroRedSeeder::class,
             EstablecimientoSeeder::class,
             RoleSeeder::class,

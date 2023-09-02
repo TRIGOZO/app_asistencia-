@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('cargos', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo', 12)->nullable();
             $table->string('nombre', 90)->unique();
             $table->timestamps();
         });

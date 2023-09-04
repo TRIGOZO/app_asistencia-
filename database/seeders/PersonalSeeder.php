@@ -18,22 +18,24 @@ class PersonalSeeder extends Seeder
      */
     public function run(): void
     {
-                $personal = Personal::firstOrCreate([
-            'numero_dni' => '40709804',
-            'nombres' => 'EDWARD ANTONIO',
-            'apellido_paterno' => 'ALEGRIA',
-            'apellido_materno' => 'CARHUANAMBO',
-            'fecha_nacimiento'   => '29385',
+        $personal = Personal::firstOrCreate([
+            'numero_dni' => '45532962',
+            'nombres' => 'CRISTIAN WILMER',
+            'apellido_paterno' => 'FIGUEROA',
+            'apellido_materno' => 'FERRER',
+            'fecha_nacimiento'   => '2411',
             'estado_civil_id'  => EstadoCivil::where('nombre', 'SOLTERO')->value('id'),
             'email'         => 'email@me.com',
             'sueldo'        =>  '',
             'fecha_inicio'  => '',
             'fecha_fin'  => '',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'NOMBRADO')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'CIRUJANO DENTISTA I')->value('id'),
-            'profesion_id' => Profesion::where('nombre', 'CIRUJANO')->value('id'),
-            'establecimiento_id' => Establecimiento::where('nombre', '100102001 - SEDE RED SALUD HUANUCO')->value('id'),
-        ]);
+            'cargo_id'  => Cargo::where('nombre', 'SUPER')->value('id'),
+            'profesion_id' => Profesion::where('nombre', 'INFORMATICO')->value('id'),
+            'establecimiento_id' => Establecimiento::where('nombre', 'RED DE SALUD HUANUCO')->value('id'),
+        ]);        
+
+
         $personal = Personal::firstOrCreate([
             'numero_dni' => '22514704',
             'nombres' => 'FLOR ANGELA',

@@ -15,41 +15,19 @@ const {
 const {
     listaTipoTurnos, tipoturnos
 } = useTipoTurno();
-const  emit  =defineEmits(['onListar'])
-const crud = {
-    'nuevo': async() => {
-        await agregarCargo(form.value)
-        form.value.errors = []
-        if(errors.value)
-        {
-            form.value.errors = errors.value
-        }
-        if(respuesta.value.ok==1){
-            form.value.errors = []
-            hideModal('#modalformlroleturno')
-            Toast.fire({icon:'success', title:respuesta.value.mensaje})
-            emit('onListar', currentPage.value)
+const  emit  =defineEmits(['onVerHorario'])
 
-            
-        }
-    },
-    'editar': async() => {
-        await actualizarCargo(form.value)
-        form.value.errors = []
-        if(errors.value)
-        {
-            form.value.errors = errors.value
-        }
-        if(respuesta.value.ok==1){
-            form.value.errors = []
-            hideModal('#modalformlroleturno')
-            Toast.fire({icon:'success', title:respuesta.value.mensaje})
-            emit('onListar', currentPage.value)
-        }
-    }
-}
-const guardar = () => {
-    crud[form.value.estadoCrud]()
+const generar = () => {
+    hideModal('#modalformlroleturno')
+    emit('onVerHorario', 1)
+    
+    // if(respuesta.value.ok==1){
+    //     form.value.errors = []
+    //     hideModal('#modalformlroleturno')
+    //     Toast.fire({icon:'success', title:respuesta.value.mensaje})
+    //     emit('onVerHorario', 1)
+    // }
+
 }
 
 onMounted(() => {
@@ -57,7 +35,7 @@ onMounted(() => {
 })
 </script>
 <template>
-    <form @submit.prevent="guardar">
+    <form @submit.prevent="generar">
     <div class="modal fade" id="modalformlroleturno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="modalformlroleturnoLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -69,18 +47,11 @@ onMounted(() => {
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre </label>
-                        <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }">
-                        <small class="text-danger" v-for="error in form.errors.nombre" :key="error">{{ error
-                                }}</small>
+                        <h4>{{ form.nombres }}</h4>
                     </div>
                     <div class="mb-3">
-                        <label for="mes" class="form-label">Mes </label>
-                        <select class="form-control" v-model="form.mes">
-                            <option value="" disabled>Selecciona un mes</option>
-                            <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">{{ mes.nombre }} - {{ mes.numero }}</option>
-                        </select>
-                        <small class="text-danger" v-for="error in form.errors.nombre" :key="error">{{ error
-                                }}</small>
+                        <label for="nombre" class="form-label">Apellidos </label>
+                        <h4>{{ form.apellidos }}</h4>
                     </div>
                     <div class="mb-3">
                         <label for="mes" class="form-label">Tipo de Turno </label>
@@ -91,12 +62,20 @@ onMounted(() => {
                     </div>
                      <div class="mb-3">
                         <label for="mes" class="form-label">Fecha Desde </label>
-
-                    </div>                                 
+                        <input type="text" class="form-control" v-model="form.fecha_desde" :class="{ 'is-invalid': form.errors.fecha_desde }">
+                        <small class="text-danger" v-for="error in form.errors.fecha_desde" :key="error">{{ error
+                                }}</small>
+                    </div> 
+                     <div class="mb-3">
+                        <label for="mes" class="form-label">Fecha Hasta </label>
+                        <input type="text" class="form-control" v-model="form.fecha_hasta" :class="{ 'is-invalid': form.errors.fecha_hasta }">
+                        <small class="text-danger" v-for="error in form.errors.fecha_hasta" :key="error">{{ error
+                                }}</small>
+                    </div>                                                     
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">{{ (form.estadoCrud=='nuevo') ? 'Guardar' : 'Actualizar' }}</button>
+                    <button type="submit" class="btn btn-primary">Generar <i class="fa-solid fa-arrow-down"></i></button>
                 </div>
             </div>
         </div>

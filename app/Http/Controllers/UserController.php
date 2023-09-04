@@ -81,6 +81,7 @@ class UserController extends Controller
             'establecimiento_id' => $request->establecimiento_id,
             'role_id'            => $request->role_id,
         ]);
+        $user->save();
         $persona = Personal::findOrFail($request->personal_id);
         $persona->fill([
             'nombres'           => $request->nombres,

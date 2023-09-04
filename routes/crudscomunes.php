@@ -179,6 +179,7 @@ Route::group(['prefix' => 'rol', 'middleware' => 'auth'], function () {
     Route::get('listar', [RoleController::class, 'listar']);
 });
 
+//NIVEL
 Route::group(['prefix' => 'nivel', 'middleware' => 'auth'], function () {
     Route::get('todos', [NivelController::class, 'todos']);
     Route::get('mostrar', [NivelController::class, 'show']);
@@ -201,6 +202,13 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
     Route::get('listar', [UserController::class, 'listar']);
 });
 
+
+
+//Horario
+Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
+    Route::post('guardar', [UserController::class, 'store']);
+    Route::get('mostrar', [UserController::class, 'show']);
+});
 
 //MENU ROLE
 Route::group(['prefix' => 'menu-role', 'middleware' => 'auth'], function () {

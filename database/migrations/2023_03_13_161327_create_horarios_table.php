@@ -13,16 +13,13 @@ return new class extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
+            $table->integer('nro'); //contara desde cada dia
             $table->foreignId('personal_id')->constrained('personales')->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('establecimiento_id')->nullable()->constrained('establecimientos')->onDelete('set null')
-                ->onUpdate('cascade');
             $table->foreignId('tipo_turno_id')->nullable()->constrained('tipo_turnos')->onDelete('set null')
                 ->onUpdate('cascade');
-            $table->foreignId('tipo_guardia_id')->nullable()->constrained('tipo_guardias')->onDelete('set null')
-                ->onUpdate('cascade');
             $table->date('fecha');
-            $table->integer('dia');
+            $table->integer('dia');//numero de dia por semana
             $table->time('hora_entrada');
             $table->time('hora_salida');
             $table->time('total_horas');

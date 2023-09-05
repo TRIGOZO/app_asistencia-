@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\Usuario\UpdateProfileRequest;
 use App\Http\Requests\Usuario\UpdatePasswordRequest;
+use App\Http\Requests\Usuario\UpdateUserRequest;
 use App\Models\Personal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -60,7 +61,7 @@ class UserController extends Controller
         }
     }
     public function show(Request $request){
-        $user = User::with('personal:id,nombres,apellido_paterno,apellido_materno,numero_dni,telefono,celular,direccion')->where('id', $request->id)->first();
+        $user = User::with('personal:id,nombres,apellido_paterno,apellido_materno,numero_dni,telefono,celular,direccion,email')->where('id', $request->id)->first();
         return $user;
     }
     public function mostrarDatoUsuario(Request $request): User
@@ -73,9 +74,31 @@ class UserController extends Controller
 
         return $usuario;
     }
-
-
-    
+    public function update(UpdateUserRequest $request){
+        $user = User::findOrFail($request->id);
+        $user->fill([
+            'username'           => $request->username,
+            'establecimiento_id' => $request->establecimiento_id,
+            'role_id'            => $request->role_id,
+        ]);
+        $user->save();
+        $persona = Personal::findOrFail($request->personal_id);
+        $persona->fill([
+            'nombres'           => $request->nombres,
+            'apellido_paterno'  => $request->apellido_paterno,
+            'apellido_materno'  => $request->apellido_materno,
+            'numero_dni'        => $request->numero_dni,
+            'sexo'              => $request->sexo,
+            'celular'           => $request->celular,
+            'email'             => $request->email,
+            'direccion'         => $request->direccion,
+        ]);
+        $persona->save();
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Se guardo Exito'
+        ],200);
+    }
     public function habilitados(Request $request)
     {
         $buscar = mb_strtoupper($request->buscar);
@@ -93,10 +116,8 @@ class UserController extends Controller
         })
         ->paginate($paginacion);
     }
-
     public function eliminados(Request $request)
     {
-
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
         return User::with([
@@ -111,8 +132,6 @@ class UserController extends Controller
                 });
         })->onlyTrashed()
         ->paginate($paginacion);
-
-
     }
     public function todos(Request $request)
     {
@@ -130,6 +149,5 @@ class UserController extends Controller
                 });
         })->withTrashed()
         ->paginate($paginacion);
-
     }
 }

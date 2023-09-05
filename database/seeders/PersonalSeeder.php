@@ -24,7 +24,7 @@ class PersonalSeeder extends Seeder
             'apellido_paterno' => 'FIGUEROA',
             'apellido_materno' => 'FERRER',
             'fecha_nacimiento'   => '2411',
-
+        ]);
         $personal = Personal::firstOrCreate([
             'numero_dni' => '40709804',
             'nombres' => 'EDWARD ANTONIO',
@@ -34,18 +34,14 @@ class PersonalSeeder extends Seeder
             'estado_civil_id'  => EstadoCivil::where('nombre', 'SOLTERO')->value('id'),
             'email'         => 'email@me.com',
             'sueldo'        =>  '4224',
-
             'nivel_id'  => '61',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'NOMBRADO')->value('id'),
             'cargo_id'  => Cargo::where('nombre', 'SUPER')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'INFORMATICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('nombre', 'RED DE SALUD HUANUCO')->value('id'),
-        ]);        
-
-
             'cargo_id'  => Cargo::where('nombre', 'CIRUJANO DENTISTA I')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'REGULARIZAR')->value('id'),
-            'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
+            'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id')
         ]);
         $personal = Personal::firstOrCreate([
             'numero_dni' => '22514704',

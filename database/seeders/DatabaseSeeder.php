@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
             MicroRedSeeder::class,
             EstablecimientoSeeder::class,
             RoleSeeder::class,
+            ProfesionSeeder::class,
             PersonalSeeder::class,
             UserSeeder::class,
             EstadoCivilSeeder::class,
             MenuSeeder::class,
-            ProfesionSeeder::class,
             TipoTurnoSeeder::class,
             UbigeoSeeder::class,
         ]);

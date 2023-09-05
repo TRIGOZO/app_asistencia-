@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('microred_id')->nullable()->constrained('microredes')->onDelete('cascade')
                 ->onUpdate('cascade');
+                $table->string('codigo');
             $table->string('nombre');
             $table->timestamps();
         });

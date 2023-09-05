@@ -18,7 +18,14 @@ class UserSeeder extends Seeder
         $usuario = User::firstOrCreate([
             'username' => 'ilandbz',
             'password' => Hash::make('818949'),
-            'establecimiento_id' => 27,
+            'establecimiento_id' => 1,
+            'role_id'   => 1,
+            'personal_id'   => 1
+        ]);
+        $usuario = User::firstOrCreate([
+            'username' => 'vlabago',
+            'password' => Hash::make('46584423'),
+            'establecimiento_id' => 1,
             'role_id'   => 1,
             'personal_id'   => 1
         ]);

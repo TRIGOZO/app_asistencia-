@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('microredes', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');
             $table->string('nombre');
             $table->foreignId('red_id')->nullable()->constrained('redes')->onDelete('cascade')
                 ->onUpdate('cascade');

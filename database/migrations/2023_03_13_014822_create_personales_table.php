@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('apellido_paterno')->nullable();
             $table->string('apellido_materno')->nullable();
             $table->char('sexo', 1)->default('M');
-            $table->date('fecha_nacimiento');
+            $table->string('fecha_nacimiento');
             $table->foreignId('estado_civil_id')->constrained('estados_civiles')->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('direccion')->nullable();
@@ -31,14 +31,13 @@ return new class extends Migration
             $table->char('tienehijos', 2)->default('NO');
             $table->foreignId('profesion_id')->nullable()->constrained('profesiones')->onDelete('set null')
                 ->onUpdate('cascade');
-            $table->foreignId('nivel_id')->nullable()->constrained('niveles')->onDelete('set null')
-                ->onUpdate('cascade');
+            $table->string('nivel_id');
             $table->decimal('sueldo');
             $table->foreignId('condicion_laboral_id')->nullable()->constrained('condicion_laborales')->onDelete('set null')
                 ->onUpdate('cascade');
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
-            $table->foreignId('establecimiento_id')->constrained('establecimientos')->onDelete('cascade')
+            $table->date('fecha_inicio')->nullable();
+            $table->date('fecha_fin')->nullable();
+            $table->foreignId('establecimiento_id')->nullable()->constrained('establecimientos')->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreignId('cargo_id')->nullable()->constrained('cargos')->onDelete('set null')
                 ->onUpdate('cascade');

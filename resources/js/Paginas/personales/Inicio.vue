@@ -185,6 +185,7 @@
     // CARGA
     onMounted(() => {
         listarPersonal()
+        console.log(personales.data)
     })
 </script>
 <template>
@@ -282,6 +283,7 @@
                                         <th>Estado Civil</th>
                                         <th>Profesion</th>
                                         <th>Cargo</th>
+                                        <th>Condicion</th>
                                         <th>Tiene Hijos</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -300,7 +302,8 @@
                                         <td>{{ personal.nombres }}</td>
                                         <td>{{ personal.estado_civil.nombre }}</td>
                                         <td>{{ personal.profesion?.nombre }}</td>
-                                        <td>{{ personal.cargo.nombre }}</td>
+                                        <td>{{ personal.cargo?.nombre }}</td>
+                                        <td>{{ personal.condicion?.nombre }}</td>
                                         <td>{{ personal.tienehijos }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Personal" @click.prevent="editar(personal.id)">

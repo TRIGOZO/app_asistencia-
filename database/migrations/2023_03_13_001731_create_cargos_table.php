@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigo', 12)->nullable();
             $table->string('nombre', 90)->unique();
+            $table->string('nivel', 90)->nullable();
             $table->timestamps();
         });
     }

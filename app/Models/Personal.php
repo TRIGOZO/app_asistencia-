@@ -53,5 +53,9 @@ class Personal extends Model
     public function establecimiento(): BelongsTo
     {
         return $this->belongsTo(Establecimiento::class, 'establecimiento_id');
+    }  
+    public function condicion(): BelongsTo
+    {
+        return $this->belongsTo(CondicionLaboral::class, 'condicion_laboral_id');
     }    
 }

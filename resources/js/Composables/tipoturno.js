@@ -50,7 +50,7 @@ export default function useTipoTurno() {
             }
         }
     }
-    const eliminartipoturno = async(id) => {
+    const eliminarTipoTurno = async(id) => {
         const respond = await axios.post('tipo-turno/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
@@ -59,6 +59,6 @@ export default function useTipoTurno() {
     }
     return {
         errors, tipoturnos, listaTipoTurnos, tipoturno, obtenerTipoTurno, obtenerTipoTurnos, 
-        agregarTipoTurno, actualizarTipoTurno, eliminartipoturno, respuesta
+        agregarTipoTurno, actualizarTipoTurno, eliminarTipoTurno, respuesta
     }
 }

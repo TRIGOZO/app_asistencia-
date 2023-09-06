@@ -11,7 +11,7 @@
   const { openModal, Toast, Swal } = useHelper();
   const {
         tipoturnos, errors, tipoturno, respuesta,
-        obtenerTipoTurnos, obtenerTipoTurno, eliminarTipoTurno,
+        obtenerTipoTurnos, obtenerTipoTurno, eliminarTipoTurno
     } = useTipoTurno();
 
   const {

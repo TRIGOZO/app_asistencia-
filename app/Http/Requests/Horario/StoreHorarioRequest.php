@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\horario;
+namespace App\Http\Requests\Horario;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -35,10 +35,10 @@ class StoreHorarioRequest extends FormRequest
     {
         return [
             'required' => '* Dato Obligatorio',
-            'max' => 'Ingrese Máximo :max caracteres',
+            'max' => 'Ingrese Máximo :max',
             'string' => 'Ingrese caracteres alfanuméricos',
             'number' => 'Ingrese solo numeros',
-            'unique' => 'El :nombre ya existe'
+            'unique' => 'El :email ya existe'
         ];
     }
 

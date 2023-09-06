@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\horario;
+namespace App\Http\Requests\Horario;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,10 @@ class UpdateHorarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'personal_id'     => 'required|max:25|string|unique:cargos,nombre,'.$this->id,
+            'personal_id'   => 'required',
+            'tipo_turno_id' => 'required',
+            'fecha_desde'   => 'required|date',
+            'fecha_hasta'   => 'required|date',
         ];
     }
 

@@ -20,10 +20,21 @@ class PersonalSeeder extends Seeder
     {
         $personal = Personal::firstOrCreate([
             'numero_dni' => '45532962',
-            'nombres' => 'CRISTIAN WILMER',
-            'apellido_paterno' => 'FIGUEROA',
-            'apellido_materno' => 'FERRER',
+            'nombres' => 'PRUEBA',
+            'apellido_paterno' => 'PRUEBA',
+            'apellido_materno' => 'PRUEBA',
             'fecha_nacimiento'   => '2411',
+            'estado_civil_id'  => EstadoCivil::where('nombre', 'SOLTERO')->value('id'),
+            'email'         => 'email@me.com',
+            'sueldo'        =>  '4224',
+            'nivel_id'  => '61',
+            'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'NOMBRADO')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'SUPER')->value('id'),
+            'profesion_id' => Profesion::where('nombre', 'INFORMATICO')->value('id'),
+            'establecimiento_id' => Establecimiento::where('nombre', 'RED DE SALUD HUANUCO')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'CIRUJANO DENTISTA I')->value('id'),
+            'profesion_id' => Profesion::where('nombre', 'REGULARIZAR')->value('id'),
+            'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id')
         ]);
         $personal = Personal::firstOrCreate([
             'numero_dni' => '40709804',
@@ -13951,7 +13962,7 @@ class PersonalSeeder extends Seeder
             'sueldo'        =>  '1089.19',
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -13966,7 +13977,7 @@ class PersonalSeeder extends Seeder
             'sueldo'        =>  '1864.19',
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -13982,7 +13993,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -13998,7 +14009,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -14014,7 +14025,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -14030,7 +14041,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14046,7 +14057,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -14062,7 +14073,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14078,7 +14089,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14094,7 +14105,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -14110,7 +14121,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -14126,7 +14137,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14142,7 +14153,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -14158,7 +14169,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -14174,7 +14185,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14190,7 +14201,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14206,7 +14217,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14222,7 +14233,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14238,7 +14249,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -14254,7 +14265,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14270,7 +14281,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -14286,7 +14297,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -14302,7 +14313,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14318,7 +14329,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -14334,7 +14345,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110201')->value('id'),
         ]);
@@ -14350,7 +14361,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104307')->value('id'),
         ]);
@@ -14366,7 +14377,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14382,7 +14393,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14398,7 +14409,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14414,7 +14425,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -14430,7 +14441,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14446,7 +14457,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -14462,7 +14473,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -14478,7 +14489,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14494,7 +14505,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14510,7 +14521,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109306')->value('id'),
         ]);
@@ -14526,7 +14537,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -14542,7 +14553,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -14558,7 +14569,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -14574,7 +14585,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -14590,7 +14601,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -14606,7 +14617,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -14622,7 +14633,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -14638,7 +14649,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -14654,7 +14665,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14670,7 +14681,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14686,7 +14697,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14702,7 +14713,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -14718,7 +14729,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -14734,7 +14745,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -14750,7 +14761,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14766,7 +14777,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -14782,7 +14793,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -14798,7 +14809,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -14814,7 +14825,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14830,7 +14841,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -14846,7 +14857,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -14862,7 +14873,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -14878,7 +14889,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109202')->value('id'),
         ]);
@@ -14894,7 +14905,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -14910,7 +14921,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -14926,7 +14937,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO ESP. GINECOLOGIA Y OBST')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -14942,7 +14953,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -14958,7 +14969,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -14974,7 +14985,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -14990,7 +15001,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -15006,7 +15017,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -15022,7 +15033,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CARDIOLOGO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15038,7 +15049,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15054,7 +15065,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -15070,7 +15081,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15086,7 +15097,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -15102,7 +15113,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -15118,7 +15129,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -15134,7 +15145,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15150,7 +15161,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15166,7 +15177,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -15182,7 +15193,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -15198,7 +15209,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -15214,7 +15225,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -15230,7 +15241,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -15246,7 +15257,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -15262,7 +15273,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -15278,7 +15289,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15294,7 +15305,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -15310,7 +15321,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -15326,7 +15337,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -15342,7 +15353,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -15358,7 +15369,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -15374,7 +15385,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -15390,7 +15401,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110201')->value('id'),
         ]);
@@ -15406,7 +15417,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -15422,7 +15433,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15438,7 +15449,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15454,7 +15465,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -15470,7 +15481,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103301')->value('id'),
         ]);
@@ -15486,7 +15497,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'SECRETARIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15502,7 +15513,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15518,7 +15529,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ESPECIALISTA ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15534,7 +15545,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SALUD AMBIENTAL')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -15550,7 +15561,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -15566,7 +15577,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -15582,7 +15593,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -15598,7 +15609,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -15614,7 +15625,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -15630,7 +15641,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -15646,7 +15657,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -15662,7 +15673,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -15678,7 +15689,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15694,7 +15705,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15710,7 +15721,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -15726,7 +15737,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107301')->value('id'),
         ]);
@@ -15742,7 +15753,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -15758,7 +15769,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -15774,7 +15785,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -15790,7 +15801,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -15806,7 +15817,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -15822,7 +15833,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106301')->value('id'),
         ]);
@@ -15838,7 +15849,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -15854,7 +15865,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -15870,7 +15881,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15886,7 +15897,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -15902,7 +15913,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102303')->value('id'),
         ]);
@@ -15918,7 +15929,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -15934,7 +15945,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -15950,7 +15961,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -15966,7 +15977,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -15982,7 +15993,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -15998,7 +16009,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16014,7 +16025,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -16030,7 +16041,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -16046,7 +16057,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104304')->value('id'),
         ]);
@@ -16062,7 +16073,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -16078,7 +16089,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -16094,7 +16105,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -16110,7 +16121,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16126,7 +16137,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16142,7 +16153,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16158,7 +16169,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -16174,7 +16185,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -16190,7 +16201,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -16206,7 +16217,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16222,7 +16233,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -16238,7 +16249,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -16254,7 +16265,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -16270,7 +16281,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16286,7 +16297,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -16302,7 +16313,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -16318,7 +16329,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -16334,7 +16345,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16350,7 +16361,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16366,7 +16377,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16382,7 +16393,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16398,7 +16409,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109301')->value('id'),
         ]);
@@ -16414,7 +16425,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16430,7 +16441,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -16446,7 +16457,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -16462,7 +16473,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16478,7 +16489,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -16494,7 +16505,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -16510,7 +16521,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -16526,7 +16537,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104302')->value('id'),
         ]);
@@ -16542,7 +16553,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -16558,7 +16569,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -16574,7 +16585,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -16590,7 +16601,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -16606,7 +16617,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109306')->value('id'),
         ]);
@@ -16622,7 +16633,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -16638,7 +16649,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16654,7 +16665,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -16670,7 +16681,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -16686,7 +16697,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -16702,7 +16713,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -16718,7 +16729,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -16734,7 +16745,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -16750,7 +16761,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16766,7 +16777,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -16782,7 +16793,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16798,7 +16809,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16814,7 +16825,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -16830,7 +16841,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -16846,7 +16857,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -16862,7 +16873,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16878,7 +16889,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -16894,7 +16905,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104302')->value('id'),
         ]);
@@ -16910,7 +16921,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -16926,7 +16937,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -16942,7 +16953,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -16958,7 +16969,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -16974,7 +16985,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -16990,7 +17001,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17006,7 +17017,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -17022,7 +17033,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -17038,7 +17049,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -17054,7 +17065,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103301')->value('id'),
         ]);
@@ -17070,7 +17081,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17086,7 +17097,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17102,7 +17113,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17118,7 +17129,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -17134,7 +17145,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17150,7 +17161,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -17166,7 +17177,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17182,7 +17193,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -17198,7 +17209,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109202')->value('id'),
         ]);
@@ -17214,7 +17225,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17230,7 +17241,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17246,7 +17257,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103302')->value('id'),
         ]);
@@ -17262,7 +17273,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -17278,7 +17289,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -17294,7 +17305,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -17310,7 +17321,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17326,7 +17337,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17342,7 +17353,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -17358,7 +17369,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17374,7 +17385,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -17390,7 +17401,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -17406,7 +17417,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -17422,7 +17433,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17438,7 +17449,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -17454,7 +17465,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17470,7 +17481,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106301')->value('id'),
         ]);
@@ -17486,7 +17497,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -17502,7 +17513,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -17518,7 +17529,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110302')->value('id'),
         ]);
@@ -17534,7 +17545,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17550,7 +17561,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -17566,7 +17577,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17582,7 +17593,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17598,7 +17609,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17614,7 +17625,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103302')->value('id'),
         ]);
@@ -17630,7 +17641,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -17646,7 +17657,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17662,7 +17673,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADORA SOCIAL')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17678,7 +17689,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -17694,7 +17705,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17710,7 +17721,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -17726,7 +17737,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -17742,7 +17753,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17758,7 +17769,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO VETERINARIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17774,7 +17785,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17790,7 +17801,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -17806,7 +17817,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17822,7 +17833,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17838,7 +17849,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -17854,7 +17865,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17870,7 +17881,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -17886,7 +17897,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -17902,7 +17913,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'INGENIERO DE SISTEMAS')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17918,7 +17929,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'QUIMICO FARMACEUTICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -17934,7 +17945,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17950,7 +17961,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -17966,7 +17977,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -17982,7 +17993,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -17998,7 +18009,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -18014,7 +18025,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102303')->value('id'),
         ]);
@@ -18030,7 +18041,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -18046,7 +18057,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18062,7 +18073,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18078,7 +18089,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADORA SOCIAL')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -18094,7 +18105,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -18110,7 +18121,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -18126,7 +18137,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -18142,7 +18153,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -18158,7 +18169,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -18174,7 +18185,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18190,7 +18201,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -18206,7 +18217,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -18222,7 +18233,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18238,7 +18249,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -18254,7 +18265,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -18270,7 +18281,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -18286,7 +18297,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -18302,7 +18313,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -18318,7 +18329,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -18334,7 +18345,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -18350,7 +18361,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'AUXILIAR ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18366,7 +18377,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18382,7 +18393,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -18398,7 +18409,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18414,7 +18425,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -18430,7 +18441,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -18446,7 +18457,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -18462,7 +18473,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -18478,7 +18489,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CHOFER')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -18494,7 +18505,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -18510,7 +18521,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -18526,7 +18537,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -18542,7 +18553,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -18558,7 +18569,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18574,7 +18585,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'AUXILIAR EN DIGITACION')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18590,7 +18601,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111000')->value('id'),
         ]);
@@ -18606,7 +18617,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -18622,7 +18633,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -18638,7 +18649,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112302')->value('id'),
         ]);
@@ -18654,7 +18665,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18670,7 +18681,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -18686,7 +18697,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'DIRECTOR EJECUTIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18702,7 +18713,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -18718,7 +18729,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -18734,7 +18745,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -18750,7 +18761,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -18766,7 +18777,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -18782,7 +18793,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -18798,7 +18809,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18814,7 +18825,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -18830,7 +18841,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CONSERJE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18846,7 +18857,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -18862,7 +18873,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -18878,7 +18889,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'INGENIERO DE SISTEMAS')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18894,7 +18905,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -18910,7 +18921,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18926,7 +18937,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -18942,7 +18953,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -18958,7 +18969,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -18974,7 +18985,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -18990,7 +19001,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -19006,7 +19017,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -19022,7 +19033,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19038,7 +19049,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -19054,7 +19065,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -19070,7 +19081,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103301')->value('id'),
         ]);
@@ -19086,7 +19097,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19102,7 +19113,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19118,7 +19129,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -19134,7 +19145,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109302')->value('id'),
         ]);
@@ -19150,7 +19161,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -19166,7 +19177,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -19182,7 +19193,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19198,7 +19209,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -19214,7 +19225,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19230,7 +19241,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110201')->value('id'),
         ]);
@@ -19246,7 +19257,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -19262,7 +19273,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO VETERINARIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -19278,7 +19289,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19294,7 +19305,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -19310,7 +19321,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19326,7 +19337,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -19342,7 +19353,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19358,7 +19369,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -19374,7 +19385,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19390,7 +19401,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -19406,7 +19417,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -19422,7 +19433,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19438,7 +19449,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19454,7 +19465,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -19470,7 +19481,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -19486,7 +19497,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19502,7 +19513,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -19518,7 +19529,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -19534,7 +19545,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19550,7 +19561,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -19566,7 +19577,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19582,7 +19593,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -19598,7 +19609,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -19614,7 +19625,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109302')->value('id'),
         ]);
@@ -19630,7 +19641,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19646,7 +19657,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104302')->value('id'),
         ]);
@@ -19662,7 +19673,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -19678,7 +19689,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19694,7 +19705,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -19710,7 +19721,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19726,7 +19737,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -19742,7 +19753,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109309')->value('id'),
         ]);
@@ -19758,7 +19769,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -19774,7 +19785,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19790,7 +19801,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19806,7 +19817,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -19822,7 +19833,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'INGENIERO DE SISTEMAS')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -19838,7 +19849,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -19854,7 +19865,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -19870,7 +19881,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101000')->value('id'),
         ]);
@@ -19886,7 +19897,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -19902,7 +19913,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -19918,7 +19929,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -19934,7 +19945,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -19950,7 +19961,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -19966,7 +19977,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -19982,7 +19993,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -19998,7 +20009,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -20014,7 +20025,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -20030,7 +20041,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -20046,7 +20057,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104307')->value('id'),
         ]);
@@ -20062,7 +20073,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -20078,7 +20089,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -20094,7 +20105,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20110,7 +20121,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20126,7 +20137,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -20142,7 +20153,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -20158,7 +20169,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO ESP. GINECOLOGIA Y OBST')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -20174,7 +20185,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -20190,7 +20201,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -20206,7 +20217,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO VETERINARIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -20222,7 +20233,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -20238,7 +20249,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -20254,7 +20265,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20270,7 +20281,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20286,7 +20297,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20302,7 +20313,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102302')->value('id'),
         ]);
@@ -20318,7 +20329,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -20334,7 +20345,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -20350,7 +20361,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -20366,7 +20377,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109301')->value('id'),
         ]);
@@ -20382,7 +20393,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -20398,7 +20409,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'SECRETARIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20414,7 +20425,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TERAPISTA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -20430,7 +20441,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20446,7 +20457,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20462,7 +20473,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -20478,7 +20489,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -20494,7 +20505,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20510,7 +20521,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20526,7 +20537,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -20542,7 +20553,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -20558,7 +20569,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -20574,7 +20585,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -20590,7 +20601,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -20606,7 +20617,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -20622,7 +20633,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20638,7 +20649,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -20654,7 +20665,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20670,7 +20681,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -20686,7 +20697,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -20702,7 +20713,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -20718,7 +20729,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -20734,7 +20745,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -20750,7 +20761,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103302')->value('id'),
         ]);
@@ -20766,7 +20777,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -20782,7 +20793,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -20798,7 +20809,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -20814,7 +20825,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20830,7 +20841,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -20846,7 +20857,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -20862,7 +20873,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -20878,7 +20889,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -20894,7 +20905,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -20910,7 +20921,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -20926,7 +20937,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20942,7 +20953,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -20958,7 +20969,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109305')->value('id'),
         ]);
@@ -20974,7 +20985,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -20990,7 +21001,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -21006,7 +21017,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -21022,7 +21033,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -21038,7 +21049,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CHOFER')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -21054,7 +21065,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21070,7 +21081,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -21086,7 +21097,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -21102,7 +21113,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21118,7 +21129,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -21134,7 +21145,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21150,7 +21161,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104307')->value('id'),
         ]);
@@ -21166,7 +21177,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN MANTENIMIENTO EQUIP')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -21182,7 +21193,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21198,7 +21209,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -21214,7 +21225,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109202')->value('id'),
         ]);
@@ -21230,7 +21241,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21246,7 +21257,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21262,7 +21273,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -21278,7 +21289,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -21294,7 +21305,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -21310,7 +21321,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -21326,7 +21337,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -21342,7 +21353,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -21358,7 +21369,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -21374,7 +21385,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110201')->value('id'),
         ]);
@@ -21390,7 +21401,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -21406,7 +21417,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -21422,7 +21433,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21438,7 +21449,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -21454,7 +21465,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -21470,7 +21481,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -21486,7 +21497,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -21502,7 +21513,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -21518,7 +21529,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112304')->value('id'),
         ]);
@@ -21534,7 +21545,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -21550,7 +21561,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101301')->value('id'),
         ]);
@@ -21566,7 +21577,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21582,7 +21593,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -21598,7 +21609,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109310')->value('id'),
         ]);
@@ -21614,7 +21625,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -21630,7 +21641,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -21646,7 +21657,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109308')->value('id'),
         ]);
@@ -21662,7 +21673,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112303')->value('id'),
         ]);
@@ -21678,7 +21689,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112302')->value('id'),
         ]);
@@ -21694,7 +21705,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO ESP. GINECOLOGIA Y OBST')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -21710,7 +21721,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21726,7 +21737,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -21742,7 +21753,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104304')->value('id'),
         ]);
@@ -21758,7 +21769,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'INGENIERO DE SISTEMAS')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -21774,7 +21785,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO PSIQUIATRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -21790,7 +21801,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21806,7 +21817,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADORA SOCIAL')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -21822,7 +21833,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21838,7 +21849,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -21854,7 +21865,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -21870,7 +21881,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110201')->value('id'),
         ]);
@@ -21886,7 +21897,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -21902,7 +21913,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104302')->value('id'),
         ]);
@@ -21918,7 +21929,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -21934,7 +21945,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -21950,7 +21961,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -21966,7 +21977,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -21982,7 +21993,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -21998,7 +22009,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -22014,7 +22025,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -22030,7 +22041,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22046,7 +22057,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -22062,7 +22073,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -22078,7 +22089,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22094,7 +22105,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -22110,7 +22121,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22126,7 +22137,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -22142,7 +22153,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -22158,7 +22169,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -22174,7 +22185,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112303')->value('id'),
         ]);
@@ -22190,7 +22201,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO PSIQUIATRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -22206,7 +22217,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -22222,7 +22233,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -22238,7 +22249,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -22254,7 +22265,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -22270,7 +22281,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22286,7 +22297,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103302')->value('id'),
         ]);
@@ -22302,7 +22313,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -22318,7 +22329,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22334,7 +22345,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -22350,7 +22361,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22366,7 +22377,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -22382,7 +22393,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -22398,7 +22409,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -22414,7 +22425,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -22430,7 +22441,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22446,7 +22457,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -22462,7 +22473,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -22478,7 +22489,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22494,7 +22505,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22510,7 +22521,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -22526,7 +22537,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109305')->value('id'),
         ]);
@@ -22542,7 +22553,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -22558,7 +22569,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -22574,7 +22585,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -22590,7 +22601,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -22606,7 +22617,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -22622,7 +22633,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -22638,7 +22649,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -22654,7 +22665,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22670,7 +22681,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -22686,7 +22697,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -22702,7 +22713,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102302')->value('id'),
         ]);
@@ -22718,7 +22729,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110302')->value('id'),
         ]);
@@ -22734,7 +22745,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109301')->value('id'),
         ]);
@@ -22750,7 +22761,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -22766,7 +22777,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109307')->value('id'),
         ]);
@@ -22782,7 +22793,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22798,7 +22809,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22814,7 +22825,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22830,7 +22841,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -22846,7 +22857,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -22862,7 +22873,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22878,7 +22889,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -22894,7 +22905,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -22910,7 +22921,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104305')->value('id'),
         ]);
@@ -22926,7 +22937,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22942,7 +22953,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -22958,7 +22969,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -22974,7 +22985,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -22990,7 +23001,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'QUIMICO FARMACEUTICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -23006,7 +23017,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -23022,7 +23033,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103304')->value('id'),
         ]);
@@ -23038,7 +23049,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -23054,7 +23065,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -23070,7 +23081,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23086,7 +23097,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -23102,7 +23113,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -23118,7 +23129,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23134,7 +23145,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -23150,7 +23161,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -23166,7 +23177,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -23182,7 +23193,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23198,7 +23209,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23214,7 +23225,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -23230,7 +23241,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -23246,7 +23257,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -23262,7 +23273,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102302')->value('id'),
         ]);
@@ -23278,7 +23289,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23294,7 +23305,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -23310,7 +23321,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23326,7 +23337,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -23342,7 +23353,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -23358,7 +23369,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23374,7 +23385,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -23390,7 +23401,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -23406,7 +23417,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -23422,7 +23433,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'QUIMICO FARMACEUTICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -23438,7 +23449,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -23454,7 +23465,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -23470,7 +23481,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -23486,7 +23497,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADORA SOCIAL')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -23502,7 +23513,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23518,7 +23529,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -23534,7 +23545,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109301')->value('id'),
         ]);
@@ -23550,7 +23561,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -23566,7 +23577,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -23582,7 +23593,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103301')->value('id'),
         ]);
@@ -23598,7 +23609,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -23614,7 +23625,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -23630,7 +23641,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'DIRECTOR EJECUTIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -23646,7 +23657,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -23662,7 +23673,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -23678,7 +23689,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -23694,7 +23705,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -23710,7 +23721,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104306')->value('id'),
         ]);
@@ -23726,7 +23737,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -23742,7 +23753,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -23758,7 +23769,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -23774,7 +23785,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CIRUJANO DENTISTA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23790,7 +23801,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104304')->value('id'),
         ]);
@@ -23806,7 +23817,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -23822,7 +23833,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23838,7 +23849,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109301')->value('id'),
         ]);
@@ -23854,7 +23865,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -23870,7 +23881,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -23886,7 +23897,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107301')->value('id'),
         ]);
@@ -23902,7 +23913,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23918,7 +23929,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -23934,7 +23945,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -23950,7 +23961,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110201')->value('id'),
         ]);
@@ -23966,7 +23977,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -23982,7 +23993,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -23998,7 +24009,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -24014,7 +24025,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -24030,7 +24041,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24046,7 +24057,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -24062,7 +24073,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -24078,7 +24089,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -24094,7 +24105,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'INGENIERO DE SISTEMAS')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -24110,7 +24121,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24126,7 +24137,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -24142,7 +24153,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -24158,7 +24169,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24174,7 +24185,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -24190,7 +24201,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24206,7 +24217,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -24222,7 +24233,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -24238,7 +24249,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -24254,7 +24265,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24270,7 +24281,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -24286,7 +24297,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO VETERINARIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -24302,7 +24313,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24318,7 +24329,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24334,7 +24345,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -24350,7 +24361,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -24366,7 +24377,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -24382,7 +24393,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -24398,7 +24409,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105302')->value('id'),
         ]);
@@ -24414,7 +24425,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101301')->value('id'),
         ]);
@@ -24430,7 +24441,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24446,7 +24457,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -24462,7 +24473,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -24478,7 +24489,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -24494,7 +24505,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24510,7 +24521,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -24526,7 +24537,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -24542,7 +24553,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -24558,7 +24569,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24574,7 +24585,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101301')->value('id'),
         ]);
@@ -24590,7 +24601,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -24606,7 +24617,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24622,7 +24633,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24638,7 +24649,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -24654,7 +24665,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -24670,7 +24681,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -24686,7 +24697,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -24702,7 +24713,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -24718,7 +24729,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -24734,7 +24745,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -24750,7 +24761,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24766,7 +24777,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24782,7 +24793,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -24798,7 +24809,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -24814,7 +24825,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24830,7 +24841,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24846,7 +24857,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -24862,7 +24873,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24878,7 +24889,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24894,7 +24905,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -24910,7 +24921,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24926,7 +24937,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -24942,7 +24953,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -24958,7 +24969,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24974,7 +24985,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -24990,7 +25001,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -25006,7 +25017,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25022,7 +25033,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25038,7 +25049,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102303')->value('id'),
         ]);
@@ -25054,7 +25065,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -25070,7 +25081,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'SECRETARIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25086,7 +25097,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109305')->value('id'),
         ]);
@@ -25102,7 +25113,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -25118,7 +25129,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102303')->value('id'),
         ]);
@@ -25134,7 +25145,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109303')->value('id'),
         ]);
@@ -25150,7 +25161,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -25166,7 +25177,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25182,7 +25193,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109303')->value('id'),
         ]);
@@ -25198,7 +25209,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -25214,7 +25225,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109303')->value('id'),
         ]);
@@ -25230,7 +25241,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ABOGADO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25246,7 +25257,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -25262,7 +25273,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25278,7 +25289,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -25294,7 +25305,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108301')->value('id'),
         ]);
@@ -25310,7 +25321,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106302')->value('id'),
         ]);
@@ -25326,7 +25337,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -25342,7 +25353,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -25358,7 +25369,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25374,7 +25385,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -25390,7 +25401,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109310')->value('id'),
         ]);
@@ -25406,7 +25417,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25422,7 +25433,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -25438,7 +25449,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -25454,7 +25465,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -25470,7 +25481,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -25486,7 +25497,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -25502,7 +25513,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102303')->value('id'),
         ]);
@@ -25518,7 +25529,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25534,7 +25545,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -25550,7 +25561,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -25566,7 +25577,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -25582,7 +25593,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -25598,7 +25609,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ESPECIALISTA ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25614,7 +25625,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25630,7 +25641,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CHOFER')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110201')->value('id'),
         ]);
@@ -25646,7 +25657,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25662,7 +25673,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -25678,7 +25689,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -25694,7 +25705,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -25710,7 +25721,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109308')->value('id'),
         ]);
@@ -25726,7 +25737,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104303')->value('id'),
         ]);
@@ -25742,7 +25753,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25758,7 +25769,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25774,7 +25785,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109202')->value('id'),
         ]);
@@ -25790,7 +25801,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -25806,7 +25817,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -25822,7 +25833,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25838,7 +25849,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TERAPISTA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -25854,7 +25865,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -25870,7 +25881,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -25886,7 +25897,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -25902,7 +25913,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25918,7 +25929,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -25934,7 +25945,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -25950,7 +25961,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102304')->value('id'),
         ]);
@@ -25966,7 +25977,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -25982,7 +25993,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -25998,7 +26009,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -26014,7 +26025,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26030,7 +26041,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -26046,7 +26057,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -26062,7 +26073,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26078,7 +26089,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -26094,7 +26105,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110302')->value('id'),
         ]);
@@ -26110,7 +26121,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -26126,7 +26137,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26142,7 +26153,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'SECRETARIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26158,7 +26169,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109202')->value('id'),
         ]);
@@ -26174,7 +26185,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -26190,7 +26201,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -26206,7 +26217,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -26222,7 +26233,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -26238,7 +26249,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -26254,7 +26265,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26270,7 +26281,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26286,7 +26297,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -26302,7 +26313,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26318,7 +26329,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26334,7 +26345,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -26350,7 +26361,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -26366,7 +26377,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CHOFER')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26382,7 +26393,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -26398,7 +26409,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26414,7 +26425,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -26430,7 +26441,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -26446,7 +26457,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -26462,7 +26473,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -26478,7 +26489,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -26494,7 +26505,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26510,7 +26521,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -26526,7 +26537,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26542,7 +26553,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -26558,7 +26569,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -26574,7 +26585,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -26590,7 +26601,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26606,7 +26617,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -26622,7 +26633,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -26638,7 +26649,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103304')->value('id'),
         ]);
@@ -26654,7 +26665,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26670,7 +26681,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112304')->value('id'),
         ]);
@@ -26686,7 +26697,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26702,7 +26713,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26718,7 +26729,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CHOFER')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -26734,7 +26745,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -26750,7 +26761,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110301')->value('id'),
         ]);
@@ -26766,7 +26777,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -26782,7 +26793,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26798,7 +26809,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -26814,7 +26825,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO VETERINARIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26830,7 +26841,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -26846,7 +26857,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -26862,7 +26873,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -26878,7 +26889,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'QUIMICO FARMACEUTICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -26894,7 +26905,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -26910,7 +26921,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105301')->value('id'),
         ]);
@@ -26926,7 +26937,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -26942,7 +26953,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104302')->value('id'),
         ]);
@@ -26958,7 +26969,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -26974,7 +26985,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -26990,7 +27001,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -27006,7 +27017,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27022,7 +27033,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27038,7 +27049,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -27054,7 +27065,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27070,7 +27081,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -27086,7 +27097,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27102,7 +27113,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -27118,7 +27129,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -27134,7 +27145,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27150,7 +27161,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -27166,7 +27177,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -27182,7 +27193,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -27198,7 +27209,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27214,7 +27225,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TERAPISTA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -27230,7 +27241,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -27246,7 +27257,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -27262,7 +27273,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27278,7 +27289,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -27294,7 +27305,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -27310,7 +27321,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -27326,7 +27337,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -27342,7 +27353,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109309')->value('id'),
         ]);
@@ -27358,7 +27369,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100110301')->value('id'),
         ]);
@@ -27374,7 +27385,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27390,7 +27401,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -27406,7 +27417,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27422,7 +27433,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -27438,7 +27449,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -27454,7 +27465,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -27470,7 +27481,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -27486,7 +27497,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27502,7 +27513,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -27518,7 +27529,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27534,7 +27545,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -27550,7 +27561,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -27566,7 +27577,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'VIGILANTE')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -27582,7 +27593,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -27598,7 +27609,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -27614,7 +27625,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103303')->value('id'),
         ]);
@@ -27630,7 +27641,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO VETERINARIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -27646,7 +27657,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101303')->value('id'),
         ]);
@@ -27662,7 +27673,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100108201')->value('id'),
         ]);
@@ -27678,7 +27689,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104304')->value('id'),
         ]);
@@ -27694,7 +27705,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -27710,7 +27721,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27726,7 +27737,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27742,7 +27753,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27758,7 +27769,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -27774,7 +27785,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -27790,7 +27801,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -27806,7 +27817,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -27822,7 +27833,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -27838,7 +27849,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -27854,7 +27865,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -27870,7 +27881,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -27886,7 +27897,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -27902,7 +27913,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -27918,7 +27929,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -27934,7 +27945,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'AUXILIAR EN DIGITACION')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27950,7 +27961,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO/A ADMINISTRATIVO/A')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -27966,7 +27977,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -27982,7 +27993,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -27998,7 +28009,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -28014,7 +28025,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN MANTENIMIENTO EQUIP')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -28030,7 +28041,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -28046,7 +28057,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -28062,7 +28073,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -28078,7 +28089,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -28094,7 +28105,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PILOTO DE AMBULANCIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -28110,7 +28121,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -28126,7 +28137,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112303')->value('id'),
         ]);
@@ -28142,7 +28153,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112303')->value('id'),
         ]);
@@ -28158,7 +28169,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -28174,7 +28185,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -28190,7 +28201,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -28206,7 +28217,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -28222,7 +28233,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN INFORMATICA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -28238,7 +28249,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -28254,7 +28265,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -28270,7 +28281,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -28286,7 +28297,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104306')->value('id'),
         ]);
@@ -28302,7 +28313,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103301')->value('id'),
         ]);
@@ -28318,7 +28329,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109305')->value('id'),
         ]);
@@ -28334,7 +28345,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -28350,7 +28361,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -28366,7 +28377,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TRABAJADOR DE SERVICIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -28382,7 +28393,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112304')->value('id'),
         ]);
@@ -28398,7 +28409,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100107201')->value('id'),
         ]);
@@ -28414,7 +28425,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103304')->value('id'),
         ]);
@@ -28430,7 +28441,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -28446,7 +28457,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -28462,7 +28473,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO PEDIATRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -28478,7 +28489,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -28494,7 +28505,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -28510,7 +28521,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101202')->value('id'),
         ]);
@@ -28526,7 +28537,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -28542,7 +28553,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ASISTENTE ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -28558,7 +28569,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ESPECIALISTA ADMINISTRATIVO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -28574,7 +28585,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -28590,7 +28601,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -28606,7 +28617,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -28622,7 +28633,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100104301')->value('id'),
         ]);
@@ -28638,7 +28649,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -28654,7 +28665,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -28670,7 +28681,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112302')->value('id'),
         ]);
@@ -28686,7 +28697,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'CHOFER')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -28702,7 +28713,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100112301')->value('id'),
         ]);
@@ -28718,7 +28729,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -28734,7 +28745,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -28750,7 +28761,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN LABORATORIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -28766,7 +28777,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'PSICOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -28782,7 +28793,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -28798,7 +28809,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100103201')->value('id'),
         ]);
@@ -28814,7 +28825,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109302')->value('id'),
         ]);
@@ -28830,7 +28841,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102101')->value('id'),
         ]);
@@ -28846,7 +28857,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100105201')->value('id'),
         ]);
@@ -28862,7 +28873,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -28878,7 +28889,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO VETERINARIO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -28894,7 +28905,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -28910,7 +28921,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TERAPISTA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);
@@ -28926,7 +28937,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102301')->value('id'),
         ]);
@@ -28942,7 +28953,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'QUIMICO FARMACEUTICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -28958,7 +28969,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO DE FARMACIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102306')->value('id'),
         ]);
@@ -28974,7 +28985,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'OBSTETRA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102201')->value('id'),
         ]);
@@ -28990,7 +29001,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -29006,7 +29017,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ENFERMERA(O)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -29022,7 +29033,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -29038,7 +29049,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'ODONTOLOGO(A)')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100101201')->value('id'),
         ]);
@@ -29054,7 +29065,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ENFERMERIA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102001')->value('id'),
         ]);
@@ -29070,7 +29081,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100106201')->value('id'),
         ]);
@@ -29086,7 +29097,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'MEDICO CIRUJANO')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
         ]);
@@ -29102,7 +29113,7 @@ class PersonalSeeder extends Seeder
             
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN SEGURIDAD')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100109201')->value('id'),
         ]);
@@ -29118,7 +29129,7 @@ class PersonalSeeder extends Seeder
                         
             'nivel_id'  => '0',
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
-            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
+            'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TERAPISTA')->value('id'),
             'establecimiento_id' => Establecimiento::where('codigo', '100102305')->value('id'),
         ]);

@@ -6,19 +6,18 @@ export default function useHorario() {
     const horario = ref({})
     const respuesta = ref([])
     
-    const obtenerHorario = async(id) => {
-        let respuesta = await axios.get('cargo/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
-    }
 
-    const agregarHorario = async(data) => {
+    const generarHorario = async(data) => {
         errors.value = ''
         try {
-            let respond = await axios.post('cargo/guardar',data,getConfigHeader())
+            let respond = await axios.post('horario/guardar',data,getConfigHeader())
             errors.value =''
-            if(respond.data.ok==1){
-                respuesta.value=respond.data
-            }
+            respuesta.value=respond.data
+            // if(respond.data.ok==1){
+            //     respuesta.value=respond.data
+            // }else{
+            //     respuesta.value=respond.data
+            // }
         } catch (error) {
             errors.value=""
             if(error.response.status === 422) {
@@ -27,14 +26,21 @@ export default function useHorario() {
         }
     }
 
+    const obtenerHorario = async(id) => {
+        let respuesta = await axios.get('horario/mostrar?id='+id,getConfigHeader())
+        cargo.value = respuesta.data
+    }
+
+
+
     const eliminarHorario = async(id) => {
-        const respond = await axios.post('cargo/eliminar', {id:id},getConfigHeader())
+        const respond = await axios.post('horario/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
         {
             respuesta.value = respond.data
         }
     }
     return {
-        errors, horario,obtenerHorario, agregarHorario, eliminarHorario, respuesta
+        errors, horario,obtenerHorario, generarHorario, eliminarHorario, respuesta
     }
 }

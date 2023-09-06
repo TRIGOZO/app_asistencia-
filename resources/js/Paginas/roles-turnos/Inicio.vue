@@ -1,38 +1,32 @@
 <script setup>
-  import jwt_decode from 'jwt-decode'
-  import { ref, onMounted } from 'vue';
-  import { defineTitle } from '@/Helpers';
-  import useHelper from '@/Helpers';  
-  import usePersonal from '@/Composables/personal.js';
-  import ContentHeader from '@/Componentes/ContentHeader.vue';
-  import RoleTurnoForm from './Form.vue'
-  import Horario from './Horario.vue'
-  const { openModal, Toast, Swal, formatoFecha } = useHelper();
-
+    import jwt_decode from 'jwt-decode'
+    import { ref, onMounted } from 'vue';
+    import { defineTitle } from '@/Helpers';
+    import useHelper from '@/Helpers';  
+    import usePersonal from '@/Composables/personal.js';
+    import ContentHeader from '@/Componentes/ContentHeader.vue';
+    import RoleTurnoForm from './Form.vue'
+    import Horario from './Horario.vue'
+    const { openModal, Toast, Swal, formatoFecha } = useHelper();
     const {
         personales,
         obtenerPersonales,obtenerPersonal, personal
     } = usePersonal();
-  
     const titleHeader = ref({
       titulo: "Generacion de Horarios",
       subTitulo: "Inicio",
       icon: "",
       vista: ""
     });
-
-
-
     const dato = ref({
         page:'',
         buscar:'',
         paginacion: 10,
-        horario:''
+        horario:'',
+        
     });
-
     const hoy= formatoFecha(null,"YYYY-MM-DD")
     const horaHoy = formatoFecha(null,"HH:mm")
-
     const form = ref({
         personal_id:'',
         nombres:'',
@@ -40,14 +34,15 @@
         tipo_turno_id:'',
         fecha_desde: hoy,
         fecha_hasta:hoy,
+        es_lactancia:false,
         errors:[]
     });
-
     const limpiar = ()=> {
         form.value.personal_id =''
         form.value.tipo_turno_id='',
         form.value.fecha_desde=hoy,
-        form.value.fecha_hasta=hoy,   
+        form.value.fecha_hasta=hoy,
+        form.value.es_lactancia=false,
         form.value.errors = []
     }
     const buscar = () => {
@@ -65,7 +60,6 @@
         document.getElementById("modalformlroleturnoLabel").innerHTML = 'Generar Horario';
         openModal('#modalformlroleturno')
     }
-
     const verhorario=(id) => {
         dato.value.horario=id
     }
@@ -76,7 +70,6 @@
 
     onMounted(() => {
         defineTitle(titleHeader.value.titulo)
-        // listarPermisos()
     })
 </script>
 <template>
@@ -118,7 +111,7 @@
                                     <tr v-for="(personal,index) in personales.data" :key="personal.id">
                                         <td class="text-center">{{ index + personales.from }}</td>
                                         <td>{{ personal.nombres }}</td>
-                                        <td>{{ personal.cargo.nombre }}</td>
+                                        <td>{{ personal.cargo?.nombre }}</td>
                                         <td>{{ personal.establecimiento.nombre }}</td>
                                         <td>
                                             <button class="btn btn-info btn-sm" title="Generar Horario" @click.prevent="formgenerar(personal.id)">
@@ -133,7 +126,6 @@
                 </div>
             </div>
         </div>
-
         <Horario v-if="dato.horario"></Horario>
       </div>
     </div>

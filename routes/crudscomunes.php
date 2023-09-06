@@ -4,6 +4,7 @@ use App\Http\Controllers\CargoController;
 use App\Http\Controllers\CondicionLaboralController;
 use App\Http\Controllers\EstablecimientoController;
 use App\Http\Controllers\FeriadoController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\HorarioTurnoController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuRoleController;
@@ -205,9 +206,9 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
 
 
 //Horario
-Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
-    Route::post('guardar', [UserController::class, 'store']);
-    Route::get('mostrar', [UserController::class, 'show']);
+Route::group(['prefix' => 'horario', 'middleware' => 'auth'], function () {
+    Route::post('guardar', [HorarioController::class, 'store']);
+    Route::get('mostrar', [HorarioController::class, 'show']);
 });
 
 //MENU ROLE

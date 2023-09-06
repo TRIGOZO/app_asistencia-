@@ -1,8 +1,8 @@
 <script setup>
 import { toRefs, onMounted } from 'vue';
-import useCargo from '@/Composables/cargos.js';
 import useHelper from '@/Helpers'; 
 import useTipoTurno from '@/Composables/tipoturno.js';
+import useHorario from '@/Composables/horario.js';
 const { hideModal, Toast, meses } = useHelper();
 const props = defineProps({
     form: Object,
@@ -10,23 +10,30 @@ const props = defineProps({
 });
 const { form, currentPage } = toRefs(props)
 const {
-    errors, respuesta, agregarCargo, actualizarCargo
-} = useCargo();
+    errors, respuesta, generarHorario
+} = useHorario();
 const {
     listaTipoTurnos, tipoturnos
 } = useTipoTurno();
 const  emit  =defineEmits(['onVerHorario'])
 
-const generar = () => {
-    hideModal('#modalformlroleturno')
-    emit('onVerHorario', 1)
+const generar = async() => {
+    await generarHorario(form.value)
+    form.value.errors = []
+    if(errors.value)
+    {
+        form.value.errors = errors.value
+    }
     
-    // if(respuesta.value.ok==1){
-    //     form.value.errors = []
-    //     hideModal('#modalformlroleturno')
-    //     Toast.fire({icon:'success', title:respuesta.value.mensaje})
-    //     emit('onVerHorario', 1)
-    // }
+    if(respuesta.value.ok==1){
+        form.value.errors = []
+        hideModal('#modalformlroleturno')
+        Toast.fire({icon:'success', title:respuesta.value.mensaje})
+        emit('onVerHorario', 1)
+    }else{
+        console.log(respuesta.value.mensaje)
+        Toast.fire({icon:'error', title:respuesta.value.mensaje})
+    }
 
 }
 
@@ -55,10 +62,12 @@ onMounted(() => {
                     </div>
                     <div class="mb-3">
                         <label for="mes" class="form-label">Tipo de Turno </label>
-                        <select class="form-control" v-model="form.tipo_turno_id">
+                        <select class="form-control" v-model="form.tipo_turno_id" :class="{ 'is-invalid': form.errors.tipo_turno_id }">
                             <option value="" disabled>Selecciona</option>
-                            <option v-for="tipoturno in tipoturnos" :key="tipoturno.numero" :value="tipoturno.id">{{ tipoturno.nombre }}</option>
+                            <option v-for="tipoturno in tipoturnos" :key="tipoturno.id" :value="tipoturno.id">{{ tipoturno.nombre }}</option>
                         </select>
+                        <small class="text-danger" v-for="error in form.errors.tipo_turno_id" :key="error">{{ error
+                                }}</small>
                     </div>
                      <div class="mb-3">
                         <label for="mes" class="form-label">Fecha Desde </label>
@@ -71,7 +80,16 @@ onMounted(() => {
                         <input type="text" class="form-control" v-model="form.fecha_hasta" :class="{ 'is-invalid': form.errors.fecha_hasta }">
                         <small class="text-danger" v-for="error in form.errors.fecha_hasta" :key="error">{{ error
                                 }}</small>
-                    </div>                                                     
+                    </div>
+                     <div class="mb-3">
+                        <label for="mes" class="form-label">Es Lactancia </label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" v-model="form.es_lactancia" id="es_lactancia">
+                          <label class="form-check-label" for="es_lactancia">SI</label>
+                        </div>
+                        <small class="text-danger" v-for="error in form.errors.fecha_hasta" :key="error">{{ error
+                                }}</small>
+                    </div>                                                                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

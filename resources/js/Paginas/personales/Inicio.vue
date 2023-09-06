@@ -280,7 +280,7 @@
                                         <th>Ape. Paterno</th>
                                         <th>Ape. Materno</th>
                                         <th>Nombres</th>
-                                        <th>Estado Civil</th>
+                                        <th>Nivel</th>
                                         <th>Profesion</th>
                                         <th>Cargo</th>
                                         <th>Condicion</th>
@@ -300,7 +300,7 @@
                                         <td>{{ personal.apellido_paterno }}</td>
                                         <td>{{ personal.apellido_materno }}</td>
                                         <td>{{ personal.nombres }}</td>
-                                        <td>{{ personal.estado_civil.nombre }}</td>
+                                        <td>{{ personal.nivel_id }}</td>
                                         <td>{{ personal.profesion?.nombre }}</td>
                                         <td>{{ personal.cargo?.nombre }}</td>
                                         <td>{{ personal.condicion?.nombre }}</td>

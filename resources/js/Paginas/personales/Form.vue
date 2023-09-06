@@ -140,7 +140,7 @@ onMounted(() => {
                                     </div>
                                     <div class="mb-3">
                                         <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
-                                        <input type="date" class="form-control" v-model="form.fecha_nacimiento" :class="{ 'is-invalid': form.errors.fecha_nacimiento }" placeholder="999999999">
+                                        <input type="text" class="form-control" v-model="form.fecha_nacimiento" :class="{ 'is-invalid': form.errors.fecha_nacimiento }" placeholder="999999999">
                                         <small class="text-danger" v-for="error in form.errors.fecha_nacimiento" :key="error">{{ error
                                                 }}</small>
                                     </div>
@@ -153,12 +153,6 @@ onMounted(() => {
                                             </option>
                                         </select>
                                         <small class="text-danger" v-for="error in form.errors.estado_civil_id" :key="error">{{ error
-                                                }}</small>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
-                                        <input type="text" class="form-control" v-model="form.fecha_nacimiento" :class="{ 'is-invalid': form.errors.fecha_nacimiento }" placeholder="999999999">
-                                        <small class="text-danger" v-for="error in form.errors.fecha_nacimiento" :key="error">{{ error
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
@@ -237,12 +231,7 @@ onMounted(() => {
                                     </div>                         
                                     <div class="mb-3">
                                         <label for="nivel_id" class="form-label">Nivel</label>
-                                        <select v-model="form.nivel_id" class="form-control" :class="{ 'is-invalid': form.errors.nivel_id }">
-                                            <option value="">--Seleccione--</option>
-                                            <option v-for="nivel in niveles" :key="nivel.id" :value="nivel.id">
-                                                {{ nivel.nombre }}
-                                            </option>
-                                        </select>
+                                        <input type="text" class="form-control" v-model="form.nivel_id" :class="{ 'is-invalid': form.errors.nivel_id }" placeholder="AAA">
                                         <small class="text-danger" v-for="error in form.errors.nivel_id" :key="error">{{ error
                                                 }}</small>
                                     </div>

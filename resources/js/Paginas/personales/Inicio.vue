@@ -185,7 +185,6 @@
     // CARGA
     onMounted(() => {
         listarPersonal()
-        console.log(personales.data)
     })
 </script>
 <template>

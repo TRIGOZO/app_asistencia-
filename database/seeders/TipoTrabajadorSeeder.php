@@ -13,6 +13,7 @@ class TipoTrabajadorSeeder extends Seeder
      */
     public function run(): void
     {
-        $red = TipoTrabajador::firstOrCreate(['nombre' => 'TIPO UNO']);
+        $tipotrabajador = TipoTrabajador::firstOrCreate(['nombre' => 'ASISTENCIAL']);
+        $tipotrabajador = TipoTrabajador::firstOrCreate(['nombre' => 'ADMINISTRATIVO']);
     }
 }

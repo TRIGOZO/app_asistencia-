@@ -102,7 +102,7 @@
         formhorario.value.diasabado='';
         formhorario.value.diadomingo='0';
         formhorario.value.totalhoras='';
-        form.value.errors = []
+        formhorario.value.errors = []
         errors.value = []
     }
     

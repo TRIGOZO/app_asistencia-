@@ -4,6 +4,7 @@
     import { defineTitle } from '@/Helpers';
     import useHelper from '@/Helpers';  
     import usePersonal from '@/Composables/personal.js';
+    import useHorario from '@/Composables/horario.js';
     import ContentHeader from '@/Componentes/ContentHeader.vue';
     import RoleTurnoForm from './Form.vue'
     import Horario from './Horario.vue'
@@ -12,6 +13,11 @@
         personales,
         obtenerPersonales,obtenerPersonal, personal
     } = usePersonal();
+
+    const {
+        horario, obtenerHorario
+    } = useHorario();
+
     const titleHeader = ref({
       titulo: "Generacion de Horarios",
       subTitulo: "Inicio",
@@ -60,8 +66,10 @@
         document.getElementById("modalformlroleturnoLabel").innerHTML = 'Generar Horario';
         openModal('#modalformlroleturno')
     }
-    const verhorario=(id) => {
+    const verhorario = async(id) => {
+        await obtenerHorario(id);
         dato.value.horario=id
+
     }
     const listarPersonales = async(page=1) => {
         dato.value.page= page
@@ -126,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <Horario v-if="dato.horario"></Horario>
+        <Horario v-if="dato.horario" :horario="horario"></Horario>
       </div>
     </div>
     <RoleTurnoForm :form="form" @onVerHorario="verhorario"></RoleTurnoForm>

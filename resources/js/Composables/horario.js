@@ -28,7 +28,7 @@ export default function useHorario() {
 
     const obtenerHorario = async(id) => {
         let respuesta = await axios.get('horario/mostrar?id='+id,getConfigHeader())
-        cargo.value = respuesta.data
+        horario.value = respuesta.data
     }
 
 

@@ -23,18 +23,17 @@ const generar = async() => {
     if(errors.value)
     {
         form.value.errors = errors.value
-    }
-    
-    if(respuesta.value.ok==1){
-        form.value.errors = []
-        hideModal('#modalformlroleturno')
-        Toast.fire({icon:'success', title:respuesta.value.mensaje})
-        emit('onVerHorario', 1)
     }else{
-        console.log(respuesta.value.mensaje)
-        Toast.fire({icon:'error', title:respuesta.value.mensaje})
+        if(respuesta.value.ok==1){
+            form.value.errors = []
+            hideModal('#modalformlroleturno')
+            Toast.fire({icon:'success', title:respuesta.value.mensaje})
+            emit('onVerHorario', respuesta.value.horario_personal_id)
+        
+        }else{
+            Toast.fire({icon:'error', title:respuesta.value.mensaje})
+        }        
     }
-
 }
 
 onMounted(() => {

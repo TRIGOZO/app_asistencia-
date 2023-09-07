@@ -123,7 +123,10 @@ class PersonalController extends Controller
     public function listar(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Personal::with(['estado_civil:id,nombre', 'profesion:id,nombre', 'cargo:id,nombre', 'establecimiento:id,nombre', 'condicion:id,nombre'])->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
+        return Personal::with(['estado_civil:id,nombre', 'profesion:id,nombre', 'cargo:id,nombre', 'establecimiento:id,nombre', 'condicion:id,nombre'])
+        ->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
+        ->orWhereRaw('UPPER(apellido_paterno) LIKE ?', ['%'.$buscar.'%'])
+        ->orWhereRaw('UPPER(apellido_materno) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
     public function mostrarpersonadetalle(Request $request){

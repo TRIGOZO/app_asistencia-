@@ -127,7 +127,7 @@ class PersonalController extends Controller
         ->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
         ->orWhereRaw('UPPER(apellido_paterno) LIKE ?', ['%'.$buscar.'%'])
         ->orWhereRaw('UPPER(apellido_materno) LIKE ?', ['%'.$buscar.'%'])
-        ->orWhereRaw('dni LIKE ?', ['%'.$buscar.'%'])
+        ->orWhereRaw('numero_dni LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
     }
     public function mostrarpersonadetalle(Request $request){

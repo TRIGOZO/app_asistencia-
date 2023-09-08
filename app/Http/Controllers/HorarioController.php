@@ -30,19 +30,56 @@ class HorarioController extends Controller
         ]);
 
 
-        $fechasGeneradas = [];
+        // $fechasGeneradas = [];
         $nro=1;
         while ($fechaInicio->lte($fechaFin)) {
-            $fechasGeneradas[] = $fechaInicio->toDateString().'  -  '.$fechaInicio->dayOfWeek;
-            $horario = Horario::create([
-                'nro' => $nro,
-                'horario_personal_id' => $horariopersonal->id,
-                'fecha' => $fechaInicio->toDateString(),
-                'dia' => $fechaInicio->dayOfWeek,
-                'hora_entrada' => $registro->horaentrada,
-                'hora_salida' => $registro->horasalida,
-                'total_horas' => $registro->totalhoras
-            ]);
+            // $fechasGeneradas[] = $fechaInicio->toDateString().'  -  '.$fechaInicio->dayOfWeek;
+
+
+            $horario = new Horario;
+            $horario->nro = $nro;
+            $horario->horario_personal_id = $horariopersonal->id;
+            $horario->fecha = $fechaInicio->toDateString();
+            $horario->dia = $fechaInicio->dayOfWeek;
+            $horario->hora_entrada = $registro->horaentrada;
+            $horario->hora_salida = $registro->horasalida;
+            $horario->total_horas = $registro->totalhoras;
+
+            switch ($fechaInicio->dayOfWeek) {
+                case 0://domingo
+                    
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                
+                    break;
+                case 4:
+            
+                    break;
+                case 5:
+        
+                    break;
+                case 6:
+        
+                    break;
+                    
+            }
+
+
+            // $horario = Horario::create([
+            //     'nro' => $nro,
+            //     'horario_personal_id' => $horariopersonal->id,
+            //     'fecha' => $fechaInicio->toDateString(),
+            //     'dia' => $fechaInicio->dayOfWeek,
+            //     'hora_entrada' => $registro->horaentrada,
+            //     'hora_salida' => $registro->horasalida,
+            //     'total_horas' => $registro->totalhoras
+            // ]);
             $nro++;
             $fechaInicio->addDay();
         }

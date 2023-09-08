@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             MicroRedSeeder::class,
             EstablecimientoSeeder::class,
             RoleSeeder::class,
+            TipoTrabajadorSeeder::class,
             ProfesionSeeder::class,
             PersonalSeeder::class,
             UserSeeder::class,

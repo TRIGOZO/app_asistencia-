@@ -180,7 +180,9 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th>DNI</th>
                                         <th>Nombre</th>
+                                        <th>Apellidos</th>
                                         <th>Cargo</th>
                                         <th>Accion</th>
                                     </tr>
@@ -188,7 +190,9 @@
                                 <tbody>
                                     <tr v-for="(personal,index) in personales.data" :key="personal.id">
                                         <td class="text-center">{{ index + personales.from }}</td>
+                                        <td>{{ personal.numero_dni }}</td>
                                         <td>{{ personal.nombres }}</td>
+                                        <td>{{ personal.apellido_paterno + ' ' + personal.apellido_materno }}</td>
                                         <td>{{ personal.cargo.nombre }}</td>
                                         <td>
                                             <button class="btn btn-info btn-sm" title="Solicitar Permiso" @click.prevent="solicitar(personal.id)">

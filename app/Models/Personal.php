@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Personal extends Model
 {
@@ -13,6 +14,7 @@ class Personal extends Model
     protected $fillable = [
         'numero_dni',
         'pin',
+        'uid',
         'nombres',
         'apellido_paterno',
         'apellido_materno',
@@ -57,5 +59,14 @@ class Personal extends Model
     public function condicion(): BelongsTo
     {
         return $this->belongsTo(CondicionLaboral::class, 'condicion_laboral_id');
-    }    
+    }
+    /**
+     * Get all of the marcaciones for the Personal
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function marcaciones(): HasMany
+    {
+        return $this->hasMany(Marcacion::class, 'personal_id', 'id');
+    }
 }

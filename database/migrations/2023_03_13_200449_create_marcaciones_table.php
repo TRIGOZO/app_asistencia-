@@ -17,7 +17,11 @@ return new class extends Migration
             ->onUpdate('cascade');
             $table->foreignId('establecimiento_id')->nullable()->constrained('establecimientos')->onDelete('set null')
                 ->onUpdate('cascade');
-            $table->string('tipo')->default('INGRESO');
+            $table->dateTime('fecha_hora')->nullable();
+            $table->string('tipo')->default('ENTRADA');
+            $table->string('serial')->nullable();
+            $table->string('ip')->nullable();
+
             $table->timestamps();
         });
     }

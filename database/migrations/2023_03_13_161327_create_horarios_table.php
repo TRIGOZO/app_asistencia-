@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->integer('nro'); //contara desde cada dia
+            $table->tinyInteger('nro'); //contara desde cada dia
             $table->foreignId('horario_personal_id')->constrained('horario_personals')->onDelete('cascade')
             ->onUpdate('cascade');              
             $table->date('fecha');

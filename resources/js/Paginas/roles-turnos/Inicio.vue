@@ -118,9 +118,9 @@
                                 <tbody>
                                     <tr v-for="(personal,index) in personales.data" :key="personal.id">
                                         <td class="text-center">{{ index + personales.from }}</td>
-                                        <td>{{ personal.nombres }}</td>
+                                        <td>{{ personal.nombres + ' ' + personal.nombres }}</td>
                                         <td>{{ personal.cargo?.nombre }}</td>
-                                        <td>{{ personal.establecimiento.nombre }}</td>
+                                        <td>{{ personal.establecimiento?.nombre }}</td>
                                         <td>
                                             <button class="btn btn-info btn-sm" title="Generar Horario" @click.prevent="formgenerar(personal.id)">
                                                 <i class="fas fa-clock"></i>

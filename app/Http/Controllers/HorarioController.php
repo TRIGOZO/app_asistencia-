@@ -29,57 +29,57 @@ class HorarioController extends Controller
             'es_lactancia' => $request->es_lactancia == true ? 1 : 0
         ]);
 
-
-        // $fechasGeneradas = [];
         $nro=1;
         while ($fechaInicio->lte($fechaFin)) {
-            // $fechasGeneradas[] = $fechaInicio->toDateString().'  -  '.$fechaInicio->dayOfWeek;
-
-
-            $horario = new Horario;
-            $horario->nro = $nro;
-            $horario->horario_personal_id = $horariopersonal->id;
-            $horario->fecha = $fechaInicio->toDateString();
-            $horario->dia = $fechaInicio->dayOfWeek;
-            $horario->hora_entrada = $registro->horaentrada;
-            $horario->hora_salida = $registro->horasalida;
-            $horario->total_horas = $registro->totalhoras;
-
+            $estado=false;
             switch ($fechaInicio->dayOfWeek) {
-                case 0://domingo
-                    
+                case 0:
+                    if($registro->diadomingo==1){
+                        $estado=true;
+                    }
                     break;
                 case 1:
-                    
+                    if($registro->dialunes==1){
+                        $estado=true;
+                    }
                     break;
                 case 2:
-                    
+                    if($registro->diamartes==1){
+                        $estado=true;
+                    }
                     break;
                 case 3:
-                
+                    if($registro->diamiercoles==1){
+                        $estado=true;
+                    }
                     break;
                 case 4:
-            
+                    if($registro->diajueves==1){
+                        $estado=true;
+                    }
                     break;
                 case 5:
-        
+                    if($registro->diaviernes==1){
+                        $estado=true;
+                    }
                     break;
                 case 6:
-        
+                    if($registro->diasabado==1){
+                        $estado=true;
+                    }
                     break;
-                    
             }
-
-
-            // $horario = Horario::create([
-            //     'nro' => $nro,
-            //     'horario_personal_id' => $horariopersonal->id,
-            //     'fecha' => $fechaInicio->toDateString(),
-            //     'dia' => $fechaInicio->dayOfWeek,
-            //     'hora_entrada' => $registro->horaentrada,
-            //     'hora_salida' => $registro->horasalida,
-            //     'total_horas' => $registro->totalhoras
-            // ]);
+            if($estado==true){
+                $horario = new Horario;
+                $horario->nro = $nro;
+                $horario->horario_personal_id = $horariopersonal->id;
+                $horario->fecha = $fechaInicio->toDateString();
+                $horario->dia = $fechaInicio->dayOfWeek;
+                $horario->hora_entrada = $registro->horaentrada;
+                $horario->hora_salida = $registro->horasalida;
+                $horario->total_horas = $registro->totalhoras;
+                $horario->save();    
+            }
             $nro++;
             $fechaInicio->addDay();
         }

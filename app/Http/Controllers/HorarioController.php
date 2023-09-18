@@ -10,6 +10,33 @@ use Illuminate\Http\Request;
 
 class HorarioController extends Controller
 {
+    public function obtenerHorariosPersonal(Request $request){
+        // $registros=HorarioPersonal::where('personal_id', $request->personal_id)->get();
+        // return $registros;
+
+        $buscar = mb_strtoupper($request->buscar);
+        $paginacion = $request->paginacion;
+
+        return HorarioPersonal::with('personal:id,nombres,apellido_paterno,apellido_materno')
+            ->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
+            ->where('personal_id', $request->id)
+            ->where(function($query) use($buscar) {
+                $query->whereHas('personal', function($q) use($buscar){
+                        $q->whereRaw('upper(numero_dni) like ?', ['%'.strtoupper($buscar).'%'])
+                            ->orWhereRaw("upper(concat(apellido_paterno,' ',apellido_materno)) like ?", ['%'.strtoupper($buscar).'%'])
+                            ->orWhereRaw("upper(nombres) like ?", ['%'.strtoupper($buscar).'%']);
+                    });
+            })
+            ->paginate($paginacion);
+    }
+    public function eliminarHorarioPersonal(Request $request){
+        $nivel = HorarioPersonal::where('id', $request->id)->first();
+        $nivel->delete();
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Registro eliminado satisfactoriamente'
+        ],200);
+    }
     public function store(StoreHorarioRequest $request)
     {
         $fechaInicio = Carbon::parse($request->fecha_desde);
@@ -30,6 +57,13 @@ class HorarioController extends Controller
         ]);
 
         $nro=1;
+        if($fechaInicio==$fechaFin){
+            return response()->json([
+                'ok' => 0,
+                'mensaje' => 'El intervalo de Fechas debe ser mayor a 1'
+            ],200);
+        }
+
         while ($fechaInicio->lte($fechaFin)) {
             $estado=false;
             switch ($fechaInicio->dayOfWeek) {

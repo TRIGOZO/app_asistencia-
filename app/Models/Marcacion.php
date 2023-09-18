@@ -22,11 +22,11 @@ class Marcacion extends Model
         'ip',
     ];
     /**
-     * Get the peronal that owns the Marcacion
+     * Get the personal that owns the Marcacion
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function peronal(): BelongsTo
+    public function personal(): BelongsTo
     {
         return $this->belongsTo(Personal::class, 'personal_id');
     }

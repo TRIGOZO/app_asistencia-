@@ -1,5 +1,5 @@
 <script setup>
-import { toRefs, onMounted } from 'vue';
+import { toRefs, onMounted, ref } from 'vue';
 import useHorarioTurno from '@/Composables/horarioturno.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
@@ -44,6 +44,41 @@ const crud = {
         }
     }
 }
+
+const calcularHoras = ()=>{
+    if(form.value.horaentrada!='' && form.value.horasalida!=''){
+        const horaInicioArray = form.value.horaentrada.split(':');
+        const horaFinArray = form.value.horasalida.split(':');
+        
+        const inicio = new Date(0, 0, 0, horaInicioArray[0], horaInicioArray[1]);
+        const fin = new Date(0, 0, 0, horaFinArray[0], horaFinArray[1]);
+        
+        const diferencia = new Date(fin - inicio);
+        const horas = diferencia.getUTCHours().toString().padStart(2, '0');
+        const minutos = diferencia.getUTCMinutes().toString().padStart(2, '0');
+        
+        let cont = parseInt(form.value.dialunes)+
+        parseInt(form.value.diamartes)+
+        parseInt(form.value.diamiercoles)+
+        parseInt(form.value.diajueves)+
+        parseInt(form.value.diaviernes)+
+        parseInt(form.value.diasabado)+
+        parseInt(form.value.diadomingo);
+
+        const horasMultiplicadas = horas * cont;
+        const minutosMultiplicados = minutos * cont;
+        
+        // Formatear el resultado en el formato deseado
+        const horasFormateadas = horasMultiplicadas.toString().padStart(2, '0');
+        const minutosFormateados = minutosMultiplicados.toString().padStart(2, '0');
+        
+        form.value.totalhoras = `${horasMultiplicadas}:${minutosMultiplicados}`;
+
+    }else{
+        form.value.totalhoras = '';
+    }
+}
+
 const guardar = () => {
     crud[form.value.estadoCrud]()
 }
@@ -121,7 +156,7 @@ const guardar = () => {
                                     <div class="mb-3">
                                         <label for="dialunes" class="form-label">LUNES </label>
                                         <select v-model="form.dialunes" class="form-control" :class="{ 'is-invalid': form.errors.dialunes }">
-                                            <option value="">--SELECCIONE--</option>
+                                            <option value="" disabled>--SELECCIONE--</option>
                                             <option value="1">SI</option>
                                             <option value="0">NO</option>
                                         </select>
@@ -131,7 +166,7 @@ const guardar = () => {
                                     <div class="mb-3">
                                         <label for="diamartes" class="form-label">MARTES </label>
                                         <select v-model="form.diamartes" class="form-control" :class="{ 'is-invalid': form.errors.diamartes }">
-                                            <option value="">--SELECCIONE--</option>
+                                            <option value="" disabled>--SELECCIONE--</option>
                                             <option value="1">SI</option>
                                             <option value="0">NO</option>
                                         </select>
@@ -141,7 +176,7 @@ const guardar = () => {
                                     <div class="mb-3">
                                         <label for="diamiercoles" class="form-label">MIERCOLES </label>
                                         <select v-model="form.diamiercoles" class="form-control" :class="{ 'is-invalid': form.errors.diamiercoles }">
-                                            <option value="">--SELECCIONE--</option>
+                                            <option value="" disabled>--SELECCIONE--</option>
                                             <option value="1">SI</option>
                                             <option value="0">NO</option>
                                         </select>
@@ -151,7 +186,7 @@ const guardar = () => {
                                     <div class="mb-3">
                                         <label for="diajueves" class="form-label">JUEVES </label>
                                         <select v-model="form.diajueves" class="form-control" :class="{ 'is-invalid': form.errors.diajueves }">
-                                            <option value="">--SELECCIONE--</option>
+                                            <option value="" disabled>--SELECCIONE--</option>
                                             <option value="1">SI</option>
                                             <option value="0">NO</option>
                                         </select>
@@ -161,7 +196,7 @@ const guardar = () => {
                                     <div class="mb-3">
                                         <label for="diaviernes" class="form-label">VIERNES </label>
                                         <select v-model="form.diaviernes" class="form-control" :class="{ 'is-invalid': form.errors.diaviernes }">
-                                            <option value="">--SELECCIONE--</option>
+                                            <option value="" disabled>--SELECCIONE--</option>
                                             <option value="1">SI</option>
                                             <option value="0">NO</option>
                                         </select>
@@ -171,7 +206,7 @@ const guardar = () => {
                                     <div class="mb-3">
                                         <label for="diasabado" class="form-label">SABADO </label>
                                         <select v-model="form.diasabado" class="form-control" :class="{ 'is-invalid': form.errors.diasabado }">
-                                            <option value="">--SELECCIONE--</option>
+                                            <option value="" disabled>--SELECCIONE--</option>
                                             <option value="1">SI</option>
                                             <option value="0">NO</option>
                                         </select>
@@ -188,8 +223,8 @@ const guardar = () => {
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="totalhoras" class="form-label">Total de Horas </label>
-                                        <input type="text" class="form-control" v-model="form.totalhoras" :class="{ 'is-invalid': form.errors.totalhoras }">
+                                        <label for="totalhoras" class="form-label">Total de Horas Semana</label>
+                                        <input type="text" class="form-control" v-model="form.totalhoras" :class="{ 'is-invalid': form.errors.totalhoras }" @focus="calcularHoras()">
                                         <small class="text-danger" v-for="error in form.errors.totalhoras" :key="error">{{ error
                                                 }}</small>
                                     </div>
@@ -198,15 +233,6 @@ const guardar = () => {
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
 
                 </div>
                 <div class="modal-footer">

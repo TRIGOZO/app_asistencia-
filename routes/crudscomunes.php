@@ -209,6 +209,8 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'horario', 'middleware' => 'auth'], function () {
     Route::post('guardar', [HorarioController::class, 'store']);
     Route::get('mostrar', [HorarioController::class, 'show']);
+    Route::get('mostrar-horarios-personal', [HorarioController::class, 'obtenerHorariosPersonal']);
+    Route::post('eliminar-horario-personal', [HorarioController::class, 'eliminarHorarioPersonal']);
 });
 
 //MENU ROLE

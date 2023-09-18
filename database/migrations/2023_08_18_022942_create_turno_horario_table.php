@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('diaviernes');
             $table->integer('diasabado');
             $table->integer('diadomingo');
-            $table->integer('totalhoras');
+            $table->time('totalhoras');
             $table->timestamps();
         });
     }

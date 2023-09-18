@@ -61,7 +61,8 @@ class UserController extends Controller
         }
     }
     public function show(Request $request){
-        $user = User::with('personal:id,nombres,apellido_paterno,apellido_materno,numero_dni,telefono,celular,direccion,email')->where('id', $request->id)->first();
+        $user = User::with('personal:id,nombres,apellido_paterno,apellido_materno,numero_dni,telefono,celular,direccion,email')
+        ->where('id', $request->id)->first();
         return $user;
     }
     public function mostrarDatoUsuario(Request $request): User

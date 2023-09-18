@@ -14,7 +14,7 @@ export default {
         const router = useRouter()
 
         onMounted(() => {
-            if(!localStorage.getItem('userSession') && route.path != '/attendances' )
+            if(!localStorage.getItem('userSession') && route.path != '/api/attendances' )
             {
                 const redirect = route.query.redirect || '/'
                 router.push(redirect)

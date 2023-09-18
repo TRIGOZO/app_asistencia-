@@ -3,7 +3,7 @@ import { toRefs, onMounted } from 'vue';
 import useHelper from '@/Helpers'; 
 import useTipoTurno from '@/Composables/tipoturno.js';
 import useHorario from '@/Composables/horario.js';
-const { hideModal, Toast, meses } = useHelper();
+const { hideModal, Toast, Swal } = useHelper();
 const props = defineProps({
     form: Object,
     currentPage : Number
@@ -31,7 +31,8 @@ const generar = async() => {
             emit('onVerHorario', respuesta.value.horario_personal_id)
         
         }else{
-            Toast.fire({icon:'error', title:respuesta.value.mensaje})
+            //Toast.fire({icon:'error', title:respuesta.value.mensaje})
+            Swal.fire({icon:'error', text:respuesta.value.mensaje})
         }        
     }
 }
@@ -69,19 +70,19 @@ onMounted(() => {
                                 }}</small>
                     </div>
                      <div class="mb-3">
-                        <label for="mes" class="form-label">Fecha Desde </label>
-                        <input type="text" class="form-control" v-model="form.fecha_desde" :class="{ 'is-invalid': form.errors.fecha_desde }">
+                        <label for="fecha_desde" class="form-label">Fecha Desde </label>
+                        <input type="date" class="form-control" v-model="form.fecha_desde" :class="{ 'is-invalid': form.errors.fecha_desde }">
                         <small class="text-danger" v-for="error in form.errors.fecha_desde" :key="error">{{ error
                                 }}</small>
                     </div> 
                      <div class="mb-3">
-                        <label for="mes" class="form-label">Fecha Hasta </label>
-                        <input type="text" class="form-control" v-model="form.fecha_hasta" :class="{ 'is-invalid': form.errors.fecha_hasta }">
+                        <label for="fecha_hasta" class="form-label">Fecha Hasta </label>
+                        <input type="date" class="form-control" v-model="form.fecha_hasta" :class="{ 'is-invalid': form.errors.fecha_hasta }">
                         <small class="text-danger" v-for="error in form.errors.fecha_hasta" :key="error">{{ error
                                 }}</small>
                     </div>
                      <div class="mb-3">
-                        <label for="mes" class="form-label">Es Lactancia </label>
+                        <label for="es_lactancia" class="form-label">Es Lactancia </label>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" v-model="form.es_lactancia" id="es_lactancia">
                           <label class="form-check-label" for="es_lactancia">SI</label>

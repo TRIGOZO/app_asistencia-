@@ -25,7 +25,6 @@ import { toRefs, onMounted } from 'vue';
                                         <th>Hora de Entrada</th>
                                         <th>Hora de Salida</th>
                                         <th>total_horas</th>
-                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,9 +34,6 @@ import { toRefs, onMounted } from 'vue';
                                         <td>{{ registro.hora_entrada }}</td>
                                         <td>{{ registro.hora_salida }}</td>
                                         <td>{{ registro.total_horas }}</td>
-                                        <td>
-
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

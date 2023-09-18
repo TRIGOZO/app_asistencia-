@@ -39,8 +39,17 @@ export const useAutenticacion = () => {
         }
     }
 
+    const obtenerMarcaciones = async() => {
+        const respuesta = await axios.get('api/attendances')
+
+        if(respuesta.data)
+        {
+            console.log(respuesta.data)
+        }
+    }
+
     return {
-        errors, loginUsuario, logoutUsuario
+        errors, loginUsuario, logoutUsuario, obtenerMarcaciones
     }
 
 }

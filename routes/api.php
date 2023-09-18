@@ -19,6 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'attendances'], function(){
+// Route::prefix('attendances')->group(function() {
+//     Route::get('/',[MarcacionController::class,'obtenerMarcaciones']);
+// });
+Route::group(['prefix' => 'attendances'], function () {
     Route::get('/',[MarcacionController::class,'obtenerMarcaciones']);
+    Route::get('verificar-dni',[MarcacionController::class,'verificarDniPersonal']);
+    Route::post('store',[MarcacionController::class,'guardarMarcacionPersonal']);
 });

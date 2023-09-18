@@ -191,6 +191,13 @@ class MenuSeeder extends Seeder
                 'orden' => Menu::where('nombre', 'Personal')->max('id')+1,
             ],
             [
+                'nombre' => 'Horarios',
+                'slug' => 'horarios',
+                'icono' => 'fas fa-clock',
+                'padre_id' => Menu::where('nombre', 'Personal')->value('id'),
+                'orden' => Menu::where('nombre', 'Personal')->max('id')+1,
+            ],
+            [
                 'nombre' => 'Permisos', //SOLICITUD DE PERMISO DESDE EL USUARIO, ME GUIARE DE LA PAPELETA
                 'slug' => 'permisos',
                 'icono' => 'fas fa-user-shield',

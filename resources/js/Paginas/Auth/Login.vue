@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import {useAutenticacion} from '@/Composables/autenticacion';
 import imgLogo from '../../../../public/img/logo.webp';
 
@@ -10,7 +10,11 @@ import imgLogo from '../../../../public/img/logo.webp';
         errors:[]
     });
 
-    const {errors, loginUsuario } = useAutenticacion();
+    const {errors, loginUsuario, obtenerMarcaciones } = useAutenticacion();
+
+    onMounted(() => {
+        //obtenerMarcaciones()    
+    });
 
     const autenticar = async() => {
         await loginUsuario(user.value);

@@ -4,9 +4,11 @@
   import useHelper from '@/Helpers';  
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import { ref, onMounted } from 'vue';
+  import Horario from '@/Paginas/roles-turnos/Horario.vue'
   const { openModal, Toast, Swal } = useHelper();
   const {
-        errors, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal
+        errors, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal,
+        obtenerHorario, horario, respuesta
     } = useHorario();
     const titleHeader = ref({
       titulo: "Horario",
@@ -36,16 +38,18 @@
     }
     const elimina = async(id) => {
         await eliminarHorarioPersonal(id)
-        form.value.errors = []
         if(errors.value)
         {
             form.value.errors = errors.value
         }
         if(respuesta.value.ok==1){
-            form.value.errors = []
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             listarHorariosPersonal(horarios.value.current_page)
         }
+    }
+    const verDetalle = async(id) =>{
+        await obtenerHorario(id)
+        dato.value.horario=id
     }
     //paginacion
     const isActived = () => {
@@ -55,7 +59,8 @@
     const dato = ref({
         page:'',
         buscar:'',
-        paginacion: 10
+        paginacion: 10,
+        horario:'',
     });
     const buscar = () => {
         listarHorariosPersonal()
@@ -200,14 +205,14 @@
                                         <td>{{ horario.tolerancia_antes }}</td>
                                         <td>{{ horario.tolerancia_despues }}</td>
                                         <td>
-                                            <button class="btn btn-warning btn-sm" title="Editar Personal" @click.prevent="editar(personal.id)">
+                                            <button class="btn btn-warning btn-sm" title="Editar Horario" @click.prevent="editar(horario.id)">
                                                 <i class="fas fa-edit"></i>
                                             </button>&nbsp;
-                                            <button class="btn btn-danger btn-sm" title="Eliminar Personal" @click.prevent="eliminar(personal.id)">
+                                            <button class="btn btn-danger btn-sm" title="Eliminar Horario" @click.prevent="eliminar(horario.id)">
                                                 <i class="fas fa-trash"></i>
                                             </button>&nbsp;
-                                            <button class="btn btn-success btn-sm" title="Establecer Pin" @click.prevent="establecerpin(personal.id)">
-                                                <i class="fas fa-key"></i>
+                                            <button class="btn btn-success btn-sm" title="Ver Detalle" @click.prevent="verDetalle(horario.id)">
+                                                <i class="fas fa-eye"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -267,5 +272,6 @@
             </div>
         </div>
       </div>
+      <Horario v-if="dato.horario" :horario="horario"></Horario>
     </div>
 </template>

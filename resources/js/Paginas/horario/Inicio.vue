@@ -44,10 +44,9 @@
         if(respuesta.value.ok==1){
             form.value.errors = []
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
-            listarPersonal(horarios.value.current_page)
+            listarHorariosPersonal(horarios.value.current_page)
         }
     }
-
     //paginacion
     const isActived = () => {
         return horarios.value.current_page
@@ -59,13 +58,13 @@
         paginacion: 10
     });
     const buscar = () => {
-        listarPersonal()
+        listarHorariosPersonal()
     }
     const cambiarPaginacion = () => {
-        listarPersonal()
+        listarHorariosPersonal()
     }
     const cambiarPagina =(pagina) => {
-        listarPersonal(pagina)
+        listarHorariosPersonal(pagina)
     }
     const pagesNumber = () => {
         if(!horarios.value.to){
@@ -84,7 +83,7 @@
     }
     // CARGA
     onMounted(() => {
-        //listarPersonal()
+        //listarHorariosPersonal()
     })
 </script>
 <template>
@@ -94,7 +93,7 @@
         <div class="card card-primary card-outline mt-2">
             <div class="card-header">
                 <h6 class="card-title">
-                    Listado de Trabajadores
+                    Listado de Horarios Generados
                 </h6>
             </div>
             <div class="card-body">
@@ -179,7 +178,7 @@
                                         <th>Ape. Paterno</th>
                                         <th>Ape. Materno</th>
                                         <th>Nombres</th>
-                                        <th>Turno</th>
+                                        <th>Tipo Turno</th>
                                         <th>Tolerancia Antes</th>
                                         <th>Tolerancia Despues</th>
                                         <th>Acciones</th>
@@ -187,21 +186,19 @@
                                 </thead>
                                 <tbody>
                                     <tr v-if="horarios.total == 0">
-                                        <td class="text-danger text-center" colspan="7">
+                                        <td class="text-danger text-center" colspan="9">
                                             -- Datos No Registrados - Tabla Vacía --
                                         </td>
                                     </tr>
-                                    <tr v-else v-for="(personal,index) in horarios.data" :key="personal.id">
+                                    <tr v-else v-for="(horario,index) in horarios.data" :key="horario.id">
                                         <td class="text-center">{{ index + horarios.from }}</td>
-                                        <td>{{ personal.numero_dni }}</td>
-                                        <td>{{ personal.apellido_paterno }}</td>
-                                        <td>{{ personal.apellido_materno }}</td>
-                                        <td>{{ personal.nombres }}</td>
-                                        <td>{{ personal.nivel_id }}</td>
-                                        <td>{{ personal.profesion?.nombre }}</td>
-                                        <td>{{ personal.cargo?.nombre }}</td>
-                                        <td>{{ personal.condicion?.nombre }}</td>
-                                        <td>{{ personal.tienehijos }}</td>
+                                        <td>{{ horario.personal.numero_dni }}</td>
+                                        <td>{{ horario.personal.apellido_paterno }}</td>
+                                        <td>{{ horario.personal.apellido_materno }}</td>
+                                        <td>{{ horario.personal.nombres }}</td>
+                                        <td>{{ horario.tipo_turno.nombre }}</td>
+                                        <td>{{ horario.tolerancia_antes }}</td>
+                                        <td>{{ horario.tolerancia_despues }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Personal" @click.prevent="editar(personal.id)">
                                                 <i class="fas fa-edit"></i>

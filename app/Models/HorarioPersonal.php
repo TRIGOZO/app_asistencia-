@@ -21,5 +21,8 @@ class HorarioPersonal extends Model
         return $this->belongsTo(Personal::class, 'personal_id');
     }
 
-
+    public function tipo_turno(): BelongsTo
+    {
+        return $this->belongsTo(TipoTurno::class, 'tipo_turno_id');
+    }
 }

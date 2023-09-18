@@ -17,15 +17,17 @@ class HorarioController extends Controller
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
 
-        return HorarioPersonal::with('personal:id,nombres,apellido_paterno,apellido_materno')
-            ->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
-            ->where('personal_id', $request->id)
+        return HorarioPersonal::with([
+                'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno',
+                'tipo_turno:id,nombre'
+                ])
             ->where(function($query) use($buscar) {
                 $query->whereHas('personal', function($q) use($buscar){
                         $q->whereRaw('upper(numero_dni) like ?', ['%'.strtoupper($buscar).'%'])
                             ->orWhereRaw("upper(concat(apellido_paterno,' ',apellido_materno)) like ?", ['%'.strtoupper($buscar).'%'])
                             ->orWhereRaw("upper(nombres) like ?", ['%'.strtoupper($buscar).'%']);
-                    });
+
+                });
             })
             ->paginate($paginacion);
     }

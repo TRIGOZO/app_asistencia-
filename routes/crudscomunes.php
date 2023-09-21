@@ -198,7 +198,8 @@ Route::group(['prefix' => 'marcacion', 'middleware' => 'auth'], function () {
     Route::post('eliminar', [MarcacionController::class, 'destroy']);
     Route::post('guardar', [MarcacionController::class, 'store']);
     Route::get('listar', [MarcacionController::class, 'listar']);
-    Route::get('marcaciones-hoy', [MarcacionController::class, 'marcacionesFecha']);    
+    Route::get('marcaciones-hoy', [MarcacionController::class, 'marcacionesFecha']); 
+    Route::post('marcaciones-horario', [MarcacionController::class, 'cargarMarcacionVsHorario']);  
 });
 
 //USUARIOS

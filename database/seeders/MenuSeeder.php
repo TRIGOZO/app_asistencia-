@@ -198,28 +198,35 @@ class MenuSeeder extends Seeder
                 'orden' => Menu::where('nombre', 'Personal')->max('id')+1,
             ],
             [
-                'nombre' => 'Permisos', //SOLICITUD DE PERMISO DESDE EL USUARIO, ME GUIARE DE LA PAPELETA
+                'nombre' => 'Permisos', 
                 'slug' => 'permisos',
                 'icono' => 'fas fa-user-shield',
                 'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
                 'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
             ],
             [
-                'nombre' => 'Rol de Turnos', //establecer al administrativo y poner a que turno pertenece
+                'nombre' => 'Rol de Turnos', 
                 'slug' => 'rol',
                 'icono' => 'fas fa-user-shield',
                 'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
                 'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
             ],
             [
-                'nombre' => 'Marcaciones', //establecer al administrativo y poner a que turno pertenece
+                'nombre' => 'Marcar Asistencia', 
                 'slug' => 'marcacion',
                 'icono' => 'fas fa-user-shield',
                 'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
                 'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
             ],
             [
-                'nombre' => 'Cambio de Turno', //establecer al administrativo y poner a que turno pertenece
+                'nombre' => 'Marcaciones', 
+                'slug' => 'marcaciones',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
+                'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
+            ],       
+            [
+                'nombre' => 'Cambio de Turno',
                 'slug' => 'cambio-turno',
                 'icono' => 'fas fa-user-shield',
                 'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),

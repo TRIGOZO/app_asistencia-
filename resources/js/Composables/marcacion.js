@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { getConfigHeader, getdataParamsPagination } from '@/Helpers'
 export default function useMarcacion() {
     const marcaciones = ref([])
+    const marcacionesHorarios = ref([])
     const errors = ref('')
     const marcacion = ref({})
     const respuesta = ref([])
@@ -58,8 +59,23 @@ export default function useMarcacion() {
             respuesta.value = respond.data
         }
     }
+    const cargarMarcacionHorario = async(data) => {
+
+        errors.value = ''
+        try {
+            let respond = await axios.post('marcacion/marcaciones-horario', data,getConfigHeader())
+            errors.value =''
+            marcacionesHorarios.value =respond.data
+        } catch (error) {
+            errors.value=""
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }
     return {
         errors, marcaciones, marcacion, obtenerMarcacion, obtenerMarcaciones, 
-        agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy
+        agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy,
+        cargarMarcacionHorario, marcacionesHorarios
     }
 }

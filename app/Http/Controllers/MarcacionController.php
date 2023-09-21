@@ -6,7 +6,9 @@ use App\Models\Marcacion;
 use Illuminate\Http\Request;
 use App\Http\Requests\marcaciones\StoreMarcacionRequest;
 use App\Http\Requests\marcaciones\UpdateMarcacionRequest;
+use App\Http\Requests\marcacionesvshorario\BuscarMarcacionesvsHorarioRequest;
 use App\Models\Personal;
+use Illuminate\Support\Facades\DB;
 
 class MarcacionController extends Controller
 {
@@ -104,5 +106,34 @@ class MarcacionController extends Controller
             'ok' => 1,
             'mensaje' => 'Cargo eliminado satisfactoriamente'
         ],200);
+    }
+
+    public function cargarMarcacionVsHorario(BuscarMarcacionesvsHorarioRequest $request){
+        $personal=Personal::where('numero_dni', $request->dni)->first();
+
+        $registros = DB::table('marcaciones')
+        ->select([
+            'marcaciones.id',
+            'personales.numero_dni',
+            'personales.nombres',
+            'personales.apellido_paterno',
+            'personales.apellido_materno',
+            'marcaciones.personal_id',
+            'marcaciones.establecimiento_id',
+            'marcaciones.fecha_hora',
+            'marcaciones.tipo',
+            'marcaciones.serial',
+            'marcaciones.ip',
+            'horarios.hora_entrada',
+            'horarios.hora_salida',
+            DB::raw('COALESCE(TIMEDIFF(time(marcaciones.fecha_hora), IF(marcaciones.tipo="entrada", horarios.hora_entrada, horarios.hora_salida)), "00:00:00") AS diferencia')
+        ])
+        ->join('personales', 'marcaciones.personal_id', '=', 'personales.id')
+        ->leftJoin('horarios', DB::raw('DATE(marcaciones.fecha_hora)'), '=', 'horarios.fecha')
+        ->get();
+
+
+
+        return $registros;
     }
 }

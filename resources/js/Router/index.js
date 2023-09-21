@@ -31,7 +31,8 @@ import CondicionLaboral from '@/Paginas/condicionlaboral/Inicio.vue'
 import Permiso from '@/Paginas/permisos/Inicio.vue'
 import RoleTurno from '@/Paginas/roles-turnos/Inicio.vue'
 import CambioTurno from '@/Paginas/cambio-turno/Inicio.vue'
-import Marcacion from '@/Paginas/marcaciones/Inicio.vue'
+import Marcacion from '@/Paginas/Marcacion/Inicio.vue'
+import Marcaciones from '@/Paginas/marcaciones/Inicio.vue'
 import Horario from '@/Paginas/horario/Inicio.vue'
 const routes = [
     {
@@ -132,6 +133,10 @@ const routes = [
     },
     {
         path: '/marcacion', name:'Marcacion', component: Marcacion ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/marcaciones', name:'Marcaciones', component: Marcaciones ,
         meta:{layout: LayoutDefault}
     },
     {

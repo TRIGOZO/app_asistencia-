@@ -6,6 +6,7 @@ use App\Http\Controllers\EstablecimientoController;
 use App\Http\Controllers\FeriadoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\HorarioTurnoController;
+use App\Http\Controllers\MarcacionController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuRoleController;
 use App\Http\Controllers\MicroRedController;
@@ -190,6 +191,15 @@ Route::group(['prefix' => 'nivel', 'middleware' => 'auth'], function () {
     Route::get('listar', [NivelController::class, 'listar']);
 });
 
+//MARCACION
+Route::group(['prefix' => 'marcacion', 'middleware' => 'auth'], function () {
+    Route::get('mostrar', [MarcacionController::class, 'show']);
+    Route::post('actualizar', [MarcacionController::class, 'update']);
+    Route::post('eliminar', [MarcacionController::class, 'destroy']);
+    Route::post('guardar', [MarcacionController::class, 'store']);
+    Route::get('listar', [MarcacionController::class, 'listar']);
+    Route::get('marcaciones-hoy', [MarcacionController::class, 'marcacionesFecha']);    
+});
 
 //USUARIOS
 Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
@@ -211,6 +221,7 @@ Route::group(['prefix' => 'horario', 'middleware' => 'auth'], function () {
     Route::get('mostrar', [HorarioController::class, 'show']);
     Route::get('mostrar-horarios-personal', [HorarioController::class, 'obtenerHorariosPersonal']);
     Route::post('eliminar-horario-personal', [HorarioController::class, 'eliminarHorarioPersonal']);
+    Route::post('eliminar-detalle-horario', [HorarioController::class, 'eliminarDetHorario']);    
 });
 
 //MENU ROLE

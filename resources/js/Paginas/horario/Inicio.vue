@@ -1,10 +1,10 @@
 <script setup>
   import useHorario from '@/Composables/horario.js';
   import PersonalForm from './Form.vue'
-  import useHelper from '@/Helpers';  
+  import useHelper from '@/Helpers'; 
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import { ref, onMounted } from 'vue';
-  import Horario from '@/Paginas/roles-turnos/Horario.vue'
+  import Horario from './Horario.vue'
   const { openModal, Toast, Swal } = useHelper();
   const {
         errors, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal,
@@ -16,7 +16,6 @@
       icon: "",
       vista: ""
     });
-
     const listarHorariosPersonal = async(page=1) => {
         dato.value.page= page
         await mostrarHorariosPersonal(dato.value)
@@ -272,6 +271,6 @@
             </div>
         </div>
       </div>
-      <Horario v-if="dato.horario" :horario="horario"></Horario>
+      <Horario v-if="dato.horario" :horario="horario" :form="dato" @onListar="verDetalle"></Horario>
     </div>
 </template>

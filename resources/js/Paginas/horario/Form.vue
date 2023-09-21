@@ -44,7 +44,7 @@ const {
     tipotrabajadores, listaTipoTrabajadores
 } = useTipoTrabajador();
 
-const  emit  =defineEmits(['onListar'])
+const emit =defineEmits(['onListar'])
 const crud = {
     'nuevo': async() => {
         await agregarPersonal(form.value)

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Traits;
 
+use App\Models\Establecimiento;
 use App\Models\Marcacion;
 use App\Models\Personal;
 use Illuminate\Http\Request;
@@ -14,6 +15,14 @@ trait MarcacionTrait
         ])->get();
 
         return $marcaciones;
+    }
+
+    public function getAllPersonalByEstablecimiento(string $establecimiento) {
+        $establecimiento = Establecimiento::select('id')->where('codigo',$establecimiento)->first();
+        $personales = null;
+        if($establecimiento) {
+            $personales = Personal::select('');
+        }
     }
 
     public function getVerificarDniPersonal(string $dni) {

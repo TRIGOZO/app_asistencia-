@@ -30,6 +30,13 @@ export default function useHorario() {
             respuesta.value = respond.data
         }
     }
+    const eliminarDetHorario = async(id) => {
+        const respond = await axios.post('horario/eliminar-detalle-horario', {id:id},getConfigHeader())
+        if(respond.data.ok==1)
+        {
+            respuesta.value = respond.data
+        }
+    }    
     const eliminarHorarioPersonal = async(id) => {
         const respond = await axios.post('horario/eliminar-horario-personal', {id:id},getConfigHeader())
         if(respond.data.ok==1)
@@ -43,6 +50,6 @@ export default function useHorario() {
     }
     return {
         errors, horario,obtenerHorario, generarHorario, eliminarHorario, 
-        respuesta, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal
+        respuesta, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal, eliminarDetHorario
     }
 }

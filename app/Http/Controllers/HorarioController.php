@@ -39,6 +39,14 @@ class HorarioController extends Controller
             'mensaje' => 'Registro eliminado satisfactoriamente'
         ],200);
     }
+    public function eliminarDetHorario(Request $request){
+        $horario = Horario::where('id', $request->id)->first();
+        $horario->delete();
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Registro eliminado satisfactoriamente'
+        ],200);
+    }    
     public function store(StoreHorarioRequest $request)
     {
         $fechaInicio = Carbon::parse($request->fecha_desde);

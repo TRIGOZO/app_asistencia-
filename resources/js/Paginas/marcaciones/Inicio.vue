@@ -2,8 +2,9 @@
   import jwt_decode from 'jwt-decode'
   import { ref, onMounted } from 'vue';
   import { defineTitle } from '@/Helpers';
-  import useHelper from '@/Helpers';  
+  import useHelper from '@/Helpers'; 
   import useMarcacion from '@/Composables/marcacion.js';
+  import useEstablecimiento from '@/Composables/establecimientos.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   const { openModal, Toast, Swal, formatoFecha } = useHelper();
   const {
@@ -13,6 +14,12 @@
         obtenerMarcacionesHoy,
         marcaciones
     } = useMarcacion();
+
+  const {
+        listaEstablecimientos,
+        establecimientos
+    } = useEstablecimiento();
+    
     const titleHeader = ref({
       titulo: "Realizar Marcacion de Asistencia",
       subTitulo: "Inicio",
@@ -86,10 +93,15 @@
     const listarMarcaciones = async(page=1) => {
         await obtenerMarcacionesHoy(dato.value)
     }
+    const listarEstablecimientos = async() => {
+        await listaEstablecimientos()
+        console.log(establecimientos.value)
+    }
     // CARGA
     onMounted(() => {
         defineTitle(titleHeader.value.titulo)
         listarMarcaciones()
+        listarEstablecimientos()
     })
 </script>
 <template>
@@ -100,7 +112,7 @@
             <div class="col-md-4">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h6 class="card-title">
+                        <h6 class="card-title" @click="listarEstablecimientos">
                             MARCACION
                         </h6>
                     </div>
@@ -115,10 +127,10 @@
                             <div class="mb-3">
                                 <label for="establecimiento_id">Establecimiento</label>
                                 <select class="form-control" v-model="form.establecimiento_id" :class="{ 'is-invalid': form.errors.establecimiento_id }">
-                                    <option value="" disabled>Seleccione</option>
-                                    <option value="1">Establecimiento 1</option>
-                                    <option value="2">Establecimiento 2</option>
-                                    <option value="3">Establecimiento 3</option>
+                                    <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id"
+                                        :title="establecimiento.nombre">
+                                        {{ establecimiento.nombre }}
+                                    </option>
                                 </select>
                                 <small class="text-danger" v-for="error in form.errors.establecimiento_id" :key="error">{{ error
                                 }}</small>
@@ -187,8 +199,8 @@
                                     </tr>
                                     <tr v-else v-for="(marcacion,index) in marcaciones.data" :key="marcacion.id">
                                         <td>{{ index + marcaciones.from }}</td>
-                                        <td>{{ marcacion.personal.numero_dni }}</td>
-                                        <td>{{ marcacion.personal.apellido_paterno + ' ' + marcacion.personal.apellido_materno + ' ' + marcacion.personal.nombres }}</td>
+                                        <td>{{ marcacion.personal?.numero_dni }}</td>
+                                        <td>{{ marcacion.personal?.apellido_paterno + ' ' + marcacion.personal?.apellido_materno + ' ' + marcacion.personal?.nombres }}</td>
                                         <td>{{ marcacion.tipo }}</td>
                                         <td>{{ marcacion.fecha_hora }}</td>
                                         <td>

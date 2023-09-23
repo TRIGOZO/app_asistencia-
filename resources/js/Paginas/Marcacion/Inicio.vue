@@ -26,6 +26,17 @@
       icon: "",
       vista: ""
     });
+    const limpiar = () => {
+        form.value.numero_dni='',
+        form.value.establecimiento_id='',
+        form.value.fecha_hora=formatoFecha(null,"YYYY-MM-DD HH:mm"),
+        form.value.tipo='',
+        form.value.serial='',
+        form.value.ip='',
+        form.value.estadoCrud='',
+        form.value.errors = []
+        errors.value = []
+    }
     const crud = {
         'nuevo': async() => {
             await agregarMarcacion(form.value)
@@ -75,17 +86,7 @@
         estadoCrud:'nuevo',
         errors:[]
     });
-     const limpiar = ()=> {
-        form.numero_dni='',
-        form.establecimiento_id='',
-        form.fecha_hora=formatoFecha(null,"YYYY-MM-DD HH:mm"),
-        form.tipo='',
-        form.serial='',
-        form.ip='',
-        form.estadoCrud='',
-        form.value.errors = []
-        errors.value = []
-    }
+
     const buscar = () => {
         listarPersonales()
     }

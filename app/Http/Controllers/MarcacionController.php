@@ -109,27 +109,28 @@ class MarcacionController extends Controller
     }
 
     public function cargarMarcacionVsHorario(BuscarMarcacionesvsHorarioRequest $request){
-        $personal=Personal::where('numero_dni', $request->dni)->first();
-
         $registros = DB::table('marcaciones')
         ->select([
             'marcaciones.id',
+            DB::raw('date(marcaciones.fecha_hora) as fecha'),
             'personales.numero_dni',
             'personales.nombres',
             'personales.apellido_paterno',
             'personales.apellido_materno',
             'marcaciones.personal_id',
             'marcaciones.establecimiento_id',
-            'marcaciones.fecha_hora',
+            DB::raw('time(marcaciones.fecha_hora) as hora_marcada'),
             'marcaciones.tipo',
             'marcaciones.serial',
             'marcaciones.ip',
             'horarios.hora_entrada',
             'horarios.hora_salida',
-            DB::raw('COALESCE(TIMEDIFF(time(marcaciones.fecha_hora), IF(marcaciones.tipo="entrada", horarios.hora_entrada, horarios.hora_salida)), "00:00:00") AS diferencia')
+            DB::raw('COALESCE(TIMEDIFF(time(marcaciones.fecha_hora), IF(marcaciones.tipo="Entrada", horarios.hora_entrada, horarios.hora_salida)), "00:00:00") AS diferencia')
         ])
         ->join('personales', 'marcaciones.personal_id', '=', 'personales.id')
         ->leftJoin('horarios', DB::raw('DATE(marcaciones.fecha_hora)'), '=', 'horarios.fecha')
+        ->where('personales.numero_dni', $request->dni)
+        ->whereMonth('marcaciones.fecha_hora', $request->mes)
         ->get();
 
 

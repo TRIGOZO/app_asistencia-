@@ -19,21 +19,27 @@
       icon: "",
       vista: ""
     });
-
+    const dato = ref({
+        dni:'',
+        mes: parseInt(formatoFecha(null,"MM")),
+        sumaminutos: 0,
+        errors:[]
+    });
     const cargar = async() => {
         await cargarMarcacionHorario(dato.value)
+        dato.value.sumaminutos=0
         dato.value.errors = []
         if(errors.value)
         {
             dato.value.errors = errors.value
         }
+
     }
-    
-    const dato = ref({
-        dni:'',
-        mes: parseInt(formatoFecha(null,"MM")),
-        errors:[]
-    });
+    let sumaminutos=0;
+    let sumaminutos1=0;
+    const cargarmarcaciones = () =>{
+        cargar()
+    }
     const descuentoMinutos = (tiempo)=>{
 
         const [horas, minutos, segundos] = tiempo.split(":");
@@ -46,22 +52,38 @@
         return minutosAbsolutos;
 
     }
+
+    const minutosRedondeadosTest = (minutos1) => {
+        console.log("segundo "+sumaminutos1)
+        sumaminutos1+=minutos1;
+        return sumaminutos1;
+    }
+
     const minutosRedondeados = (minutos) => {
-        if(minutos<=5){
-            return 0;
-        }
-        if(minutos<=10){
-            return 10;
-        }
-        if(minutos<=20){
-            return 20;
-        }
-        if(minutos<=30){
-            return 30;
-        }
-        if(minutos>30){
-            return 'Falta Injustificable';
-        }
+
+        console.log("primero" +sumaminutos)
+        sumaminutos+=minutos;
+        return sumaminutos;
+
+        // let min;
+        // if(minutos<=5){
+        //     min=0;
+        //     //dato.value.sumaminutos+=parseInt(min);
+        // }else if(minutos<=10){
+        //     min=10;
+        //     //dato.value.sumaminutos+=parseInt(min);
+        // }else if(minutos<=20){
+        //     min=20;
+        //     //dato.value.sumaminutos+=parseInt(min);
+        // }else if(minutos<=30){
+        //     min=30;
+        //     //dato.value.sumaminutos+=parseInt(min);
+        // }else{
+        //     min=1440;
+        //     dato.value.sumaminutos+=parseInt(2);
+        //     //return 'Falta Injustificable';
+        // }
+        // return min;
     }
 
     const buscar = () => {
@@ -70,6 +92,9 @@
     onMounted(() => {
         defineTitle(titleHeader.value.titulo)
     })
+
+    
+
 </script>
 <template>
     <ContentHeader :title-header="titleHeader"></ContentHeader>
@@ -139,12 +164,26 @@
                                         <td>{{ marcacion.tipo }}</td>
                                         <td>{{ marcacion.hora_marcada }}</td>
                                         <td>{{ (marcacion.tipo=='Entrada') ? marcacion.hora_entrada : marcacion.hora_salida }}</td>
-                                        <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td>
+                                        <!-- <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td> -->
+                                        <td></td>
                                         <td>
-                                            {{ minutosRedondeados(descuentoMinutos(marcacion.diferencia)) }}
+                                            {{ minutosRedondeados(5) }}
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            {{ minutosRedondeados(5) }}
+                                        </td>
+                                    </tr>
+                                    
+                                 
                                 </tbody>
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th colspan="6" class="text-center">TOTAL</th>
+                                        <th colspan="3" class="text-center">{{ minutosRedondeadosTest(1)}}</th>
+                                    </tr>
+                                </thead>
                             </table>
                         </div>
                     </div>

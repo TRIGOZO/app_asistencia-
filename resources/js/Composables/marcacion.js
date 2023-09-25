@@ -60,7 +60,6 @@ export default function useMarcacion() {
         }
     }
     const cargarMarcacionHorario = async(data) => {
-
         errors.value = ''
         try {
             let respond = await axios.post('marcacion/marcaciones-horario', data,getConfigHeader())

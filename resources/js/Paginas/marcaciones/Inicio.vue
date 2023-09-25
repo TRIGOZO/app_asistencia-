@@ -33,12 +33,11 @@
         {
             dato.value.errors = errors.value
         }
+        marcacionesHorarios.value.forEach(marcacion => {
+            console.log(marcacion.hora_marcada);
+            dato.value.sumaminutos+=minutosRedondeados(descuentoMinutos(marcacion.diferencia));
+        });
 
-    }
-    let sumaminutos=0;
-    let sumaminutos1=0;
-    const cargarmarcaciones = () =>{
-        cargar()
     }
     const descuentoMinutos = (tiempo)=>{
 
@@ -53,37 +52,25 @@
 
     }
 
-    const minutosRedondeadosTest = (minutos1) => {
-        console.log("segundo "+sumaminutos1)
-        sumaminutos1+=minutos1;
-        return sumaminutos1;
-    }
-
     const minutosRedondeados = (minutos) => {
-
-        console.log("primero" +sumaminutos)
-        sumaminutos+=minutos;
-        return sumaminutos;
-
-        // let min;
-        // if(minutos<=5){
-        //     min=0;
-        //     //dato.value.sumaminutos+=parseInt(min);
-        // }else if(minutos<=10){
-        //     min=10;
-        //     //dato.value.sumaminutos+=parseInt(min);
-        // }else if(minutos<=20){
-        //     min=20;
-        //     //dato.value.sumaminutos+=parseInt(min);
-        // }else if(minutos<=30){
-        //     min=30;
-        //     //dato.value.sumaminutos+=parseInt(min);
-        // }else{
-        //     min=1440;
-        //     dato.value.sumaminutos+=parseInt(2);
-        //     //return 'Falta Injustificable';
-        // }
-        // return min;
+        let min;
+        if(minutos<=5){
+            min=0;
+            //dato.value.sumaminutos+=parseInt(min);
+        }else if(minutos<=10){
+            min=10;
+            //dato.value.sumaminutos+=parseInt(min);
+        }else if(minutos<=20){
+            min=20;
+            //dato.value.sumaminutos+=parseInt(min);
+        }else if(minutos<=30){
+            min=30;
+            //dato.value.sumaminutos+=parseInt(min);
+        }else{
+            min=1440;
+            //return 'Falta Injustificable';
+        }
+        return min;
     }
 
     const buscar = () => {
@@ -164,24 +151,16 @@
                                         <td>{{ marcacion.tipo }}</td>
                                         <td>{{ marcacion.hora_marcada }}</td>
                                         <td>{{ (marcacion.tipo=='Entrada') ? marcacion.hora_entrada : marcacion.hora_salida }}</td>
-                                        <!-- <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td> -->
-                                        <td></td>
-                                        <td>
-                                            {{ minutosRedondeados(5) }}
-                                        </td>
+                                        <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td>
+                                        <td>{{ minutosRedondeados(descuentoMinutos(marcacion.diferencia)) }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            {{ minutosRedondeados(5) }}
-                                        </td>
-                                    </tr>
-                                    
+                                  
                                  
                                 </tbody>
                                 <thead class="table-dark">
                                     <tr>
                                         <th colspan="6" class="text-center">TOTAL</th>
-                                        <th colspan="3" class="text-center">{{ minutosRedondeadosTest(1)}}</th>
+                                        <th colspan="3" class="text-center">{{ dato.sumaminutos }}</th>
                                     </tr>
                                 </thead>
                             </table>

@@ -52,8 +52,13 @@
 
     }
 
-    const minutosRedondeados = (minutos) => {
+    const minutosRedondeados = (minutos, tipo, diferencia) => {
         let min;
+
+        if(diferencia>'00:00:00' && tipo=='Salida'){
+            return 0;
+        }
+
         if(minutos<=5){
             min=0;
             //dato.value.sumaminutos+=parseInt(min);
@@ -151,8 +156,17 @@
                                         <td>{{ marcacion.tipo }}</td>
                                         <td>{{ marcacion.hora_marcada }}</td>
                                         <td>{{ (marcacion.tipo=='Entrada') ? marcacion.hora_entrada : marcacion.hora_salida }}</td>
+                                            
+
                                         <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td>
-                                        <td>{{ minutosRedondeados(descuentoMinutos(marcacion.diferencia)) }} Minutos</td>
+                                        <td>{{ minutosRedondeados(descuentoMinutos(marcacion.diferencia), marcacion.tipo, marcacion.diferencia) }} Minutos</td>
+
+
+
+
+
+
+
                                     </tr>
                                   
                                  

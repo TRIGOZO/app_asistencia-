@@ -106,7 +106,7 @@ Route::group(['prefix' => 'permiso', 'middleware' => 'auth'], function () {
     Route::post('actualizar', [PermisoController::class, 'update']);
     Route::post('eliminar', [PermisoController::class, 'destroy']);
     Route::post('guardar', [PermisoController::class, 'store']);
-    Route::get('listar-hoy', [PermisoController::class, 'listarhoy']);
+    Route::get('listar-fecha', [PermisoController::class, 'registrosPorFecha']);
 });
 
 Route::group(['prefix' => 'feriado', 'middleware' => 'auth'], function () {

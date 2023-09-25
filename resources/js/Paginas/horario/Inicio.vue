@@ -63,6 +63,7 @@
     });
     const buscar = () => {
         listarHorariosPersonal()
+        console.log('asdasd');
     }
     const cambiarPaginacion = () => {
         listarHorariosPersonal()

@@ -109,32 +109,34 @@ class MarcacionController extends Controller
     }
 
     public function cargarMarcacionVsHorario(BuscarMarcacionesvsHorarioRequest $request){
-        $registros = DB::table('marcaciones')
+        $marcaciones = DB::table('marcaciones')
         ->select([
             'marcaciones.id',
-            DB::raw('date(marcaciones.fecha_hora) as fecha'),
+            DB::raw('DATE(marcaciones.fecha_hora) as fecha'),
             'personales.numero_dni',
             'personales.nombres',
             'personales.apellido_paterno',
             'personales.apellido_materno',
             'marcaciones.personal_id',
             'marcaciones.establecimiento_id',
-            DB::raw('time(marcaciones.fecha_hora) as hora_marcada'),
+            DB::raw('TIME(marcaciones.fecha_hora) as hora_marcada'),
             'marcaciones.tipo',
             'marcaciones.serial',
             'marcaciones.ip',
             'horarios.hora_entrada',
             'horarios.hora_salida',
-            DB::raw('COALESCE(TIMEDIFF(time(marcaciones.fecha_hora), IF(marcaciones.tipo="Entrada", horarios.hora_entrada, horarios.hora_salida)), "00:00:00") AS diferencia')
+            DB::raw('COALESCE(TIMEDIFF(TIME(marcaciones.fecha_hora), IF(marcaciones.tipo = "Entrada", horarios.hora_entrada, horarios.hora_salida)), "00:00:00") AS diferencia'),
+            'horario_personals.id'
         ])
         ->join('personales', 'marcaciones.personal_id', '=', 'personales.id')
-        ->leftJoin('horarios', DB::raw('DATE(marcaciones.fecha_hora)'), '=', 'horarios.fecha')
+        ->join('horario_personals', 'personales.id', '=', 'horario_personals.personal_id')
+        ->leftJoin('horarios', function ($join) {
+            $join->on(DB::raw('DATE(marcaciones.fecha_hora)'), '=', 'horarios.fecha')
+                ->on('horario_personals.id', '=', 'horarios.horario_personal_id');
+        })
         ->where('personales.numero_dni', $request->dni)
         ->whereMonth('marcaciones.fecha_hora', $request->mes)
         ->get();
-
-
-
-        return $registros;
+        return $marcaciones;
     }
 }

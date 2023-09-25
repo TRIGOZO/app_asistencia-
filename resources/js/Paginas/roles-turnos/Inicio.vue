@@ -109,6 +109,7 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th>DNI</th>
                                         <th>Nombre</th>
                                         <th>Cargo</th>
                                         <th>Establecimiento</th>
@@ -118,7 +119,8 @@
                                 <tbody>
                                     <tr v-for="(personal,index) in personales.data" :key="personal.id">
                                         <td class="text-center">{{ index + personales.from }}</td>
-                                        <td>{{ personal.nombres + ' ' + personal.nombres }}</td>
+                                        <td>{{ personal.numero_dni }}</td>
+                                        <td>{{ personal.nombres + ' ' + personal.apellido_paterno + ' ' + personal.apellido_materno }}</td>
                                         <td>{{ personal.cargo?.nombre }}</td>
                                         <td>{{ personal.establecimiento?.nombre }}</td>
                                         <td>

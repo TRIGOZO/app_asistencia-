@@ -55,7 +55,6 @@ class PermisoController extends Controller
     public function update(UpdatePermisoRequest $request)
     {
         $request->validated();
-
         $permiso = Permiso::where('id',$request->id)->first();
         $permiso->update([
             'personal_id' => $request->personal_id,
@@ -67,7 +66,6 @@ class PermisoController extends Controller
             'motivo' => $request->motivo,
             'establecimiento_id' => $request->establecimiento_id,
         ]);
-
         return response()->json([
             'ok' => 1,
             'mensaje' => 'Cargo modificado satisfactoriamente'
@@ -86,9 +84,9 @@ class PermisoController extends Controller
             'mensaje' => 'Cargo eliminado satisfactoriamente'
         ],200);
     }
-    public function listarhoy(){
+    public function registrosPorFecha(Request $request){
         $permisos = Permiso::with(['personal', 'tipopermiso'])
-        ->whereDate('created_at', now()->format('Y-m-d'))
+        ->whereDate('created_at', $request->fecha)
         ->get();
         return $permisos;        
     }

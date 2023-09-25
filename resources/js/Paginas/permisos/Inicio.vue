@@ -9,14 +9,13 @@
   import PermisoForm from './Form.vue'
 
   const { openModal, Toast, Swal, formatoFecha } = useHelper();
-
   const {
         personales,
         obtenerPersonales,obtenerPersonal, personal
     } = usePersonal();
   const {
         permisos,
-        listarHoy,
+        listarFecha,
         obtenerPermiso,
         permiso,
         eliminarPermiso,
@@ -29,14 +28,16 @@
       icon: "",
       vista: ""
     });
-
+    const hoy= formatoFecha(null,"YYYY-MM-DD")
     const dato = ref({
         page:'',
         buscar:'',
-        paginacion: 10
+        paginacion: 10,
+        fecha: hoy
     });
+
     //const hoy=new Date().toISOString().split('T')[0];
-    const hoy= formatoFecha(null,"YYYY-MM-DD")
+    
     const horaHoy = formatoFecha(null,"HH:mm")
 
     const form = ref({
@@ -119,6 +120,9 @@
             form.value.nombre=personal.value.nombres + ' ' + personal.value.apellido_paterno + ' ' + personal.value.apellido_materno
         }
     }
+    const buscarPermisosFecha=async()=>{
+        await listarFecha(dato.value.fecha)
+    }
     const obtenerDatosPermiso = async(id) => {
         limpiar()
         await obtenerPermiso(id);
@@ -143,7 +147,7 @@
     }
     const listarPermisos = async(page=1) => {
         dato.value.page= page
-        await listarHoy(dato.value)
+        await listarFecha(dato.value.fecha)
     }
     // CARGA
     onMounted(() => {
@@ -192,7 +196,7 @@
                                         <td class="text-center">{{ index + personales.from }}</td>
                                         <td>{{ personal.numero_dni }}</td>
                                         <td>{{ personal.nombres }}</td>
-                                        <td>{{ personal.apellido_paterno + ' ' + personal.apellido_materno }}</td>
+                                        <td>{{ personal.nombres + ' ' + personal.apellido_paterno + ' ' + personal.apellido_materno }}</td>
                                         <td>{{ personal.cargo.nombre }}</td>
                                         <td>
                                             <button class="btn btn-info btn-sm" title="Solicitar Permiso" @click.prevent="solicitar(personal.id)">
@@ -210,9 +214,17 @@
         <br><br>
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h6 class="card-title">
-                    Permisos El día de Hoy
-                </h6>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group mb-1">
+                            <span class="input-group-text" id="basic-addon1">FECHA</span>
+                            <input class="form-control" type="date" v-model="dato.fecha"
+                                @change="buscarPermisosFecha" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-1">
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -222,6 +234,7 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th>DNI</th>
                                         <th>Personal</th>
                                         <th>Fecha Desde</th>
                                         <th>Hora Inicio</th>
@@ -240,6 +253,7 @@
                                     </tr>
                                     <tr v-else v-for="(permiso,index) in permisos" :key="permiso.id">
                                         <td class="text-center">{{ index+1 }}</td>
+                                        <td>{{ permiso.personal.numero_dni }}</td>
                                         <td>{{ permiso.personal.nombres + ' ' + permiso.personal.apellido_paterno + ' ' + permiso.personal.apellido_materno }}</td>
                                         <td>{{ permiso.fecha_desde }}</td>
                                         <td>{{ permiso.hora_inicio }}</td>

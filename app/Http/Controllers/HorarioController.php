@@ -11,12 +11,8 @@ use Illuminate\Http\Request;
 class HorarioController extends Controller
 {
     public function obtenerHorariosPersonal(Request $request){
-        // $registros=HorarioPersonal::where('personal_id', $request->personal_id)->get();
-        // return $registros;
-
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-
         return HorarioPersonal::with([
                 'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno',
                 'tipo_turno:id,nombre'
@@ -30,6 +26,22 @@ class HorarioController extends Controller
                 });
             })
             ->paginate($paginacion);
+    }
+    public function cargarConstanteDscto(Request $request){
+        $buscar = mb_strtoupper($request->buscar);
+        return HorarioPersonal::with([
+                'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno',
+                'tipo_turno:id,nombre'
+                ])
+            ->where(function($query) use($buscar) {
+                $query->whereHas('personal', function($q) use($buscar){
+                        $q->whereRaw('upper(numero_dni) like ?', ['%'.strtoupper($buscar).'%'])
+                            ->orWhereRaw("upper(concat(apellido_paterno,' ',apellido_materno)) like ?", ['%'.strtoupper($buscar).'%'])
+                            ->orWhereRaw("upper(nombres) like ?", ['%'.strtoupper($buscar).'%']);
+
+                });
+            })
+            ->get();
     }
     public function eliminarHorarioPersonal(Request $request){
         $nivel = HorarioPersonal::where('id', $request->id)->first();

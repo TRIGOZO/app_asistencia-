@@ -36,15 +36,32 @@
     });
     const descuentoMinutos = (tiempo)=>{
 
-    const [horas, minutos, segundos] = tiempo.split(":");
+        const [horas, minutos, segundos] = tiempo.split(":");
 
-    const totalSegundos = Math.abs((parseInt(horas)*3600)) + (parseInt(minutos) * 60) + parseInt(segundos);
+        const totalSegundos = Math.abs((parseInt(horas)*3600)) + (parseInt(minutos) * 60) + parseInt(segundos);
 
-    const valor = totalSegundos;
-    const minutosAbsolutos = Math.floor(valor / 60);
+        const valor = totalSegundos;
+        const minutosAbsolutos = Math.floor(valor / 60);
 
-    return minutosAbsolutos;
+        return minutosAbsolutos;
 
+    }
+    const minutosRedondeados = (minutos) => {
+        if(minutos<=5){
+            return 0;
+        }
+        if(minutos<=10){
+            return 10;
+        }
+        if(minutos<=20){
+            return 20;
+        }
+        if(minutos<=30){
+            return 30;
+        }
+        if(minutos>30){
+            return 'Falta Injustificable';
+        }
     }
 
     const buscar = () => {
@@ -110,6 +127,7 @@
                                         <th>Hora Marcada</th>
                                         <th>Hora</th>
                                         <th>Diferencia</th>
+                                        <th>Redondeado</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -122,6 +140,9 @@
                                         <td>{{ marcacion.hora_marcada }}</td>
                                         <td>{{ (marcacion.tipo=='Entrada') ? marcacion.hora_entrada : marcacion.hora_salida }}</td>
                                         <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td>
+                                        <td>
+                                            {{ minutosRedondeados(descuentoMinutos(marcacion.diferencia)) }}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

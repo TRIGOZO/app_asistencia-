@@ -145,8 +145,8 @@
                                 <label for="tipo">Tipo</label>
                                 <select class="form-control" v-model="form.tipo" :class="{ 'is-invalid': form.errors.tipo }">
                                     <option value="" disabled>Seleccione</option>
-                                    <option value="entrada">Entrada</option>
-                                    <option value="salida">Salida</option>
+                                    <option value="Entrada">Entrada</option>
+                                    <option value="Salida">Salida</option>
                                 </select>
                                 <small class="text-danger" v-for="error in form.errors.tipo" :key="error">{{ error
                                 }}</small>

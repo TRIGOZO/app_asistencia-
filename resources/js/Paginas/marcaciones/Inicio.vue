@@ -152,7 +152,7 @@
                                         <td>{{ marcacion.hora_marcada }}</td>
                                         <td>{{ (marcacion.tipo=='Entrada') ? marcacion.hora_entrada : marcacion.hora_salida }}</td>
                                         <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td>
-                                        <td>{{ minutosRedondeados(descuentoMinutos(marcacion.diferencia)) }}</td>
+                                        <td>{{ minutosRedondeados(descuentoMinutos(marcacion.diferencia)) }} Minutos</td>
                                     </tr>
                                   
                                  
@@ -160,7 +160,7 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th colspan="6" class="text-center">TOTAL</th>
-                                        <th colspan="3" class="text-center">{{ dato.sumaminutos }}</th>
+                                        <th colspan="3" class="text-center">{{ dato.sumaminutos }} Minutos</th>
                                     </tr>
                                 </thead>
                             </table>

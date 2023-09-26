@@ -99,7 +99,7 @@ class PersonalController extends Controller
 
         return response()->json([
             'ok' => 1,
-            'mensaje' => 'Cargo modificado satisfactoriamente'
+            'mensaje' => 'Personal modificado satisfactoriamente'
         ],200);
     }
 

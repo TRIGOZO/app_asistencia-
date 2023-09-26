@@ -63,6 +63,6 @@ export default function usePersonal() {
     }
     return {
         errors, personal, obtenerPersonal, obtenerPersonaldetalle, estadosciviles, listaEstadosCiviles,
-        obtenerPersonales, agregarPersonal, actualizarPersonal, eliminarPersonal, personales
+        obtenerPersonales, agregarPersonal, actualizarPersonal, eliminarPersonal, personales, respuesta
     }
 }

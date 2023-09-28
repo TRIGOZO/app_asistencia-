@@ -31,7 +31,7 @@ class HorarioTurnoSeeder extends Seeder
             'diaviernes'        => 1,
             'diasabado'         => 1,
             'diadomingo'        => 0,
-            'totalhoras'        => 30,
+            'totalhoras'        => '05:00:00',
         ]);
     }
 }

@@ -44,6 +44,7 @@ const crud = {
     }
 }
 const guardar = () => {
+    
     crud[form.value.estadoCrud]()
 }
 </script>

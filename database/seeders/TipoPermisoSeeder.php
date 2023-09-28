@@ -27,6 +27,7 @@ class TipoPermisoSeeder extends Seeder
         $tipopermiso = TipoPermiso::firstOrCreate(['abreviatura' => 'PSGH', 'nombre' => 'SIN GOCE DE HABER']);
         $tipopermiso = TipoPermiso::firstOrCreate(['abreviatura' => 'SPMD', 'nombre' => 'SANCION POR MEDIDA DISCIPLINARIA']);
         $tipopermiso = TipoPermiso::firstOrCreate(['abreviatura' => 'ADS', 'nombre' => 'ABANDONO DE SERVICIO']);
+        $tipopermiso = TipoPermiso::firstOrCreate(['abreviatura' => 'VAC', 'nombre' => 'VACACIONES']);
         $tipopermiso = TipoPermiso::firstOrCreate(['abreviatura' => 'OTR', 'nombre' => 'OTROS']);
     }
 }

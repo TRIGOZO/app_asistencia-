@@ -134,7 +134,7 @@ class HorarioController extends Controller
                 $horario->hora_entrada = $registro->horaentrada;
                 $horario->hora_salida = $registro->horasalida;
                 $horario->total_horas = $registro->totalhoras;
-                $horario->save();    
+                $horario->save();              
             }
             $nro++;
             $fechaInicio->addDay();

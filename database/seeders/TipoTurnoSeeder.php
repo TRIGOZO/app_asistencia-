@@ -80,32 +80,6 @@ class TipoTurnoSeeder extends Seeder
                 'nroturnos' => 2
             ],
             [
-                'abreviatura' => 'V',
-                'nombre' => 'VACACIONES',
-                'diastolerancia' => 30,
-                'descuento' => 0,
-                'guardia' => 0,
-                'permiso' => 1,
-                'horasantesdescansa' => 0,
-                'horasdespuesdescansa' => 0,
-                'horaasistencial' => 1,
-                'horaadministrativo' => 1,
-                'nroturnos' => 0
-            ],
-            [
-                'abreviatura' => 'LPE',
-                'nombre' => 'PERMISO - POR ENFERMEDAD',
-                'diastolerancia' => 100,
-                'descuento' => 0,
-                'guardia' => 0,
-                'permiso' => 1,
-                'horasantesdescansa' => 0,
-                'horasdespuesdescansa' => 0,
-                'horaasistencial' => 1,
-                'horaadministrativo' => 1,
-                'nroturnos' => 0
-            ],
-            [
                 'abreviatura' => 'GN',
                 'nombre' => 'GUARDIA NOCTURNA',
                 'diastolerancia' => 0,

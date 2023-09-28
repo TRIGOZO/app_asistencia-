@@ -2,7 +2,8 @@
 import { toRefs, onMounted, ref } from 'vue';
 import useHorarioTurno from '@/Composables/horarioturno.js';
 import useHelper from '@/Helpers';  
-const { hideModal, Toast } = useHelper();
+import dayjs from "dayjs";
+const { hideModal, Toast, formatoFecha } = useHelper();
 const props = defineProps({
     form: Object,
     currentPage : Number
@@ -16,8 +17,7 @@ const crud = {
     'nuevo': async() => {
         await agregarHorario(form.value)
         form.value.errors = []
-        if(errors.value)
-        {
+        if(errors.value)    {
             form.value.errors = errors.value
         }
         if(respuesta.value.ok==1){
@@ -25,8 +25,6 @@ const crud = {
             hideModal('#modalhorario')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
-
-            
         }
     },
     'editar': async() => {
@@ -45,34 +43,31 @@ const crud = {
     }
 }
 
+const hoy =formatoFecha(null,"YYYY-MM-DD");
+
 const calcularHoras = ()=>{
     if(form.value.horaentrada!='' && form.value.horasalida!=''){
-        const horaInicioArray = form.value.horaentrada.split(':');
-        const horaFinArray = form.value.horasalida.split(':');
-        
-        const inicio = new Date(0, 0, 0, horaInicioArray[0], horaInicioArray[1]);
-        const fin = new Date(0, 0, 0, horaFinArray[0], horaFinArray[1]);
-        
-        const diferencia = new Date(fin - inicio);
-        const horas = diferencia.getUTCHours().toString().padStart(2, '0');
-        const minutos = diferencia.getUTCMinutes().toString().padStart(2, '0');
-        
+
+        const date1 = dayjs(hoy+' ' + form.value.horasalida)
+        const date2 = dayjs(hoy+' ' + form.value.horaentrada)
+
+        // // const date1 = dayjs('2023-09-26 00:20:20')
+        //const date2 = dayjs('2023-09-26 00:10:10')
+
+        const diferenciaminutos = date1.diff(date2, 'minute')
         let cont = parseInt(form.value.dialunes)+
         parseInt(form.value.diamartes)+
         parseInt(form.value.diamiercoles)+
         parseInt(form.value.diajueves)+
         parseInt(form.value.diaviernes)+
         parseInt(form.value.diasabado)+
-        parseInt(form.value.diadomingo);
+        parseInt(form.value.diadomingo);        
+        const horassemanales = cont * (date1.diff(date2, 'Hour'))
+        const diferenciahoras = parseInt(diferenciaminutos/60)
+        const diferenciaminutosdscto = diferenciaminutos%60;
 
-        const horasMultiplicadas = horas * cont;
-        const minutosMultiplicados = minutos * cont;
-        
-        // Formatear el resultado en el formato deseado
-        const horasFormateadas = horasMultiplicadas.toString().padStart(2, '0');
-        const minutosFormateados = minutosMultiplicados.toString().padStart(2, '0');
-        
-        form.value.totalhoras = `${horasMultiplicadas}:${minutosMultiplicados}`;
+        form.value.totalhoras = `${diferenciahoras}:${diferenciaminutosdscto}:00`;
+        form.value.totalhorassemanal = horassemanales;
 
     }else{
         form.value.totalhoras = '';
@@ -223,12 +218,17 @@ const guardar = () => {
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="totalhoras" class="form-label">Total de Horas Semana</label>
+                                        <label for="totalhoras" class="form-label">Total de Horas Diario</label>
                                         <input type="text" class="form-control" v-model="form.totalhoras" :class="{ 'is-invalid': form.errors.totalhoras }" @focus="calcularHoras()">
                                         <small class="text-danger" v-for="error in form.errors.totalhoras" :key="error">{{ error
                                                 }}</small>
                                     </div>
-
+                                    <div class="mb-3">
+                                        <label for="totalhorassemanal" class="form-label">Total de Horas Semanal</label>
+                                        <input type="text" class="form-control" v-model="form.totalhorassemanal" :class="{ 'is-invalid': form.errors.totalhorassemanal }" @focus="calcularHoras()">
+                                        <small class="text-danger" v-for="error in form.errors.totalhorassemanal" :key="error">{{ error
+                                                }}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -174,11 +174,12 @@ onMounted(() => {
                                                 }}</small>
                                     </div> 
                                     <div class="mb-3">
-                                        <label for="direccion" class="form-label">Direccion</label>
-                                        <input type="text" class="form-control" v-model="form.direccion" :class="{ 'is-invalid': form.errors.direccion }" placeholder="Direccion">
-                                        <small class="text-danger" v-for="error in form.errors.direccion" :key="error">{{ error
+                                        <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento</label>
+                                        <input type="date" class="form-control" v-model="form.fecha_nacimiento" :class="{ 'is-invalid': form.errors.fecha_nacimiento }">
+                                        <small class="text-danger" v-for="error in form.errors.fecha_nacimiento" :key="error">{{ error
                                                 }}</small>
-                                    </div>
+                                    </div> 
+
                                 </div>
                             </div>
                         </div>
@@ -273,6 +274,12 @@ onMounted(() => {
                                             </option>
                                         </select>
                                         <small class="text-danger" v-for="error in form.errors.establecimiento_id" :key="error">{{ error
+                                                }}</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="direccion" class="form-label">Direccion</label>
+                                        <input type="text" class="form-control" v-model="form.direccion" :class="{ 'is-invalid': form.errors.direccion }" placeholder="Direccion">
+                                        <small class="text-danger" v-for="error in form.errors.direccion" :key="error">{{ error
                                                 }}</small>
                                     </div>
                                 </div>

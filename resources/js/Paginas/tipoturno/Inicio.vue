@@ -64,6 +64,7 @@
         diasabado:'',
         diadomingo:'0',
         totalhoras:'',
+        totalhorassemanal:'',
         estadoCrud:'',
         errors:[]
     });    
@@ -102,6 +103,7 @@
         formhorario.value.diasabado=1;
         formhorario.value.diadomingo=0;
         formhorario.value.totalhoras='';
+        formhorario.value.totalhorassemanal='';
         formhorario.value.errors = []
         errors.value = []
     }
@@ -160,7 +162,7 @@
     const EditarHorario = (id) => {
         limpiarFormHorario();
         obtenerDatosHorario(id)
-        form.value.estadoCrud = 'editar'
+        formhorario.value.estadoCrud = 'editar'
         document.getElementById("modalhorarioLabel").innerHTML = 'Editar Horario';
         openModal('#modalhorario')
     }

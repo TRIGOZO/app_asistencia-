@@ -38,7 +38,7 @@ class StorePersonalRequest extends FormRequest
             'profesion_id'          => 'required',
             'cargo_id'              => 'required',
             'nivel_id'              => 'required',
-            'sueldo'                => 'required|numeric|max:1264',
+            'sueldo'                => 'required|numeric|max:8000',
             'condicion_laboral_id'  => 'required',
             'fecha_inicio'          => 'required|date',
             'fecha_fin'             => 'required|date',

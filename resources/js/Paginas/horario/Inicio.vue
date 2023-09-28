@@ -103,11 +103,6 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-1 mb-1">
-                        <button  type="button" class="btn btn-danger" @click.prevent="nuevo">
-                            <i class="fas fa-plus"></i> Nuevo
-                        </button>                        
-                    </div>
                     <div class="col-md-2 mb-1">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">Mostrar</span>
@@ -205,9 +200,6 @@
                                         <td>{{ horario.tolerancia_antes }}</td>
                                         <td>{{ horario.tolerancia_despues }}</td>
                                         <td>
-                                            <button class="btn btn-warning btn-sm" title="Editar Horario" @click.prevent="editar(horario.id)">
-                                                <i class="fas fa-edit"></i>
-                                            </button>&nbsp;
                                             <button class="btn btn-danger btn-sm" title="Eliminar Horario" @click.prevent="eliminar(horario.id)">
                                                 <i class="fas fa-trash"></i>
                                             </button>&nbsp;

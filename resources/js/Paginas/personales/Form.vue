@@ -139,12 +139,6 @@ onMounted(() => {
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
-                                        <input type="text" class="form-control" v-model="form.fecha_nacimiento" :class="{ 'is-invalid': form.errors.fecha_nacimiento }" placeholder="999999999">
-                                        <small class="text-danger" v-for="error in form.errors.fecha_nacimiento" :key="error">{{ error
-                                                }}</small>
-                                    </div>
-                                    <div class="mb-3">
                                         <label for="estado_civil_id" class="form-label">Estado Civil</label>
                                         <select v-model="form.estado_civil_id" class="form-control" :class="{ 'is-invalid': form.errors.estado_civil_id }">
                                             <option value="">--Seleccione--</option>

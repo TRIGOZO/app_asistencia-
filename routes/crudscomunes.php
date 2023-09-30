@@ -33,9 +33,10 @@ Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
     Route::post('actualizar', [PersonalController::class, 'update']);
     Route::post('eliminar', [PersonalController::class, 'destroy']);
     Route::post('guardar', [PersonalController::class, 'store']);;
-    Route::get('listar', [PersonalController::class, 'listar']);    
+    Route::get('listar', [PersonalController::class, 'listar']);
+    Route::get('mostrar-dni', [PersonalController::class, 'obtetenerDni']);
+    Route::post('obtener-personales-establecimiento', [PersonalController::class, 'obtenerPersonalesEstablecimiento']);
 });
-
 
 Route::group(['prefix' => 'cargo', 'middleware' => 'auth'], function () {
     Route::get('todos', [CargoController::class, 'todos']);
@@ -107,6 +108,7 @@ Route::group(['prefix' => 'permiso', 'middleware' => 'auth'], function () {
     Route::post('eliminar', [PermisoController::class, 'destroy']);
     Route::post('guardar', [PermisoController::class, 'store']);
     Route::get('listar-fecha', [PermisoController::class, 'registrosPorFecha']);
+    Route::post('minutos-menual-permiso', [PermisoController::class, 'minutosMensuales']);
 });
 
 Route::group(['prefix' => 'feriado', 'middleware' => 'auth'], function () {
@@ -199,7 +201,7 @@ Route::group(['prefix' => 'marcacion', 'middleware' => 'auth'], function () {
     Route::post('guardar', [MarcacionController::class, 'store']);
     Route::get('listar', [MarcacionController::class, 'listar']);
     Route::get('marcaciones-hoy', [MarcacionController::class, 'marcacionesFecha']); 
-    Route::post('marcaciones-horario', [MarcacionController::class, 'cargarMarcacionVsHorario']);  
+    Route::post('marcaciones-horario', [MarcacionController::class, 'cargarMarcacionVsHorario']);
 });
 
 //USUARIOS

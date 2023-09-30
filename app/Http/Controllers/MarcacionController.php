@@ -117,6 +117,7 @@ class MarcacionController extends Controller
             'personales.nombres',
             'personales.apellido_paterno',
             'personales.apellido_materno',
+            'personales.sueldo',
             'marcaciones.personal_id',
             'marcaciones.establecimiento_id',
             DB::raw('TIME(marcaciones.fecha_hora) as hora_marcada'),

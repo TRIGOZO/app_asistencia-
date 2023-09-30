@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\permiso\StorePermisoRequest;
 use App\Http\Requests\permiso\UpdatePermisoRequest;
 use App\Models\Permiso;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PermisoController extends Controller
 {
@@ -99,6 +101,29 @@ class PermisoController extends Controller
         $paginacion = $request->paginacion;
         return Permiso::whereRaw('UPPER(nombre) LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
+    }
+    public function minutosMensuales(Request $request){//obtener minutos mensuales
+        // $anho = 2023;
+        // $mes = 8;
+        $dni=$request->dni;
+        $fechainicio = Carbon::create($request->anho, $request->mes, 1)->toDateString();
+        $fechafin = Carbon::create($request->anho, $request->mes, 1)->endOfMonth()->toDateString();
+        $permisos = Permiso::with('personal:id,numero_dni')
+        ->whereDate('fecha_desde','>=', $fechainicio)
+        ->whereDate('fecha_hasta', '<=', $fechafin)
+        ->whereHas('personal', function ($query) use ($dni) {
+            $query->where('numero_dni', '=', $dni);
+        })
+        ->select(
+            'permisos.*', // Selecciona todas las columnas de la tabla "permisos"
+            DB::raw("TIME_TO_SEC(TIMEDIFF(hora_hasta, hora_inicio)) / 60 AS diferencia_en_minutos")
+        )
+        ->get();
+        $sumaTotalMinutos = $permisos->sum('diferencia_en_minutos');
+        return response()->json([
+            'sumaminutos' => $sumaTotalMinutos,
+            'permisos' => $permisos
+        ],200);
     }
 
 }

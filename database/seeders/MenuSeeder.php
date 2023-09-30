@@ -212,6 +212,13 @@ class MenuSeeder extends Seeder
                 'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
             ],
             [
+                'nombre' => 'Rol de Turnos Group', 
+                'slug' => 'rol-grupo',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
+                'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
+            ],
+            [
                 'nombre' => 'Marcar Asistencia', 
                 'slug' => 'marcacion',
                 'icono' => 'fas fa-user-shield',

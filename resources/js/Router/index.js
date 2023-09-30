@@ -34,6 +34,7 @@ import CambioTurno from '@/Paginas/cambio-turno/Inicio.vue'
 import Marcacion from '@/Paginas/Marcacion/Inicio.vue'
 import Marcaciones from '@/Paginas/marcaciones/Inicio.vue'
 import Horario from '@/Paginas/horario/Inicio.vue'
+import RolGroup from '@/Paginas/rol-grupo/Inicio.vue'
 const routes = [
     {
         path: '/',name: 'Login', component: Login,
@@ -141,6 +142,10 @@ const routes = [
     },
     {
         path: '/horarios', name:'Horario', component: Horario ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/rol-grupo', name:'Rol Grupo', component: RolGroup ,
         meta:{layout: LayoutDefault}
     },    
 ]

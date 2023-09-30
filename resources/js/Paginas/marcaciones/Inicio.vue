@@ -4,15 +4,22 @@
   import { defineTitle } from '@/Helpers';
   import useHelper from '@/Helpers'; 
   import useMarcacion from '@/Composables/marcacion.js';
-  import useEstablecimiento from '@/Composables/establecimientos.js';
+  import usePersonal from '@/Composables/personal.js';
+  import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
-  const {
+    const {
         errors,
         cargarMarcacionHorario, marcacionesHorarios,
         respuesta
     } = useMarcacion();
-
+    const {
+        obtenerPersonalDNI, personal
+    } = usePersonal();
+    const {
+        obtenerPermisosMensual, permisos
+    } = usePermiso()
+    const minutosMensuales = 14400
     const titleHeader = ref({
       titulo: "Marcaciones",
       subTitulo: "Inicio",
@@ -22,71 +29,56 @@
     const dato = ref({
         dni:'',
         mes: parseInt(formatoFecha(null,"MM")),
+        anho: formatoFecha(null,"YYYY"),
         sumaminutos: 0,
+        totaldscto: 0,
         errors:[]
     });
     const cargar = async() => {
         await cargarMarcacionHorario(dato.value)
+        await obtenerPersonalDNI(dato.value.dni)
+        await obtenerPermisosMensual(dato.value)
         dato.value.sumaminutos=0
         dato.value.errors = []
-        if(errors.value)
-        {
+        if(errors.value){
             dato.value.errors = errors.value
         }
         marcacionesHorarios.value.forEach(marcacion => {
-            console.log(marcacion.hora_marcada);
             dato.value.sumaminutos+=minutosRedondeados(descuentoMinutos(marcacion.diferencia));
+            dato.value.totaldscto = (personal.value.sueldo/minutosMensuales)*dato.value.sumaminutos
         });
-
     }
     const descuentoMinutos = (tiempo)=>{
-
         const [horas, minutos, segundos] = tiempo.split(":");
-
         const totalSegundos = Math.abs((parseInt(horas)*3600)) + (parseInt(minutos) * 60) + parseInt(segundos);
-
         const valor = totalSegundos;
         const minutosAbsolutos = Math.floor(valor / 60);
-
         return minutosAbsolutos;
-
     }
-
     const minutosRedondeados = (minutos, tipo, diferencia) => {
         let min;
-
         if(diferencia>'00:00:00' && tipo=='Salida'){
             return 0;
         }
-
         if(minutos<=5){
             min=0;
-            //dato.value.sumaminutos+=parseInt(min);
         }else if(minutos<=10){
             min=10;
-            //dato.value.sumaminutos+=parseInt(min);
         }else if(minutos<=20){
             min=20;
-            //dato.value.sumaminutos+=parseInt(min);
         }else if(minutos<=30){
             min=30;
-            //dato.value.sumaminutos+=parseInt(min);
         }else{
-            min=1440;
-            //return 'Falta Injustificable';
+            min=480;
         }
         return min;
     }
-
     const buscar = () => {
         //listarPersonales()
     }
     onMounted(() => {
         defineTitle(titleHeader.value.titulo)
     })
-
-    
-
 </script>
 <template>
     <ContentHeader :title-header="titleHeader"></ContentHeader>
@@ -156,25 +148,26 @@
                                         <td>{{ marcacion.tipo }}</td>
                                         <td>{{ marcacion.hora_marcada }}</td>
                                         <td>{{ (marcacion.tipo=='Entrada') ? marcacion.hora_entrada : marcacion.hora_salida }}</td>
-                                            
-
                                         <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td>
                                         <td>{{ minutosRedondeados(descuentoMinutos(marcacion.diferencia), marcacion.tipo, marcacion.diferencia) }} Minutos</td>
-
-
-
-
-
-
-
                                     </tr>
-                                  
-                                 
                                 </tbody>
                                 <thead class="table-dark">
                                     <tr>
-                                        <th colspan="6" class="text-center">TOTAL</th>
+                                        <th colspan="6" class="text-center">TOTAL MINUTOS</th>
                                         <th colspan="3" class="text-center">{{ dato.sumaminutos }} Minutos</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="6" class="text-center">SUELDO S/.</th>
+                                        <th colspan="3" class="text-center">S/.{{ personal.sueldo }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="6" class="text-center">DSCTO S/.</th>
+                                        <th colspan="3" class="text-center">S/.{{ parseFloat(dato.totaldscto).toFixed(2) }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="6" class="text-center">SUELDO DESCONTADO S/.</th>
+                                        <th colspan="3" class="text-center">S/.{{ parseFloat(personal.sueldo-dato.totaldscto).toFixed(2) }}</th>
                                     </tr>
                                 </thead>
                             </table>

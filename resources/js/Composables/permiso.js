@@ -34,6 +34,10 @@ export default function usePermiso() {
             }
         }
     }
+    const obtenerPermisosMensual = async(data) =>{
+        let respond = await axios.post('permiso/minutos-menual-permiso',data,getConfigHeader())
+        permisos.value=respond.data
+    }
     const actualizarPermiso = async(data) => {
         errors.value = ''
         try {
@@ -60,6 +64,6 @@ export default function usePermiso() {
     return {
         errors, permisos, permiso, obtenerPermiso, obtenerPermisos, 
         agregarPermiso, actualizarPermiso, eliminarPermiso, respuesta,
-        listarFecha
+        listarFecha, obtenerPermisosMensual
     }
 }

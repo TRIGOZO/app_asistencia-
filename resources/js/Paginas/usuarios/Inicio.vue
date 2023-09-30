@@ -33,7 +33,6 @@
         direccion : '',        
         estadoCrud:'',
         errors:[]
-
     });
 
     const limpiar = ()=> {

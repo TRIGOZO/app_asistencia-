@@ -7,6 +7,7 @@ use App\Http\Requests\Personal\StorePersonalRequest;
 use App\Http\Requests\Personal\UpdatePersonalRequest;
 use App\Models\EstadoCivil;
 use App\Models\Personal;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 class PersonalController extends Controller
 {
@@ -61,6 +62,11 @@ class PersonalController extends Controller
     public function show(Request $request)
     {
         $personal = Personal::where('id', $request->id)->first();
+        return $personal;
+    }
+
+    public function obtetenerDni(Request $request){
+        $personal = Personal::where('numero_dni', $request->dni)->first();
         return $personal;
     }
 
@@ -129,6 +135,32 @@ class PersonalController extends Controller
         ->orWhereRaw('UPPER(apellido_materno) LIKE ?', ['%'.$buscar.'%'])
         ->orWhereRaw('numero_dni LIKE ?', ['%'.$buscar.'%'])
             ->paginate($paginacion);
+    }
+    public function obtenerPersonalesEstablecimiento(Request $request){
+        $anoActual = Carbon::now()->year;
+        // $numeroDias = Carbon::create($anoActual, $request->mes_numero, 1)->daysInMonth;
+        $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
+        ->where('es_activo', 1)
+        ->orderBy('apellido_paterno', 'asc')
+        ->get();
+        $fecha = Carbon::create($anoActual, $request->mes_numero, 1);
+        setlocale(LC_TIME, 'es_ES.utf8');
+        $diasDelMes = [];
+        while ($fecha->month == $request->mes_numero) {
+            $nombreDia = $fecha->formatLocalized('%A');
+            //$nombreDia = $fecha->format('l');
+            $nombreDia= strtoupper(substr($nombreDia,0,1));
+            $dia = $fecha->day;
+            $diasDelMes[] = [
+                'dia' => $dia,
+                'nombreDia' => $nombreDia,
+            ];
+            $fecha->addDay();
+        }
+        return response()->json([
+            'dias' => $diasDelMes,
+            'personales' => $personales
+        ],200);
     }
     public function mostrarpersonadetalle(Request $request){
         $personal= Personal::join('estados_civiles', 'personales.estado_civil_id', '=', 'estados_civiles.id')

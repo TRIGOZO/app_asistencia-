@@ -6,6 +6,7 @@
     import usePersonal from '@/Composables/personal.js';
     import ContentHeader from '@/Componentes/ContentHeader.vue';
     import useTipoTurno from '@/Composables/tipoturno.js';
+
     const {
         tipoturnos, listaTipoTurnos
     } = useTipoTurno();
@@ -74,7 +75,7 @@
                     </div>
                     <div class="col-md-4 mb-1">
                         <br>
-                        <button class="btn btn-primary" @click="generarRoles()">Generar</button>
+                        <button class="btn btn-primary" @click="generarRoles()">Cargar</button>
                     </div>
                 </div>
 

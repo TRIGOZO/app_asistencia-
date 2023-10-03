@@ -154,12 +154,13 @@ class PersonalController extends Controller
             $diasDelMes[] = [
                 'dia' => $dia,
                 'nombreDia' => $nombreDia,
+                'rol'       => ''
             ];
             $fecha->addDay();
         }
         return response()->json([
             'dias' => $diasDelMes,
-            'personales' => $personales
+            'personales' => $personales,
         ],200);
     }
     public function mostrarpersonadetalle(Request $request){

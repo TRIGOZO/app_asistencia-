@@ -19,6 +19,10 @@ export default function useHorario() {
             }
         }
     }
+
+    const generarHorarioAsistencial=async(data)=>{
+
+    }
     const obtenerHorario = async(id) => {
         let respuesta = await axios.get('horario/mostrar?id='+id,getConfigHeader())
         horario.value = respuesta.data

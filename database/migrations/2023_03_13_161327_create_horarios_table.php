@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('nro'); //contara desde cada dia
-            $table->foreignId('horario_personal_id')->constrained('horario_personals')->onDelete('cascade')
+            $table->foreignId('horario_personal_id')->nullable()
+            ->constrained('horario_personals')->onDelete('cascade')
             ->onUpdate('cascade');              
             $table->date('fecha');
             $table->integer('dia');//numero de dia por semana

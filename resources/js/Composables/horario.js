@@ -20,8 +20,18 @@ export default function useHorario() {
         }
     }
 
-    const generarHorarioAsistencial=async(data)=>{
-
+    const guardarHorarioAsistencial=async(data)=>{
+        errors.value = ''
+        try {
+            let respond = await axios.post('horario/guardar-horario-asistencial',data,getConfigHeader())
+            errors.value =''
+            respuesta.value=respond.data
+        } catch (error) {
+            errors.value=""
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
     }
     const obtenerHorario = async(id) => {
         let respuesta = await axios.get('horario/mostrar?id='+id,getConfigHeader())
@@ -54,6 +64,7 @@ export default function useHorario() {
     }
     return {
         errors, horario,obtenerHorario, generarHorario, eliminarHorario, 
-        respuesta, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal, eliminarDetHorario
+        respuesta, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal, eliminarDetHorario,
+        guardarHorarioAsistencial
     }
 }

@@ -7,7 +7,9 @@ use App\Http\Requests\Personal\StorePersonalRequest;
 use App\Http\Requests\Personal\UpdatePersonalRequest;
 use App\Models\EstadoCivil;
 use App\Models\Personal;
+use App\Models\TipoTrabajador;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class PersonalController extends Controller
 {
@@ -123,23 +125,27 @@ class PersonalController extends Controller
     }
 
     public function todos(){
-        $personals = Personal::get();
+        $personals = Personal::where('establecimiento_id', Auth::user()->establecimiento_id)->get();
         return $personals;
     }
     public function listar(Request $request){
+        $establecimiento_id = Auth::user()->establecimiento_id;
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
         return Personal::with(['estado_civil:id,nombre', 'profesion:id,nombre', 'cargo:id,nombre', 'establecimiento:id,nombre', 'condicion:id,nombre'])
+        ->where('establecimiento_id', $establecimiento_id)
         ->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
         ->orWhereRaw('UPPER(apellido_paterno) LIKE ?', ['%'.$buscar.'%'])
         ->orWhereRaw('UPPER(apellido_materno) LIKE ?', ['%'.$buscar.'%'])
         ->orWhereRaw('numero_dni LIKE ?', ['%'.$buscar.'%'])
-            ->paginate($paginacion);
+        ->paginate($paginacion);
     }
     public function obtenerPersonalesEstablecimiento(Request $request){
         $anoActual = Carbon::now()->year;
         // $numeroDias = Carbon::create($anoActual, $request->mes_numero, 1)->daysInMonth;
+        $asistencial_id = TipoTrabajador::where('nombre', 'ASISTENCIAL')->value('id');
         $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
+        ->where('tipo_trabajador_id', $asistencial_id)
         ->where('es_activo', 1)
         ->orderBy('apellido_paterno', 'asc')
         ->get();
@@ -152,9 +158,9 @@ class PersonalController extends Controller
             $nombreDia= strtoupper(substr($nombreDia,0,1));
             $dia = $fecha->day;
             $diasDelMes[] = [
-                'dia' => $dia,
+                'dia'       => $dia,
                 'nombreDia' => $nombreDia,
-                'rol'       => ''
+                //'rol'       => []
             ];
             $fecha->addDay();
         }

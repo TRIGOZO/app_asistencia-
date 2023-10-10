@@ -25,8 +25,6 @@ const crud = {
             hideModal('#modalred')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
-
-            
         }
     },
     'editar': async() => {

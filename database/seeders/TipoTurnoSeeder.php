@@ -118,9 +118,63 @@ class TipoTurnoSeeder extends Seeder
                 'horaadministrativo' => 0,
                 'nroturnos' => 2
             ],
+            [
+                'abreviatura' => 'MAÑ',
+                'nombre' => 'MAÑANA ADM',
+                'diastolerancia' => 0,
+                'descuento' => 1,
+                'guardia' => 1,
+                'permiso' => 0,
+                'horasantesdescansa' => 0,
+                'horasdespuesdescansa' => 0,
+                'horaasistencial' => 0,
+                'horaadministrativo' => 5,
+                'nroturnos' => 0
+            ],
+            [
+                'abreviatura' => 'TARD',
+                'nombre' => 'TARDE ADM',
+                'diastolerancia' => 0,
+                'descuento' => 1,
+                'guardia' => 1,
+                'permiso' => 0,
+                'horasantesdescansa' => 0,
+                'horasdespuesdescansa' => 0,
+                'horaasistencial' => 0,
+                'horaadministrativo' => 3,
+                'nroturnos' => 0
+            ],
+            [
+                'abreviatura' => 'VIGA',
+                'nombre' => 'VIG ADM',
+                'diastolerancia' => 0,
+                'descuento' => 1,
+                'guardia' => 1,
+                'permiso' => 0,
+                'horasantesdescansa' => 0,
+                'horasdespuesdescansa' => 0,
+                'horaasistencial' => 0,
+                'horaadministrativo' => 24,
+                'nroturnos' => 7
+            ],
+            [
+                'abreviatura' => 'LIMA',
+                'nombre' => 'LIM ADM',
+                'diastolerancia' => 0,
+                'descuento' => 1,
+                'guardia' => 1,
+                'permiso' => 0,
+                'horasantesdescansa' => 0,
+                'horasdespuesdescansa' => 0,
+                'horaasistencial' => 0,
+                'horaadministrativo' => 8,
+                'nroturnos' => 0
+            ],
+
+
         ];
         foreach ($tipoturnos as $menuData) {
-            $menu = TipoTurno::firstOrCreate($menuData);
+            TipoTurno::firstOrCreate($menuData);
         }
     }
 }

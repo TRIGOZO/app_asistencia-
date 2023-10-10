@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\Horario\StoreHorarioRequest;
+use App\Http\Requests\Horario\StoreHorarioAsistencialRequest;
 use App\Models\Horario;
 use App\Models\HorarioPersonal;
 use App\Models\HorarioTurno;
@@ -145,6 +146,40 @@ class HorarioController extends Controller
             'mensaje' => 'GENERADO SATISFACTORIAMENTE'
         ],200);
     }
+    public function guardarHorarioAsistencial(StoreHorarioAsistencialRequest $request){
+        // if($request->validated()){
+        //     return response()->json([
+        //         'errors'    => $request->validated()
+        //     ],422);
+        // }
+        //$fechaInicio = Carbon::parse($request->fecha_desde);
+        $fechaActual = Carbon::now();
+        foreach($request->regdias as $dia){
+            $fecha = $fechaActual->setDay($dia['dia'])->setMonth($request->mes);
+            $registro = HorarioTurno::with('tipo_turno:id,abreviatura,nombre')
+            ->whereHas('tipo_turno', function ($query) use ($dia) {
+                $query->where('abreviatura', $dia['rol']);
+            })
+            ->first();
+            //return $dia['rol'];
+            $horario = new Horario;
+            $horario->nro = $dia['dia'];
+            $horario->fecha = $fecha;
+            $horario->dia = $fecha->dayOfWeek;
+            $horario->hora_entrada = $registro->horaentrada;
+            $horario->hora_salida = $registro->horasalida;
+            $horario->total_horas = $registro->totalhoras;
+            $horario->save();    
+        }
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'GUARDADO SATISFACTORIAMENTE'
+        ],200);
+    }
+
+
+
+    
     public function show(Request $request){
         $horario = Horario::where('horario_personal_id', $request->id)->get();
         return $horario;

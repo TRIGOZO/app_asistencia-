@@ -1,15 +1,24 @@
 <script setup>
     import { toRefs, ref, onMounted } from 'vue';
+    import useHorario from '@/Composables/horario.js';
     const { hideModal, Toast } = useHelper();
     import useHelper from '@/Helpers';
-     const props = defineProps({
+    const props = defineProps({
         personales: Object,
         tipoturnos: Object
     });
+    const {
+        errors, respuesta, guardarHorarioAsistencial
+    } = useHorario();
     const { personales } = toRefs(props)
-    const Guardar=(index)=>{
+    const Guardar=async(index)=>{
+        await guardarHorarioAsistencial(personales.value.personales[index])
+ 
+        if(respuesta.value.ok==1){
+            //form.value.errors = []
+            Toast.fire({icon:'success', title:respuesta.value.mensaje})
+        }
 
-        console.log(horariopersonal.value.registros[index])
 
         // const seleccion = horariopersonal.value.registros[index];
         // console.log(`Selección para la fila ${index}: ${seleccion}`);
@@ -20,14 +29,12 @@
     const guardarmasivo=()=>{
 
     }
-
 </script>
-
 <template>
     <div class="row">
         <div class="col-md-12 mb-1">
             <div class="table-responsive">         
-                <table class="table table-bordered table-hover table-sm table-striped">
+                <table class="table table-bordered table-hover table-sm table-striped text-sm table-responsive" style="min-width: 1800px;">
                     <thead class="table-dark">
                         <tr>
                             <th class="text-center">#</th>
@@ -45,9 +52,10 @@
                             <td class="fs-8">{{ pindex+1 }}</td>
                             <td class="fs-8">{{ personal.numero_dni }}</td>
                             <td class="fs-8">{{ personal.apellido_paterno + ' ' + personal.apellido_materno + ' ' + personal.nombres}}</td>
-                            <td v-for="(dia, dindex) in personales.dias" :key="dia.dia">
-                                <select :id="'dia_'+pindex+'_'+dindex" v-model="dia.rol" class="form-control form-select-sm">
-                                    <option value="">-</option>
+                            <td v-for="(dia, dindex) in personal.regdias" :key="dia.dia">
+                                <select :id="'dia_'+pindex+'_'+dindex" v-model="dia.rol" class="form-control form-select-sm" 
+                                :class="{ 'is-invalid': errors['regdias.'+dindex+'.rol'] }">
+                                    <option value="">--</option>
                                     <option v-for="tt in tipoturnos">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>

@@ -32,7 +32,15 @@
         mostrarRoles.value=true
         await listaTipoTurnos()
         await obtenerPersonalesEstablecimiento(form.value);
-        
+        let registros = personales.value
+        registros.personales.forEach(item => {
+            item.regdias = registros.dias.map(dia => ({ dia: dia.dia, rol: '' }));
+            item.mes = form.value.mes_numero
+            // item.regdias.forEach(diaItem => {
+            //     const index = diaItem.dia - 1;
+            //     diaItem.rol[index] = '';
+            // });
+        });
     }
     const form = ref({
         establecimiento_id:'',

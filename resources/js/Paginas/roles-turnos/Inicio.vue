@@ -14,9 +14,9 @@
         obtenerPersonales,obtenerPersonal, personal
     } = usePersonal();
 
-    const {
-        horario, obtenerHorario
-    } = useHorario();
+    // const {
+    //     horario, obtenerHorario
+    // } = useHorario();
 
     const titleHeader = ref({
       titulo: "Generacion de Horarios",
@@ -66,9 +66,14 @@
         document.getElementById("modalformlroleturnoLabel").innerHTML = 'Generar Horario';
         openModal('#modalformlroleturno')
     }
-    const verhorario = async(id) => {
-        await obtenerHorario(id);
-        dato.value.horario=id
+    const horario = ref({});
+    const verhorario = async(registros) => {
+
+    horario.value = registros
+
+
+        // await obtenerHorario(id);
+        dato.value.horario='true'
 
     }
     const listarPersonales = async(page=1) => {

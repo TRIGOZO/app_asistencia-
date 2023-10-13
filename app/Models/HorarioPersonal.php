@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class HorarioPersonal extends Model
 {
     use HasFactory;
-    protected $fillable=['personal_id','tipo_turno_id', 'tolerancia_antes', 'tolerancia_despues', 'es_lactancia'];
+    protected $fillable=['personal_id','turno_horario_id', 'tolerancia_antes', 'tolerancia_despues', 'es_lactancia'];
 
     /**
      * Get the Personal that owns the HorarioPersonal
@@ -21,8 +21,8 @@ class HorarioPersonal extends Model
         return $this->belongsTo(Personal::class, 'personal_id');
     }
 
-    public function tipo_turno(): BelongsTo
+    public function turno_horario(): BelongsTo
     {
-        return $this->belongsTo(TipoTurno::class, 'tipo_turno_id');
+        return $this->belongsTo(HorarioTurno::class, 'turno_horario_id');
     }
 }

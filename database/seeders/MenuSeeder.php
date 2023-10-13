@@ -239,7 +239,27 @@ class MenuSeeder extends Seeder
                 'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
                 'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
             ],
-                                      
+            [
+                'nombre' => 'Permiso',
+                'slug' => 'reporte-permiso',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
+                'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
+            ],
+            [
+                'nombre' => 'Tardanza',
+                'slug' => 'reporte-tardanza',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
+                'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
+            ],            
+            [
+                'nombre' => 'Faltas',
+                'slug' => 'reporte-faltas',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
+                'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
+            ],    
         ];
         
         foreach ($menusData as $menuData) {

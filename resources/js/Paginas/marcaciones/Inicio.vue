@@ -8,77 +8,7 @@
   import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
-    const {
-        errors,
-        cargarMarcacionHorario, marcacionesHorarios,
-        respuesta
-    } = useMarcacion();
-    const {
-        obtenerPersonalDNI, personal
-    } = usePersonal();
-    const {
-        obtenerPermisosMensual, permisos
-    } = usePermiso()
-    const minutosMensuales = 14400
-    const titleHeader = ref({
-      titulo: "Marcaciones",
-      subTitulo: "Inicio",
-      icon: "",
-      vista: ""
-    });
-    const dato = ref({
-        dni:'',
-        mes: parseInt(formatoFecha(null,"MM")),
-        anho: formatoFecha(null,"YYYY"),
-        sumaminutos: 0,
-        totaldscto: 0,
-        errors:[]
-    });
-    const cargar = async() => {
-        await cargarMarcacionHorario(dato.value)
-        await obtenerPersonalDNI(dato.value.dni)
-        await obtenerPermisosMensual(dato.value)
-        dato.value.sumaminutos=0
-        dato.value.errors = []
-        if(errors.value){
-            dato.value.errors = errors.value
-        }
-        marcacionesHorarios.value.forEach(marcacion => {
-            dato.value.sumaminutos+=minutosRedondeados(descuentoMinutos(marcacion.diferencia));
-            dato.value.totaldscto = (personal.value.sueldo/minutosMensuales)*dato.value.sumaminutos
-        });
-    }
-    const descuentoMinutos = (tiempo)=>{
-        const [horas, minutos, segundos] = tiempo.split(":");
-        const totalSegundos = Math.abs((parseInt(horas)*3600)) + (parseInt(minutos) * 60) + parseInt(segundos);
-        const valor = totalSegundos;
-        const minutosAbsolutos = Math.floor(valor / 60);
-        return minutosAbsolutos;
-    }
-    const minutosRedondeados = (minutos, tipo, diferencia) => {
-        let min;
-        if(diferencia>'00:00:00' && tipo=='Salida'){
-            return 0;
-        }
-        if(minutos<=5){
-            min=0;
-        }else if(minutos<=10){
-            min=10;
-        }else if(minutos<=20){
-            min=20;
-        }else if(minutos<=30){
-            min=30;
-        }else{
-            min=480;
-        }
-        return min;
-    }
-    const buscar = () => {
-        //listarPersonales()
-    }
-    onMounted(() => {
-        defineTitle(titleHeader.value.titulo)
-    })
+
 </script>
 <template>
     <ContentHeader :title-header="titleHeader"></ContentHeader>

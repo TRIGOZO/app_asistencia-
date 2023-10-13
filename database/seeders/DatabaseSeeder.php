@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             TipoTurnoSeeder::class,
             HorarioTurnoSeeder::class,
+            MarcacionSeeder::class
             //UbigeoSeeder::class,
         ]);
     }

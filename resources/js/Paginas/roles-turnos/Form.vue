@@ -28,7 +28,7 @@ const generar = async() => {
             form.value.errors = []
             hideModal('#modalformlroleturno')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
-            emit('onVerHorario', respuesta.value.horario_personal_id)
+            emit('onVerHorario', respuesta.value.horarios)
         
         }else{
             //Toast.fire({icon:'error', title:respuesta.value.mensaje})

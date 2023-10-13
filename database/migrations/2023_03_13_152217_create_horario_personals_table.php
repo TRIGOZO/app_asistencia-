@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('personal_id')->constrained('personales')->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('tipo_turno_id')->nullable()->constrained('tipo_turnos')->onDelete('set null')
+            $table->foreignId('turno_horario_id')->nullable()->constrained('turno_horario')->onDelete('set null')
                 ->onUpdate('cascade');
             $table->tinyInteger('tolerancia_antes')->default(5);
             $table->tinyInteger('tolerancia_despues')->default(5);

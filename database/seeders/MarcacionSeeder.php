@@ -16,15 +16,17 @@ class MarcacionSeeder extends Seeder
     public function run(): void
     {
         $archivoLeer = storage_path('app/archivos/marcacionesprevias.txt');
-        // $progressBar = $this->command->getOutput()->createProgressBar($nro_registros);
-        if(touch($archivoLeer)){
-            $archivoId = fopen($archivoLeer, "r");
-            while(!feof($archivoId)){
-                $linea = fgets($archivoId, 1024);
-                $dni  = substr($linea, 1, 8);
-                if (strlen($dni) < 8) {
-                    $dni = str_pad($dni, 8, '0', STR_PAD_LEFT);
-                }
+        $this->command->getOutput()->writeln('Iniciando Importación de Marcaciones...');
+        
+        $archivo = file($archivoLeer);
+        $cantidad_filas = count($archivo);
+        $fila_ulti=end($archivo);
+        $i=0;
+        $progressBar = $this->command->getOutput()->createProgressBar($cantidad_filas);
+        $progressBar->start();
+        foreach($archivo as $line_num=>$linea){
+            if($i<=$cantidad_filas-2){
+                $dni = str_pad(substr($linea, 1, 8), 8, '0', STR_PAD_LEFT);
                 $fecha = substr($linea, 10, 19);
                 Marcacion::firstorCreate([
                     'personal_id'           => Personal::where('numero_dni', $dni)->value('id'),
@@ -33,10 +35,12 @@ class MarcacionSeeder extends Seeder
                     'serial'                => 'AF4C172960193',
                     'ip'                    => '192.168.2.252'
                 ]);
-
+                $i++;
+                usleep(600);
+                $progressBar->advance();
             }
-            fclose($archivoId);
         }
+        $progressBar->finish();
 
     }
 }

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('tipo')->default('ENTRADA');
             $table->string('serial')->nullable();
             $table->string('ip')->nullable();
-
             $table->timestamps();
         });
     }

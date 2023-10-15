@@ -199,6 +199,13 @@
             }
         })
     }
+    const mensaje=()=>{
+        Swal.fire(
+            'SON LOS HORARIOS DE MAÑANA Y TAMBIEN DE TARDE!',
+            'TIPO TURNO',
+            'info'
+        )
+    }
     const elimina = async(id) => {
         await eliminarTipoTurno(id)
         form.value.errors = []
@@ -376,9 +383,13 @@
                                             <button class="btn btn-danger btn-sm" title="Eliminar Tipo Turno" @click.prevent="eliminar(tipoturno.id)">
                                                 <i class="fas fa-trash"></i>
                                             </button>&nbsp;
-                                            <button class="btn btn-info btn-sm" :title="tipoturno.horario_count > 0 ? 'Editar Horario' : 'Nuevo Horario'" @click.prevent="tipoturno.horario_count > 0 ? EditarHorario(tipoturno.id) : nuevoHorario(tipoturno.id)">
+
+                                            <button v-if="tipoturno.abreviatura!='MT'" class="btn btn-info btn-sm" :title="tipoturno.horario_count > 0 ? 'Editar Horario' : 'Nuevo Horario'" @click.prevent="tipoturno.horario_count > 0 ? EditarHorario(tipoturno.id) : nuevoHorario(tipoturno.id)">
                                                 <i class="fas fa-clock"></i>
                                             </button>
+                                            <button v-else class="btn btn-primary btn-sm" title="Es el Horario de Turno Mañana y Tarde" @click="mensaje()">
+                                                <i class="fas fa-clock"></i>
+                                            </button>                                            
                                         </td>
                                     </tr>
                                 </tbody>

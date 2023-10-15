@@ -109,6 +109,7 @@ Route::group(['prefix' => 'permiso', 'middleware' => 'auth'], function () {
     Route::post('guardar', [PermisoController::class, 'store']);
     Route::get('listar-fecha', [PermisoController::class, 'registrosPorFecha']);
     Route::post('minutos-menual-permiso', [PermisoController::class, 'minutosMensuales']);
+    Route::post('reporte', [PermisoController::class, 'reporte']);
 });
 
 Route::group(['prefix' => 'feriado', 'middleware' => 'auth'], function () {

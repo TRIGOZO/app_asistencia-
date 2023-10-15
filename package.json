@@ -16,6 +16,7 @@
         "pinia": "^2.1.6",
         "sweetalert2": "^11.7.20",
         "vue": "^3.3.4",
+        "vue-json-excel3": "^1.0.18",
         "vue-loader": "^17.2.2",
         "vue-router": "^4.2.4"
     }

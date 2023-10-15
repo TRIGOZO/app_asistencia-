@@ -30,7 +30,7 @@ class HorarioTurno extends Model
     ];
     public function tipo_turno()
     {
-        return $this->belongsTo(TipoTurno::class);
+        return $this->belongsTo(TipoTurno::class, 'tipo_turno_id');
     }
 
 }

@@ -15,6 +15,10 @@ export default function usePermiso() {
         let respuesta = await axios.get('permiso/listar' + getdataParamsPagination(data),getConfigHeader())
         permisos.value =respuesta.data
     }
+    const reportePermisos=async(data)=>{
+        let respond = await axios.post('permiso/reporte',data,getConfigHeader())
+        permisos.value =respond.data
+    }
     const listarFecha = async(fecha) => {
         let respuesta = await axios.get('permiso/listar-fecha?fecha=' + fecha,getConfigHeader())
         permisos.value =respuesta.data
@@ -64,6 +68,6 @@ export default function usePermiso() {
     return {
         errors, permisos, permiso, obtenerPermiso, obtenerPermisos, 
         agregarPermiso, actualizarPermiso, eliminarPermiso, respuesta,
-        listarFecha, obtenerPermisosMensual
+        listarFecha, obtenerPermisosMensual, reportePermisos
     }
 }

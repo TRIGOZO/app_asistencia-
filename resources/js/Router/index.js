@@ -36,6 +36,10 @@ import Marcaciones from '@/Paginas/marcaciones/Inicio.vue'
 import Horario from '@/Paginas/horario/Inicio.vue'
 import RolGroup from '@/Paginas/rol-grupo/Inicio.vue'
 import ReportePermiso from '@/Paginas/Reportes/Permiso/Inicio.vue'
+import ReporteTardanza from '@/Paginas/Reportes/Tardanza/Inicio.vue'
+import ReporteFaltas from '@/Paginas/Reportes/Faltas/Inicio.vue'
+
+
 const routes = [
     {
         path: '/',name: 'Login', component: Login,
@@ -153,6 +157,15 @@ const routes = [
         path: '/reporte-permiso', name:'Reporte Permiso', component: ReportePermiso ,
         meta:{layout: LayoutDefault}
     },
+    {
+        path: '/reporte-tardanza', name:'Reporte Tardanza', component: ReporteTardanza ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/reporte-faltas', name:'Reporte Faltas', component: ReporteFaltas ,
+        meta:{layout: LayoutDefault}
+    },
+
 ]
 
 export default createRouter({

@@ -1,5 +1,4 @@
 <script setup>
-
   import { ref, onMounted } from 'vue';
   import { defineTitle } from '@/Helpers';
   import useHelper from '@/Helpers'; 
@@ -7,8 +6,39 @@
   import usePersonal from '@/Composables/personal.js';
   import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
+  import JsonExcel from 'vue-json-excel3';
   const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
-
+  const {errors, marcacionesHorarios, cargarMarcacionHorario } = useMarcacion();
+  const {personal, obtenerPersonal} =usePersonal();
+  const titleHeader = ref({
+      titulo: "Marcaciones",
+      subTitulo: "Inicio",
+      icon: "",
+      vista: ""
+    });
+    const dato = ref({
+        dni:'',
+        nombre:'',
+        mes:formatoFecha(null,'MM'),
+        errors:[]
+    });
+    const cargar=async()=>{
+        dato.value.errors = []
+        await cargarMarcacionHorario(dato.value)
+        if(errors.value)
+        {
+            dato.value.errors = errors.value
+        }
+    }
+    const jsonFields = ref({
+        "Fecha": "fecha",
+        "DNI" : "numero_dni",
+        "Apellidos y Nombres": "apenom",
+        "Tipo": "tipo",
+        "Hora Marcada": "hora_marcada",
+        "Hora Entrada":"hora_entrada",
+        "Diferencia":"diferencia",
+    })
 </script>
 <template>
     <ContentHeader :title-header="titleHeader"></ContentHeader>
@@ -43,9 +73,12 @@
                                 }}<br></small>
                     </div>
                     <div class="col-md-2 mb-1">
-                        <button class="btn btn-primary" @click="cargar">
+                        <button class="btn btn-primary" @click="cargar()">
                             Cargar
-                        </button>
+                        </button>&nbsp;
+                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="marcacionesHorarios">
+                            <i class="fa-solid fa-file-excel"></i> Descargar
+                        </JsonExcel>
                     </div>
                 </div>
                 <div class="row">
@@ -74,31 +107,16 @@
                                         <td>{{ index+1 }}</td>
                                         <td>{{ marcacion.fecha }}</td>
                                         <td>{{ marcacion.numero_dni }}</td>
-                                        <td>{{ marcacion.apellido_paterno + ' ' + marcacion.apellido_materno + ' ' + marcacion.nombres }}</td>
+                                        <td>{{ marcacion.apenom }}</td>
                                         <td>{{ marcacion.tipo }}</td>
                                         <td>{{ marcacion.hora_marcada }}</td>
-                                        <td>{{ (marcacion.tipo=='Entrada') ? marcacion.hora_entrada : marcacion.hora_salida }}</td>
-                                        <td>{{ descuentoMinutos(marcacion.diferencia) + ((marcacion.diferencia<'00:00:00') ? ' Minutos Antes' : ' Minutos Despues') }}</td>
-                                        <td>{{ minutosRedondeados(descuentoMinutos(marcacion.diferencia), marcacion.tipo, marcacion.diferencia) }} Minutos</td>
+                                        <td>{{ marcacion.hora_entrada }}</td>
+                                        <td>{{ marcacion.diferencia }}</td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                                 <thead class="table-dark">
-                                    <tr>
-                                        <th colspan="6" class="text-center">TOTAL MINUTOS</th>
-                                        <th colspan="3" class="text-center">{{ dato.sumaminutos }} Minutos</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="6" class="text-center">SUELDO S/.</th>
-                                        <th colspan="3" class="text-center">S/.{{ personal.sueldo }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="6" class="text-center">DSCTO S/.</th>
-                                        <th colspan="3" class="text-center">S/.{{ parseFloat(dato.totaldscto).toFixed(2) }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="6" class="text-center">SUELDO DESCONTADO S/.</th>
-                                        <th colspan="3" class="text-center">S/.{{ parseFloat(personal.sueldo-dato.totaldscto).toFixed(2) }}</th>
-                                    </tr>
+
                                 </thead>
                             </table>
                         </div>

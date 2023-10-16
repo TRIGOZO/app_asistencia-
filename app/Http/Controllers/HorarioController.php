@@ -6,17 +6,24 @@ use App\Http\Requests\Horario\StoreHorarioAsistencialRequest;
 use App\Models\Horario;
 use App\Models\HorarioPersonal;
 use App\Models\HorarioTurno;
+use App\Models\TipoTurno;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HorarioController extends Controller
 {
+    public function __construct()
+    {
+        setlocale(LC_TIME, 'es_ES.utf8');
+    }
     public function obtenerHorariosPersonal(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
         return HorarioPersonal::with([
                 'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno',
-                'tipo_turno:id,nombre'
+                'user:id,username,personal_id',
+                // 'user.personal,id,nombres,apellido_paterno,apellido_materno'
                 ])
             ->where(function($query) use($buscar) {
                 $query->whereHas('personal', function($q) use($buscar){
@@ -59,12 +66,23 @@ class HorarioController extends Controller
             'ok' => 1,
             'mensaje' => 'Registro eliminado satisfactoriamente'
         ],200);
-    }    
-    public function store(StoreHorarioRequest $request){
+    } 
+    public function generarHorario($horarioturno){
+
+    }
+    public function store(StoreHorarioRequest $request){//administrativo
         $finicio = Carbon::parse($request->fecha_desde);
         $fechaInicio = $finicio;
         $fechaFin = Carbon::parse($request->fecha_hasta);
-        $registros = HorarioTurno::where('tipo_turno_id', $request->tipo_turno_id)->get();
+        $tipoturno = TipoTurno::find($request->tipo_turno_id);
+        if($tipoturno->abreviatura=='MT'){
+            $registros = HorarioTurno::with('tipo_turno:id,abreviatura')
+            ->whereHas('tipo_turno', function ($query){
+                $query->whereIn('abreviatura', ['M', 'T']);
+            })->get();
+        }else{
+            $registros = HorarioTurno::where('tipo_turno_id', $request->tipo_turno_id)->get();
+        }
         if($registros->isEmpty()){
             return response()->json([
                 'ok' => 0,
@@ -77,77 +95,91 @@ class HorarioController extends Controller
                 'mensaje' => 'El intervalo de Fechas debe ser mayor a 1'
             ],200);
         }
-        $horariospersonal=[];
-        foreach($registros as $row){
-            $horario = HorarioPersonal::with('turno_horario:id,dialunes,diamartes,diamiercoles,diajueves,diaviernes,diasabado,diadomingo')->create([
-                'personal_id'        => $request->personal_id,
-                'turno_horario_id'   => $row->id,
-                'tolerancia_antes'   => $row->toleranciaantes,
-                'tolerancia_despues' => $row->toleranciadespues,
-                'es_lactancia'       => $request->es_lactancia == true ? 1 : 0
-            ]);
-            $horario->load('turno_horario');
-            $horariospersonal[] = $horario;
-        }
-        $fechaInicio = $finicio;
-        $nro=1;
+        $horariopersonal = HorarioPersonal::Create([
+            'personal_id'       => $request->personal_id,
+            'user_id'           => Auth::user()->id,
+            'fecha_desde'       => $fechaInicio,
+            'fecha_hasta'       => $fechaFin,
+            'es_lactancia'       => $request->es_lactancia == true ? 1 : 0
+        ]);
         $horarios=[];
         while ($fechaInicio->lte($fechaFin)) {
-            foreach($horariospersonal as $row){
+            foreach($registros as $row){
                 if ($this->esDiaHabilitado($fechaInicio->dayOfWeek, $row)) {
-                    //$fecha = Carbon::create($anoActual, $request->mes_numero, 1);
-                    $horarios[] = [
-                        'nro' => $nro,
-                        'horario_personal_id' => $row->id,
+                    $nombreDia = $fechaInicio->formatLocalized('%A');
+                    $reghorario = Horario::with(['turno_horario:id', 'turno_horario.tipo_turno,id,abreviatura'])
+                    ->create([
+                        'nombredia' => $nombreDia,
+                        'horario_personal_id' => $horariopersonal->id,
+                        'turno_horario_id'    => $row->id,
                         'fecha' => $fechaInicio->toDateString(),
                         'dia' => $fechaInicio->dayOfWeek,
-                        'hora_entrada' => $row->turno_horario->horaentrada,
-                        'hora_salida' => $row->turno_horario->horasalida,
-                        'total_horas' => $row->turno_horario->totalhoras,
-                    ];
-                    $nro++;
+                        'hora_entrada' => $row->horaentrada,
+                        'hora_salida' => $row->horasalida,
+                        'total_horas' => $row->totalhoras,
+                    ]);
+                    $reghorario->load(['turno_horario:id,tipo_turno_id', 'turno_horario.tipo_turno:id,abreviatura']);
+                    $horarios[]=$reghorario;
                 }
             }
             $fechaInicio->addDay();
         }
-        Horario::insert($horarios);
+        // Horario::insert($horarios);
         return response()->json([
             'ok' => 1,
             'horarios' => $horarios,
             'mensaje' => 'GENERADO SATISFACTORIAMENTE'
         ],200);
     }
-    private function esDiaHabilitado($dayOfWeek, $row)
+    private function esDiaHabilitado($dayOfWeek, $horarioturno)
     {
         switch ($dayOfWeek) {
-            case 0: return $row->turno_horario->diadomingo == 1;
-            case 1: return $row->turno_horario->dialunes == 1;
-            case 2: return $row->turno_horario->diamartes == 1;
-            case 3: return $row->turno_horario->diamiercoles == 1;
-            case 4: return $row->turno_horario->diajueves == 1;
-            case 5: return $row->turno_horario->diaviernes == 1;
-            case 6: return $row->turno_horario->diasabado == 1;
+            case 0: return $horarioturno->diadomingo == 1;
+            case 1: return $horarioturno->dialunes == 1;
+            case 2: return $horarioturno->diamartes == 1;
+            case 3: return $horarioturno->diamiercoles == 1;
+            case 4: return $horarioturno->diajueves == 1;
+            case 5: return $horarioturno->diaviernes == 1;
+            case 6: return $horarioturno->diasabado == 1;
             default: return false;
         }
     }
     public function guardarHorarioAsistencial(StoreHorarioAsistencialRequest $request){
-        $fechaActual = Carbon::now();
+        $fechaInicio = Carbon::now()->month($request->mes)->firstOfMonth();
+        $fechaFin = $fechaInicio->endOfMonth();
+        $horariopersonal = HorarioPersonal::Create([
+            'personal_id'       => $request->id,
+            'user_id'           => Auth::user()->id,
+            'fecha_desde'       => $fechaInicio,
+            'fecha_hasta'       => $fechaFin,
+        ]);
+        $fecha = Carbon::now();
         foreach($request->regdias as $dia){
-            $fecha = $fechaActual->setDay($dia['dia'])->setMonth($request->mes);
-            $registro = HorarioTurno::with('tipo_turno:id,abreviatura,nombre')
-            ->whereHas('tipo_turno', function ($query) use ($dia) {
-                $query->where('abreviatura', $dia['rol']);
-            })
-            ->first();
-            //return $dia['rol'];
-            $horario = new Horario;
-            $horario->nro = $dia['dia'];
-            $horario->fecha = $fecha;
-            $horario->dia = $fecha->dayOfWeek;
-            $horario->hora_entrada = $registro->horaentrada;
-            $horario->hora_salida = $registro->horasalida;
-            $horario->total_horas = $registro->totalhoras;
-            $horario->save();    
+            $fecha = $fecha->setDay($dia['dia'])->setMonth($request->mes);
+            $registros = HorarioTurno::with('tipo_turno:id,abreviatura,nombre');
+            if ($dia['rol'] == 'MT') {
+                $registros->whereHas('tipo_turno', function ($query) {
+                    $query->whereIn('abreviatura', ['M', 'T']);
+                });
+            } else {
+                $registros->whereHas('tipo_turno', function ($query) use ($dia) {
+                    $query->where('abreviatura', $dia['rol']);
+                });
+            }
+            $registros = $registros->get();
+            $nombreDia = $fecha->formatLocalized('%A');
+            foreach($registros as $row){
+                $reghorario = Horario::create([
+                    'nombredia' => $nombreDia,
+                    'horario_personal_id' => $horariopersonal->id,
+                    'turno_horario_id'    => $row->id,
+                    'fecha' => $fecha->toDateString(),
+                    'dia' => $fecha->dayOfWeek,
+                    'hora_entrada' => $row->horaentrada,
+                    'hora_salida' => $row->horasalida,
+                    'total_horas' => $row->totalhoras,
+                ]);
+            }
         }
         return response()->json([
             'ok' => 1,
@@ -156,7 +188,8 @@ class HorarioController extends Controller
     }
 
     public function show(Request $request){
-        $horario = Horario::where('horario_personal_id', $request->id)->get();
+        $horario = Horario::with(['turno_horario:id,tipo_turno_id', 'turno_horario.tipo_turno:id,abreviatura'])
+        ->where('horario_personal_id', $request->id)->get();
         return $horario;
     }
 }

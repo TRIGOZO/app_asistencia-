@@ -117,6 +117,7 @@ class MarcacionController extends Controller
             'personales.nombres',
             'personales.apellido_paterno',
             'personales.apellido_materno',
+            DB::raw("concat(personales.apellido_paterno,' ',personales.apellido_materno,' ',personales.nombres) as apenom"),
             'personales.sueldo',
             'marcaciones.personal_id',
             'marcaciones.establecimiento_id',
@@ -124,7 +125,7 @@ class MarcacionController extends Controller
             'marcaciones.tipo',
             'marcaciones.serial',
             'marcaciones.ip',
-            'horarios.hora_entrada',
+            'horarios.hora_entrada as hora_entrada',
             'horarios.hora_salida',
             DB::raw('COALESCE(TIMEDIFF(TIME(marcaciones.fecha_hora), IF(marcaciones.tipo = "Entrada", horarios.hora_entrada, horarios.hora_salida)), "00:00:00") AS diferencia'),
             'horario_personals.id'

@@ -12,7 +12,9 @@ class Horario extends Model
 
      protected $fillable = [
         'nro',
+        'nombredia',
         'horario_personal_id',
+        'turno_horario_id',
         'fecha',
         'dia',
         'hora_entrada',
@@ -27,5 +29,9 @@ class Horario extends Model
     public function horario_personal(): BelongsTo
     {
         return $this->belongsTo(HorarioPersonal::class, 'horario_personal_id');
+    }
+    public function turno_horario(): BelongsTo
+    {
+        return $this->belongsTo(HorarioTurno::class, 'turno_horario_id');
     }
 }

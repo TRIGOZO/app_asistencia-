@@ -63,7 +63,6 @@
     });
     const buscar = () => {
         listarHorariosPersonal()
-        console.log('asdasd');
     }
     const cambiarPaginacion = () => {
         listarHorariosPersonal()
@@ -178,9 +177,9 @@
                                         <th>Ape. Paterno</th>
                                         <th>Ape. Materno</th>
                                         <th>Nombres</th>
-                                        <th>Tipo Turno</th>
-                                        <th>Tolerancia Antes</th>
-                                        <th>Tolerancia Despues</th>
+                                        <th>Fecha Desde</th>
+                                        <th>Fecha Hasta</th>
+                                        <th>Usuario</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -196,9 +195,9 @@
                                         <td>{{ horario.personal.apellido_paterno }}</td>
                                         <td>{{ horario.personal.apellido_materno }}</td>
                                         <td>{{ horario.personal.nombres }}</td>
-                                        <td>{{ horario.tipo_turno.nombre }}</td>
-                                        <td>{{ horario.tolerancia_antes }}</td>
-                                        <td>{{ horario.tolerancia_despues }}</td>
+                                        <td>{{ horario.fecha_desde}}</td>
+                                        <td>{{ horario.fecha_hasta }}</td>
+                                        <td>{{ horario.user.username }}</td>
                                         <td>
                                             <button class="btn btn-danger btn-sm" title="Eliminar Horario" @click.prevent="eliminar(horario.id)">
                                                 <i class="fas fa-trash"></i>

@@ -60,6 +60,10 @@ class Personal extends Model
     {
         return $this->belongsTo(CondicionLaboral::class, 'condicion_laboral_id');
     }
+    public function nivel():BelongsTo
+    {
+        return $this->belongsTo(Nivel::class, 'nivel_id');
+    }
     /**
      * Get all of the marcaciones for the Personal
      *

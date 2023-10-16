@@ -125,5 +125,36 @@ class PermisoController extends Controller
             'permisos' => $permisos
         ],200);
     }
+    public function reporte(Request $request){
+        $condicionLaboralId = $request->condicion_laboral_id;
+        // $permisos = Permiso::with([
+        //     'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,condicion_laboral_id,nivel_id,cargo_id,sueldo',
+        //     'personal.condicion:id,nombre',
+        //     'personal.cargo:id,nombre'
+        //     //'personal.nivel:id,nombre'
+        //     ])
+        // ->whereMonth('fecha_desde', '=', $request->mes)
+        // ->whereYear('fecha_desde', '=', $request->anho)
+        // ->where('tipo_permiso_id', $request->tipo_permiso_id)
+        // ->whereHas('personal', function ($query) use ($condicionLaboralId){
+        //     $query->where('condicion_laboral_id', $condicionLaboralId);
+        // })
+        // ->get();
+        $permisos = Permiso::select('permisos.*')
+        ->selectRaw('CONCAT(personales.apellido_paterno, " ", personales.apellido_materno, ", ", personales.nombres) as apenom')
+        ->join('personales', 'permisos.personal_id', '=', 'personales.id')
+        ->whereMonth('fecha_desde', '=', $request->mes)
+        ->whereYear('fecha_desde', '=', $request->anho)
+        ->where('tipo_permiso_id', $request->tipo_permiso_id)
+        ->where('personales.condicion_laboral_id', $condicionLaboralId)
+        ->orderBy('personales.apellido_paterno', 'asc')
+        ->with([
+            'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,condicion_laboral_id,nivel_id,cargo_id,sueldo',
+            'personal.condicion:id,nombre',
+            'personal.cargo:id,nombre'
+        ])
+        ->get();
+        return $permisos;
+    }
 
 }

@@ -55,20 +55,24 @@ import useHorario from '@/Composables/horario.js';
                                 <thead class="table-dark">
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th>Dia</th>
                                         <th>Fecha</th>
                                         <th>Hora de Entrada</th>
                                         <th>Hora de Salida</th>
                                         <th>total_horas</th>
+                                        <th>Turno</th>
                                         <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="registro in horario" :key="registro.id">
-                                        <td class="text-center">{{ registro.nro }}</td>
+                                    <tr v-for="(registro,index) in horario" :key="registro.id">
+                                        <td class="text-center">{{ index+1 }}</td>
+                                        <td>{{ registro.nombredia }}</td>
                                         <td>{{ registro.fecha }}</td>
                                         <td>{{ registro.hora_entrada }}</td>
                                         <td>{{ registro.hora_salida }}</td>
                                         <td>{{ registro.total_horas }}</td>
+                                        <td>{{ registro.turno_horario.tipo_turno.abreviatura }}</td>
                                         <td>
                                             <button class="btn btn-danger btn-sm" title="Eliminar Registro" @click.prevent="eliminar(registro.id)">
                                                 <i class="fas fa-trash"></i>

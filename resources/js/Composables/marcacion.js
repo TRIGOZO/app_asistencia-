@@ -60,13 +60,10 @@ export default function useMarcacion() {
         }
     }
     const cargarMarcacionHorario = async(data) => {
-        errors.value = ''
         try {
             let respond = await axios.post('marcacion/marcaciones-horario', data,getConfigHeader())
-            errors.value =''
             marcacionesHorarios.value =respond.data
         } catch (error) {
-            errors.value=""
             if(error.response.status === 422) {
                 errors.value = error.response.data.errors
             }

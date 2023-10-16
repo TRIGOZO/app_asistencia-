@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permiso;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,23 +13,56 @@ class PermisoSeeder extends Seeder
      */
     public function run(): void
     {
-        // $permiso = Personal::firstOrCreate([
-        //     'numero_dni' => '40422582',
-        //     'nombres' => 'CARLOS PAVEL',
-        //     'apellido_paterno' => 'GARAY',
-        //     'apellido_materno' => 'MANZANO',
-        //     'fecha_nacimiento'   => '1974-01-20',
-        //     'estado_civil_id'  => EstadoCivil::where('nombre', 'SOLTERO')->value('id'),
-        //     'email'         => 'email@me.com',
-        //     'sueldo'        =>  '4224',
-        //     'fecha_inicio'  => '1900-10-10',
-        //     'fecha_fin'  => '1900-10-10',
-        //     'nivel_id'  => '61',
-        //    'tipo_trabajador_id'  => '1',
-        //     'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'NOMBRADO')->value('id'),
-        //     'cargo_id'  => Cargo::where('nombre', 'CIRUJANO DENTISTA I')->value('id'),
-        //     'profesion_id' => Profesion::where('nombre', 'REGULARIZAR')->value('id'),
-        //     'establecimiento_id' => Establecimiento::where('codigo', '100111201')->value('id'),
-        // ]);
+        $csvFile = fopen(storage_path('app/archivos/permisos.csv'),'r');
+        $nro_registros = -1;
+        while (($datum = fgetcsv($csvFile, 555, ',')) !== false)
+        {
+            $nro_registros +=1;
+        }
+        fclose($csvFile);
+        $this->command->getOutput()->writeln('Iniciando Importación de Permisos...');
+        $this->command->getOutput()->writeln('Cantidad de registros: '.$nro_registros);
+        $progressBar = $this->command->getOutput()->createProgressBar($nro_registros);
+
+        $csvFile2 = fopen(storage_path('app/archivos/permisos.csv'),"r");
+
+        $progressBar->start();
+        $firstLine = true;
+        while(($fila  = fgetcsv($csvFile2,2000,";")) !== false) {
+            if(!$firstLine)
+            {
+                $registro = explode(",",(string)$fila[0]);
+
+                $personal_id =$registro[1];
+                $fecha_desde = $registro[2];
+                $hora_inicio=$registro[3];
+                $fecha_hasta = $registro[4];
+                $hora_hasta=$registro[5];
+                $tipo_permiso_id=$registro[6];
+                $motivo=str_replace('"', '', $registro[7]);
+                $establecimiento_id=$registro[8];
+                $estado=$registro[9];
+                Permiso::firstOrCreate([
+                    'personal_id'       => $personal_id,
+                    'fecha_desde'       => $fecha_desde,
+                    'hora_inicio'       => $hora_inicio,
+                    'fecha_hasta'       => $fecha_hasta,
+                    'hora_hasta'        => $hora_hasta,
+                    'tipo_permiso_id'   => $tipo_permiso_id,
+                    'motivo'            => $motivo,
+                    'establecimiento_id'=>  $establecimiento_id,
+                    'estado'            => $estado,
+
+                ]);
+                usleep(1000);
+                $progressBar->advance();
+            }
+            $firstLine = false;
+        }
+        fclose($csvFile2);
+        $progressBar->finish();
+        $this->command->getOutput()->writeln("");
+        $this->command->getOutput()->writeln("Importación Finalizada");
+
     }
 }

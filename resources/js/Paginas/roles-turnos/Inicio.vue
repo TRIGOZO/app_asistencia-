@@ -68,10 +68,7 @@
     }
     const horario = ref({});
     const verhorario = async(registros) => {
-
-    horario.value = registros
-
-
+        horario.value = registros
         // await obtenerHorario(id);
         dato.value.horario='true'
 
@@ -141,7 +138,7 @@
                 </div>
             </div>
         </div>
-        <Horario v-if="dato.horario" :horario="horario"></Horario>
+        <Horario v-if="dato.horario" :horario="horario" :form="form"></Horario>
       </div>
     </div>
     <RoleTurnoForm :form="form" @onVerHorario="verhorario"></RoleTurnoForm>

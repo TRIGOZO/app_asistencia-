@@ -51,7 +51,7 @@ class TipoTurnoSeeder extends Seeder
                 'horasdespuesdescansa' => 0,
                 'horaasistencial' => 1,
                 'horaadministrativo' => 0,
-                'nroturnos' => 1
+                'nroturnos' => 1,
             ],
             [
                 'abreviatura' => 'N',

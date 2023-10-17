@@ -18,7 +18,7 @@
     });
     const dato = ref({
         dni:'',
-        nombre:'',
+        anho:formatoFecha(null,'YYYY'),
         mes:formatoFecha(null,'MM'),
         errors:[]
     });
@@ -34,8 +34,9 @@
         "Fecha": "fecha",
         "DNI" : "numero_dni",
         "Apellidos y Nombres": "apenom",
-        "Tipo": "tipo",
-        "Hora Marcada": "hora_marcada",
+        "Turno": "turno",
+        "Hora Entrada": "hora_entrada",
+        "Hora Marcada Entrada": "fecha_hora_entrada_marcada",
         "Hora Entrada":"hora_entrada",
         "Diferencia":"diferencia",
     })
@@ -87,17 +88,15 @@
                             <table class="table table-bordered table-hover table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th colspan="6" class="text-center">Marcaciones</th>
-                                        <th colspan="3" class="text-center">Horario</th>
-                                    </tr>
-                                    <tr>
                                         <th>#</th>
                                         <th>FECHA</th>
                                         <th>DNI</th>
                                         <th>Apenom</th>
-                                        <th>Tipo</th>
-                                        <th>Hora Marcada</th>
-                                        <th>Hora</th>
+                                        <th>Turno</th>
+                                        <th>Hora Entrada</th>
+                                        <th>Hora Entrada Marcada</th>
+                                        <th>Hora Salida</th>
+                                        <th>Hora Salida Marcada</th>
                                         <th>Diferencia</th>
                                         <th>Redondeado</th>
                                     </tr>
@@ -108,9 +107,11 @@
                                         <td>{{ marcacion.fecha }}</td>
                                         <td>{{ marcacion.numero_dni }}</td>
                                         <td>{{ marcacion.apenom }}</td>
-                                        <td>{{ marcacion.tipo }}</td>
-                                        <td>{{ marcacion.hora_marcada }}</td>
+                                        <td>{{ marcacion.turno }}</td>
                                         <td>{{ marcacion.hora_entrada }}</td>
+                                        <td>{{ marcacion.fecha_hora_entrada_marcada }}</td>
+                                        <td>{{ marcacion.hora_salida }}</td>
+                                        <td>{{ marcacion.fecha_hora_salida_marcada }}</td>
                                         <td>{{ marcacion.diferencia }}</td>
                                         <td></td>
                                     </tr>

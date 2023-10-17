@@ -5,6 +5,7 @@ use App\Models\Establecimiento;
 use App\Models\Marcacion;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 trait MarcacionTrait
 {
@@ -51,5 +52,45 @@ trait MarcacionTrait
             return $marcacion;
         }
 
+    }
+    public static function getByPersonal(Request $request){
+        return DB::select("
+            SELECT horarios.*, concat(personales.apellido_paterno, personales.apellido_materno, 
+            personales.nombres) as apenom, personales.numero_dni,
+            tipo_turnos.nombre as turno, 
+            (
+                SELECT marcaciones.fecha_hora
+                FROM marcaciones 
+                WHERE marcaciones.personal_id = personales.id
+                    AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                    AND (
+                        TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                        AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+                    )
+            ) as fecha_hora_entrada_marcada,
+            
+            (
+                SELECT marcaciones.fecha_hora
+                FROM marcaciones 
+                WHERE marcaciones.personal_id = personales.id
+                    AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                    AND (
+                        TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                        AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+                    )
+            ) as fecha_hora_salida_marcada
+            FROM personales
+            inner JOIN horario_personals ON personales.id = horario_personals.personal_id
+            INNER JOIN horarios ON horario_personals.id = horarios.horario_personal_id    
+            INNER JOIN turno_horario on (
+                    horarios.turno_horario_id=turno_horario.id	
+            )
+            inner join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
+            WHERE personales.numero_dni = ?
+                AND year(horarios.fecha) = ?
+                AND MONTH(horarios.fecha) = ?;
+        ",[
+            $request->dni,$request->anho,$request->mes
+        ]);
     }
 }

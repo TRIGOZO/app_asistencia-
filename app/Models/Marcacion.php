@@ -39,5 +39,5 @@ class Marcacion extends Model
     {
         return $this->belongsTo(Establecimiento::class, 'establecimiento_id');
     }
-
+    
 }

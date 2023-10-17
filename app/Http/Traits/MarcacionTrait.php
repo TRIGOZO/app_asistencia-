@@ -55,11 +55,11 @@ trait MarcacionTrait
     }
     public static function getByPersonal(Request $request){
         return DB::select("
-            SELECT horarios.*, concat(personales.apellido_paterno, personales.apellido_materno, 
+            SELECT horarios.*, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
             personales.nombres) as apenom, personales.numero_dni,
             tipo_turnos.nombre as turno, 
             (
-                SELECT marcaciones.fecha_hora
+                SELECT min(marcaciones.fecha_hora)
                 FROM marcaciones 
                 WHERE marcaciones.personal_id = personales.id
                     AND horarios.fecha = DATE(marcaciones.fecha_hora)
@@ -68,9 +68,8 @@ trait MarcacionTrait
                         AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
                     )
             ) as fecha_hora_entrada_marcada,
-            
             (
-                SELECT marcaciones.fecha_hora
+                SELECT min(marcaciones.fecha_hora)
                 FROM marcaciones 
                 WHERE marcaciones.personal_id = personales.id
                     AND horarios.fecha = DATE(marcaciones.fecha_hora)

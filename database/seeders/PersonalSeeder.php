@@ -28687,7 +28687,7 @@ class PersonalSeeder extends Seeder
             'fecha_inicio'  => '2018-04-01',
             'fecha_fin'  => '1900-10-10',
             'nivel_id'  => '0',
-           'tipo_trabajador_id'  => TipoTrabajador::where('nombre', 'Asistencial')->value('id'),
+           'tipo_trabajador_id'  => TipoTrabajador::where('nombre', 'Administrativo')->value('id'),
             'condicion_laboral_id'  => CondicionLaboral::where('nombre', 'CONTRATADO - CAS')->value('id'),
             'cargo_id'  => Cargo::where('nombre', 'POR DEFINIR ')->value('id'),
             'profesion_id' => Profesion::where('nombre', 'TECNICO EN ESTADISTICA')->value('id'),

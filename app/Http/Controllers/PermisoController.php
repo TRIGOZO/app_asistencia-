@@ -140,8 +140,12 @@ class PermisoController extends Controller
         //     $query->where('condicion_laboral_id', $condicionLaboralId);
         // })
         // ->get();
-        $permisos = Permiso::select('permisos.*')
-        ->selectRaw('CONCAT(personales.apellido_paterno, " ", personales.apellido_materno, ", ", personales.nombres) as apenom')
+        $permisos = Permiso::select([
+            'permisos.*',
+            DB::raw('CONCAT(permisos.fecha_desde, " ", permisos.hora_inicio) as desde'),
+            DB::raw('CONCAT(permisos.fecha_hasta, " ", permisos.hora_hasta) as hasta'),
+            DB::raw('CONCAT(personales.apellido_paterno, " ", personales.apellido_materno, ", ", personales.nombres) as apenom'),
+        ])
         ->join('personales', 'permisos.personal_id', '=', 'personales.id')
         ->whereMonth('fecha_desde', '=', $request->mes)
         ->whereYear('fecha_desde', '=', $request->anho)

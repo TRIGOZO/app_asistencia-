@@ -32,8 +32,9 @@
         "Condicion Laboral": "personal.condicion.nombre",
         "Cargo": "personal.cargo.nombre",
         "Nivel":"personal.nivel_id",
+        "Desde":"desde",
+        "Hasta":"hasta",
         "Motivo":"motivo",
-        "Sueldo":"personal.sueldo"
     })
     onMounted(()=>{
         listaCondicionesLaborales()
@@ -142,20 +143,22 @@
                                         <th>Condicion Laboral</th>
                                         <th>Cargo</th>
                                         <th>Nivel</th>
+                                        <th>Fecha Hora Desde</th>
+                                        <th>Fecha Hora Hasta</th>
                                         <th>Motivo</th>
-                                        <th>Sueldo (S/.)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(permiso,index) in permisos" :key="permiso.id">
-                                        <td class="text-center">{{ index }}</td>
+                                        <td class="text-center">{{ index+1 }}</td>
                                         <td>{{ permiso.personal.numero_dni }}</td>
                                         <td>{{ permiso.apenom }}</td>
                                         <td>{{ permiso.personal.condicion.nombre }}</td>
                                         <td>{{ permiso.personal.cargo.nombre }}</td>
                                         <td>{{ permiso.personal.nivel_id }}</td>
+                                        <td>{{ permiso.desde }}</td>
+                                        <td>{{ permiso.hasta }}</td>
                                         <td>{{ permiso.motivo }}</td>
-                                        <td>{{ permiso.personal.sueldo }}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -146,6 +146,8 @@
                                         <th>Nivel</th>
                                         <th>Tiempo Minutos</th>
                                         <th>Sueldo (S/.)</th>
+                                        <th>Constante</th>
+                                        <th>Descuento (S/.)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -158,6 +160,8 @@
                                         <td>{{ registro.nivel }}</td>
                                         <td>{{ registro.minutos }}</td>
                                         <td>{{ registro.sueldo }}</td>
+                                        <td>{{ registro.constante_descuento }}</td>
+                                        <td>{{ (registro.constante_descuento*registro.minutos).toFixed(2) }}</td>
                                     </tr>
                                 </tbody>
                             </table>

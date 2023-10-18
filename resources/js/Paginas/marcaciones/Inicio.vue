@@ -16,6 +16,7 @@
       icon: "",
       vista: ""
     });
+    const total=ref(0);
     const dato = ref({
         dni:'',
         anho:formatoFecha(null,'YYYY'),
@@ -25,6 +26,12 @@
     const cargar=async()=>{
         dato.value.errors = []
         await cargarMarcacionHorario(dato.value)
+        if(marcacionesHorarios.value){
+            total.value = 0
+            marcacionesHorarios.value.forEach(m => {
+                total.value += (m.diferencia_entrada ?? 0)
+            });
+        }
         if(errors.value)
         {
             dato.value.errors = errors.value
@@ -38,7 +45,10 @@
         "Hora Entrada": "hora_entrada",
         "Hora Marcada Entrada": "fecha_hora_entrada_marcada",
         "Hora Entrada":"hora_entrada",
-        "Diferencia":"diferencia",
+        "Diferencia Hora Entrada":"diferencia_entrada",
+        "Hora Salida":"hora_salida",
+        "Hora Marcada Salida":"fecha_hora_salida_marcada",
+        "Diferencia Hora Salida":"diferencia_salida",
     })
 </script>
 <template>
@@ -95,10 +105,10 @@
                                         <th>Turno</th>
                                         <th>Hora Entrada</th>
                                         <th>Hora Entrada Marcada</th>
+                                        <th>Diferencia Entrada</th>
                                         <th>Hora Salida</th>
                                         <th>Hora Salida Marcada</th>
-                                        <th>Diferencia</th>
-                                        <th>Redondeado</th>
+                                        <th>Diferencia Salida</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,15 +120,28 @@
                                         <td>{{ marcacion.turno }}</td>
                                         <td>{{ marcacion.hora_entrada }}</td>
                                         <td>{{ marcacion.fecha_hora_entrada_marcada }}</td>
+                                        <td>{{ marcacion.diferencia_entrada }}</td>
                                         <td>{{ marcacion.hora_salida }}</td>
                                         <td>{{ marcacion.fecha_hora_salida_marcada }}</td>
-                                        <td>{{ marcacion.diferencia }}</td>
+                                        <td>{{ marcacion.diferencia_salida }}</td>
                                         <td></td>
                                     </tr>
                                 </tbody>
-                                <thead class="table-dark">
-
-                                </thead>
+                                <tfoot class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>{{ total }}</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

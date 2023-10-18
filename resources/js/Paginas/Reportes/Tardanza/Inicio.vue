@@ -3,24 +3,28 @@
   import { ref, onMounted, inject } from 'vue';
   import { defineTitle } from '@/Helpers';
   import useHelper from '@/Helpers';  
+  import useEstablecimiento from '@/Composables/establecimientos.js';  
   import useCondicionLaboral from '@/Composables/condicionlaboral.js';
-  import useTipoPermiso from '@/Composables/tipopermisos.js';
+  import useMarcacion from '@/Composables/marcacion.js';  
   import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import JsonExcel from 'vue-json-excel3';
   const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
 
 
-  const {
+    const {
     listaCondicionesLaborales, condicioneslaborales
     } = useCondicionLaboral();
     const {
-        listaTipoPermisos, tipopermisos
-    } = useTipoPermiso();
+        listaEstablecimientos, establecimientos
+    } = useEstablecimiento();
+    const {
+        cargarTardanzas, marcacionesHorarios
+    } = useMarcacion();
     const { reportePermisos, permisos } = usePermiso();
 
     const titleHeader = ref({
-      titulo: "Reporte - Permiso",
+      titulo: "Reporte - Tardanza",
       subTitulo: "Reportes",
       icon: "",
       vista: ""
@@ -37,16 +41,16 @@
     })
     onMounted(()=>{
         listaCondicionesLaborales()
-        listaTipoPermisos()
+        listaEstablecimientos()
     });
     const buscar=async()=>{
-        reportePermisos(dato.value)
+        cargarTardanzas(dato.value)
     }
     const anhoactual=formatoFecha(null,"YYYY");
     const dato = ref({
         condicion_laboral_id : '',
+        establecimiento_id : '',
         mes : formatoFecha(null,"MM"),
-        tipo_permiso_id : '',
         anho : anhoactual,
         errors:[]
     });
@@ -68,6 +72,21 @@
                         <div class="input-group">
                             <div class="input-group mb-1">
                                 <span class="input-group-text" id="basic-addon1">Condicion Laboral</span>
+                                <select v-model="dato.establecimiento_id" class="form-control" :class="{ 'is-invalid': dato.errors.establecimiento_id }">
+                                    <option value="">--Seleccione--</option>
+                                    <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id">
+                                        {{ establecimiento.nombre }}
+                                    </option>
+                                </select>
+                            </div>
+                            <small class="text-danger" v-for="error in dato.errors.establecimiento_id" :key="error">{{ error
+                                }}</small>
+                        </div>
+                    </div>                    
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group mb-1">
+                                <span class="input-group-text" id="basic-addon1">Condicion Laboral</span>
                                 <select v-model="dato.condicion_laboral_id" class="form-control"
                                                     :class="{ 'is-invalid': dato.errors.condicion_laboral_id }">
                                     <option value="">--Seleccione--</option>
@@ -78,23 +97,6 @@
                                 </select>
                             </div>
                             <small class="text-danger" v-for="error in dato.errors.condicion_laboral_id" :key="error">{{ error
-                                }}<br></small>                            
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group">
-                            <div class="input-group mb-1">
-                                <span class="input-group-text" id="basic-addon1">Tipo de Permiso</span>
-                                <select v-model="dato.tipo_permiso_id" class="form-control"
-                                                    :class="{ 'is-invalid': dato.errors.tipo_permiso_id }">
-                                    <option value="">--Seleccione--</option>
-                                    <option v-for="tipopermiso in tipopermisos" :key="tipopermiso.id" :value="tipopermiso.id"
-                                        :title="tipopermiso.nombre">
-                                        {{ tipopermiso.nombre }}
-                                    </option>
-                                </select>
-                            </div>
-                            <small class="text-danger" v-for="error in dato.errors.tipo_permiso_id" :key="error">{{ error
                                 }}<br></small>                            
                         </div>
                     </div>
@@ -142,20 +144,20 @@
                                         <th>Condicion Laboral</th>
                                         <th>Cargo</th>
                                         <th>Nivel</th>
-                                        <th>Motivo</th>
+                                        <th>Tiempo Minutos</th>
                                         <th>Sueldo (S/.)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(permiso,index) in permisos" :key="permiso.id">
+                                    <tr v-for="(registro,index) in marcacionesHorarios" :key="registro.id">
                                         <td class="text-center">{{ index }}</td>
-                                        <td>{{ permiso.personal.numero_dni }}</td>
-                                        <td>{{ permiso.apenom }}</td>
-                                        <td>{{ permiso.personal.condicion.nombre }}</td>
-                                        <td>{{ permiso.personal.cargo.nombre }}</td>
-                                        <td>{{ permiso.personal.nivel_id }}</td>
-                                        <td>{{ permiso.motivo }}</td>
-                                        <td>{{ permiso.personal.sueldo }}</td>
+                                        <td>{{ registro.numero_dni }}</td>
+                                        <td>{{ registro.apenom }}</td>
+                                        <td>{{ registro.condicion }}</td>
+                                        <td>{{ registro.cargo }}</td>
+                                        <td>{{ registro.nivel }}</td>
+                                        <td>{{ registro.minutos }}</td>
+                                        <td>{{ registro.sueldo }}</td>
                                     </tr>
                                 </tbody>
                             </table>

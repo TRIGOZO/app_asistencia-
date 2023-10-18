@@ -147,4 +147,7 @@ class MarcacionController extends Controller
         // ->get();
         //return $marcaciones;
     }
+    public function reporteTardanza(Request $request){
+        return Marcacion::getTardanzasByEstablecimiento($request);
+    }
 }

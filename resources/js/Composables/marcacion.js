@@ -69,9 +69,19 @@ export default function useMarcacion() {
             }
         }
     }
+    const cargarTardanzas = async(data) =>{
+        try {
+            let respond = await axios.post('marcacion/reporte-tardanzas', data,getConfigHeader())
+            marcacionesHorarios.value =respond.data
+        } catch (error) {
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }
     return {
         errors, marcaciones, marcacion, obtenerMarcacion, obtenerMarcaciones, 
         agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy,
-        cargarMarcacionHorario, marcacionesHorarios
+        cargarMarcacionHorario, marcacionesHorarios, cargarTardanzas
     }
 }

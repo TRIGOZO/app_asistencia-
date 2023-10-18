@@ -55,7 +55,7 @@ trait MarcacionTrait
     }
     public static function getByPersonal(Request $request){
         return DB::select("
-        SELECT horarios.hora_entrada, horarios.hora_salida, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
+        SELECT horarios.fecha, horarios.hora_entrada, horarios.hora_salida, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
         personales.nombres) as apenom, personales.numero_dni,
         tipo_turnos.nombre as turno, 
         (
@@ -134,9 +134,19 @@ trait MarcacionTrait
                             AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
                         )
                     ) - horarios.hora_entrada) is null
-            then 0
+            then (
+				select if(count(permisos.id)>0,0, null) from permisos where personal_id=personales.id and 
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
+							CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+						)
+						AND
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
+							CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+						)
+                )
         end
-
              as diferencia_entrada,
         (
             SELECT min(marcaciones.fecha_hora)
@@ -148,16 +158,40 @@ trait MarcacionTrait
                     AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
                 )
         ) as fecha_hora_salida_marcada,
-        minute((SELECT min(time(marcaciones.fecha_hora))
-            FROM marcaciones 
-            WHERE marcaciones.personal_id = personales.id
-                AND horarios.fecha = DATE(marcaciones.fecha_hora)
-                AND (
-                    TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
-                    AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+        case
+            when 
+                minute((SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+                        )
+                    ) - horarios.hora_salida) is null
+            then (
+				select if(count(permisos.id)>0,0, null) from permisos where personal_id=personales.id and 
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) >= 
+							CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+						)
+						AND
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) <= 
+							CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+						)
                 )
-            ) - horarios.hora_salida)
-             as diferencia_salida,
+            else 
+                minute(horarios.hora_salida-(SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+                        )
+                    ))
+        end AS diferencia_salida,
         (				
             minute((SELECT min(time(marcaciones.fecha_hora))
             FROM marcaciones 
@@ -183,7 +217,7 @@ trait MarcacionTrait
         inner JOIN horario_personals ON personales.id = horario_personals.personal_id
         INNER JOIN horarios ON horario_personals.id = horarios.horario_personal_id    
         INNER JOIN turno_horario on (
-                horarios.turno_horario_id=turno_horario.id	
+            horarios.turno_horario_id=turno_horario.id	
         )
         inner join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
         WHERE personales.numero_dni = ?
@@ -266,7 +300,8 @@ trait MarcacionTrait
                     ) - horarios.hora_entrada) is null
             then 0
         end)
-             as minutos
+             as minutos,
+        IF(tipo_trabajador_id=1,sueldo/12000,sueldo/14400) as constante_descuento
         FROM personales
         inner JOIN horario_personals ON personales.id = horario_personals.personal_id
         INNER JOIN horarios ON horario_personals.id = horarios.horario_personal_id    
@@ -277,10 +312,11 @@ trait MarcacionTrait
         INNER JOIN cargos on personales.cargo_id=cargos.id
         inner join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
         WHERE personales.establecimiento_id = ?
+            AND personales.condicion_laboral_id = ?
             AND year(horarios.fecha) = ?
             AND MONTH(horarios.fecha) = ? group by (personales.numero_dni);
         ",[
-            $request->establecimiento_id,$request->anho,$request->mes
+            $request->establecimiento_id,$request->condicion_laboral_id,$request->anho,$request->mes
         ]);        
     }
 }

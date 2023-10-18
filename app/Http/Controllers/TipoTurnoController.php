@@ -59,10 +59,15 @@ class TipoTurnoController extends Controller
     public function update(UpdateTipoTurnoRequest $request)
     {
         $request->validated();
-
         $tipoturno = TipoTurno::where('id',$request->id)->first();
         $nombre = str_replace(' ', '', $request->nombre);
-        $abreviatura = strtoupper(substr($nombre, 0, 4)); 
+        $abreviatura = strtoupper(substr($nombre, 0, 4));
+        if($nombre=='MAÑANA'){
+            $abreviatura='M';
+        }
+        if($nombre=='TARDE'){
+            $abreviatura='T';
+        }
         $tipoturno->update([
             'abreviatura' => $abreviatura,
             'nombre'    => $request->nombre,

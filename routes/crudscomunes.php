@@ -203,6 +203,7 @@ Route::group(['prefix' => 'marcacion', 'middleware' => 'auth'], function () {
     Route::get('listar', [MarcacionController::class, 'listar']);
     Route::get('marcaciones-hoy', [MarcacionController::class, 'marcacionesFecha']); 
     Route::post('marcaciones-horario', [MarcacionController::class, 'cargarMarcacionVsHorario']);
+    Route::post('reporte-tardanzas', [MarcacionController::class, 'reporteTardanza']);
 });
 
 //USUARIOS

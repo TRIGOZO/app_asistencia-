@@ -193,4 +193,94 @@ trait MarcacionTrait
             $request->dni,$request->anho,$request->mes
         ]);
     }
+    public static function getTardanzasByEstablecimiento(Request $request){
+        return DB::select("
+        SELECT personales.numero_dni, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
+        personales.nombres) as apenom, condicion_laborales.nombre as condicion, cargos.nombre as cargo,
+        personales.nivel_id as nivel, personales.sueldo,
+        sum(case
+            when 
+                time((SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+                        )
+                    ))< horarios.hora_entrada
+            then 0
+            when 
+                minute((SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+                        )
+                    ) - horarios.hora_entrada) >= 30
+            then 480
+            when 
+                minute((SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+                        )
+                    ) - horarios.hora_entrada) >= 21
+            then 30
+            when 
+                minute((SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+                        )
+                    ) - horarios.hora_entrada) >= 11
+            then 20
+            when 
+                minute((SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+                        )
+                    ) - horarios.hora_entrada) >=0
+            then 0
+            when 
+                minute((SELECT min(time(marcaciones.fecha_hora))
+                    FROM marcaciones 
+                    WHERE marcaciones.personal_id = personales.id
+                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                        AND (
+                            TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+                        )
+                    ) - horarios.hora_entrada) is null
+            then 0
+        end)
+             as minutos
+        FROM personales
+        inner JOIN horario_personals ON personales.id = horario_personals.personal_id
+        INNER JOIN horarios ON horario_personals.id = horarios.horario_personal_id    
+        INNER JOIN turno_horario on (
+                horarios.turno_horario_id=turno_horario.id	
+        )
+        INNER JOIN condicion_laborales on personales.condicion_laboral_id=condicion_laborales.id
+        INNER JOIN cargos on personales.cargo_id=cargos.id
+        inner join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
+        WHERE personales.establecimiento_id = ?
+            AND year(horarios.fecha) = ?
+            AND MONTH(horarios.fecha) = ? group by (personales.numero_dni);
+        ",[
+            $request->establecimiento_id,$request->anho,$request->mes
+        ]);        
+    }
 }

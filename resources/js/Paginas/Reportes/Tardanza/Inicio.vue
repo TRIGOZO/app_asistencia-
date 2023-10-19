@@ -37,14 +37,26 @@
         "Cargo": "personal.cargo.nombre",
         "Nivel":"personal.nivel_id",
         "Motivo":"motivo",
-        "Sueldo":"personal.sueldo"
+        "Sueldo":"personal.sueldo",
+        "Descuento":"descuento",
+        "Total":"total"
+
     })
     onMounted(()=>{
         listaCondicionesLaborales()
         listaEstablecimientos()
     });
     const buscar=async()=>{
-        cargarTardanzas(dato.value)
+        await cargarTardanzas(dato.value)
+        let marcaciones = marcacionesHorarios.value
+        marcaciones.forEach(item=>{
+            item.descuento = (item.constante_descuento*item.minutos).toFixed(2)
+            item.total=(item.sueldo-(item.constante_descuento*item.minutos)).toFixed(2)
+        });
+
+        // marcacionesHorarios.value.forEach(item=>{
+        //     item.descuento = (item.constante_descuento*item.minutos).toFixed(2)
+        // });
     }
     const anhoactual=formatoFecha(null,"YYYY");
     const dato = ref({
@@ -148,6 +160,7 @@
                                         <th>Sueldo (S/.)</th>
                                         <th>Constante</th>
                                         <th>Descuento (S/.)</th>
+                                        <th>Total(S/.)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -161,7 +174,8 @@
                                         <td>{{ registro.minutos }}</td>
                                         <td>{{ registro.sueldo }}</td>
                                         <td>{{ registro.constante_descuento }}</td>
-                                        <td>{{ (registro.constante_descuento*registro.minutos).toFixed(2) }}</td>
+                                        <td>{{ registro.descuento }}</td>
+                                        <td>{{ registro.total }}</td>
                                     </tr>
                                 </tbody>
                             </table>

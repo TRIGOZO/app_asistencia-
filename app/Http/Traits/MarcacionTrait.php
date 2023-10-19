@@ -136,15 +136,15 @@ trait MarcacionTrait
                     ) - horarios.hora_entrada) is null
             then (
 				select if(count(permisos.id)>0,0, null) from permisos where personal_id=personales.id and 
-						(
-							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
-							CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
-						)
-						AND
-						(
-							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
-							CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
-						)
+                    (
+                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
+                        CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+                    )
+                    AND
+                    (
+                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
+                        CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+                    )
                 )
         end
              as diferencia_entrada,
@@ -158,17 +158,23 @@ trait MarcacionTrait
                     AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
                 )
         ) as fecha_hora_salida_marcada,
-        case
+        (
+            case
             when 
-                minute((SELECT min(time(marcaciones.fecha_hora))
-                    FROM marcaciones 
-                    WHERE marcaciones.personal_id = personales.id
-                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
-                        AND (
-                            TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
-                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
-                        )
-                    ) - horarios.hora_salida) is null
+                ROUND(TIMESTAMPDIFF(
+                    SECOND,
+                    concat(horarios.fecha,' ',horarios.hora_salida),
+                    (
+                        SELECT min(marcaciones.fecha_hora)
+                        FROM marcaciones 
+                        WHERE marcaciones.personal_id = personales.id
+                            AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                            AND (
+                                TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                                AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+                            )
+                    )
+                )/60,0) is null
             then (
 				select if(count(permisos.id)>0,0, null) from permisos where personal_id=personales.id and 
 						(
@@ -182,16 +188,27 @@ trait MarcacionTrait
 						)
                 )
             else 
-                minute(horarios.hora_salida-(SELECT min(time(marcaciones.fecha_hora))
-                    FROM marcaciones 
-                    WHERE marcaciones.personal_id = personales.id
-                        AND horarios.fecha = DATE(marcaciones.fecha_hora)
-                        AND (
-                            TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
-                            AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
-                        )
-                    ))
-        end AS diferencia_salida,
+                ROUND(TIMESTAMPDIFF(
+                    SECOND,
+                    concat(horarios.fecha,' ',horarios.hora_salida),
+                    (
+                        SELECT min(marcaciones.fecha_hora)
+                        FROM marcaciones 
+                        WHERE marcaciones.personal_id = personales.id
+                            AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                            AND (
+                                TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                                AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+                            )
+                    )
+                )/60,0)
+        end
+
+
+
+
+        )
+        AS diferencia_salida,
         (				
             minute((SELECT min(time(marcaciones.fecha_hora))
             FROM marcaciones 
@@ -232,7 +249,8 @@ trait MarcacionTrait
         SELECT personales.numero_dni, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
         personales.nombres) as apenom, condicion_laborales.nombre as condicion, cargos.nombre as cargo,
         personales.nivel_id as nivel, personales.sueldo,
-        sum(case
+        sum(
+        case
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -298,8 +316,20 @@ trait MarcacionTrait
                             AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
                         )
                     ) - horarios.hora_entrada) is null
-            then 0
-        end)
+            then (
+				select if(count(permisos.id)>0,0, 0) from permisos where personal_id=personales.id and 
+                    (
+                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
+                        CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+                    )
+                    AND
+                    (
+                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
+                        CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+                    )
+                )
+        end
+        )
              as minutos,
         IF(tipo_trabajador_id=1,sueldo/12000,sueldo/14400) as constante_descuento
         FROM personales

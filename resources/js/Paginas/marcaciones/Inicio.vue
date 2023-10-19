@@ -119,12 +119,11 @@
                                         <td>{{ marcacion.apenom }}</td>
                                         <td>{{ marcacion.turno }}</td>
                                         <td>{{ marcacion.hora_entrada }}</td>
-                                        <td>{{ marcacion.fecha_hora_entrada_marcada }}</td>
+                                        <td v-text="marcacion.fecha_hora_entrada_marcada ?? (marcacion.diferencia_entrada==0 ? 'Permiso' : 'FALTA')"></td>
                                         <td>{{ marcacion.diferencia_entrada }}</td>
                                         <td>{{ marcacion.hora_salida }}</td>
-                                        <td>{{ marcacion.fecha_hora_salida_marcada }}</td>
+                                        <td v-text="marcacion.fecha_hora_salida_marcada ?? (marcacion.diferencia_salida==0 ? 'Permiso' : 'FALTA')"></td>
                                         <td>{{ marcacion.diferencia_salida }}</td>
-                                        <td></td>
                                     </tr>
                                 </tbody>
                                 <tfoot class="table-dark">

@@ -7,7 +7,7 @@ export default function useMarcacion() {
     const errors = ref('')
     const marcacion = ref({})
     const respuesta = ref([])
-    
+    const faltas = ref([])
     const obtenerMarcacion = async(id) => {
         let respuesta = await axios.get('marcacion/mostrar?id='+id,getConfigHeader())
         marcacion.value = respuesta.data
@@ -79,9 +79,19 @@ export default function useMarcacion() {
             }
         }
     }
+    const cargarFaltas = async(data) =>{
+        try {
+            let respond = await axios.post('marcacion/faltas', data,getConfigHeader())
+            faltas.value =respond.data
+        } catch (error) {
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }    
     return {
         errors, marcaciones, marcacion, obtenerMarcacion, obtenerMarcaciones, 
         agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy,
-        cargarMarcacionHorario, marcacionesHorarios, cargarTardanzas
+        cargarMarcacionHorario, marcacionesHorarios, cargarTardanzas, cargarFaltas, faltas
     }
 }

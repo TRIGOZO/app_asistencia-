@@ -347,90 +347,69 @@ trait MarcacionTrait
     }
     public static function getFaltasByPersonal(Request $request){
         return DB::select("
-                    SELECT personales.id, horarios.fecha, horarios.hora_entrada, horarios.hora_salida, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
-                    personales.nombres) as apenom, personales.numero_dni, 
-                    horarios.fecha, horarios.hora_entrada, horarios.hora_salida,
-                    horarios.id,
-                    case 
-                        when 
-                            (select min(marcaciones.fecha_hora) from marcaciones where (
-                                horarios.fecha=date(marcaciones.fecha_hora) and personales.id=marcaciones.personal_id
-                                    AND (
-                                        TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
-                                        AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
-                                    )
-                                )
-                            ) is null
-                        then
+            select horarios.nombredia, horarios.fecha,
+            sum(
+            case
+                when
+                    (select count(marcaciones.id) from marcaciones 
+                    where 
+                        marcaciones.personal_id=horario_personals.personal_id
+                        and 
+                        date(marcaciones.fecha_hora) = horarios.fecha
+                        AND (
                             (
-                            select if(count(permisos.id)>0,'PERMISO', null) from permisos where personal_id=personales.id and 
-                                    (
-                                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
-                                        CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
-                                    )
-                                    AND
-                                    (
-                                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
-                                        CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
-                                    )
+                                TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+                                AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
                             )
-                        else
-                            (select min(marcaciones.fecha_hora) from marcaciones where (
-                                horarios.fecha=date(marcaciones.fecha_hora) and personales.id=marcaciones.personal_id
-                                    AND (
-                                        TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
-                                        AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
-                                    )
-                                )
+                            OR (
+                                TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                                AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida        
                             )
-                    end
-                    as marcado_entrada,
-                    case 
-                        when 
-                        (select min(marcaciones.fecha_hora) from marcaciones where (
-                                horarios.fecha=date(marcaciones.fecha_hora) and personales.id=marcaciones.personal_id
-                                    AND (
-                                        TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
-                                        AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida        
-                                    )
-                                )
-                            ) is null
-                        then
+                        )
+                    )<2
+                then
+                    (select count(permisos.id)>=1 from permisos where personal_id=horario_personal_id and 
+                        (
                             (
-                            select if(count(permisos.id)>0,'PERMISO', null) from permisos where personal_id=personales.id and 
-                                    (
-                                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) >= 
-                                        CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
-                                    )
-                                    AND
-                                    (
-                                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) <= 
-                                        CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
-                                    )
-                            )
-                        else
-                            (select min(marcaciones.fecha_hora) from marcaciones where (
-                                horarios.fecha=date(marcaciones.fecha_hora) and personales.id=marcaciones.personal_id
-                                    AND (
-                                        TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
-                                        AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida        
-                                    )
+                                (
+                                    CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
+                                    CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+                                )
+                                AND
+                                (
+                                    CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
+                                    CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+                                )
+                            )or
+                            (
+                                (
+                                    CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) >= 
+                                    CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+                                )
+                                AND
+                                (
+                                    CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) <= 
+                                    CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
                                 )
                             )
-                    end        
-                    
-                    as marcado_salida
-            FROM personales
-            inner JOIN horario_personals ON personales.id = horario_personals.personal_id
-            INNER JOIN horarios ON horario_personals.id = horarios.horario_personal_id
-            INNER JOIN turno_horario on (
-                horarios.turno_horario_id=turno_horario.id	
+                        )
+                    )
+
+                else
+                    1
+            end
             )
-            inner join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
-            WHERE personales.numero_dni = '22514704'
-                AND year(horarios.fecha) = 2023
-                AND MONTH(horarios.fecha) = 9
-            HAVING marcado_entrada IS NULL OR marcado_salida IS NULL;
+            as marcaciones_incluidopermisos
+            from horarios 
+            inner join horario_personals on horarios.horario_personal_id=horario_personals.id
+            inner join turno_horario on horarios.turno_horario_id=turno_horario.id
+            inner join personales on personales.id=horario_personals.personal_id
+            where 
+            personales.numero_dni=? and
+            year(horarios.fecha)=? and
+            month(horarios.fecha)=?
+            group by horarios.fecha, horarios.nombredia having marcaciones_incluidopermisos<2;
+
         ", [
             $request->dni,$request->anho,$request->mes
         ]);

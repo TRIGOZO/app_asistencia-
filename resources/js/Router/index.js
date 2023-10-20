@@ -33,6 +33,7 @@ import RoleTurno from '@/Paginas/roles-turnos/Inicio.vue'
 import CambioTurno from '@/Paginas/cambio-turno/Inicio.vue'
 import Marcacion from '@/Paginas/Marcacion/Inicio.vue'
 import Marcaciones from '@/Paginas/marcaciones/Inicio.vue'
+import faltas from '@/Paginas/faltas/Inicio.vue'
 import Horario from '@/Paginas/horario/Inicio.vue'
 import RolGroup from '@/Paginas/rol-grupo/Inicio.vue'
 import ReportePermiso from '@/Paginas/Reportes/Permiso/Inicio.vue'
@@ -165,6 +166,10 @@ const routes = [
         path: '/reporte-faltas', name:'Reporte Faltas', component: ReporteFaltas ,
         meta:{layout: LayoutDefault}
     },
+    {
+        path: '/faltas', name:'Faltas', component: faltas ,
+        meta:{layout: LayoutDefault}
+    },    
 
 ]
 

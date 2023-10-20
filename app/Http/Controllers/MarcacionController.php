@@ -150,8 +150,9 @@ class MarcacionController extends Controller
     public function reporteTardanza(Request $request){
         return Marcacion::getTardanzasByEstablecimiento($request);
     }
-    public function faltas(){
+    public function faltas(Request $request){
         
+        return Marcacion::getFaltasByPersonal($request);
     }
     public function reporteFaltas(Request $request){
         return Marcacion::getFaltasByEstablecimiento($request);

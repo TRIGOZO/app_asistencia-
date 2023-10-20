@@ -231,7 +231,14 @@ class MenuSeeder extends Seeder
                 'icono' => 'fas fa-user-shield',
                 'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
                 'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
-            ],       
+            ], 
+            [
+                'nombre' => 'Faltas', 
+                'slug' => 'faltas',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Asistencia')->value('id'),
+                'orden' => Menu::where('nombre', 'Asistencia')->max('id')+1,
+            ], 
             [
                 'nombre' => 'Cambio de Turno',
                 'slug' => 'cambio-turno',

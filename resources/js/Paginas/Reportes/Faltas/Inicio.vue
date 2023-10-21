@@ -19,7 +19,7 @@
         listaEstablecimientos, establecimientos
     } = useEstablecimiento();
     const {
-        cargarTardanzas, marcacionesHorarios
+        cargarFaltasEstablecimiento, faltas
     } = useMarcacion();
     const { reportePermisos, permisos } = usePermiso();
 
@@ -47,16 +47,11 @@
         listaEstablecimientos()
     });
     const buscar=async()=>{
-        await cargarTardanzas(dato.value)
-        let marcaciones = marcacionesHorarios.value
-        marcaciones.forEach(item=>{
-            item.descuento = (item.constante_descuento*item.minutos).toFixed(2)
-            item.total=(item.sueldo-(item.constante_descuento*item.minutos)).toFixed(2)
-        });
+        await cargarFaltasEstablecimiento(dato.value)
     }
     const anhoactual=formatoFecha(null,"YYYY");
     const dato = ref({
-        condicion_laboral_id : '',
+        condicion_laboral_id : 0,
         establecimiento_id : '',
         mes : formatoFecha(null,"MM"),
         anho : anhoactual,
@@ -79,7 +74,7 @@
                     <div class="col-md-3">
                         <div class="input-group">
                             <div class="input-group mb-1">
-                                <span class="input-group-text" id="basic-addon1">Condicion Laboral</span>
+                                <span class="input-group-text" id="basic-addon1">Establecimiento</span>
                                 <select v-model="dato.establecimiento_id" class="form-control" :class="{ 'is-invalid': dato.errors.establecimiento_id }">
                                     <option value="">--Seleccione--</option>
                                     <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id">
@@ -97,7 +92,7 @@
                                 <span class="input-group-text" id="basic-addon1">Condicion Laboral</span>
                                 <select v-model="dato.condicion_laboral_id" class="form-control"
                                                     :class="{ 'is-invalid': dato.errors.condicion_laboral_id }">
-                                    <option value="">--Seleccione--</option>
+                                    <option value="0">TODOS</option>
                                     <option v-for="condicion in condicioneslaborales" :key="condicion.id" :value="condicion.id"
                                         :title="condicion.nombre">
                                         {{ condicion.nombre }}
@@ -135,7 +130,7 @@
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-primary" @click="buscar()">Cargar</button>&nbsp;
-                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="permisos">
+                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="faltas">
                             <i class="fa-solid fa-file-excel"></i> Descargar
                         </JsonExcel>
                     </div>          
@@ -152,26 +147,24 @@
                                         <th>Condicion Laboral</th>
                                         <th>Cargo</th>
                                         <th>Nivel</th>
-                                        <th>Tiempo Minutos</th>
                                         <th>Sueldo (S/.)</th>
-                                        <th>Constante</th>
+                                        <th>Faltas</th>
+                                        <th>Sueldo Diario</th>
                                         <th>Descuento (S/.)</th>
-                                        <th>Total(S/.)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(registro,index) in marcacionesHorarios" :key="registro.id">
+                                    <tr v-for="(registro,index) in faltas" :key="registro.id">
                                         <td class="text-center">{{ index }}</td>
                                         <td>{{ registro.numero_dni }}</td>
                                         <td>{{ registro.apenom }}</td>
                                         <td>{{ registro.condicion }}</td>
                                         <td>{{ registro.cargo }}</td>
                                         <td>{{ registro.nivel }}</td>
-                                        <td>{{ registro.minutos }}</td>
                                         <td>{{ registro.sueldo }}</td>
-                                        <td>{{ registro.constante_descuento }}</td>
-                                        <td>{{ registro.descuento }}</td>
-                                        <td>{{ registro.total }}</td>
+                                        <td>{{ registro.faltas }}</td>
+                                        <td>{{ registro.sueldo_diario }}</td>
+                                        <td>{{ registro.descuentototal }}</td>
                                     </tr>
                                 </tbody>
                             </table>

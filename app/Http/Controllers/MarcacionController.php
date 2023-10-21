@@ -110,8 +110,6 @@ class MarcacionController extends Controller
 
     public function cargarMarcacionVsHorario(BuscarMarcacionesvsHorarioRequest $request){
 
-
-
         return Marcacion::getByPersonal($request);
 
 

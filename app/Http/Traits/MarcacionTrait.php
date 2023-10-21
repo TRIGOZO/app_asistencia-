@@ -415,6 +415,72 @@ trait MarcacionTrait
         ]);
     }
     public static function getFaltasByEstablecimiento(Request $request){
+        // if($request->condicion==0){
+        //         return DB::select("
+        //         select personales.numero_dni, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', personales.nombres) as apenom,
+        //         condicion_laborales.nombre as condicion, cargos.nombre as cargo, personales.nivel_id as nivel,
+        //         sum(if(marcaciones<2, 1,0)) as faltas,
+        //         personales.sueldo, round(if(personales.tipo_trabajador_id=1,sueldo/25, sueldo/30),2) as sueldo_diario,
+        //         (sum(if(marcaciones<2, 1,0))*round(if(personales.tipo_trabajador_id=1,sueldo/25, sueldo/30),2)) as descuentototal
+        //         from personales
+        //         inner join vistamarcaciones on personales.id=vistamarcaciones.personal_id
+        //         inner join condicion_laborales on personales.condicion_laboral_id=condicion_laborales.id
+        //         inner join cargos on personales.cargo_id=cargos.id
+        //         where establecimiento_id=? and
+        //         month(vistamarcaciones.fecha)=? and
+        //         year(vistamarcaciones.fecha)=?
+        //         group by personales.id having sum(if(marcaciones<2, 1,0))>0
+        //     ", [
+        //         $request->establecimiento_id,$request->mes,$request->anho
+        //     ]);
+        // }else{
+        //         return DB::select("
+        //         select personales.numero_dni, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', personales.nombres) as apenom,
+        //         condicion_laborales.nombre as condicion, cargos.nombre as cargo, personales.nivel_id as nivel,
+        //         sum(if(marcaciones<2, 1,0)) as faltas,
+        //         personales.sueldo, round(if(personales.tipo_trabajador_id=1,sueldo/25, sueldo/30),2) as sueldo_diario,
+        //         (sum(if(marcaciones<2, 1,0))*round(if(personales.tipo_trabajador_id=1,sueldo/25, sueldo/30),2)) as descuentototal
+        //         from personales
+        //         inner join vistamarcaciones on personales.id=vistamarcaciones.personal_id
+        //         inner join condicion_laborales on personales.condicion_laboral_id=condicion_laborales.id
+        //         inner join cargos on personales.cargo_id=cargos.id
+        //         where establecimiento_id=? and
+        //         month(vistamarcaciones.fecha)=? and
+        //         year(vistamarcaciones.fecha)=? and
+        //         personales.condicion_laboral_id=?
+        //         group by personales.id having sum(if(marcaciones<2, 1,0))>0
+        //     ", [
+        //         $request->establecimiento_id,$request->mes,$request->anho, $request->condicion
+        //     ]);
+        // }
 
+            $query = DB::table('personales')
+            ->join('vistamarcaciones', 'personales.id', '=', 'vistamarcaciones.personal_id')
+            ->join('condicion_laborales', 'personales.condicion_laboral_id', '=', 'condicion_laborales.id')
+            ->join('cargos', 'personales.cargo_id', '=', 'cargos.id')
+            ->where('establecimiento_id', $request->establecimiento_id)
+            ->whereMonth('vistamarcaciones.fecha', $request->mes)
+            ->whereYear('vistamarcaciones.fecha', $request->anho)
+            ->groupBy('personales.id')
+            ->havingRaw('sum(if(marcaciones < 2, 1, 0)) > 0')
+            ->select([
+                'personales.numero_dni as numero_dni',
+                DB::raw("concat(personales.apellido_paterno, ' ', personales.apellido_materno, ', ', personales.nombres) as apenom"),
+                'condicion_laborales.nombre as condicion',
+                'cargos.nombre as cargo',
+                'personales.nivel_id as nivel',
+                DB::raw('sum(if(marcaciones < 2, 1, 0)) as faltas'),
+                'personales.sueldo as sueldo',
+                DB::raw('round(if(personales.tipo_trabajador_id = 1, sueldo / 25, sueldo / 30), 2) as sueldo_diario'),
+                DB::raw('sum(if(marcaciones < 2, 1, 0)) * round(if(personales.tipo_trabajador_id = 1, sueldo / 25, sueldo / 30), 2) as descuentototal'),
+            ])->orderBy('personales.apellido_paterno', 'asc');
+        
+        if ($request->condicion_laboral_id != 0) {
+            $query->where('personales.condicion_laboral_id', $request->condicion_laboral_id);
+        }
+        
+        $result = $query->get();
+        
+        return $result;
     }
 }

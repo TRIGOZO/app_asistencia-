@@ -33,13 +33,13 @@
     const jsonFields = ref({
         "DNI" : "personal.numero_dni",
         "Apellidos y Nombres": "apenom",
-        "Condicion Laboral": "personal.condicion.nombre",
-        "Cargo": "personal.cargo.nombre",
-        "Nivel":"personal.nivel_id",
-        "Motivo":"motivo",
-        "Sueldo":"personal.sueldo",
-        "Descuento":"descuento",
-        "Total":"total"
+        "Condicion Laboral": "condicion",
+        "Cargo": "cargo",
+        "Nivel":"nivel",
+        "Sueldo":"sueldo",
+        "Faltas":"faltas",
+        "Sueldo Diario":"sueldo_diario",
+        "Descuento":"descuentototal"
 
     })
     onMounted(()=>{

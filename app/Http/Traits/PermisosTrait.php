@@ -176,8 +176,111 @@ trait PermisosTrait
             ",[
                 $request->establecimiento_id,$request->condicion_laboral_id,$request->fecha_desde,$request->fecha_hasta
             ]);
-        }        
+        }       
     }
-
+    public static function getPermisosVacaciones(Request $request){
+        if($request->condicion_laboral_id==0){
+            return DB::select("
+                SELECT
+                personales.numero_dni AS DNI,
+                CONCAT(personales.apellido_paterno, ' ', personales.apellido_materno, ' ', personales.nombres) AS apenom,
+                condicion_laborales.nombre AS condicion,
+                establecimientos.nombre as establecimiento,
+                cargos.nombre AS cargo,
+                personales.nivel_id AS nivel,
+                permisos.FECHA_DESDE AS fecha_inicio,
+                permisos.FECHA_HASTA AS fecha_final,
+                CASE
+                    WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) = 15 THEN
+                        15
+                    WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) IN (30, 31,32) THEN
+                        30
+                    ELSE
+                        DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) + 1
+                END +
+                CASE
+                    WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) < 15 AND DAYOFWEEK(permisos.FECHA_DESDE) = 2 THEN
+                        2
+                    WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) < 15 AND DAYOFWEEK(permisos.FECHA_DESDE) = 6 THEN
+                        2
+                    WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) < 15 AND DAYOFWEEK(permisos.FECHA_HASTA) = 6 THEN
+                        2
+                    ELSE
+                        0
+                END AS dias_vacaciones
+            FROM
+                permisos
+            INNER JOIN
+                tipo_permisos ON tipo_permisos.id = permisos.tipo_permiso_id
+            INNER JOIN
+                establecimientos ON establecimientos.id = permisos.establecimiento_id
+            INNER JOIN
+                personales ON personales.id = permisos.personal_id
+            INNER JOIN
+                condicion_laborales ON condicion_laborales.id = personales.condicion_laboral_id
+            INNER JOIN
+                cargos ON cargos.id = personales.cargo_id
+            WHERE
+                permisos.establecimiento_id=? and
+                permisos.fecha_desde>=? and permisos.fecha_hasta<=? and
+                tipo_permisos.id = 16 
+            ORDER BY
+                personales.apellido_paterno;
+            ",[
+                $request->establecimiento_id,$request->fecha_desde,$request->fecha_hasta
+            ]);
+        }else{
+            return DB::select("
+                    SELECT
+                    personales.numero_dni AS DNI,
+                    CONCAT(personales.apellido_paterno, ' ', personales.apellido_materno, ' ', personales.nombres) AS apenom,
+                    condicion_laborales.nombre AS condicion,
+                    establecimientos.nombre as establecimiento,
+                    cargos.nombre AS cargo,
+                    personales.nivel_id AS nivel,
+                    permisos.FECHA_DESDE AS fecha_inicio,
+                    permisos.FECHA_HASTA AS fecha_final,
+                    CASE
+                        WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) = 15 THEN
+                            15
+                        WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) IN (30, 31,32) THEN
+                            30
+                        ELSE
+                            DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) + 1
+                    END +
+                    CASE
+                        WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) < 15 AND DAYOFWEEK(permisos.FECHA_DESDE) = 2 THEN
+                            2
+                        WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) < 15 AND DAYOFWEEK(permisos.FECHA_DESDE) = 6 THEN
+                            2
+                        WHEN DATEDIFF(permisos.FECHA_HASTA, permisos.FECHA_DESDE) < 15 AND DAYOFWEEK(permisos.FECHA_HASTA) = 6 THEN
+                            2
+                        ELSE
+                            0
+                    END AS dias_vacaciones
+                FROM
+                    permisos
+                INNER JOIN
+                    tipo_permisos ON tipo_permisos.id = permisos.tipo_permiso_id
+                INNER JOIN
+                    establecimientos ON establecimientos.id = permisos.establecimiento_id
+                INNER JOIN
+                    personales ON personales.id = permisos.personal_id
+                INNER JOIN
+                    condicion_laborales ON condicion_laborales.id = personales.condicion_laboral_id
+                INNER JOIN
+                    cargos ON cargos.id = personales.cargo_id
+                WHERE
+                    permisos.establecimiento_id=? and
+                    condicion_laborales.id = ? and
+                    permisos.fecha_desde>=? and permisos.fecha_hasta<=? and
+                    tipo_permisos.id = 16 
+                ORDER BY
+                    personales.apellido_paterno;
+            ",[
+                $request->establecimiento_id,$request->condicion_laboral_id,$request->fecha_desde,$request->fecha_hasta
+            ]);
+        }
+    } 
 
 }

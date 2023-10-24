@@ -41,7 +41,7 @@ import ReporteTardanza from '@/Paginas/Reportes/Tardanza/Inicio.vue'
 import ReporteFaltas from '@/Paginas/Reportes/Faltas/Inicio.vue'
 import ReportePermisosSinGoce from '@/Paginas/Reportes/PermisosSinGoce/Inicio.vue'
 import ReportePermisosHoras from '@/Paginas/Reportes/PermisosHorasParticulares/Inicio.vue'
-
+import ReporteVacaciones from '@/Paginas/Reportes/vacaciones/Inicio.vue'
 const routes = [
     {
         path: '/',name: 'Login', component: Login,
@@ -174,7 +174,11 @@ const routes = [
     {
         path: '/reporte-permisos-horas-particulares', name:'Reporte Horas Particulares', component: ReportePermisosHoras ,
         meta:{layout: LayoutDefault}
-    },        
+    },
+    {
+        path: '/reporte-vacaciones', name:'Reporte Horas Particulares', component: ReporteVacaciones ,
+        meta:{layout: LayoutDefault}
+    },      
     {
         path: '/faltas', name:'Faltas', component: faltas ,
         meta:{layout: LayoutDefault}

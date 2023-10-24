@@ -5,7 +5,7 @@
   import useHelper from '@/Helpers';  
   import useEstablecimiento from '@/Composables/establecimientos.js';  
   import useCondicionLaboral from '@/Composables/condicionlaboral.js';
-  import useMarcacion from '@/Composables/marcacion.js';  
+  import useTipoPermiso from '@/Composables/tipopermisos.js';  
   import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import JsonExcel from 'vue-json-excel3';
@@ -19,41 +19,52 @@
         listaEstablecimientos, establecimientos
     } = useEstablecimiento();
     const {
-        cargarFaltasEstablecimiento, faltas
-    } = useMarcacion();
-    const { reportePermisos, permisos } = usePermiso();
+        tipopermisos, listaTipoPermisos
+    } = useTipoPermiso();
+
+    const { obtenerPermisosHorasParticulares, permisos, errors } = usePermiso();
 
     const titleHeader = ref({
-      titulo: "Reporte - Faltas",
+      titulo: "Reporte - Permisos Horas Particulares",
       subTitulo: "Reportes",
       icon: "",
       vista: ""
     });
     
     const jsonFields = ref({
-        "DNI" : "personal.numero_dni",
+        "DNI" : "DNI",
         "Apellidos y Nombres": "apenom",
+        "establecimiento": "establecimiento",
         "Condicion Laboral": "condicion",
         "Cargo": "cargo",
         "Nivel":"nivel",
         "Sueldo":"sueldo",
-        "Faltas":"faltas",
-        "Sueldo Diario":"sueldo_diario",
+        "Fecha Inicio": "fecha_inicio",
+        "Fecha Fin": "fecha_final",
+        "Minutos Permiso": "minutos_permiso",
+        "Sueldo":"SUELDO",
         "Descuento":"descuentototal"
-
     })
     onMounted(()=>{
         listaCondicionesLaborales()
         listaEstablecimientos()
+        listaTipoPermisos()
     });
     const buscar=async()=>{
-        await cargarFaltasEstablecimiento(dato.value)
+        await obtenerPermisosHorasParticulares(dato.value)
+        dato.value.errors = []
+        if(errors.value)
+        {
+            dato.value.errors = errors.value
+        }
     }
     const anhoactual=formatoFecha(null,"YYYY");
     const dato = ref({
         condicion_laboral_id : 0,
         establecimiento_id : '',
-        mes : formatoFecha(null,"MM"),
+        // tipo_permiso_id:'',
+        fecha_desde : formatoFecha(null,"YYYY-MM-DD"),
+        fecha_hasta : formatoFecha(null,"YYYY-MM-DD"),
         anho : anhoactual,
         errors:[]
     });
@@ -105,35 +116,41 @@
                     </div>
                     <div class="col-md-2">
                         <div class="input-group mb-1">
-                            <span class="input-group-text" id="basic-addon1">Mes</span>
-                            <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
-                                <option value="">--Seleccione--</option>
-                                <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
-                                    {{ mes.nombre }}
-                                </option>
-                            </select>
+                            <span class="input-group-text" id="basic-addon1">DESDE</span>
+                            <input type="date" v-model="dato.fecha_desde" class="form-control" :class="{ 'is-invalid': dato.errors.fecha_desde }">
                         </div>
-                        <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
+                        <small class="text-danger" v-for="error in dato.errors.fecha_desde" :key="error">{{ error
                                 }}<br></small>
                     </div>
                     <div class="col-md-2">
                         <div class="input-group mb-1">
-                            <span class="input-group-text" id="basic-addon1">Año</span>
-                            <select v-model="dato.anho" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
-                                <option v-for="(i, n) in 5" :key="i" :value="anhoactual - n">
-                                    {{ anhoactual - n }}
-                                </option>
-                            </select>
+                            <span class="input-group-text" id="basic-addon1">HASTA</span>
+                            <input type="date" v-model="dato.fecha_hasta" class="form-control" :class="{ 'is-invalid': dato.errors.fecha_hasta }">
                         </div>
-                        <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
+                        <small class="text-danger" v-for="error in dato.errors.fecha_hasta" :key="error">{{ error
                                 }}<br></small>
                     </div>
-                    <div class="col-md-2">
+        
+                </div>
+                <div class="row">
+                    <!-- <div class="col-md-3 mb-2">
+                        <div class="input-group mb-1">
+                            <span class="input-group-text" id="basic-addon1">TIPO PERMISO</span>
+                            <select v-model="dato.tipo_permiso_id" class="form-control" :class="{ 'is-invalid': dato.errors.tipo_permiso_id }">
+                                <option value="">--Seleccione--</option>
+                                <option v-for="tipopermiso in tipopermisos" :key="tipopermiso.id" :value="tipopermiso.id"
+                                    :title="tipopermiso.nombre">{{ tipopermiso.nombre }}</option>
+                            </select>
+                        </div>
+                        <small class="text-danger" v-for="error in dato.errors.tipo_permiso_id" :key="error">{{ error
+                                }}</small>
+                    </div> -->
+                    <div class="col-md-2 mb-4">
                         <button class="btn btn-primary" @click="buscar()">Cargar</button>&nbsp;
-                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="faltas">
+                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="permisos">
                             <i class="fa-solid fa-file-excel"></i> Descargar
                         </JsonExcel>
-                    </div>          
+                    </div>  
                 </div>
                 <div class="row">
                     <div class="col-md-12 mb-1">
@@ -144,27 +161,31 @@
                                         <th class="text-center">#</th>
                                         <th>DNI</th>
                                         <th>Nombre y Apellidos</th>
-                                        <th>Condicion Laboral</th>
+                                        <th>Establecimiento</th>
+                                        <th>Condicion</th>
                                         <th>Cargo</th>
                                         <th>Nivel</th>
-                                        <th>Sueldo (S/.)</th>
-                                        <th>Faltas</th>
-                                        <th>Sueldo Diario</th>
+                                        <th>Fecha Hora Inicio</th>
+                                        <th>Fecha Hora Fin</th>
+                                        <th>Minutos Permiso</th>
+                                        <th>Sueldo</th>
                                         <th>Descuento (S/.)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(registro,index) in faltas" :key="registro.id">
+                                    <tr v-for="(registro,index) in permisos" :key="registro.id">
                                         <td class="text-center">{{ index+1 }}</td>
-                                        <td>{{ registro.numero_dni }}</td>
+                                        <td>{{ registro.DNI }}</td>
                                         <td>{{ registro.apenom }}</td>
+                                        <td>{{ registro.establecimiento }}</td>
                                         <td>{{ registro.condicion }}</td>
                                         <td>{{ registro.cargo }}</td>
                                         <td>{{ registro.nivel }}</td>
-                                        <td>{{ registro.sueldo }}</td>
-                                        <td>{{ registro.faltas }}</td>
-                                        <td>{{ registro.sueldo_diario }}</td>
-                                        <td>{{ registro.descuentototal }}</td>
+                                        <td>{{ registro.fecha_inicio }}</td>
+                                        <td>{{ registro.fecha_final }}</td>
+                                        <td>{{ registro.minutos_permiso }}</td>
+                                        <td>{{ registro.SUELDO }}</td>
+                                        <td>{{ registro.descuento }}</td>
                                     </tr>
                                 </tbody>
                             </table>

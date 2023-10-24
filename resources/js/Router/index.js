@@ -39,7 +39,8 @@ import RolGroup from '@/Paginas/rol-grupo/Inicio.vue'
 import ReportePermiso from '@/Paginas/Reportes/Permiso/Inicio.vue'
 import ReporteTardanza from '@/Paginas/Reportes/Tardanza/Inicio.vue'
 import ReporteFaltas from '@/Paginas/Reportes/Faltas/Inicio.vue'
-
+import ReportePermisosSinGoce from '@/Paginas/Reportes/PermisosSinGoce/Inicio.vue'
+import ReportePermisosHoras from '@/Paginas/Reportes/PermisosHorasParticulares/Inicio.vue'
 
 const routes = [
     {
@@ -167,9 +168,18 @@ const routes = [
         meta:{layout: LayoutDefault}
     },
     {
+        path: '/reporte-permisos-sin-goce', name:'Reporte Permisos', component: ReportePermisosSinGoce ,
+        meta:{layout: LayoutDefault}
+    },    
+    {
+        path: '/reporte-permisos-horas-particulares', name:'Reporte Horas Particulares', component: ReportePermisosHoras ,
+        meta:{layout: LayoutDefault}
+    },        
+    {
         path: '/faltas', name:'Faltas', component: faltas ,
         meta:{layout: LayoutDefault}
     },    
+
 
 ]
 

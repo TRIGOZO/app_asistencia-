@@ -39,17 +39,23 @@ trait MarcacionTrait
     {
         $personal = $this->getPersonalData($request->dni);
         if($personal) {
-            $marcacion = new Marcacion();
-            $personal = $this->getPersonalData($request->dni);
-            $marcacion->personal_id = $personal->id ?? null;
-            $marcacion->establecimiento_id = $personal->establecimiento_id ?? null;
-            $marcacion->fecha_hora = $request->fecha;
-            $marcacion->tipo = $request->tipo;
-            $marcacion->serial = $request->serial;
-            $marcacion->ip = $request->ip;
-            $marcacion->save();
-    
-            return $marcacion;
+            $marcacion = Marcacion::where('persona_id',$personal->id)
+                            ->where('fecha_hora',$request->fecha)->first();
+
+            if(!$marcacion)
+            {
+                $marcacion = new Marcacion();
+                $personal = $this->getPersonalData($request->dni);
+                $marcacion->personal_id = $personal->id ?? null;
+                $marcacion->establecimiento_id = $personal->establecimiento_id ?? null;
+                $marcacion->fecha_hora = $request->fecha;
+                $marcacion->tipo = $request->tipo;
+                $marcacion->serial = $request->serial;
+                $marcacion->ip = $request->ip;
+                $marcacion->save();
+
+                return $marcacion;
+            }
         }
 
     }

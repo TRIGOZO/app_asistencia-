@@ -168,6 +168,14 @@ class PermisoController extends Controller
         ]);     
         return Permiso::getPermisosSinGoce($request);
     }
+    public function reportePermisoParticulares(Request $request){
+        $request->validate([
+            'establecimiento_id' => 'required',
+        ], [
+            'establecimiento_id.required' => 'El campo establecimiento es obligatorio.',
+        ]);     
+        return Permiso::getPermisosParticulares($request);
+    }    
     public function reporteVacaciones(Request $request){
         $request->validate([
             'establecimiento_id' => 'required',

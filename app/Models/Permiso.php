@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Models;
-
+use App\Http\Traits\PermisosTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Permiso extends Model
 {
-    use HasFactory;
+    use HasFactory, PermisosTrait;
     protected $fillable = [
         'personal_id',
         'fecha_desde',

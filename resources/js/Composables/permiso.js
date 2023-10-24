@@ -42,6 +42,36 @@ export default function usePermiso() {
         let respond = await axios.post('permiso/minutos-menual-permiso',data,getConfigHeader())
         permisos.value=respond.data
     }
+    const obtenerPermisosParticulares = async(data) =>{
+        let respond = await axios.post('permiso/reportePermisoParticulares',data,getConfigHeader())
+        permisos.value=respond.data
+    }
+    const obtenerPermisosSinGoce = async(data) =>{
+        errors.value = ''
+        try {
+            let respond = await axios.post('permiso/reporte-permisos-sin-goce',data,getConfigHeader())
+            errors.value =''
+            permisos.value=respond.data
+        } catch (error) {
+            errors.value=""
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    } 
+    const obtenerPermisosHorasParticulares = async(data) =>{
+        errors.value = ''
+        try {
+            let respond = await axios.post('permiso/reporte-permisos-particulares',data,getConfigHeader())
+            errors.value =''
+            permisos.value=respond.data
+        } catch (error) {
+            errors.value=""
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }        
     const actualizarPermiso = async(data) => {
         errors.value = ''
         try {
@@ -58,6 +88,7 @@ export default function usePermiso() {
             }
         }
     }
+
     const eliminarPermiso = async(id) => {
         const respond = await axios.post('permiso/eliminar', {id:id},getConfigHeader())
         if(respond.data.ok==1)
@@ -68,6 +99,7 @@ export default function usePermiso() {
     return {
         errors, permisos, permiso, obtenerPermiso, obtenerPermisos, 
         agregarPermiso, actualizarPermiso, eliminarPermiso, respuesta,
-        listarFecha, obtenerPermisosMensual, reportePermisos
+        listarFecha, obtenerPermisosMensual, reportePermisos, obtenerPermisosParticulares, obtenerPermisosSinGoce,
+        obtenerPermisosHorasParticulares
     }
 }

@@ -172,7 +172,7 @@ const routes = [
         meta:{layout: LayoutDefault}
     },    
     {
-        path: '/reporte-permisos-horas-particulares', name:'Reporte Horas Particulares', component: ReportePermisosHoras ,
+        path: '/reporte-permisos-horas-particulares', name:'Horas Particulares', component: ReportePermisosHoras ,
         meta:{layout: LayoutDefault}
     },
     {

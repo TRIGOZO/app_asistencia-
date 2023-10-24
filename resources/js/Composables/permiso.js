@@ -71,7 +71,20 @@ export default function usePermiso() {
                 errors.value = error.response.data.errors
             }
         }
-    }        
+    }      
+    const obtenerPermisosVacaciones = async(data) =>{
+        errors.value = ''
+        try {
+            let respond = await axios.post('permiso/reporte-permisos-vacaciones',data,getConfigHeader())
+            errors.value =''
+            permisos.value=respond.data
+        } catch (error) {
+            errors.value=""
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }            
     const actualizarPermiso = async(data) => {
         errors.value = ''
         try {
@@ -100,6 +113,6 @@ export default function usePermiso() {
         errors, permisos, permiso, obtenerPermiso, obtenerPermisos, 
         agregarPermiso, actualizarPermiso, eliminarPermiso, respuesta,
         listarFecha, obtenerPermisosMensual, reportePermisos, obtenerPermisosParticulares, obtenerPermisosSinGoce,
-        obtenerPermisosHorasParticulares
+        obtenerPermisosHorasParticulares, obtenerPermisosVacaciones
     }
 }

@@ -27,7 +27,7 @@ class MarcacionSeeder extends Seeder
         $progressBar->start();
         foreach($archivo as $line_num=>$linea){
             if($i<=$cantidad_filas-2){
-                $dni = str_pad(substr($linea, 1, 8), 8, '0', STR_PAD_LEFT);
+                $dni = str_pad(trim(substr($linea, 1, 8)), 8, '0', STR_PAD_LEFT);
                 $fecha = substr($linea, 10, 19);
                 Marcacion::firstorCreate([
                     'personal_id'           => Personal::where('numero_dni', $dni)->value('id'),

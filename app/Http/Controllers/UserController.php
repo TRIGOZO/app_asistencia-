@@ -7,12 +7,51 @@ use App\Models\User;
 use App\Http\Requests\Usuario\UpdateProfileRequest;
 use App\Http\Requests\Usuario\UpdatePasswordRequest;
 use App\Http\Requests\Usuario\UpdateUserRequest;
+use App\Http\Requests\Usuario\StoreUserRequest;
 use App\Models\Personal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function store(StoreUserRequest $request){
+        $personal = Personal::where('numero_dni', $request->numero_dni)->first();
+        if($personal){
+            $personal->update([
+                'nombres'           => $request->nombres,
+                'apellido_paterno'  => $request->apellido_paterno,
+                'apellido_materno'  => $request->apellido_materno,
+                'sexo'              => $request->sexo,
+                'telefono'          => $request->telefono,
+                'celular'           => $request->celular,
+                'email'             => $request->email,
+                'profesion_id'      => $request->profesion_id
+            ]);
+        }else{
+            $personal = Personal::create([
+                'numero_dni'        => $request->numero_dni,
+                'nombres'           => $request->nombres,
+                'apellido_paterno'  => $request->apellido_paterno,
+                'apellido_materno'  => $request->apellido_materno,
+                'sexo'              => $request->sexo,
+                'telefono'          => $request->telefono,
+                'celular'           => $request->celular,
+                'email'             => $request->email,
+                'profesion_id'      => $request->profesion_id
+            ]);
+        }
+        $usuario = User::created([
+            'username'          => $request->username,
+            'personal_id'       => $personal->id,
+            'role_id'           => $request->role_id,
+            'establecimiento_id'=> $request->etablecimiento_id,
+            'password'          => Hash::make($request->password),
+        ]);
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Usuario Registrado satisfactoriamente'
+        ],200);
+    }
     public function actualizarperfil(UpdateProfileRequest $request){
         $request->validated();
         $usuario = User::find(Auth::user()->id);

@@ -127,6 +127,7 @@ class PermisoController extends Controller
     }
     public function reporte(Request $request){
         $condicionLaboralId = $request->condicion_laboral_id;
+        $tipopermiso = $request->tipo_permiso_id;
         // $permisos = Permiso::with([
         //     'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,condicion_laboral_id,nivel_id,cargo_id,sueldo',
         //     'personal.condicion:id,nombre',
@@ -149,8 +150,13 @@ class PermisoController extends Controller
         ->join('personales', 'permisos.personal_id', '=', 'personales.id')
         ->whereMonth('fecha_desde', '=', $request->mes)
         ->whereYear('fecha_desde', '=', $request->anho)
-        ->where('tipo_permiso_id', $request->tipo_permiso_id)
-        ->where('personales.condicion_laboral_id', $condicionLaboralId)
+        ->when($condicionLaboralId !== 0, function ($query) use ($request) {
+            return $query->where('personales.condicion_laboral_id', $request->condicion_laboral_id);
+        })
+        ->when($tipopermiso !== 0, function ($query) use ($request) {
+            return $query->where('tipo_permiso_id', $request->tipo_permiso_id);
+        })        
+        ->where('personales.numero_dni', 'like', '%'.$request->numero_dni.'%')
         ->orderBy('personales.apellido_paterno', 'asc')
         ->with([
             'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,condicion_laboral_id,nivel_id,cargo_id,sueldo',

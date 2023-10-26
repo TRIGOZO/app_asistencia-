@@ -36,6 +36,7 @@ class Personal extends Model
         'establecimiento_id',
         'cargo_id',
         'es_activo',
+        'observacion'
     ];
     public function estado_civil(): BelongsTo
     {

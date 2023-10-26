@@ -39,7 +39,8 @@
         fecha_inicio: '',
         fecha_fin: '',
         establecimiento_id: '',
-        cargo_id: '',   
+        cargo_id: '', 
+        observacion: '',
         estadoCrud:'',
         errors:[]
 
@@ -67,6 +68,7 @@
         form.value.fecha_fin = '',
         form.value.establecimiento_id = '',
         form.value.cargo_id = '', 
+        form.value.observacion = '',
         form.value.errors = []
         errors.value = []
     }
@@ -95,7 +97,8 @@
             form.value.fecha_inicio = personal.value.fecha_inicio;
             form.value.fecha_fin = personal.value.fecha_fin;
             form.value.establecimiento_id = personal.value.establecimiento_id;
-            form.value.cargo_id = personal.value.cargo_id;       
+            form.value.cargo_id = personal.value.cargo_id;
+            form.value.observacion = personal.value.observacion;
         }
     }
     const editar = (id) => {
@@ -284,6 +287,7 @@
                                         <th>Cargo</th>
                                         <th>Condicion</th>
                                         <th>Tiene Hijos</th>
+                                        <th>Observacion</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -304,6 +308,7 @@
                                         <td>{{ personal.cargo?.nombre }}</td>
                                         <td>{{ personal.condicion?.nombre }}</td>
                                         <td>{{ personal.tienehijos }}</td>
+                                        <td>{{ personal.observacion }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Personal" @click.prevent="editar(personal.id)">
                                                 <i class="fas fa-edit"></i>

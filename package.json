@@ -12,12 +12,15 @@
     "dependencies": {
         "@vitejs/plugin-vue": "^4.2.3",
         "dayjs": "^1.11.9",
+        "html2canvas": "^1.4.1",
+        "jspdf": "^2.5.1",
         "jwt-decode": "^3.1.2",
         "pinia": "^2.1.6",
         "sweetalert2": "^11.7.20",
         "vue": "^3.3.4",
         "vue-json-excel3": "^1.0.18",
         "vue-loader": "^17.2.2",
-        "vue-router": "^4.2.4"
+        "vue-router": "^4.2.4",
+        "vue3-html2pdf": "^1.1.2"
     }
 }

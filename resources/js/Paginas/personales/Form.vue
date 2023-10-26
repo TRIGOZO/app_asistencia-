@@ -172,8 +172,13 @@ onMounted(() => {
                                         <input type="date" class="form-control" v-model="form.fecha_nacimiento" :class="{ 'is-invalid': form.errors.fecha_nacimiento }">
                                         <small class="text-danger" v-for="error in form.errors.fecha_nacimiento" :key="error">{{ error
                                                 }}</small>
-                                    </div> 
-
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="direccion" class="form-label">Direccion</label>
+                                        <input type="text" class="form-control" v-model="form.direccion" :class="{ 'is-invalid': form.errors.direccion }" placeholder="Direccion">
+                                        <small class="text-danger" v-for="error in form.errors.direccion" :key="error">{{ error
+                                                }}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -271,18 +276,14 @@ onMounted(() => {
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="direccion" class="form-label">Direccion</label>
-                                        <input type="text" class="form-control" v-model="form.direccion" :class="{ 'is-invalid': form.errors.direccion }" placeholder="Direccion">
-                                        <small class="text-danger" v-for="error in form.errors.direccion" :key="error">{{ error
-                                                }}</small>
+                                        <label for="observacion" class="form-label">Observacion</label>
+                                        <textarea v-model="form.observacion" class="form-control" :class="{ 'is-invalid': form.errors.observacion }"></textarea>
+                                        <small class="text-danger" v-for="error in form.errors.observacion" :key="error">{{ error }}</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

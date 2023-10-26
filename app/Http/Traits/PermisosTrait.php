@@ -221,13 +221,14 @@ trait PermisosTrait
             INNER JOIN
                 cargos ON cargos.id = personales.cargo_id
             WHERE
+                personales.numero_dni like ? and
                 permisos.establecimiento_id=? and
                 permisos.fecha_desde>=? and permisos.fecha_hasta<=? and
                 tipo_permisos.id = 16 
             ORDER BY
                 personales.apellido_paterno;
             ",[
-                $request->establecimiento_id,$request->fecha_desde,$request->fecha_hasta
+                '%'.$request->numero_dni.'%',$request->establecimiento_id,$request->fecha_desde,$request->fecha_hasta
             ]);
         }else{
             return DB::select("
@@ -271,6 +272,7 @@ trait PermisosTrait
                 INNER JOIN
                     cargos ON cargos.id = personales.cargo_id
                 WHERE
+                    personales.numero_dni like ? and
                     permisos.establecimiento_id=? and
                     condicion_laborales.id = ? and
                     permisos.fecha_desde>=? and permisos.fecha_hasta<=? and
@@ -278,7 +280,7 @@ trait PermisosTrait
                 ORDER BY
                     personales.apellido_paterno;
             ",[
-                $request->establecimiento_id,$request->condicion_laboral_id,$request->fecha_desde,$request->fecha_hasta
+                '%'.$request->numero_dni.'%', $request->establecimiento_id,$request->condicion_laboral_id,$request->fecha_desde,$request->fecha_hasta
             ]);
         }
     } 

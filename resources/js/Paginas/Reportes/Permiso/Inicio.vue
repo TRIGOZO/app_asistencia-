@@ -45,9 +45,10 @@
     }
     const anhoactual=formatoFecha(null,"YYYY");
     const dato = ref({
-        condicion_laboral_id : '',
+        numero_dni : '',
+        condicion_laboral_id : 0,
         mes : formatoFecha(null,"MM"),
-        tipo_permiso_id : '',
+        tipo_permiso_id : 0,
         anho : anhoactual,
         errors:[]
     });
@@ -65,13 +66,23 @@
             </div>
             <div class="card-body">
                 <div class="row mb-4">
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-xs-4">
+                        <div class="input-group">
+                            <div class="input-group mb-1">
+                                <span class="input-group-text" id="basic-addon1">DNI</span>
+                                <input type="text" v-model="dato.numero_dni" class="form-control" :class="{ 'is-invalid': dato.errors.numero_dni }">
+                            </div>
+                            <small class="text-danger" v-for="error in dato.errors.numero_dni" :key="error">{{ error
+                                }}<br></small>                            
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
                         <div class="input-group">
                             <div class="input-group mb-1">
                                 <span class="input-group-text" id="basic-addon1">Condicion Laboral</span>
                                 <select v-model="dato.condicion_laboral_id" class="form-control"
                                                     :class="{ 'is-invalid': dato.errors.condicion_laboral_id }">
-                                    <option value="">--Seleccione--</option>
+                                    <option value="0">Todos</option>
                                     <option v-for="condicion in condicioneslaborales" :key="condicion.id" :value="condicion.id"
                                         :title="condicion.nombre">
                                         {{ condicion.nombre }}
@@ -82,13 +93,13 @@
                                 }}<br></small>                            
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-xs-4">
                         <div class="input-group">
                             <div class="input-group mb-1">
                                 <span class="input-group-text" id="basic-addon1">Tipo de Permiso</span>
                                 <select v-model="dato.tipo_permiso_id" class="form-control"
                                                     :class="{ 'is-invalid': dato.errors.tipo_permiso_id }">
-                                    <option value="">--Seleccione--</option>
+                                    <option value="0">Todos</option>
                                     <option v-for="tipopermiso in tipopermisos" :key="tipopermiso.id" :value="tipopermiso.id"
                                         :title="tipopermiso.nombre">
                                         {{ tipopermiso.nombre }}
@@ -99,7 +110,9 @@
                                 }}<br></small>                            
                         </div>
                     </div>
-                    <div class="col-md-2">
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">Mes</span>
                             <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
@@ -112,7 +125,7 @@
                         <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
                                 }}<br></small>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">Año</span>
                             <select v-model="dato.anho" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
@@ -124,7 +137,7 @@
                         <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
                                 }}<br></small>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <button class="btn btn-primary" @click="buscar()">Cargar</button>&nbsp;
                         <JsonExcel class="btn btn-success" :fields="jsonFields" :data="permisos">
                             <i class="fa-solid fa-file-excel"></i> Descargar

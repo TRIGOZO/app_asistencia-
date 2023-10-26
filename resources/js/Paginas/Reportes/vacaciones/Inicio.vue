@@ -60,7 +60,7 @@
     const dato = ref({
         condicion_laboral_id : 0,
         establecimiento_id : '',
-        // tipo_permiso_id:'',
+        numero_dni : '',
         fecha_desde : formatoFecha(null,"YYYY-MM-DD"),
         fecha_hasta : formatoFecha(null,"YYYY-MM-DD"),
         anho : anhoactual,
@@ -80,7 +80,17 @@
             </div>
             <div class="card-body">
                 <div class="row mb-4">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group mb-1">
+                                <span class="input-group-text" id="basic-addon1">DNI</span>
+                                <input type="text" v-model="dato.numero_dni" class="form-control" :class="{ 'is-invalid': dato.errors.numero_dni }">
+                            </div>
+                            <small class="text-danger" v-for="error in dato.errors.numero_dni" :key="error">{{ error
+                                }}<br></small>                            
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="input-group">
                             <div class="input-group mb-1">
                                 <span class="input-group-text" id="basic-addon1">Establecimiento</span>
@@ -95,7 +105,7 @@
                                 }}</small>
                         </div>
                     </div>                    
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="input-group">
                             <div class="input-group mb-1">
                                 <span class="input-group-text" id="basic-addon1">Condicion Laboral</span>
@@ -112,7 +122,9 @@
                                 }}<br></small>                            
                         </div>
                     </div>
-                    <div class="col-md-2">
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">DESDE</span>
                             <input type="date" v-model="dato.fecha_desde" class="form-control" :class="{ 'is-invalid': dato.errors.fecha_desde }">
@@ -120,7 +132,7 @@
                         <small class="text-danger" v-for="error in dato.errors.fecha_desde" :key="error">{{ error
                                 }}<br></small>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">HASTA</span>
                             <input type="date" v-model="dato.fecha_hasta" class="form-control" :class="{ 'is-invalid': dato.errors.fecha_hasta }">
@@ -128,9 +140,6 @@
                         <small class="text-danger" v-for="error in dato.errors.fecha_hasta" :key="error">{{ error
                                 }}<br></small>
                     </div>
-        
-                </div>
-                <div class="row">
                     <!-- <div class="col-md-3 mb-2">
                         <div class="input-group mb-1">
                             <span class="input-group-text" id="basic-addon1">TIPO PERMISO</span>
@@ -143,7 +152,7 @@
                         <small class="text-danger" v-for="error in dato.errors.tipo_permiso_id" :key="error">{{ error
                                 }}</small>
                     </div> -->
-                    <div class="col-md-2 mb-4">
+                    <div class="col-md-4">
                         <button class="btn btn-primary" @click="buscar()">Cargar</button>&nbsp;
                         <JsonExcel class="btn btn-success" :fields="jsonFields" :data="permisos">
                             <i class="fa-solid fa-file-excel"></i> Descargar

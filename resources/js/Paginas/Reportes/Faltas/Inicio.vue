@@ -9,8 +9,8 @@
   import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import JsonExcel from 'vue-json-excel3';
+  import DetallesForm from './Detalles.vue'
   const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
-
 
     const {
     listaCondicionesLaborales, condicioneslaborales
@@ -19,9 +19,8 @@
         listaEstablecimientos, establecimientos
     } = useEstablecimiento();
     const {
-        cargarFaltasEstablecimiento, faltas
+        cargarFaltasEstablecimiento, faltas, cargarFaltas, faltasdetalle
     } = useMarcacion();
-    const { reportePermisos, permisos } = usePermiso();
 
     const titleHeader = ref({
       titulo: "Reporte - Faltas",
@@ -29,7 +28,21 @@
       icon: "",
       vista: ""
     });
-    
+    const personal = ref({});
+    const datobusquedafaltas = ref({
+        dni : '',
+        mes : '',
+        anho : '',
+    });    
+    const verDetalles = async(reg) => {
+        personal.value=reg
+        datobusquedafaltas.value.dni = personal.value.numero_dni
+        datobusquedafaltas.value.mes = dato.value.mes
+        datobusquedafaltas.value.anho = dato.value.anho
+        await cargarFaltas(datobusquedafaltas.value)
+        document.getElementById("modaldetallefaltasLabel").innerHTML = 'Ver Detalles de Faltas';
+        openModal('#modaldetallefaltas')
+    }
     const jsonFields = ref({
         "DNI" : "personal.numero_dni",
         "Apellidos y Nombres": "apenom",
@@ -46,6 +59,7 @@
         listaCondicionesLaborales()
         listaEstablecimientos()
     });
+
     const buscar=async()=>{
         await cargarFaltasEstablecimiento(dato.value)
     }
@@ -151,6 +165,7 @@
                                         <th>Faltas</th>
                                         <th>Sueldo Diario</th>
                                         <th>Descuento (S/.)</th>
+                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -165,6 +180,7 @@
                                         <td>{{ registro.faltas }}</td>
                                         <td>{{ registro.sueldo_diario }}</td>
                                         <td>{{ registro.descuentototal }}</td>
+                                        <td><button class="btn btn-info btn-sm" v-if="registro.faltas>0" title="Ver Faltas" @click="verDetalles(registro)"><i class="fa-solid fa-eye"></i></button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -176,4 +192,5 @@
         <br><br>
       </div>
     </div>
+    <DetallesForm :personal="personal" :faltasdetalle="faltasdetalle"></DetallesForm>
 </template>

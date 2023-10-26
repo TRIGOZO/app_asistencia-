@@ -49,7 +49,7 @@ class PersonalController extends Controller
             'establecimiento_id'    => $request->establecimiento_id,
             'direccion'             => $request->direccion,
             'telefono'              => $request->telefono,
-
+            'observacion'           => $request->observacion,
         ]);
 
         return response()->json([
@@ -103,6 +103,7 @@ class PersonalController extends Controller
             'establecimiento_id'    => $request->establecimiento_id,
             'direccion'             => $request->direccion,
             'telefono'              => $request->telefono,
+            'observacion'           => $request->observacion,
         ]);
 
         return response()->json([

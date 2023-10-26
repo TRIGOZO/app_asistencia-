@@ -13,7 +13,7 @@
 
 
     const {
-        cargarFaltas, faltas
+        cargarFaltas, faltasdetalle
     } = useMarcacion();
 
 
@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-primary" @click="buscar()">Cargar</button>&nbsp;
-                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="faltas">
+                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="faltasdetalle">
                             <i class="fa-solid fa-file-excel"></i> Descargar
                         </JsonExcel>
                     </div>          
@@ -116,7 +116,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(registro,index) in faltas" :key="registro.id">
+                                    <tr v-for="(registro,index) in faltasdetalle" :key="registro.id">
                                         <td class="text-center">{{ index+1 }}</td>
                                         <td>{{ registro.nombredia }}</td>
                                         <td>{{ registro.fecha }}</td>

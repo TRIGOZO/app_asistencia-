@@ -5,12 +5,17 @@ export default function useUsuario() {
     const usuarios = ref([])
     const errors = ref('')
     const usuario = ref({})
+    const usuario2 = ref({})
     const respuesta = ref([])
 
     const obtenerUsuario = async(id) => {
         let respuesta = await axios.get('usuario/mostrar?id='+id,getConfigHeader())
         usuario.value = respuesta.data
     }
+    const obtenerUsuario2 = async(id) => {
+        let respuesta = await axios.get('usuario/mostrar?id='+id,getConfigHeader())
+        usuario2.value = respuesta.data
+    }    
     const listaUsuarios = async()=>{
         let respuesta = await axios.get('usuario/listar',getConfigHeader())
         usuarios.value = respuesta.data        
@@ -75,6 +80,7 @@ export default function useUsuario() {
 
     return {
         errors, usuarios, listaUsuarios, usuario, obtenerUsuario, obtenerUsuarios, 
-        agregarUsuario, actualizarUsuario, eliminarUsuario, respuesta, resetClaveUsuario
+        agregarUsuario, actualizarUsuario, eliminarUsuario, respuesta, resetClaveUsuario,
+        usuario2, obtenerUsuario2
     }
 }

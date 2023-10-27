@@ -46,7 +46,6 @@
         form.value.nombres = '',
         form.value.apellido_paterno = '',
         form.value.apellido_materno = '',
-        form.value.sexo_id = '',
         form.value.email = '', 
         form.value.celular = '', 
         form.value.direccion = '',               
@@ -67,7 +66,6 @@
             form.value.nombres = usuario.value.personal.nombres;
             form.value.apellido_paterno = usuario.value.personal.apellido_paterno;
             form.value.apellido_materno = usuario.value.personal.apellido_materno;
-            form.value.sexo_id = usuario.value.personal.sexo_id;
             form.value.email = usuario.value.personal.email;
             form.value.celular = usuario.value.personal.celular;
             form.value.direccion = usuario.value.personal.direccion;        
@@ -294,31 +292,33 @@
                             <table class="table table-bordered table-hover table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th colspan="7" class="text-center">Usuarios {{ show_tipo }}</th>
+                                        <th colspan="9" class="text-center">Usuarios {{ show_tipo }}</th>
                                     </tr>
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Name</th>
-                                        <th>Documento</th>
+                                        <th>DNI</th>
                                         <th>Ape. Paterno</th>
                                         <th>Ape. Materno</th>
                                         <th>Nombres</th>
+                                        <th>Establecimiento</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-if="usuarios.total == 0">
-                                        <td class="text-danger text-center" colspan="7">
+                                        <td class="text-danger text-center" colspan="9">
                                             -- Datos No Registrados - Tabla Vacía --
                                         </td>
                                     </tr>
                                     <tr v-else v-for="(usuario,index) in usuarios.data" :key="usuario.id">
                                         <td class="text-center">{{ index + usuarios.from }}</td>
                                         <td>{{ usuario.username }}</td>
-                                        <td>{{ usuario.personal.numero_dni }}</td>
-                                        <td>{{ usuario.personal.apellido_paterno }}</td>
-                                        <td>{{ usuario.personal.apellido_materno }}</td>
-                                        <td>{{ usuario.personal.nombres }}</td>
+                                        <td>{{ usuario.personal?.numero_dni }}</td>
+                                        <td>{{ usuario.personal?.apellido_paterno }}</td>
+                                        <td>{{ usuario.personal?.apellido_materno }}</td>
+                                        <td>{{ usuario.personal?.nombres }}</td>
+                                        <td>{{ usuario.personal?.establecimiento.nombre }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Usuario" @click.prevent="editar(usuario.id)">
                                                 <i class="fas fa-edit"></i>

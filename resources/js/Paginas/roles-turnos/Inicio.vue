@@ -5,15 +5,21 @@
     import useHelper from '@/Helpers';  
     import usePersonal from '@/Composables/personal.js';
     import useHorario from '@/Composables/horario.js';
+    import useEstablecimiento from '@/Composables/establecimientos.js';  
     import ContentHeader from '@/Componentes/ContentHeader.vue';
     import RoleTurnoForm from './Form.vue'
     import Horario from './Horario.vue'
-    const { openModal, Toast, Swal, formatoFecha } = useHelper();
+    const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
     const {
         personales,
         obtenerPersonales,obtenerPersonal, personal
     } = usePersonal();
-
+    const {
+        listaEstablecimientos, establecimientos
+    } = useEstablecimiento();
+    const {
+        guardarHorarioMasivo, errors, respuesta
+    } = useHorario();    
     // const {
     //     horario, obtenerHorario
     // } = useHorario();
@@ -29,8 +35,11 @@
         buscar:'',
         paginacion: 10,
         horario:'',
-        
+        mes : formatoFecha(null,"MM"),
+        establecimiento_id: '',
+        errors:[],
     });
+
     const hoy= formatoFecha(null,"YYYY-MM-DD")
     const horaHoy = formatoFecha(null,"HH:mm")
     const form = ref({
@@ -77,10 +86,27 @@
         dato.value.page= page
         await obtenerPersonales(dato.value)
     }
+    const cargarMasivo = async()=>{
+        await guardarHorarioMasivo(dato.value)
+        dato.value.errors = []
+        if(errors.value)
+        {
+            dato.value.errors = errors.value
+        }else{
+            if(respuesta.value.ok==1){
+                dato.value.errors = []
+                Toast.fire({icon:'success', title:respuesta.value.mensaje})
+            }else{
+                Swal.fire({icon:'error', text:respuesta.value.mensaje})
+            }        
+        }
 
+    }
     onMounted(() => {
         defineTitle(titleHeader.value.titulo)
+        listaEstablecimientos()
     })
+
 </script>
 <template>
     <ContentHeader :title-header="titleHeader"></ContentHeader>
@@ -94,14 +120,43 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-8">
-                        <div class="input-group mb-1">
+                    <div class="col-md-4">
+                        <div class="input-group mb-2">
                             <span class="input-group-text" id="basic-addon1">Apellidos y Nombres</span>
                             <input class="form-control" placeholder="Ingrese nombre, código ciiu" type="text" v-model="dato.buscar"
                                 @change="buscar" />
                         </div>
                     </div>
-                    <div class="col-md-4 mb-1">
+                    <div class="col-md-2">
+                        <div class="input-group mb-1">
+                            <span class="input-group-text" id="basic-addon1">Mes</span>
+                            <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
+                                <option value="">--Seleccione--</option>
+                                <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
+                                    {{ mes.nombre }}
+                                </option>
+                            </select>
+                        </div>
+                        <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
+                                }}<br></small>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group mb-1">
+                                <span class="input-group-text" id="basic-addon1">Establecimiento</span>
+                                <select v-model="dato.establecimiento_id" class="form-control" :class="{ 'is-invalid': dato.errors.establecimiento_id }">
+                                    <option value="">--Seleccione--</option>
+                                    <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id">
+                                        {{ establecimiento.nombre }}
+                                    </option>
+                                </select>
+                            </div>
+                            <small class="text-danger" v-for="error in dato.errors.establecimiento_id" :key="error">{{ error
+                                }}</small>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-warning" @click="cargarMasivo()">Cargar Horarios Administrativo Masivo</button>
                     </div>
                 </div>
                 <div class="row">

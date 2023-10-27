@@ -25,7 +25,9 @@ class UserController extends Controller
                 'telefono'          => $request->telefono,
                 'celular'           => $request->celular,
                 'email'             => $request->email,
-                'profesion_id'      => $request->profesion_id
+                'profesion_id'      => $request->profesion_id,
+                'direccion'         => $request->direccion,
+                'establecimiento_id'=> $request->establecimiento_id,
             ]);
         }else{
             $personal = Personal::create([
@@ -37,15 +39,17 @@ class UserController extends Controller
                 'telefono'          => $request->telefono,
                 'celular'           => $request->celular,
                 'email'             => $request->email,
-                'profesion_id'      => $request->profesion_id
+                'profesion_id'      => $request->profesion_id,
+                'direccion'         => $request->direccion,
+                'establecimiento_id'=> $request->establecimiento_id,
             ]);
         }
-        $usuario = User::created([
+        $usuario = User::create([
             'username'          => $request->username,
             'personal_id'       => $personal->id,
             'role_id'           => $request->role_id,
             'establecimiento_id'=> $request->etablecimiento_id,
-            'password'          => Hash::make($request->password),
+            'password'          => Hash::make($request->numero_dni),
         ]);
         return response()->json([
             'ok' => 1,
@@ -144,7 +148,8 @@ class UserController extends Controller
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
         return User::with([
-            'personal:id,numero_dni,apellido_paterno,apellido_materno,nombres,sexo'
+            'personal:id,numero_dni,apellido_paterno,apellido_materno,nombres,sexo,establecimiento_id',
+            'personal.establecimiento:id,nombre'
         ])
         ->where(function($query) use($buscar) {
             $query->whereRaw("upper(username) like ?", ['%'.strtoupper($buscar).'%'])

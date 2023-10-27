@@ -8,10 +8,11 @@
   import usePersonal from '@/Composables/personal'
   import FormPassword from './formpassword.vue'
   import PerfilForm from './Edit.vue'
+  import useUsuario from '@/Composables/usuario.js'
   import imgAvatar from '../../../../public/img/avatar.png';
   const { usuario, role } = useDatosSession();
   const { errors, personal, obtenerPersonaldetalle } = usePersonal();
-
+  const { obtenerUsuario2, usuario2 } = useUsuario();
   const { openModal } = useHelper();
   const titleHeader = ref({
       titulo: "Perfil",
@@ -50,7 +51,8 @@
   })
   const obtenerdatospersonal = async() =>{
     const user_id = localStorage.getItem('userSession') ? JSON.parse( JSON.stringify(jwt_decode(localStorage.getItem('userSession')).user)) : null;
-    if(user_id != null) await obtenerPersonaldetalle(user_id);
+    await obtenerUsuario2(user_id)
+    if(user_id != null) await obtenerPersonaldetalle(usuario2.value.personal_id);
   }
 
   const EditarPerfil = () => {
@@ -137,6 +139,7 @@ const formcambiarclave = () => {
                     <li class="list-group-item"><strong>Tiene Hijos: </strong>{{ personal.tienehijos }}</li>
                     <li class="list-group-item"><strong>Profesión: </strong>{{ personal.profesiones_nombre }}</li>
                     <li class="list-group-item"><strong>Cargo: </strong>{{ personal.cargo_nombre }}</li>
+                    <li class="list-group-item"><strong>Establecimiento: </strong>{{ personal.establecimiento }}</li>
                   </ul>
               </div>
             </div>

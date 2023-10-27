@@ -233,6 +233,7 @@ Route::group(['prefix' => 'horario', 'middleware' => 'auth'], function () {
     Route::post('eliminar-horario-personal', [HorarioController::class, 'eliminarHorarioPersonal']);
     Route::post('eliminar-detalle-horario', [HorarioController::class, 'eliminarDetHorario']); 
     Route::post('guardar-horario-asistencial', [HorarioController::class, 'guardarHorarioAsistencial']);   
+    Route::post('guardar-horario-masivo', [HorarioController::class, 'cargarHorariosMasivo']);   
 });
 
 //MENU ROLE

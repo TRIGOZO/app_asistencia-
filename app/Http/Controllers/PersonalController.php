@@ -174,7 +174,8 @@ class PersonalController extends Controller
         $personal= Personal::join('estados_civiles', 'personales.estado_civil_id', '=', 'estados_civiles.id')
         ->leftjoin('profesiones', 'personales.profesion_id', '=', 'profesiones.id')
         ->leftjoin('cargos', 'personales.cargo_id', '=', 'cargos.id')
-        ->select('personales.*', 'estados_civiles.nombre as estado_civil_nombre', 'profesiones.nombre as profesiones_nombre', 'cargos.nombre as cargo_nombre')
+        ->leftjoin('establecimientos', 'personales.establecimiento_id', '=', 'establecimientos.id')
+        ->select('personales.*', 'establecimientos.nombre as establecimiento', 'estados_civiles.nombre as estado_civil_nombre', 'profesiones.nombre as profesiones_nombre', 'cargos.nombre as cargo_nombre')
         ->where('personales.id', $request->id)
         ->first();
         return $personal;        

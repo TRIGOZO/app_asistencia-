@@ -6,6 +6,8 @@ use App\Http\Requests\Horario\StoreHorarioAsistencialRequest;
 use App\Models\Horario;
 use App\Models\HorarioPersonal;
 use App\Models\HorarioTurno;
+use App\Models\Personal;
+use App\Models\TipoTrabajador;
 use App\Models\TipoTurno;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,7 +23,8 @@ class HorarioController extends Controller
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
         return HorarioPersonal::with([
-                'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno',
+                'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,establecimiento_id',
+                'personal.establecimiento:id,nombre',
                 'user:id,username,personal_id',
                 // 'user.personal,id,nombres,apellido_paterno,apellido_materno'
                 ])
@@ -128,6 +131,56 @@ class HorarioController extends Controller
         return response()->json([
             'ok' => 1,
             'horarios' => $horarios,
+            'mensaje' => 'GENERADO SATISFACTORIAMENTE'
+        ],200);
+    }
+    public function cargarHorariosMasivo(Request $request){
+        $request->validate([
+            'establecimiento_id' => 'required',
+        ], [
+            'required' => 'Selecciona el establecimiento',
+        ]);
+        $idtipotrabajador = TipoTrabajador::where('nombre', 'Administrativo')->value('id');
+        $administrativos = Personal::where('tipo_trabajador_id', $idtipotrabajador)
+        ->where('establecimiento_id', $request->establecimiento_id)
+        ->get();
+        $anio = Carbon::now()->year;
+        $fechaInicio = Carbon::create($anio, $request->mes, 1);
+        $fechaFin = Carbon::create($anio, $request->mes, 1)->endOfMonth();
+        $registros = HorarioTurno::with('tipo_turno:id,abreviatura')
+        ->whereHas('tipo_turno', function ($query){
+            $query->whereIn('abreviatura', ['M', 'T']);
+        })->get();
+        foreach($administrativos as $rowadministrativo){
+            $horariopersonal = HorarioPersonal::Create([
+                'personal_id'       => $rowadministrativo->id,
+                'user_id'           => 1,
+                'fecha_desde'       => $fechaInicio,
+                'fecha_hasta'       => $fechaFin,
+            ]);
+            $fecha = $fechaInicio->copy();
+            while ($fecha->lte($fechaFin)) {
+                foreach($registros as $row){
+                    if ($this->esDiaHabilitado($fecha->dayOfWeek, $row)) {
+                        $nombreDia = $fecha->formatLocalized('%A');
+                        Horario::create([
+                            'nombredia' => $nombreDia,
+                            'horario_personal_id' => $horariopersonal->id,
+                            'turno_horario_id'    => $row->id,
+                            'fecha' => $fecha->toDateString(),
+                            'dia' => $fecha->dayOfWeek,
+                            'hora_entrada' => $row->horaentrada,
+                            'hora_salida' => $row->horasalida,
+                            'total_horas' => $row->totalhoras,
+                        ]);
+                        usleep(1000);
+                    }
+                }
+                $fecha->addDay();
+            }            
+        }
+        return response()->json([
+            'ok' => 1,
             'mensaje' => 'GENERADO SATISFACTORIAMENTE'
         ],200);
     }

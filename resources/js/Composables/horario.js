@@ -33,6 +33,19 @@ export default function useHorario() {
             }
         }
     }
+    const guardarHorarioMasivo=async(data)=>{
+        errors.value = ''
+        try {
+            let respond = await axios.post('horario/guardar-horario-masivo',data,getConfigHeader())
+            errors.value =''
+            respuesta.value=respond.data
+        } catch (error) {
+            errors.value=""
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }    
     const obtenerHorario = async(id) => {
         let respuesta = await axios.get('horario/mostrar?id='+id,getConfigHeader())
         horario.value = respuesta.data
@@ -65,6 +78,6 @@ export default function useHorario() {
     return {
         errors, horario,obtenerHorario, generarHorario, eliminarHorario, 
         respuesta, mostrarHorariosPersonal, horarios, eliminarHorarioPersonal, eliminarDetHorario,
-        guardarHorarioAsistencial
+        guardarHorarioAsistencial, guardarHorarioMasivo
     }
 }

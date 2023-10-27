@@ -179,6 +179,7 @@
                                         <th>Nombres</th>
                                         <th>Fecha Desde</th>
                                         <th>Fecha Hasta</th>
+                                        <th>Establecimiento</th>
                                         <th>Usuario</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -197,6 +198,7 @@
                                         <td>{{ horario.personal.nombres }}</td>
                                         <td>{{ horario.fecha_desde}}</td>
                                         <td>{{ horario.fecha_hasta }}</td>
+                                        <td>{{ horario.personal.establecimiento.nombre }}</td>
                                         <td>{{ horario.user.username }}</td>
                                         <td>
                                             <button class="btn btn-danger btn-sm" title="Eliminar Horario" @click.prevent="eliminar(horario.id)">

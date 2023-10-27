@@ -37,15 +37,16 @@ trait MarcacionTrait
 
     public function saveMarcacion(Request $request)
     {
+
         $personal = $this->getPersonalData($request->dni);
         if($personal) {
-            $marcacion = Marcacion::where('persona_id',$personal->id)
+            $marcacion = Marcacion::where('personal_id',$personal->id)
                             ->where('fecha_hora',$request->fecha)->first();
 
             if(!$marcacion)
             {
                 $marcacion = new Marcacion();
-                $personal = $this->getPersonalData($request->dni);
+		//$personal = $this->getPersonalData($request->dni);
                 $marcacion->personal_id = $personal->id ?? null;
                 $marcacion->establecimiento_id = $personal->establecimiento_id ?? null;
                 $marcacion->fecha_hora = $request->fecha;

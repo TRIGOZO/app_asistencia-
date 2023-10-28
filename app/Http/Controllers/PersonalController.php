@@ -133,13 +133,23 @@ class PersonalController extends Controller
         $establecimiento_id = Auth::user()->establecimiento_id;
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return Personal::with(['estado_civil:id,nombre', 'profesion:id,nombre', 'cargo:id,nombre', 'establecimiento:id,nombre', 'condicion:id,nombre'])
-        ->where('establecimiento_id', $establecimiento_id)
-        ->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
-        ->orWhereRaw('UPPER(apellido_paterno) LIKE ?', ['%'.$buscar.'%'])
-        ->orWhereRaw('UPPER(apellido_materno) LIKE ?', ['%'.$buscar.'%'])
-        ->orWhereRaw('numero_dni LIKE ?', ['%'.$buscar.'%'])
-        ->paginate($paginacion);
+        $consulta= Personal::with([
+            'estado_civil:id,nombre',
+            'profesion:id,nombre',
+            'cargo:id,nombre',
+            'establecimiento:id,nombre',
+            'condicion:id,nombre'
+        ])
+        ->where(function($query) use ($buscar) {
+            $query->whereRaw('UPPER(nombres) LIKE ?', ['%'.$buscar.'%'])
+                ->orWhereRaw('UPPER(apellido_paterno) LIKE ?', ['%'.$buscar.'%'])
+                ->orWhereRaw('UPPER(apellido_materno) LIKE ?', ['%'.$buscar.'%'])
+                ->orWhereRaw('numero_dni LIKE ?', ['%'.$buscar.'%']);
+        })->orderBy('apellido_paterno');
+        if( Auth::user()->role_id==2){//si es admin
+            $consulta->where('establecimiento_id', $establecimiento_id);
+        }
+        return $consulta->paginate($paginacion);
     }
     public function obtenerPersonalesEstablecimiento(Request $request){
         $anoActual = Carbon::now()->year;

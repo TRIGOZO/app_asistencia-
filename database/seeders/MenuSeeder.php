@@ -15,6 +15,7 @@ class MenuSeeder extends Seeder
     public function run(): void
     {
         $role1 = Role::where('nombre', 'Super Usuario')->first();
+        $role2 = Role::where('nombre', 'Administrador')->first();
 
         $menuspadres = [
             [
@@ -295,6 +296,7 @@ class MenuSeeder extends Seeder
         }
         
         $role1->menus()->sync(Menu::pluck('id'));
+        $role2->menus()->sync(Menu::pluck('id'));
 
     }
 }

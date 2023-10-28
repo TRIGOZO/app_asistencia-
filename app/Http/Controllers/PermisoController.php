@@ -6,6 +6,7 @@ use App\Http\Requests\permiso\UpdatePermisoRequest;
 use App\Models\Permiso;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PermisoController extends Controller
@@ -88,9 +89,11 @@ class PermisoController extends Controller
     }
     public function registrosPorFecha(Request $request){
         $permisos = Permiso::with(['personal', 'tipopermiso'])
-        ->whereDate('created_at', $request->fecha)
-        ->get();
-        return $permisos;        
+        ->whereDate('created_at', $request->fecha);
+        if (Auth::user()->role_id == 2) { // si es admin
+            $permisos->where('establecimiento_id', Auth::user()->establecimiento_id);
+        }
+        return $permisos->get();        
     }
     public function todos(){
         $permisos = Permiso::get();

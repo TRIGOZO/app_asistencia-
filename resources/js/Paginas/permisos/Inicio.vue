@@ -7,7 +7,8 @@
   import usePermiso from '@/Composables/permiso.js';
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import PermisoForm from './Form.vue'
-
+  import useDatosSession from '@/Composables/session';
+  const { usuario, role } = useDatosSession();
   const { openModal, Toast, Swal, formatoFecha } = useHelper();
   const {
         personales,
@@ -35,11 +36,7 @@
         paginacion: 10,
         fecha: hoy
     });
-
-    //const hoy=new Date().toISOString().split('T')[0];
-    
     const horaHoy = formatoFecha(null,"HH:mm")
-
     const form = ref({
         id:'',
         personal_id:'',
@@ -54,7 +51,6 @@
         estadoCrud:'',
         errors:[]
     });
-
     const limpiar = ()=> {
         form.value.id =''
         form.value.personal_id='',
@@ -65,7 +61,7 @@
         form.value.hora_hasta=horaHoy,
         form.value.tipo_permiso_id='',
         form.value.motivo='',
-        form.value.establecimiento_id='',        
+        form.value.establecimiento_id=usuario.value.establecimiento_id,        
         form.value.errors = []
     }
     const buscar = () => {
@@ -197,7 +193,7 @@
                                         <td>{{ personal.numero_dni }}</td>
                                         <td>{{ personal.nombres }}</td>
                                         <td>{{ personal.nombres + ' ' + personal.apellido_paterno + ' ' + personal.apellido_materno }}</td>
-                                        <td>{{ personal.cargo.nombre }}</td>
+                                        <td>{{ personal.cargo?.nombre }}</td>
                                         <td>
                                             <button class="btn btn-info btn-sm" title="Solicitar Permiso" @click.prevent="solicitar(personal.id)">
                                                 <i class="fas fa-hand-paper"></i>
@@ -279,7 +275,7 @@
         </div>
       </div>
     </div>
-    <PermisoForm :form="form" @onListar="listarPermisos" :currentPage="personales.current_page"></PermisoForm>
+    <PermisoForm :form="form" @onListar="listarPermisos" :usuario="usuario" :currentPage="personales.current_page"></PermisoForm>
 </template>
 
 

@@ -1,9 +1,13 @@
 <script setup>
-import { ref, toRefs } from 'vue';
+import { ref, toRefs, onMounted } from 'vue';
 import useHelper from '@/Helpers';
+import jwt_decode from 'jwt-decode'
+import usePersonal from '@/Composables/personal'
+import useUsuario from '@/Composables/usuario.js'
 import { useAutenticacion } from '@/Composables/autenticacion';
 import imgAvatar from '../../../public/img/avatar.png';
-
+const { obtenerUsuario2, usuario2 } = useUsuario();
+const { errors, personal, obtenerPersonaldetalle } = usePersonal();
     const props = defineProps({
         usuario: Object
     });
@@ -15,7 +19,14 @@ import imgAvatar from '../../../public/img/avatar.png';
     const logout = async() => {
         await logoutUsuario(usuario.value.id)
     }
-
+    const obtenerdatospersonal = async() =>{
+        const user_id = localStorage.getItem('userSession') ? JSON.parse( JSON.stringify(jwt_decode(localStorage.getItem('userSession')).user)) : null;
+        await obtenerUsuario2(user_id)
+        if(user_id != null) await obtenerPersonaldetalle(usuario2.value.personal_id);
+    }
+    onMounted(() => {
+      obtenerdatospersonal()
+  })
     const cerrarSesion = async() => {
         Swal.fire({
             title:'¿Está seguro de Cerrar Sesión?',
@@ -73,14 +84,7 @@ import imgAvatar from '../../../public/img/avatar.png';
                         <li class="user-body">
                             <!--begin::Row-->
                             <div class="row">
-                                <div class="col-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-4 text-center">
-                                    <a href="#">Friends</a>
+                                <div class="col-12 text-center" v-text="personal.establecimiento">
                                 </div>
                             </div>
                             <!--end::Row-->

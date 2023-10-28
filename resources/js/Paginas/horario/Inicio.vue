@@ -87,7 +87,7 @@
     }
     // CARGA
     onMounted(() => {
-        //listarHorariosPersonal()
+        listarHorariosPersonal()
     })
 </script>
 <template>

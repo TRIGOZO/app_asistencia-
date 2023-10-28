@@ -48,7 +48,7 @@ class UserController extends Controller
             'username'          => $request->username,
             'personal_id'       => $personal->id,
             'role_id'           => $request->role_id,
-            'establecimiento_id'=> $request->etablecimiento_id,
+            'establecimiento_id'=> $request->establecimiento_id,
             'password'          => Hash::make($request->numero_dni),
         ]);
         return response()->json([

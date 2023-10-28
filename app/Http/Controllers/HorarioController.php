@@ -22,21 +22,24 @@ class HorarioController extends Controller
     public function obtenerHorariosPersonal(Request $request){
         $buscar = mb_strtoupper($request->buscar);
         $paginacion = $request->paginacion;
-        return HorarioPersonal::with([
-                'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,establecimiento_id',
-                'personal.establecimiento:id,nombre',
-                'user:id,username,personal_id',
-                // 'user.personal,id,nombres,apellido_paterno,apellido_materno'
-                ])
-            ->where(function($query) use($buscar) {
-                $query->whereHas('personal', function($q) use($buscar){
-                        $q->whereRaw('upper(numero_dni) like ?', ['%'.strtoupper($buscar).'%'])
-                            ->orWhereRaw("upper(concat(apellido_paterno,' ',apellido_materno)) like ?", ['%'.strtoupper($buscar).'%'])
-                            ->orWhereRaw("upper(nombres) like ?", ['%'.strtoupper($buscar).'%']);
 
-                });
-            })
-            ->paginate($paginacion);
+        $horariopersonal = HorarioPersonal::with([
+            'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,establecimiento_id',
+            'personal.establecimiento:id,nombre',
+            'user:id,username,personal_id',
+        ])
+        ->whereHas('personal', function($q) use ($buscar) {
+            $q->where(function($query) use ($buscar) {
+                $query->whereRaw('upper(numero_dni) like ?', ['%'.strtoupper($buscar).'%'])
+                    ->orWhereRaw("upper(concat(apellido_paterno,' ',apellido_materno)) like ?", ['%'.strtoupper($buscar).'%'])
+                    ->orWhereRaw("upper(nombres) like ?", ['%'.strtoupper($buscar).'%']);
+            });            
+            if (Auth::user()->role_id == 2) { // si es admin
+                $q->where('establecimiento_id', Auth::user()->establecimiento_id);
+            }
+        })
+        ->paginate($paginacion);
+        return $horariopersonal;
     }
     public function cargarConstanteDscto(Request $request){
         $buscar = mb_strtoupper($request->buscar);

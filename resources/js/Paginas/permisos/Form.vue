@@ -7,9 +7,10 @@ import useHelper from '@/Helpers';
 const { hideModal, Toast } = useHelper();
 const props = defineProps({
     form: Object,
+    usuario: Object,
     currentPage : Number
 });
-const { form, currentPage } = toRefs(props)
+const { form, usuario, currentPage } = toRefs(props)
 const {
     errors, respuesta, agregarPermiso, actualizarPermiso
 } = usePermiso();
@@ -117,10 +118,9 @@ const guardar = () => {
                         <small class="text-danger" v-for="error in form.errors.motivo" :key="error">{{ error
                                 }}</small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" v-if="usuario.role_id!=2">
                         <label for="establecimiento_id" class="form-label">Establecimiento</label>
                         <select v-model="form.establecimiento_id" class="form-control" :class="{ 'is-invalid': form.errors.establecimiento_id }">
-                            <option value="">--Seleccione--</option>
                             <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id"
                                 :title="establecimiento.nombre">{{ establecimiento.nombre }}</option>
                         </select>

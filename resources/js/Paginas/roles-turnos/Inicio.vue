@@ -9,6 +9,9 @@
     import ContentHeader from '@/Componentes/ContentHeader.vue';
     import RoleTurnoForm from './Form.vue'
     import Horario from './Horario.vue'
+    import useDatosSession from '@/Composables/session';
+    import useUsuario from '@/Composables/usuario.js'
+    const { usuario } = useDatosSession();
     const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
     const {
         personales,
@@ -19,7 +22,11 @@
     } = useEstablecimiento();
     const {
         guardarHorarioMasivo, errors, respuesta
-    } = useHorario();    
+    } = useHorario();  
+    const { usuario2, obtenerUsuario2 } = useUsuario();
+    
+
+    ;    
     // const {
     //     horario, obtenerHorario
     // } = useHorario();
@@ -36,10 +43,13 @@
         paginacion: 10,
         horario:'',
         mes : formatoFecha(null,"MM"),
-        establecimiento_id: '',
+        establecimiento_id: usuario2.value.establecimiento_id,
         errors:[],
     });
+    const limpiarDato = ()=> {
+        dato.value.establecimiento_id =usuario2.value.establecimiento_id
 
+    }    
     const hoy= formatoFecha(null,"YYYY-MM-DD")
     const horaHoy = formatoFecha(null,"HH:mm")
     const form = ref({
@@ -102,9 +112,16 @@
         }
 
     }
+    const getUsuario=async()=>{
+        const user_id =  localStorage.getItem('userSession') ? JSON.parse( JSON.stringify(jwt_decode(localStorage.getItem('userSession')).user)) : null;
+        await obtenerUsuario2(user_id)
+        limpiarDato()
+    }
     onMounted(() => {
         defineTitle(titleHeader.value.titulo)
         listaEstablecimientos()
+        getUsuario()
+        
     })
 
 </script>
@@ -140,12 +157,12 @@
                         <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
                                 }}<br></small>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" v-if="usuario.role_id!=2">
                         <div class="input-group">
                             <div class="input-group mb-1">
                                 <span class="input-group-text" id="basic-addon1">Establecimiento</span>
+
                                 <select v-model="dato.establecimiento_id" class="form-control" :class="{ 'is-invalid': dato.errors.establecimiento_id }">
-                                    <option value="">--Seleccione--</option>
                                     <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id">
                                         {{ establecimiento.nombre }}
                                     </option>
@@ -155,7 +172,7 @@
                                 }}</small>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <button class="btn btn-warning" @click="cargarMasivo()">Cargar Horarios Administrativo Masivo</button>
                     </div>
                 </div>

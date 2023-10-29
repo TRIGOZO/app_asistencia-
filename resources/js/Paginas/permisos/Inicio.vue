@@ -8,7 +8,7 @@
   import ContentHeader from '@/Componentes/ContentHeader.vue';
   import PermisoForm from './Form.vue'
   import useDatosSession from '@/Composables/session';
-  const { usuario, role } = useDatosSession();
+  const { usuario } = useDatosSession();
   const { openModal, Toast, Swal, formatoFecha } = useHelper();
   const {
         personales,

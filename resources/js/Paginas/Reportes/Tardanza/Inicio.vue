@@ -165,7 +165,7 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(registro,index) in marcacionesHorarios" :key="registro.id">
-                                        <td class="text-center">{{ index }}</td>
+                                        <td class="text-center">{{ index+1 }}</td>
                                         <td>{{ registro.numero_dni }}</td>
                                         <td>{{ registro.apenom }}</td>
                                         <td>{{ registro.condicion }}</td>

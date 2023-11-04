@@ -318,7 +318,7 @@
                                         <td>{{ usuario.personal?.apellido_paterno }}</td>
                                         <td>{{ usuario.personal?.apellido_materno }}</td>
                                         <td>{{ usuario.personal?.nombres }}</td>
-                                        <td>{{ usuario.personal?.establecimiento.nombre }}</td>
+                                        <td>{{ usuario.establecimiento?.nombre }}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm" title="Editar Usuario" @click.prevent="editar(usuario.id)">
                                                 <i class="fas fa-edit"></i>

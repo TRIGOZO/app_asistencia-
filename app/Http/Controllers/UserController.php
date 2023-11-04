@@ -136,6 +136,7 @@ class UserController extends Controller
             'celular'           => $request->celular,
             'email'             => $request->email,
             'direccion'         => $request->direccion,
+            'establecimiento_id' => $request->establecimiento_id,
         ]);
         $persona->save();
         return response()->json([
@@ -149,7 +150,7 @@ class UserController extends Controller
         $paginacion = $request->paginacion;
         return User::with([
             'personal:id,numero_dni,apellido_paterno,apellido_materno,nombres,sexo,establecimiento_id',
-            'personal.establecimiento:id,nombre'
+            'establecimiento:id,nombre'
         ])
         ->where(function($query) use($buscar) {
             $query->whereRaw("upper(username) like ?", ['%'.strtoupper($buscar).'%'])

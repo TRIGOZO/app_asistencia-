@@ -148,7 +148,7 @@ class PermisoController extends Controller
             'permisos.*',
             DB::raw('CONCAT(permisos.fecha_desde, " ", permisos.hora_inicio) as desde'),
             DB::raw('CONCAT(permisos.fecha_hasta, " ", permisos.hora_hasta) as hasta'),
-            DB::raw('CONCAT(personales.apellido_paterno, " ", personales.apellido_materno, ", ", personales.nombres) as apenom'),
+            DB::raw('CONCAT(personales.apellido_paterno, " ", personales.apellido_materno, ", ", personales.nombres) as apenom')
         ])
         ->join('personales', 'permisos.personal_id', '=', 'personales.id')
         ->whereMonth('fecha_desde', '=', $request->mes)
@@ -165,9 +165,12 @@ class PermisoController extends Controller
             'personal:id,numero_dni,nombres,apellido_paterno,apellido_materno,condicion_laboral_id,nivel_id,cargo_id,sueldo',
             'personal.condicion:id,nombre',
             'personal.cargo:id,nombre'
-        ])
-        ->get();
-        return $permisos;
+        ]);
+        $establecimiento_id = Auth::user()->establecimiento_id;
+        if( Auth::user()->role_id==2){//si es admin
+            $permisos->where('personales.establecimiento_id', $establecimiento_id);
+        }
+        return $permisos->get();
     }
     public function reportePermisoSinGoce(Request $request){
         $request->validate([

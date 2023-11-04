@@ -32,7 +32,7 @@
     // } = useHorario();
 
     const titleHeader = ref({
-      titulo: "Generacion de Horarios",
+      titulo: "Generacion de Horarios (Administrativo)",
       subTitulo: "Inicio",
       icon: "",
       vista: ""
@@ -96,7 +96,9 @@
         dato.value.page= page
         await obtenerPersonales(dato.value)
     }
+    const estado=ref(1);
     const cargarMasivo = async()=>{
+        estado.value=2;
         await guardarHorarioMasivo(dato.value)
         dato.value.errors = []
         if(errors.value)
@@ -104,13 +106,13 @@
             dato.value.errors = errors.value
         }else{
             if(respuesta.value.ok==1){
+                estado.value=1;
                 dato.value.errors = []
                 Toast.fire({icon:'success', title:respuesta.value.mensaje})
             }else{
                 Swal.fire({icon:'error', text:respuesta.value.mensaje})
             }        
         }
-
     }
     const getUsuario=async()=>{
         const user_id =  localStorage.getItem('userSession') ? JSON.parse( JSON.stringify(jwt_decode(localStorage.getItem('userSession')).user)) : null;
@@ -129,87 +131,130 @@
     <ContentHeader :title-header="titleHeader"></ContentHeader>
     <div class="app-content">
       <div class="container-fluid">
-        <div class="card card-primary card-outline">
-            <div class="card-header">
-                <h6 class="card-title">
-                    Busqueda de Personal
-                </h6>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="input-group mb-2">
-                            <span class="input-group-text" id="basic-addon1">Apellidos y Nombres</span>
-                            <input class="form-control" placeholder="Ingrese nombre, código ciiu" type="text" v-model="dato.buscar"
-                                @change="buscar" />
-                        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h6 class="card-title">
+                            Busqueda de Personal
+                        </h6>
                     </div>
-                    <div class="col-md-2">
-                        <div class="input-group mb-1">
-                            <span class="input-group-text" id="basic-addon1">Mes</span>
-                            <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
-                                <option value="">--Seleccione--</option>
-                                <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
-                                    {{ mes.nombre }}
-                                </option>
-                            </select>
-                        </div>
-                        <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
-                                }}<br></small>
-                    </div>
-                    <div class="col-md-3" v-if="usuario.role_id!=2">
-                        <div class="input-group">
-                            <div class="input-group mb-1">
-                                <span class="input-group-text" id="basic-addon1">Establecimiento</span>
-
-                                <select v-model="dato.establecimiento_id" class="form-control" :class="{ 'is-invalid': dato.errors.establecimiento_id }">
-                                    <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id">
-                                        {{ establecimiento.nombre }}
-                                    </option>
-                                </select>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon1">Apellidos y Nombres</span>
+                                    <input class="form-control" placeholder="Ingrese nombre, código ciiu" type="text" v-model="dato.buscar"
+                                        @change="buscar" />
+                                </div>
                             </div>
-                            <small class="text-danger" v-for="error in dato.errors.establecimiento_id" :key="error">{{ error
-                                }}</small>
+                            <div class="col-md-4">
+                                <div class="input-group mb-1">
+                                    <span class="input-group-text" id="basic-addon1">Mes</span>
+                                    <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
+                                        <option value="">--Seleccione--</option>
+                                        <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
+                                            {{ mes.nombre }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
+                                        }}<br></small>
+                            </div>
+                            <div class="col-md-6" v-if="usuario.role_id!=2">
+                                <div class="input-group">
+                                    <div class="input-group mb-1">
+                                        <span class="input-group-text" id="basic-addon1">Establecimiento</span>
+                                        <select v-model="dato.establecimiento_id" class="form-control" :class="{ 'is-invalid': dato.errors.establecimiento_id }">
+                                            <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id">
+                                                {{ establecimiento.nombre }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <small class="text-danger" v-for="error in dato.errors.establecimiento_id" :key="error">{{ error
+                                        }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-1">
+                                <div class="table-responsive" v-if="personales.total> 0">         
+                                    <table class="table table-bordered table-hover table-sm table-striped">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th>DNI</th>
+                                                <th>Nombre</th>
+                                                <th>Cargo</th>
+                                                <th>Establecimiento</th>
+                                                <th>Accion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(personal,index) in personales.data" :key="personal.id">
+                                                <td class="text-center">{{ index + personales.from }}</td>
+                                                <td>{{ personal.numero_dni }}</td>
+                                                <td>{{ personal.nombres + ' ' + personal.apellido_paterno + ' ' + personal.apellido_materno }}</td>
+                                                <td>{{ personal.cargo?.nombre }}</td>
+                                                <td>{{ personal.establecimiento?.nombre }}</td>
+                                                <td>
+                                                    <button class="btn btn-info btn-sm" title="Generar Horario" @click.prevent="formgenerar(personal.id)">
+                                                        <i class="fas fa-clock"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <button class="btn btn-warning" @click="cargarMasivo()">Cargar Horarios Administrativo Masivo</button>
+                </div>                
+            </div>
+            <div class="col-md-5">
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <h6 class="card-title">
+                            CARGA MASIVA DE HORARIOS POR MES
+                        </h6>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mb-1">
-                        <div class="table-responsive" v-if="personales.total> 0">         
-                            <table class="table table-bordered table-hover table-sm table-striped">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>DNI</th>
-                                        <th>Nombre</th>
-                                        <th>Cargo</th>
-                                        <th>Establecimiento</th>
-                                        <th>Accion</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(personal,index) in personales.data" :key="personal.id">
-                                        <td class="text-center">{{ index + personales.from }}</td>
-                                        <td>{{ personal.numero_dni }}</td>
-                                        <td>{{ personal.nombres + ' ' + personal.apellido_paterno + ' ' + personal.apellido_materno }}</td>
-                                        <td>{{ personal.cargo?.nombre }}</td>
-                                        <td>{{ personal.establecimiento?.nombre }}</td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm" title="Generar Horario" @click.prevent="formgenerar(personal.id)">
-                                                <i class="fas fa-clock"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group mb-1">
+                                    <span class="input-group-text" id="basic-addon1">Mes</span>
+                                    <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
+                                        <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
+                                            {{ mes.nombre }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
+                                        }}<br></small>
+                            </div>
+                            <div class="col-md-6">
+                                <template v-if="estado==1">
+                                    <button class="btn btn-warning" @click="cargarMasivo()">Generar</button>
+                                </template>
+                                <template v-else>
+                                    <div class="sk-chase">
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                    <div class="sk-chase-dot"></div>
+                                </div>
+                                </template>
+                                
+                            </div>
                         </div>
+
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
+
         <Horario v-if="dato.horario" :horario="horario" :form="form"></Horario>
       </div>
     </div>

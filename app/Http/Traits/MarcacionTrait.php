@@ -240,9 +240,11 @@ trait MarcacionTrait
             horarios.turno_horario_id=turno_horario.id	
         )
         inner join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
+        LEFT JOIN feriados ON horarios.fecha = feriados.fecha
         WHERE personales.numero_dni = ?
             AND year(horarios.fecha) = ?
-            AND MONTH(horarios.fecha) = ?;
+            AND MONTH(horarios.fecha) = ?
+            AND feriados.fecha is null;
         ",[
             $request->dni,$request->anho,$request->mes
         ]);
@@ -344,10 +346,12 @@ trait MarcacionTrait
         INNER JOIN condicion_laborales on personales.condicion_laboral_id=condicion_laborales.id
         INNER JOIN cargos on personales.cargo_id=cargos.id
         inner join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
+        LEFT JOIN feriados ON horarios.fecha = feriados.fecha
         WHERE personales.establecimiento_id = ?
             AND personales.condicion_laboral_id = ?
             AND year(horarios.fecha) = ?
-            AND MONTH(horarios.fecha) = ? group by (personales.numero_dni);
+            AND MONTH(horarios.fecha) = ?
+            AND feriados.fecha is null group by (personales.numero_dni);
         ",[
             $request->establecimiento_id,$request->condicion_laboral_id,$request->anho,$request->mes
         ]);        
@@ -411,10 +415,12 @@ trait MarcacionTrait
             inner join horario_personals on horarios.horario_personal_id=horario_personals.id
             inner join turno_horario on horarios.turno_horario_id=turno_horario.id
             inner join personales on personales.id=horario_personals.personal_id
+            LEFT JOIN feriados ON horarios.fecha = feriados.fecha
             where 
             personales.numero_dni=? and
             year(horarios.fecha)=? and
             month(horarios.fecha)=?
+            AND feriados.fecha is null
             group by horarios.fecha, horarios.nombredia having marcaciones_incluidopermisos<2;
 
         ", [

@@ -288,7 +288,14 @@ class MenuSeeder extends Seeder
                 'icono' => 'fas fa-user-shield',
                 'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
                 'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
-            ],             
+            ],
+            [
+                'nombre' => 'Faltas Por Dia',
+                'slug' => 'falta-dia',
+                'icono' => 'fas fa-user-shield',
+                'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
+                'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
+            ], 
         ];
         
         foreach ($menusData as $menuData) {

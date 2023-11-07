@@ -34,7 +34,6 @@ class StoreUserRequest extends FormRequest
             'sexo'                  => 'required|string',
             'celular'               => 'required|numeric|digits:9',
             'email'                 => 'required|email',
-            'direccion'             => 'required',
         ];
     }
 

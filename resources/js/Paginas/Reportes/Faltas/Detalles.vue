@@ -3,13 +3,13 @@ import { toRefs, onMounted } from 'vue';
 import useHelper from '@/Helpers';  
 import jspdf from 'jspdf'
 import html2canvas from 'html2canvas'
-const { hideModal, Toast } = useHelper();
+const { hideModal, Toast, formatoFecha } = useHelper();
 const { personal, faltasdetalle } = toRefs(props)
 const props = defineProps({
     personal: Object,
     faltasdetalle: Array
 });
-const downloadPDF=(apenom)=>{
+const downloadPDF=(apenom, fecha)=>{
     let canvas = document.getElementById('canvas')
     html2canvas(canvas).then((canvas) => {
         let img = '/img/logo.jpg';
@@ -44,7 +44,9 @@ const downloadPDF=(apenom)=>{
         doc.setFont("Arial", "italic", "normal");
         let posY = 80; // Posición inicial
         const parrafo = "Comunico a Usted que el servidor (a) público "+
-        apenom+" el día 15 de marzo de 2023, no se hizo presente a Laborar, por lo que de acuerdo a la R.M. Nª 0734-2017-SA/P Art. 31 Incs_B; se ha procedido a Considerar INASISTENCIA INJUSTIFICADA.";
+        apenom+" el día "+
+        formatoFecha(fecha, 'D [de] MMMM [del] YYYY')+
+        ", no se hizo presente a Laborar, por lo que de acuerdo a la R.M. Nª 0734-2017-SA/P Art. 31 Incs_B; se ha procedido a Considerar INASISTENCIA INJUSTIFICADA.";
 
         // Divide el párrafo en líneas
         const lines = doc.splitTextToSize(parrafo, doc.internal.pageSize.getWidth() - 20);
@@ -101,7 +103,7 @@ const downloadPDF=(apenom)=>{
                                         <td class="text-center">{{ index+1 }}</td>
                                         <td>{{ registro.nombredia }}</td>
                                         <td>{{ registro.fecha }}</td>
-                                        <td><button class="btn btn-sm btn-warning" @click="downloadPDF(personal.apenom )"><i class="fa-solid fa-file"></i></button></td>
+                                        <td><button class="btn btn-sm btn-warning" @click="downloadPDF(personal.apenom, registro.fecha )"><i class="fa-solid fa-file"></i></button></td>
                                     </tr>
                                 </tbody>
                             </table>

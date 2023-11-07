@@ -3,7 +3,10 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone  from 'dayjs/plugin/timezone';
 import advanced from 'dayjs/plugin/advancedFormat';
+import 'dayjs/locale/es'; // Importa el idioma deseado, por ejemplo, español
 
+// Configura el idioma de dayjs
+dayjs.locale('es'); 
 export * from './body';
 
 export * from './methods';

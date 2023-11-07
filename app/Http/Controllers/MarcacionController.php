@@ -154,5 +154,8 @@ class MarcacionController extends Controller
     }
     public function reporteFaltas(Request $request){
         return Marcacion::getFaltasByEstablecimiento($request);
-    }    
+    } 
+    public function reporteFaltasxFecha(Request $request){
+        return Marcacion::getfaltasporfecha($request);
+    }
 }

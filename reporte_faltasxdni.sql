@@ -790,6 +790,145 @@ inner join turno_horario on horarios.turno_horario_id=turno_horario.id
 inner join personales on horario_personals.personal_id=personales.id
 group by personales.id, horarios.fecha;
 --------------------------------------------------------------------------------------------------------------------------------------------
+
+---vista modificada
+DROP view IF EXISTS vistamarcaciones; 
+create view vistamarcaciones as 
+select personales.id as personal_id, personales.numero_dni, horarios.fecha as fecha, 
+concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', personales.nombres) as apenom,
+sum(
+case
+	when
+	(
+		select count(marcaciones.fecha_hora) from marcaciones
+		where date(marcaciones.fecha_hora)=horarios.fecha and marcaciones.personal_id=horario_personals.personal_id AND
+			(
+				(
+					TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+					AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+				)
+				OR (
+					TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+					AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida        
+				)
+			)
+		
+	)>=2
+    then
+    1
+    when 
+		(
+			select count(marcaciones.fecha_hora) from marcaciones
+			where date(marcaciones.fecha_hora)=horarios.fecha and marcaciones.personal_id=horario_personals.personal_id AND
+			(
+				(
+					TIME(marcaciones.fecha_hora)>= turno_horario.inicioentrada 
+					AND TIME(marcaciones.fecha_hora) <= turno_horario.finentrada
+				)
+			)
+		)=0
+	then
+	(
+		case
+        when
+			(select count(permisos.id) from permisos where personal_id=horario_personals.personal_id and 
+				(
+					CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
+					CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+				)
+				AND
+				(
+					CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
+					CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+				)
+			)=0
+        then
+        0
+        when
+			(
+				select count(marcaciones.fecha_hora) from marcaciones
+				where date(marcaciones.fecha_hora)=horarios.fecha and marcaciones.personal_id=horario_personals.personal_id AND
+				(
+					(
+						TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+						AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+					)
+				)
+			)=0
+        then
+			(
+				case 
+                when
+					(select count(permisos.id) from permisos where personal_id=horario_personals.personal_id and 
+							(
+								CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) >= 
+								CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+							)
+							AND
+							(
+								CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) <= 
+								CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+							)
+					)=0
+                then
+                0
+                else
+                1
+                end
+            )
+		else
+        1
+        end
+    )
+    else
+    (
+		case
+        when
+			(
+				select count(marcaciones.fecha_hora) from marcaciones
+				where date(marcaciones.fecha_hora)=horarios.fecha and marcaciones.personal_id=horario_personals.personal_id AND
+				(
+					(
+						TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+						AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+					)
+				)
+			)=0
+        then
+			(
+				case 
+                when
+					(select count(permisos.id) from permisos where personal_id=horario_personals.personal_id and 
+							(
+								CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) >= 
+								CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+							)
+							AND
+							(
+								CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) <= 
+								CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+							)
+					)=0
+                then
+                0
+                else
+                1
+                end
+            )
+        end
+    )
+end
+) as marcaciones
+from horarios 
+inner join horario_personals on horarios.horario_personal_id=horario_personals.id
+inner join turno_horario on horarios.turno_horario_id=turno_horario.id
+inner join personales on horario_personals.personal_id=personales.id
+LEFT JOIN feriados ON horarios.fecha = feriados.fecha
+where feriados.fecha is null
+group by personales.id, horarios.fecha;
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 select personales.numero_dni, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', personales.nombres) as apenom,
 condicion_laborales.nombre as condicion, cargos.nombre as cargo, personales.nivel_id as nivel,
 sum(if(marcaciones<2, 1,0)) as faltas,

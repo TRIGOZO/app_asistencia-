@@ -496,4 +496,25 @@ trait MarcacionTrait
         
         return $result;
     }
+    public static function getfaltasporfecha(Request $request){
+        $query = DB::table('personales')
+        ->join('vistamarcaciones', 'personales.id', '=', 'vistamarcaciones.personal_id')
+        ->join('cargos', 'personales.cargo_id', '=', 'cargos.id')
+        ->where('personales.establecimiento_id', $request->establecimiento_id)
+        ->whereDate('vistamarcaciones.fecha', $request->fecha)
+        ->where('vistamarcaciones.marcaciones','<', 2)
+        ->select([
+            'vistamarcaciones.fecha as fecha',
+            'personales.id as id',
+            'personales.numero_dni as numero_dni',
+            DB::raw("concat(personales.apellido_paterno, ' ', personales.apellido_materno, ', ', personales.nombres) as apenom"),
+            'cargos.nombre as cargo',
+            'personales.nivel_id as nivel',
+            'personales.sueldo as sueldo',
+            DB::raw('round(if(personales.tipo_trabajador_id = 1, sueldo / 25, sueldo / 30), 2) as sueldo_diario'),
+        ])->orderBy('personales.apellido_paterno', 'asc');
+        $result = $query->get();
+        return $result;
+
+    }
 }

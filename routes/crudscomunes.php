@@ -208,6 +208,7 @@ Route::group(['prefix' => 'marcacion', 'middleware' => 'auth'], function () {
     Route::post('marcaciones-horario', [MarcacionController::class, 'cargarMarcacionVsHorario']);
     Route::post('reporte-tardanzas', [MarcacionController::class, 'reporteTardanza']);
     Route::post('reporte-faltas', [MarcacionController::class, 'reporteFaltas']);
+    Route::post('reporte-faltas-fecha', [MarcacionController::class, 'reporteFaltasxFecha']);
     Route::post('faltas', [MarcacionController::class, 'faltas']);
 });
 

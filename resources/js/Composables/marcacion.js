@@ -100,10 +100,20 @@ export default function useMarcacion() {
             }
         }
     }
+    const cargarFaltasxFecha = async(data) =>{
+        try {
+            let respond = await axios.post('marcacion/reporte-faltas-fecha', data,getConfigHeader())
+            faltas.value =respond.data
+        } catch (error) {
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }    
     return {
         errors, marcaciones, marcacion, obtenerMarcacion, obtenerMarcaciones, 
         agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy,
         cargarMarcacionHorario, marcacionesHorarios, cargarTardanzas, cargarFaltas, faltas, cargarFaltasEstablecimiento,
-        faltasdetalle
+        faltasdetalle, cargarFaltasxFecha
     }
 }

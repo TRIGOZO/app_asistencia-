@@ -120,25 +120,44 @@ class UserController extends Controller
     }
     public function update(UpdateUserRequest $request){
         $user = User::findOrFail($request->id);
-        $user->fill([
+        $personal = Personal::where('id', $user->id)->first();
+        if($personal){
+            $personal->update([
+                'nombres'           => $request->nombres,
+                'apellido_paterno'  => $request->apellido_paterno,
+                'apellido_materno'  => $request->apellido_materno,
+                'numero_dni'        => $request->numero_dni,
+                'sexo'              => $request->sexo,
+                'celular'           => $request->celular,
+                'email'             => $request->email,
+                'direccion'         => $request->direccion,
+                'establecimiento_id' => $request->establecimiento_id,
+            ]);
+            $personal->save();
+        }else{
+            $personal = Personal::create([
+                'numero_dni'        => $request->numero_dni,
+                'nombres'           => $request->nombres,
+                'apellido_paterno'  => $request->apellido_paterno,
+                'apellido_materno'  => $request->apellido_materno,
+                'sexo'              => $request->sexo,
+                'telefono'          => $request->telefono,
+                'celular'           => $request->celular,
+                'email'             => $request->email,
+                'profesion_id'      => $request->profesion_id,
+                'direccion'         => $request->direccion,
+                'establecimiento_id'=> $request->establecimiento_id,
+            ]);
+        }
+        $user->update([
             'username'           => $request->username,
             'establecimiento_id' => $request->establecimiento_id,
             'role_id'            => $request->role_id,
+            'personal_id'        => $personal->id,
         ]);
         $user->save();
-        $persona = Personal::findOrFail($request->personal_id);
-        $persona->fill([
-            'nombres'           => $request->nombres,
-            'apellido_paterno'  => $request->apellido_paterno,
-            'apellido_materno'  => $request->apellido_materno,
-            'numero_dni'        => $request->numero_dni,
-            'sexo'              => $request->sexo,
-            'celular'           => $request->celular,
-            'email'             => $request->email,
-            'direccion'         => $request->direccion,
-            'establecimiento_id' => $request->establecimiento_id,
-        ]);
-        $persona->save();
+
+
         return response()->json([
             'ok' => 1,
             'mensaje' => 'Se guardo Exito'

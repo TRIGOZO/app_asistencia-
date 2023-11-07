@@ -120,8 +120,8 @@ class UserController extends Controller
     }
     public function update(UpdateUserRequest $request){
         $user = User::findOrFail($request->id);
-        $personal = Personal::where('id', $user->id)->first();
-        
+        $personal = Personal::where('id', $user->personal_id)->first();
+
         if($personal){
             $personal->update([
                 'nombres'           => $request->nombres,

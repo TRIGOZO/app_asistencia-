@@ -228,14 +228,14 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <button data-bs-toggle="dropdown" class="btn btn-indigo btn-block">
+                        <!-- <button data-bs-toggle="dropdown" class="btn btn-indigo btn-block">
                             Mostrar <i class="icon ion-ios-arrow-down tx-11 mg-l-3"></i>{{usuario.buscar}}
                         </button>
                         <div class="dropdown-menu">
                             <a href="" class="dropdown-item" @click.prevent="mostrarTodos">Todos</a>
                             <a href="" class="dropdown-item" @click.prevent="mostrarHabilitados">Habilitados</a>
                             <a href="" class="dropdown-item" @click.prevent="mostrarEliminados">Eliminados</a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-md-5">
                         <div class="input-group mb-1">

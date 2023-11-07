@@ -219,6 +219,7 @@ Route::group(['prefix' => 'usuario', 'middleware' => 'auth'], function () {
     Route::get('mostrar', [UserController::class, 'show']);
     Route::post('actualizar', [UserController::class, 'update']);
     Route::post('eliminar', [UserController::class, 'destroy']);
+    Route::post('eliminar-permanente', [UserController::class, 'eliminarpermanente']);
     Route::post('guardar', [UserController::class, 'store']);
     Route::get('listar', [UserController::class, 'listar']);
 });

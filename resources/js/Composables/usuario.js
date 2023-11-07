@@ -61,6 +61,12 @@ export default function useUsuario() {
             respuesta.value = respond.data
         }
     }
+    const eliminarPermanente = async(id) => {
+        const respond = await axios.post('usuario/eliminar-permanente', {id:id},getConfigHeader())
+        if(respond.data.ok==1){
+            respuesta.value = respond.data
+        }
+    }
     const resetClaveUsuario = async(id) => {
         errors.value = ''
         try {
@@ -81,6 +87,6 @@ export default function useUsuario() {
     return {
         errors, usuarios, listaUsuarios, usuario, obtenerUsuario, obtenerUsuarios, 
         agregarUsuario, actualizarUsuario, eliminarUsuario, respuesta, resetClaveUsuario,
-        usuario2, obtenerUsuario2
+        usuario2, obtenerUsuario2, eliminarPermanente
     }
 }

@@ -216,11 +216,25 @@ class UserController extends Controller
         ->paginate($paginacion);
     }
     public function destroy(Request $request){
-        $usuario = User::where('id', $request->id)->first();
-        $usuario->delete();
+        $user = User::where('id', $request->id)
+                    ->withTrashed()
+                    ->first()
+        ;
+        $user->forceDelete();
         return response()->json([
             'ok' => 1,
             'mensaje' => 'Usuario eliminado satisfactoriamente'
+        ],200);
+    }
+    public function eliminarpermanente(Request $request){
+        $user = User::where('id', $request->id)
+                    ->withTrashed()
+                    ->first()
+        ;
+        $user->forceDelete();
+        return response()->json([
+            'ok' => 1,
+            'mensaje' => 'Usuario Eliminado Permanentemente'
         ],200);
     }
 }

@@ -28,7 +28,8 @@ trait MenuFacadeTrait
     }
 
     public function obtenerMenus($roles){
-        return Menu::with('menus:id,padre_id,nombre,slug,orden,icono')->join('menu_role as mr','menus.id','=','mr.menu_id')
+        return Menu::with('menus:id,padre_id,nombre,slug,orden,icono')
+        ->join('menu_role as mr','menus.id','=','mr.menu_id')
         ->select('menus.id','menus.nombre','menus.slug','menus.icono')
         ->where('mr.role_id',$roles)
         ->where('menus.padre_id', null)

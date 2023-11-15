@@ -21,7 +21,7 @@ class Menu extends Model
 
     public function menus()
     {
-        return $this->hasMany(Menu::class,'padre_id');
+        return $this->hasMany(Menu::class,'padre_id')->orderBy('orden', 'asc');
     }
     public static function obtenerPadres()
     {

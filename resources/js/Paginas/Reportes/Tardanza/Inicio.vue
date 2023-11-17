@@ -31,16 +31,14 @@
     });
     
     const jsonFields = ref({
-        "DNI" : "personal.numero_dni",
+        "DNI" : "numero_dni",
         "Apellidos y Nombres": "apenom",
-        "Condicion Laboral": "personal.condicion.nombre",
-        "Cargo": "personal.cargo.nombre",
-        "Nivel":"personal.nivel_id",
-        "Motivo":"motivo",
-        "Sueldo":"personal.sueldo",
+        "Condicion Laboral": "condicion",
+        "Cargo": "cargo",
+        "Nivel":"nivel",
+        "Sueldo":"sueldo",
         "Descuento":"descuento",
         "Total":"total"
-
     })
     onMounted(()=>{
         listaCondicionesLaborales()
@@ -139,7 +137,7 @@
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-primary" @click="buscar()">Cargar</button>&nbsp;
-                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="permisos">
+                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="marcacionesHorarios">
                             <i class="fa-solid fa-file-excel"></i> Descargar
                         </JsonExcel>
                     </div>          

@@ -76,6 +76,19 @@ trait MarcacionTrait
                 )
         ) as fecha_hora_entrada_marcada,
         case
+            when
+				(select count(permisos.id) from permisos where personal_id=personales.id and 
+                    (
+                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) >= 
+                        CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+                    )
+                    AND
+                    (
+                        CAST(CONCAT(horarios.fecha, ' ', horarios.hora_entrada) AS DATETIME) <= 
+                        CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+                    )
+            ) > 0
+            then 0
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -167,6 +180,21 @@ trait MarcacionTrait
         ) as fecha_hora_salida_marcada,
         (
             case
+            when 
+                (
+				select count(permisos.id) from permisos where personal_id=personales.id and 
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) >= 
+							CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+						)
+						AND
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) <= 
+							CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+						)
+                )>0
+            then
+            0
             when 
                 ROUND(TIMESTAMPDIFF(
                     SECOND,

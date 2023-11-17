@@ -39,6 +39,8 @@ class HorarioController extends Controller
             }
         })
         ->paginate($paginacion);
+
+
         return $horariopersonal;
     }
     public function cargarConstanteDscto(Request $request){

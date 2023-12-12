@@ -16,10 +16,10 @@ class MarcacionSeeder extends Seeder
     public function run(): void
     {
         //$archivoLeer = storage_path('app/archivos/todosetiembre.txt');
-        $archivoLeer = storage_path('app/archivos/marcaciones_noviembre2023.txt');
+        //$archivoLeer = storage_path('app/archivos/marcaciones_noviembre2023.txt');
+        $archivoLeer = storage_path('app/archivos/noviembre_huanuco.txt');
         //$archivoLeer = storage_path('app/archivos/marcacionesprevias.txt');
         $this->command->getOutput()->writeln('Iniciando Importación de Marcaciones...');
-        
         $archivo = file($archivoLeer);
         $cantidad_filas = count($archivo);
         $fila_ulti=end($archivo);
@@ -43,6 +43,5 @@ class MarcacionSeeder extends Seeder
             }
         }
         $progressBar->finish();
-
     }
 }

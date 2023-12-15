@@ -41,9 +41,9 @@ trait MarcacionTrait
         $personal = $this->getPersonalData($request->dni);
         if($personal) {
             $marcacion = Marcacion::where('personal_id',$personal->id)
-                            ->where('fecha_hora',$request->fecha)->first();
+                            ->where('fecha_hora',$request->fecha)->count();
 
-            if(!$marcacion)
+            if($marcacion==0)
             {
                 $marcacion = new Marcacion();
 		//$personal = $this->getPersonalData($request->dni);
@@ -58,6 +58,7 @@ trait MarcacionTrait
                 return $marcacion;
             }
         }
+	return false;
 
     }
     public static function getByPersonal(Request $request){

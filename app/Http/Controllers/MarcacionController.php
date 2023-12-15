@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Marcacion;
 use Illuminate\Http\Request;
 use App\Http\Requests\marcaciones\StoreMarcacionRequest;
@@ -36,20 +37,30 @@ class MarcacionController extends Controller
     {
         ini_set('memory_limit', '1024M');
         set_time_limit(0);
-        $marcacion = $this->marcacion_model->saveMarcacion($request);
-        
-        if($marcacion)
-        {
-            return response()->json([
-                'ok' => 1,
-                'mensaje' => 'Marcación registrada satisfactoriamente'
-            ]);
-        }
+	try{
 
-        return response()->json([
-            'ok' => 0,
-            'mensaje' => 'Hubo un error'
-        ]);
+        	$marcacion = $this->marcacion_model->saveMarcacion($request);
+        
+       		if($marcacion!==false )
+	        {
+            		return response()->json([
+		                'ok' => 1,
+		                'mensaje' => 'Marcación registrada satisfactoriamente'
+            		]);
+        	}
+
+		if($marcacion == false){
+			return response()->json([
+				'ok' => 0,
+				'mensaje' => 'Marcación ya registradada y/o no existe'
+			]);
+		}
+	} catch(Exception $ex){
+        	return response()->json([
+	        	    'ok' => 0,
+        	   	 'mensaje' =>$ex->getMessage()
+		]);
+	}
     }
     public function store(StoreMarcacionRequest $request)
     {

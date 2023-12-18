@@ -44,7 +44,14 @@
         }
         if(respuesta.value.ok==1){
             form.value.errors = []
-            Toast.fire({icon:'success', title:respuesta.value.mensaje})
+            //Toast.fire({icon:'success', title:respuesta.value.mensaje})
+
+            Swal.fire({
+                title: "Importacion",
+                text: respuesta.value.mensaje,
+                icon: "success"
+            });
+
             
         }
         estado.value=1

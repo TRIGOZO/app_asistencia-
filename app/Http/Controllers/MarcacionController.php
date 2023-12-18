@@ -147,7 +147,7 @@ class MarcacionController extends Controller
             }
             return response()->json([
                 'ok' => 1,
-                'mensaje' => ($i+1).' Registros Insertados'
+                'mensaje' => ($i).' Registros Insertados'
             ],200);
         }
     }

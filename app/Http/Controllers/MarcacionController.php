@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\marcaciones\StoreDatRequest;
+use App\Http\Requests\marcaciones\StoreMarcacionRequest;
 use Exception;
 use App\Models\Marcacion;
 use Illuminate\Http\Request;
-use App\Http\Requests\marcaciones\StoreMarcacionRequest;
 use App\Http\Requests\marcaciones\UpdateMarcacionRequest;
 use App\Http\Requests\marcacionesvshorario\BuscarMarcacionesvsHorarioRequest;
 use App\Models\Personal;
@@ -118,7 +119,38 @@ class MarcacionController extends Controller
             'mensaje' => 'Cargo eliminado satisfactoriamente'
         ],200);
     }
-
+    public function importarData(StoreDatRequest $request){
+        $file = $request->file('archivo');
+        if ($file) {
+            $archivo = file($file->path());
+            $cantidad_filas = count($archivo);
+            $i=0;
+            foreach($archivo as $line_num=>$linea){
+                if($i<=$cantidad_filas-2){
+                    $dni = str_pad(trim(substr($linea, 1, 8)), 8, '0', STR_PAD_LEFT);
+                    $fecha = substr($linea, 10, 19);
+                    $existente = Marcacion::where([
+                        'personal_id' => Personal::where('numero_dni', $dni)->value('id'),
+                        'fecha_hora'  => $fecha,
+                    ])->exists();
+                    if (!$existente) {
+                        Marcacion::firstOrCreate([
+                            'personal_id'           => Personal::where('numero_dni', $dni)->value('id'),
+                            'establecimiento_id'    => $request->establecimiento_id,
+                            'fecha_hora'            => $fecha,
+                            'serial'                => 'AF4C172960193',
+                            'ip'                    => '192.168.2.252',
+                        ]);
+                        $i++;
+                    }
+                }
+            }
+            return response()->json([
+                'ok' => 1,
+                'mensaje' => ($i+1).' Registros Insertados'
+            ],200);
+        }
+    }
     public function cargarMarcacionVsHorario(BuscarMarcacionesvsHorarioRequest $request){
 
         return Marcacion::getByPersonal($request);

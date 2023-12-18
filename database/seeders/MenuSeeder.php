@@ -296,6 +296,13 @@ class MenuSeeder extends Seeder
                 'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
                 'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
             ], 
+            [
+                'nombre' => 'Importar Marcaciones',
+                'slug' => 'importar-marcaciones',
+                'icono' => 'fas fa-file-import',
+                'padre_id' => Menu::where('nombre', 'Sistema')->value('id'),
+                'orden' => Menu::where('nombre', 'Sistema')->max('id')+1,
+            ], 
         ];
         
         foreach ($menusData as $menuData) {

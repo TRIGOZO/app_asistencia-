@@ -37,6 +37,21 @@ export default function useMarcacion() {
             }
         }
     }
+    const importarMarcaciones = async(data) => {
+        errors.value = ''
+        try {
+            let respond = await axios.post('marcacion/importacion',data,getConfigHeader())
+            errors.value =''
+            if(respond.data.ok==1){
+                respuesta.value=respond.data
+            }
+        } catch (error) {
+            errors.value=""
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }    
     const actualizarMarcacion = async(data) => {
         errors.value = ''
         try {
@@ -114,6 +129,6 @@ export default function useMarcacion() {
         errors, marcaciones, marcacion, obtenerMarcacion, obtenerMarcaciones, 
         agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy,
         cargarMarcacionHorario, marcacionesHorarios, cargarTardanzas, cargarFaltas, faltas, cargarFaltasEstablecimiento,
-        faltasdetalle, cargarFaltasxFecha
+        faltasdetalle, cargarFaltasxFecha, importarMarcaciones
     }
 }

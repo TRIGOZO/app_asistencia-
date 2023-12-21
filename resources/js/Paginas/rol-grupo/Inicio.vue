@@ -6,10 +6,13 @@
     import usePersonal from '@/Composables/personal.js';
     import ContentHeader from '@/Componentes/ContentHeader.vue';
     import useTipoTurno from '@/Composables/tipoturno.js';
-
+    import useCargo from '@/Composables/cargos.js';
+    const {
+        cargos, listaCargos
+    } = useCargo();
     const {
         tipoturnos, listaTipoTurnos
-    } = useTipoTurno();
+    } = useTipoTurno();    
     const { meses, formatoFecha } = useHelper();
     const {
         establecimientos, listaEstablecimientos
@@ -19,6 +22,7 @@
     } = usePersonal();    
     onMounted(() => {
         listaEstablecimientos()
+        listaCargos()
     })
     const titleHeader = ref({
       titulo: "Roles",
@@ -36,14 +40,11 @@
         registros.personales.forEach(item => {
             item.regdias = registros.dias.map(dia => ({ dia: dia.dia, rol: '' }));
             item.mes = form.value.mes_numero
-            // item.regdias.forEach(diaItem => {
-            //     const index = diaItem.dia - 1;
-            //     diaItem.rol[index] = '';
-            // });
         });
     }
     const form = ref({
         establecimiento_id:'',
+        cargo_id:'',
         mes_numero:parseInt(formatoFecha(null,"MM")),
         errors:[]
     });
@@ -83,11 +84,12 @@
                     </div>
                     <div class="col-md-2">
                         <label for="name" class="form-label">Cargo</label>
-                        <select v-model="form.mes_numero" class="form-control"
-                            :class="{ 'is-invalid': form.errors.mes_numero }">
-                            <option v-for="mes in meses" :key="mes.numero" :value="mes.numero"
-                                :title="mes.nombre">
-                                {{ mes.nombre }}
+                        <select v-model="form.cargo_id" class="form-control"
+                            :class="{ 'is-invalid': form.errors.cargo_id }">
+                            <option value="">Todos</option>
+                                <option v-for="cargo in cargos" :key="cargo.id" :value="cargo.id"
+                                    :title="cargo.nombre">
+                                {{ cargo.nombre }}
                             </option>
                         </select>
                     </div>                    

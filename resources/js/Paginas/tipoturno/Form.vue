@@ -50,11 +50,9 @@ const abreviar = (text) => {
         .toUpperCase()
         .trim()
         .replace(/\s+/g, '');
-
     return cleanedText.substring(0, 4);
 }
 const guardar = () => {
-    
     crud[form.value.estadoCrud]()
 }
 </script>
@@ -161,15 +159,6 @@ const guardar = () => {
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
 
                 </div>
                 <div class="modal-footer">

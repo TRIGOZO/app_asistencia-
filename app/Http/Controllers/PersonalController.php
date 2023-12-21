@@ -153,10 +153,10 @@ class PersonalController extends Controller
     }
     public function obtenerPersonalesEstablecimiento(Request $request){
         $anoActual = Carbon::now()->year;
-        // $numeroDias = Carbon::create($anoActual, $request->mes_numero, 1)->daysInMonth;
         $asistencial_id = TipoTrabajador::where('nombre', 'ASISTENCIAL')->value('id');
         $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
         ->where('tipo_trabajador_id', $asistencial_id)
+        ->where('cargo_id', $request->cargo_id)
         ->where('es_activo', 1)
         ->orderBy('apellido_paterno', 'asc')
         ->get();
@@ -165,13 +165,11 @@ class PersonalController extends Controller
         $diasDelMes = [];
         while ($fecha->month == $request->mes_numero) {
             $nombreDia = $fecha->formatLocalized('%A');
-            //$nombreDia = $fecha->format('l');
             $nombreDia= strtoupper(substr($nombreDia,0,1));
             $dia = $fecha->day;
             $diasDelMes[] = [
                 'dia'       => $dia,
                 'nombreDia' => $nombreDia,
-                //'rol'       => []
             ];
             $fecha->addDay();
         }

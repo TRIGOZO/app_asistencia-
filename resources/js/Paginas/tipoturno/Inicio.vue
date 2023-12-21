@@ -34,6 +34,7 @@
         nombre:'',
         diastolerancia:'',
         descuento:'',
+        abreviatura: '',
         guardia:'',
         permiso:'',
         horasantesdescansa:'',
@@ -75,6 +76,7 @@
         form.value.descuento=''
         form.value.guardia=''
         form.value.permiso=''
+        form.value.abreviatura=''
         form.value.horasantesdescansa=''
         form.value.horasdespuesdescansa=''
         form.value.horaasistencial=''
@@ -116,6 +118,7 @@
             formhorario.value.tipo_turno_id=tipoturno.value.id;
             form.value.id=tipoturno.value.id
             form.value.nombre=tipoturno.value.nombre
+            form.value.abreviatura=tipoturno.value.abreviatura
             form.value.diastolerancia=tipoturno.value.diastolerancia
             form.value.descuento=tipoturno.value.descuento
             form.value.guardia=tipoturno.value.guardia

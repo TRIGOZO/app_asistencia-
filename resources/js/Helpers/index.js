@@ -127,9 +127,18 @@ export default function useHelper() {
         return (![null,'', undefined].includes(fecha)) ? dayjs(fecha).tz(time_zone).format(formato) 
             : dayjs().tz(time_zone).format(formato)
     }
-
+    const slugify = (text) => {
+        return text
+        .toString()
+        .normalize()
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g,'-')
+        .replace(/[^\w\-]+/g,'')
+        .replace(/\-\-+/g, '-')
+    }
     return {
-        Swal, Toast, openModal, hideModal, soloNumeros, calcularEdad, formatoFecha, meses
+        Swal, Toast, openModal, hideModal, soloNumeros, calcularEdad, formatoFecha, meses, slugify
     }
 
 }

@@ -2,7 +2,7 @@
 import { toRefs, onMounted } from 'vue';
 import useMenu from '@/Composables/menu.js';
 import useHelper from '@/Helpers';  
-const { hideModal, Toast } = useHelper();
+const { hideModal, Toast, slugify } = useHelper();
 const props = defineProps({
     form: Object,
     currentPage : Number
@@ -64,7 +64,7 @@ onMounted(() => {
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }" placeholder="Nombre">
+                        <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }" placeholder="Nombre" @keyup="form.slug=slugify(form.nombre)">
                         <small class="text-danger" v-for="error in form.errors.nombre" :key="error">{{ error
                                 }}</small>
                     </div>

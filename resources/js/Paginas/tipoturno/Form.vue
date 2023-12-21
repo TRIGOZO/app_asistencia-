@@ -25,7 +25,6 @@ const crud = {
             hideModal('#modaltipoturno')
             Toast.fire({icon:'success', title:respuesta.value.mensaje})
             emit('onListar', currentPage.value)
-           
         }
     },
     'editar': async() => {
@@ -42,6 +41,17 @@ const crud = {
             emit('onListar', currentPage.value)
         }
     }
+}
+
+const abreviar = (text) => {
+    const cleanedText = text
+        .toString()
+        .normalize()
+        .toUpperCase()
+        .trim()
+        .replace(/\s+/g, '');
+
+    return cleanedText.substring(0, 4);
 }
 const guardar = () => {
     
@@ -65,7 +75,7 @@ const guardar = () => {
                                 <div class="card-body">
                                     <div class="mb-3">
                                         <label for="nombre" class="form-label">Nombre </label>
-                                        <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }">
+                                        <input type="text" class="form-control" v-model="form.nombre" :class="{ 'is-invalid': form.errors.nombre }" @keyup="form.abreviatura=abreviar(form.nombre)">
                                         <small class="text-danger" v-for="error in form.errors.nombre" :key="error">{{ error
                                                 }}</small>
                                     </div>
@@ -101,6 +111,12 @@ const guardar = () => {
                                         <small class="text-danger" v-for="error in form.errors.permiso" :key="error">{{ error
                                                 }}</small>
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="abreviatura" class="form-label">Abreviatura </label>
+                                        <input type="text" class="form-control" v-model="form.abreviatura" :class="{ 'is-invalid': form.errors.abreviatura }">
+                                        <small class="text-danger" v-for="error in form.errors.abreviatura" :key="error">{{ error
+                                                }}</small>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>

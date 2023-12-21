@@ -25,6 +25,9 @@ class TipoTurnoController extends Controller
         $request->validated();
         $nombre = str_replace(' ', '', $request->nombre);
         $abreviatura = strtoupper(substr($nombre, 0, 4)); 
+        if(TipoTurno::where('abreviatura', $abreviatura)->exists()) {
+            $abreviatura = strtoupper(substr($nombre, 0, 3)).rand(1, 9);
+        }
         $tipoturno = TipoTurno::create([
             'abreviatura' => $abreviatura,
             'nombre'    => $request->nombre,

@@ -37,7 +37,7 @@ class StoreMenuRequest extends FormRequest
             'max' => 'Ingrese Máximo :max caracteres',
             'string' => 'Ingrese caracteres alfanuméricos',
             'number' => 'Ingrese solo numeros',
-            'unique' => 'El :nombre ya existe'
+            'unique' => 'El valor ya existe'
         ];
     }
 

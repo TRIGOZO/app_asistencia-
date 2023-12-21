@@ -81,6 +81,16 @@
                             </option>
                         </select>
                     </div>
+                    <div class="col-md-2">
+                        <label for="name" class="form-label">Cargo</label>
+                        <select v-model="form.mes_numero" class="form-control"
+                            :class="{ 'is-invalid': form.errors.mes_numero }">
+                            <option v-for="mes in meses" :key="mes.numero" :value="mes.numero"
+                                :title="mes.nombre">
+                                {{ mes.nombre }}
+                            </option>
+                        </select>
+                    </div>                    
                     <div class="col-md-4 mb-1">
                         <br>
                         <button class="btn btn-primary" @click="generarRoles()">Cargar</button>

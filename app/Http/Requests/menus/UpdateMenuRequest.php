@@ -37,7 +37,7 @@ class UpdateMenuRequest extends FormRequest
             'max' => 'Ingrese Máximo :max caracteres',
             'string' => 'Ingrese caracteres alfanuméricos',
             'number' => 'Ingrese solo numeros',
-            'unique' => 'El :email ya existe'
+            'unique' => 'El valor ya existe'
         ];
     }
 

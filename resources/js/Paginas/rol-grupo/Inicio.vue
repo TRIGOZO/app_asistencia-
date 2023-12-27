@@ -6,10 +6,10 @@
     import usePersonal from '@/Composables/personal.js';
     import ContentHeader from '@/Componentes/ContentHeader.vue';
     import useTipoTurno from '@/Composables/tipoturno.js';
-    import useCargo from '@/Composables/cargos.js';
+    import useProfesion from '@/Composables/profesiones.js';
     const {
-        cargos, listaCargos
-    } = useCargo();
+        profesiones, listaProfesiones
+    } = useProfesion();
     const {
         tipoturnos, listaTipoTurnos
     } = useTipoTurno();    
@@ -22,7 +22,7 @@
     } = usePersonal();    
     onMounted(() => {
         listaEstablecimientos()
-        listaCargos()
+        listaProfesiones()
     })
     const titleHeader = ref({
       titulo: "Roles",
@@ -44,7 +44,7 @@
     }
     const form = ref({
         establecimiento_id:'',
-        cargo_id:'',
+        profesion_id:'',
         mes_numero:parseInt(formatoFecha(null,"MM")),
         errors:[]
     });
@@ -83,13 +83,13 @@
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label for="name" class="form-label">Cargo</label>
-                        <select v-model="form.cargo_id" class="form-control"
-                            :class="{ 'is-invalid': form.errors.cargo_id }">
+                        <label for="name" class="form-label">Profesion</label>
+                        <select v-model="form.profesion_id" class="form-control"
+                            :class="{ 'is-invalid': form.errors.profesion_id }">
                             <option value="">Todos</option>
-                                <option v-for="cargo in cargos" :key="cargo.id" :value="cargo.id"
-                                    :title="cargo.nombre">
-                                {{ cargo.nombre }}
+                                <option v-for="profesion in profesiones" :key="profesion.id" :value="profesion.id"
+                                    :title="profesion.nombre">
+                                {{ profesion.nombre }}
                             </option>
                         </select>
                     </div>                    

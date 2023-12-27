@@ -156,7 +156,7 @@ class PersonalController extends Controller
         $asistencial_id = TipoTrabajador::where('nombre', 'ASISTENCIAL')->value('id');
         $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
         ->where('tipo_trabajador_id', $asistencial_id)
-        ->where('cargo_id', $request->cargo_id)
+        ->where('profesion_id', $request->profesion_id)
         ->where('es_activo', 1)
         ->orderBy('apellido_paterno', 'asc')
         ->get();

@@ -154,29 +154,34 @@ class PersonalController extends Controller
     public function obtenerPersonalesEstablecimiento(Request $request){
         $anoActual = Carbon::now()->year;
         $asistencial_id = TipoTrabajador::where('nombre', 'ASISTENCIAL')->value('id');
-        $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
-        ->where('tipo_trabajador_id', $asistencial_id)
-        ->where('profesion_id', $request->profesion_id)
-        ->where('es_activo', 1)
-        ->orderBy('apellido_paterno', 'asc')
-        ->get();
-        $fecha = Carbon::create($anoActual, $request->mes_numero, 1);
-        setlocale(LC_TIME, 'es_ES.utf8');
-        $diasDelMes = [];
-        while ($fecha->month == $request->mes_numero) {
-            $nombreDia = $fecha->formatLocalized('%A');
-            $nombreDia= strtoupper(substr($nombreDia,0,1));
-            $dia = $fecha->day;
-            $diasDelMes[] = [
-                'dia'       => $dia,
-                'nombreDia' => $nombreDia,
-            ];
-            $fecha->addDay();
-        }
-        return response()->json([
-            'dias' => $diasDelMes,
-            'personales' => $personales,
-        ],200);
+        // $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
+        // ->where('tipo_trabajador_id', $asistencial_id)
+        // ->when($request->profesion_id != '', function ($query) use ($request) {
+        //     return $query->where('profesion_id', $request->profesion_id);
+        // })
+        // ->where('es_activo', 1)
+        // ->orderBy('apellido_paterno', 'asc')
+        // ->get();
+        // $fecha = Carbon::create($anoActual, $request->mes_numero, 1);
+        // setlocale(LC_TIME, 'es_ES.utf8');
+        // $diasDelMes = [];
+        // while ($fecha->month == $request->mes_numero) {
+        //     $nombreDia = $fecha->formatLocalized('%A');
+        //     $nombreDia= strtoupper(substr($nombreDia,0,1));
+        //     $dia = $fecha->day;
+        //     $diasDelMes[] = [
+        //         'dia'       => $dia,
+        //         'nombreDia' => $nombreDia,
+        //     ];
+        //     $fecha->addDay();
+        // }
+        return Personal::getAllPersonalesConTurnos($anoActual, $request->mes_numero, $asistencial_id, $request->profesion_id, $request->establecimiento_id);
+
+
+        // return response()->json([
+        //     'dias' => $diasDelMes,
+        //     'personales' => $personales,
+        // ],200);
     }
     public function mostrarpersonadetalle(Request $request){
         $personal= Personal::join('estados_civiles', 'personales.estado_civil_id', '=', 'estados_civiles.id')

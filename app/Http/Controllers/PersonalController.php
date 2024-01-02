@@ -152,8 +152,7 @@ class PersonalController extends Controller
         return $consulta->paginate($paginacion);
     }
     public function obtenerPersonalesEstablecimiento(Request $request){
-        $anoActual = Carbon::now()->year;
-        $asistencial_id = TipoTrabajador::where('nombre', 'ASISTENCIAL')->value('id');
+
         // $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
         // ->where('tipo_trabajador_id', $asistencial_id)
         // ->when($request->profesion_id != '', function ($query) use ($request) {
@@ -175,13 +174,14 @@ class PersonalController extends Controller
         //     ];
         //     $fecha->addDay();
         // }
-        return Personal::getAllPersonalesConTurnos($anoActual, $request->mes_numero, $asistencial_id, $request->profesion_id, $request->establecimiento_id);
 
 
-        // return response()->json([
-        //     'dias' => $diasDelMes,
-        //     'personales' => $personales,
-        // ],200);
+
+        $personales = Personal::getAllPersonalesConTurnos($request);
+
+        return response()->json([
+            'personales' => $personales,
+        ],200);
     }
     public function mostrarpersonadetalle(Request $request){
         $personal= Personal::join('estados_civiles', 'personales.estado_civil_id', '=', 'estados_civiles.id')

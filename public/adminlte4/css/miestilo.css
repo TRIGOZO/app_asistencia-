@@ -10,6 +10,10 @@
 
 
 
+    .custom-select-sm {
+        font-size: 0.6rem; /* Puedes ajustar el valor según tus necesidades */
+        padding-left: 4px;
+    }
 
 .sk-chase {
     width: 40px;

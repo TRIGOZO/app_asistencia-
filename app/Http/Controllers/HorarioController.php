@@ -18,6 +18,7 @@ class HorarioController extends Controller
     public function __construct()
     {
         setlocale(LC_TIME, 'es_ES.utf8');
+        
     }
     public function obtenerHorariosPersonal(Request $request){
         $buscar = mb_strtoupper($request->buscar);
@@ -202,42 +203,67 @@ class HorarioController extends Controller
             default: return false;
         }
     }
-    public function guardarHorarioAsistencial(StoreHorarioAsistencialRequest $request){
-        $fechaInicio = Carbon::now()->month($request->mes)->firstOfMonth();
-        $fechaFin = $fechaInicio->endOfMonth();
-        $horariopersonal = HorarioPersonal::Create([
-            'personal_id'       => $request->id,
-            'user_id'           => Auth::user()->id,
-            'fecha_desde'       => $fechaInicio,
-            'fecha_hasta'       => $fechaFin,
-        ]);
-        $fecha = Carbon::now();
-        foreach($request->regdias as $dia){
-            $fecha = $fecha->setDay($dia['dia'])->setMonth($request->mes);
+    public function guardarHorarioAsistencial(Request $request){
+        $personal = $request->personal;
+        $datosGenerales = $request->datosGenerales;
+        $fechaInicio = Carbon::create($datosGenerales['anio'], $datosGenerales['mes_numero'], 1);
+        $fechaFin = $fechaInicio->copy()->endOfMonth(); 
+        $personal_id=$personal['id'];
+
+        $horariopersonal = HorarioPersonal::where('personal_id', $personal_id)
+        ->whereMonth('fecha_desde', $datosGenerales['mes_numero'])
+        ->whereYear('fecha_desde', $datosGenerales['anio'])
+        ->first();
+    
+        if(!$horariopersonal){
+            $horariopersonal = HorarioPersonal::Create([
+                'personal_id'       => $personal['id'],
+                'user_id'           => Auth::user()->id,
+                'fecha_desde'       => $fechaInicio,
+                'fecha_hasta'       => $fechaFin,
+            ]);
+        }
+        while ($fechaInicio->lte($fechaFin)) {
+            $horarioExistente = Horario::with('horario_personal:id,personal_id')
+            ->where('fecha', $fechaInicio->toDateString())
+            ->whereHas('horario_personal', function ($query) use ($personal_id) {
+                $query->where('personal_id', $personal_id);
+            })
+            ->first();
+        
+            if ($horarioExistente) {
+                Horario::where('horario_personal_id', $horariopersonal->id)
+                ->where('fecha', $fechaInicio->toDateString())
+                ->delete();
+            }
+
+
+            $turno = $personal['d'.intval($fechaInicio->format('d'))];
             $registros = HorarioTurno::with('tipo_turno:id,abreviatura,nombre');
-            if ($dia['rol'] == 'MT') {
+            if ($turno == 'MT') {
                 $registros->whereHas('tipo_turno', function ($query) {
                     $query->whereIn('abreviatura', ['M', 'T']);
                 });
             } else {
-                $registros->whereHas('tipo_turno', function ($query) use ($dia) {
-                    $query->where('abreviatura', $dia['rol']);
+                $registros->whereHas('tipo_turno', function ($query) use ($turno) {
+                    $query->where('abreviatura', $turno);
                 });
             }
             $registros = $registros->get();
-            $nombreDia = $fecha->formatLocalized('%A');
+            $nombreDia = $fechaInicio->formatLocalized('%A');
             foreach($registros as $row){
                 $reghorario = Horario::create([
                     'nombredia' => $nombreDia,
                     'horario_personal_id' => $horariopersonal->id,
                     'turno_horario_id'    => $row->id,
-                    'fecha' => $fecha->toDateString(),
-                    'dia' => $fecha->dayOfWeek,
+                    'fecha' => $fechaInicio->toDateString(),
+                    'dia' => $fechaInicio->dayOfWeek,
                     'hora_entrada' => $row->horaentrada,
                     'hora_salida' => $row->horasalida,
                     'total_horas' => $row->totalhoras,
                 ]);
             }
+            $fechaInicio->addDay();
         }
         return response()->json([
             'ok' => 1,

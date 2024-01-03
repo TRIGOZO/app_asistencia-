@@ -113,7 +113,7 @@
                     </div>                    
                     <div class="col-md-2">
                         <label for="name" class="form-label">Tipo de Trabajador</label>
-                        <select v-model="dato.tipo_trabajador_id" class="form-control"
+                        <select v-model="form.tipo_trabajador_id" class="form-control"
                             :class="{ 'is-invalid': form.errors.tipo_trabajador_id }">
                             <option v-for="tipotrabajador in tipotrabajadores" :key="tipotrabajador.id" :value="tipotrabajador.id"
                                 :title="tipotrabajador.nombre">
@@ -123,7 +123,7 @@
                     </div>
                     <div class="col-md-2">
                         <label for="name" class="form-label">Profesion</label>
-                        <select v-model="dato.profesion_id" class="form-control"
+                        <select v-model="form.profesion_id" class="form-control"
                             :class="{ 'is-invalid': form.errors.profesion_id }">
                             <option value="">Todos</option>
                                 <option v-for="profesion in profesiones" :key="profesion.id" :value="profesion.id"
@@ -137,7 +137,6 @@
                         <button class="btn btn-primary" @click="generarRoles()">Cargar</button>
                     </div>
                 </div>
-
                 <div class="row" v-if="mostrarRoles">
                     <roles :personales="personales" :tipoturnos="tipoturnos" :form="formRolePersonal"></roles>
                 </div>

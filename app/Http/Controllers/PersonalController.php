@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Personal\ReportePersonalRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\Personal\StorePersonalRequest;
 use App\Http\Requests\Personal\UpdatePersonalRequest;
@@ -151,34 +152,62 @@ class PersonalController extends Controller
         }
         return $consulta->paginate($paginacion);
     }
+
+    public function listarReporte(Request $request){
+        $paginacion = $request->paginacion;
+        $consulta = Personal::with([
+            'estado_civil:id,nombre',
+            'profesion:id,nombre',
+            'cargo:id,nombre',
+            'establecimiento:id,nombre',
+            'condicion:id,nombre'
+        ])
+        ->when($request->establecimiento_id, function ($query) use ($request) {
+            $query->where('establecimiento_id', $request->establecimiento_id);
+        })
+        ->when($request->tipo_trabajador_id, function ($query) use ($request) {
+            $query->where('tipo_trabajador_id', $request->tipo_trabajador_id);
+        })
+        ->when($request->profesion_id, function ($query) use ($request) {
+            $query->where('profesion_id', $request->profesion_id);
+        })
+        ->when($request->condicion_id, function ($query) use ($request) {
+            $query->where('condicion_laboral_id', $request->condicion_id);
+        })
+        ->when($request->cargo_id, function ($query) use ($request) {
+            $query->where('cargo_id', $request->cargo_id);
+        })
+        ->orderBy('apellido_paterno');
+        return $consulta->paginate($paginacion);
+    }
+    public function listarReporteExcel(Request $request){
+        $consulta = Personal::with([
+            'estado_civil:id,nombre',
+            'profesion:id,nombre',
+            'cargo:id,nombre',
+            'establecimiento:id,nombre',
+            'condicion:id,nombre'
+        ])
+        ->when($request->establecimiento_id, function ($query) use ($request) {
+            $query->where('establecimiento_id', $request->establecimiento_id);
+        })
+        ->when($request->tipo_trabajador_id, function ($query) use ($request) {
+            $query->where('tipo_trabajador_id', $request->tipo_trabajador_id);
+        })
+        ->when($request->profesion_id, function ($query) use ($request) {
+            $query->where('profesion_id', $request->profesion_id);
+        })
+        ->when($request->condicion_id, function ($query) use ($request) {
+            $query->where('condicion_laboral_id', $request->condicion_id);
+        })
+        ->when($request->cargo_id, function ($query) use ($request) {
+            $query->where('cargo_id', $request->cargo_id);
+        })
+        ->orderBy('apellido_paterno');
+        return $consulta->get();
+    } 
     public function obtenerPersonalesEstablecimiento(Request $request){
-
-        // $personales = Personal::where('establecimiento_id', $request->establecimiento_id)
-        // ->where('tipo_trabajador_id', $asistencial_id)
-        // ->when($request->profesion_id != '', function ($query) use ($request) {
-        //     return $query->where('profesion_id', $request->profesion_id);
-        // })
-        // ->where('es_activo', 1)
-        // ->orderBy('apellido_paterno', 'asc')
-        // ->get();
-        // $fecha = Carbon::create($anoActual, $request->mes_numero, 1);
-        // setlocale(LC_TIME, 'es_ES.utf8');
-        // $diasDelMes = [];
-        // while ($fecha->month == $request->mes_numero) {
-        //     $nombreDia = $fecha->formatLocalized('%A');
-        //     $nombreDia= strtoupper(substr($nombreDia,0,1));
-        //     $dia = $fecha->day;
-        //     $diasDelMes[] = [
-        //         'dia'       => $dia,
-        //         'nombreDia' => $nombreDia,
-        //     ];
-        //     $fecha->addDay();
-        // }
-
-
-
         $personales = Personal::getAllPersonalesConTurnos($request);
-
         return response()->json([
             'personales' => $personales,
         ],200);

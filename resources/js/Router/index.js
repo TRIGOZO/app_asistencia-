@@ -42,6 +42,7 @@ import ReporteFaltas from '@/Paginas/Reportes/Faltas/Inicio.vue'
 import ReportePermisosSinGoce from '@/Paginas/Reportes/PermisosSinGoce/Inicio.vue'
 import ReportePermisosHoras from '@/Paginas/Reportes/PermisosHorasParticulares/Inicio.vue'
 import ReporteVacaciones from '@/Paginas/Reportes/vacaciones/Inicio.vue'
+import ReportePersonal from '@/Paginas/Reportes/personal/Inicio.vue'
 import faltasDia from '@/Paginas/Reportes/FaltasDia/Inicio.vue'
 import Importacion from '@/Paginas/importaciones/Inicio.vue'
 const routes = [
@@ -189,6 +190,10 @@ const routes = [
         path: '/falta-dia', name:'FaltasDia', component: faltasDia ,
         meta:{layout: LayoutDefault}
     },
+    {
+        path: '/reporte-personal', name:'ReportePersonal', component: ReportePersonal ,
+        meta:{layout: LayoutDefault}
+    },    
     {
         path: '/importar-marcaciones', name:'Importar Marcaciones', component: Importacion ,
         meta:{layout: LayoutDefault}

@@ -9,11 +9,12 @@ import useCargo from '@/Composables/cargos.js';
 import useNivel from '@/Composables/niveles.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
-const { form, currentPage } = toRefs(props)
 const props = defineProps({
     form: Object,
     currentPage : Number
 });
+const { form, currentPage } = toRefs(props)
+
 const {
     errors, respuesta, agregarPersonal, actualizarPersonal, estadosciviles,
     listaEstadosCiviles

@@ -11,11 +11,9 @@ const { errors, personal, obtenerPersonaldetalle } = usePersonal();
     const props = defineProps({
         usuario: Object
     });
-
     const { logoutUsuario }= useAutenticacion();
     const { Swal } = useHelper();
     const {usuario} = toRefs(props)
-
     const logout = async() => {
         await logoutUsuario(usuario.value.id)
     }

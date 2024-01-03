@@ -295,7 +295,14 @@ class MenuSeeder extends Seeder
                 'icono' => 'fas fa-user-shield',
                 'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
                 'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
-            ], 
+            ],
+            [
+                'nombre' => 'Personal',
+                'slug' => 'reporte-personal',
+                'icono' => 'fas fa-id-badge',
+                'padre_id' => Menu::where('nombre', 'Reportes')->value('id'),
+                'orden' => Menu::where('nombre', 'Reportes')->max('id')+1,
+            ],
             [
                 'nombre' => 'Importar Marcaciones',
                 'slug' => 'importar-marcaciones',

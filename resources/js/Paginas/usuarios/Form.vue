@@ -5,11 +5,12 @@ import useRole from '@/Composables/roles.js';
 import useEstablecimiento from '@/Composables/establecimientos.js';
 import useHelper from '@/Helpers';  
 const { hideModal, Toast } = useHelper();
-const { form, currentPage } = toRefs(props)
+
 const props = defineProps({
     form: Object,
     currentPage : Number
 });
+const { form, currentPage } = toRefs(props)
 const {
     errors, respuesta, agregarUsuario, actualizarUsuario
 } = useUsuario();

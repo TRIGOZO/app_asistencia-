@@ -4,7 +4,8 @@ import { getdataParamsPagination, getConfigHeader } from '@/Helpers'
 export default function usePersonal() {
     const personal = ref({})
     const estadosciviles = ref([])
-    const personales = ref([])    
+    const personales = ref([])
+    const personalesReporte = ref([])
     const errors = ref('')
     const respuesta = ref([])
     const obtenerPersonaldetalle = async(id) => {
@@ -27,6 +28,14 @@ export default function usePersonal() {
         let respuesta = await axios.get('personal/listar' + getdataParamsPagination(data),getConfigHeader())
         personales.value =respuesta.data
     }
+    const obtenerPersonalesReporte = async(data, form) => {
+        let respuesta = await axios.post('personal/listar-reporte' + getdataParamsPagination(data),form,getConfigHeader())
+        personales.value =respuesta.data
+    }
+    const obtenerPersonalesReporteExcel = async(form) => {
+        let respuesta = await axios.post('personal/listar-reporte-excel',form,getConfigHeader())
+        personales.value =respuesta.data
+    }    
     const obtenerPersonalesEstablecimiento = async(data)=>{
         let respuesta = await axios.post('personal/obtener-personales-establecimiento',data,getConfigHeader())
         personales.value = respuesta.data        
@@ -72,6 +81,7 @@ export default function usePersonal() {
     return {
         errors, personal, obtenerPersonal, obtenerPersonaldetalle, estadosciviles, listaEstadosCiviles,
         obtenerPersonales, agregarPersonal, actualizarPersonal, eliminarPersonal, personales, respuesta,
-        obtenerPersonalDNI, obtenerPersonalesEstablecimiento
+        obtenerPersonalDNI, obtenerPersonalesEstablecimiento, obtenerPersonalesReporte, obtenerPersonalesReporteExcel,
+        personalesReporte
     }
 }

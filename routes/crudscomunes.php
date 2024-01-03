@@ -35,7 +35,6 @@ Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
     Route::post('guardar', [PersonalController::class, 'store']);;
     Route::get('listar', [PersonalController::class, 'listar']);
     Route::post('listar-reporte', [PersonalController::class, 'listarReporte']);
-    Route::post('listar-reporte-excel', [PersonalController::class, 'listarReporteExcel']);    
     Route::get('mostrar-dni', [PersonalController::class, 'obtetenerDni']);
     Route::post('obtener-personales-establecimiento', [PersonalController::class, 'obtenerPersonalesEstablecimiento']);
 });

@@ -178,34 +178,14 @@ class PersonalController extends Controller
             $query->where('cargo_id', $request->cargo_id);
         })
         ->orderBy('apellido_paterno');
-        return $consulta->paginate($paginacion);
+        return response()->json([
+            'completo' => $consulta->get(),
+            'paginado' => $consulta->paginate($paginacion),
+        ],200);
+
+        // return $consulta->paginate($paginacion);
     }
-    public function listarReporteExcel(Request $request){
-        $consulta = Personal::with([
-            'estado_civil:id,nombre',
-            'profesion:id,nombre',
-            'cargo:id,nombre',
-            'establecimiento:id,nombre',
-            'condicion:id,nombre'
-        ])
-        ->when($request->establecimiento_id, function ($query) use ($request) {
-            $query->where('establecimiento_id', $request->establecimiento_id);
-        })
-        ->when($request->tipo_trabajador_id, function ($query) use ($request) {
-            $query->where('tipo_trabajador_id', $request->tipo_trabajador_id);
-        })
-        ->when($request->profesion_id, function ($query) use ($request) {
-            $query->where('profesion_id', $request->profesion_id);
-        })
-        ->when($request->condicion_id, function ($query) use ($request) {
-            $query->where('condicion_laboral_id', $request->condicion_id);
-        })
-        ->when($request->cargo_id, function ($query) use ($request) {
-            $query->where('cargo_id', $request->cargo_id);
-        })
-        ->orderBy('apellido_paterno');
-        return $consulta->get();
-    } 
+
     public function obtenerPersonalesEstablecimiento(Request $request){
         $personales = Personal::getAllPersonalesConTurnos($request);
         return response()->json([

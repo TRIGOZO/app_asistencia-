@@ -15,7 +15,7 @@
   const {
         errors, personales, personal, 
         obtenerPersonal, obtenerPersonalesReporte, 
-        eliminarPersonal, respuesta, obtenerPersonalesReporteExcel,
+        eliminarPersonal, respuesta,
         personalesReporte
     } = usePersonal();
     const {
@@ -39,17 +39,17 @@
       icon: "",
       vista: ""
     });
-    const cargarPareReporte=()=>{
-        obtenerPersonalesReporteExcel(form.value)
-    }
     const jsonFields = ref({
         "DNI" : "numero_dni",
         "Apellido Paterno": "apellido_paterno",
+        "Apellido Materno": "apellido_materno",
         "Nombres": "nombres",
-
-
+        "Nivel": "nivel_id",
+        "Profesion": "profesion.nombre",
+        "Cargo": "cargo.nombre",
+        "Condicion": "condicion.nombre",
+        "Tiene Hijo": "tienehijos",
     })
-
     onMounted(()=>{
         listaCondicionesLaborales()
         listaEstablecimientos()
@@ -81,7 +81,6 @@
         return personales.value.current_page
     }
     const offset = 2;
-
     const cambiarPaginacion = () => {
         listarPersonal()
     }
@@ -177,7 +176,7 @@
                     <div class="col-md-2 mb-1">
                         <br>
                         <button class="btn btn-primary" @click="cargar()">Cargar</button>&nbsp;&nbsp;
-                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="personales.data">
+                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="personalesReporte">
                             <i class="fa-solid fa-file-excel"></i> Descargar
                         </JsonExcel>
 

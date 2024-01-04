@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('turno_horario', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tipo_turno_id')->constrained('tipo_turnos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('tipo_turno_id')
+            ->constrained('tipo_turnos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->time('horaentrada');
             $table->time('horasalida');
             $table->integer('toleranciaantes');

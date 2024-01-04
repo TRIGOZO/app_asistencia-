@@ -58,7 +58,7 @@ class MenuSeeder extends Seeder
                 'slug' => 'reportes',
                 'icono' => 'fas fa-chart-bar',
                 'padre_id' => null,
-                'orden' => 4,
+                'orden' => 5,
             ],            
         ];
         foreach ($menuspadres as $menuData) {
@@ -310,6 +310,7 @@ class MenuSeeder extends Seeder
                 'padre_id' => Menu::where('nombre', 'Sistema')->value('id'),
                 'orden' => Menu::where('nombre', 'Sistema')->max('id')+1,
             ], 
+
         ];
         
         foreach ($menusData as $menuData) {

@@ -4,11 +4,12 @@ import useHelper from '@/Helpers';
 import jspdf from 'jspdf'
 import html2canvas from 'html2canvas'
 const { hideModal, Toast, formatoFecha } = useHelper();
-const { personal, faltasdetalle } = toRefs(props)
 const props = defineProps({
     personal: Object,
     faltasdetalle: Array
 });
+const { personal, faltasdetalle } = toRefs(props)
+
 const downloadPDF=(apenom, fecha)=>{
     let canvas = document.getElementById('canvas')
     html2canvas(canvas).then((canvas) => {

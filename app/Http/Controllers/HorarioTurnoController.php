@@ -5,6 +5,7 @@ use App\Http\Requests\horarioturno\StoreHorarioTurnoRequest;
 use App\Http\Requests\horarioturno\UpdateHorarioTurnoRequest;
 use App\Models\HorarioTurno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HorarioTurnoController extends Controller
 {
@@ -52,8 +53,9 @@ class HorarioTurnoController extends Controller
      * Display the specified resource.
      */
     public function show(Request $request)
-    {
-        $horario = HorarioTurno::with('tipo_turno:id,nombre')->where('tipo_turno_id', $request->id)->first();
+    {      
+        $horario = HorarioTurno::with('tipo_turno:id,nombre')
+        ->where('tipo_turno_id', $request->id)->first();
         return $horario;
     }
 

@@ -44,32 +44,27 @@ const crud = {
 }
 
 const hoy =formatoFecha(null,"YYYY-MM-DD");
-
 const calcularHoras = ()=>{
-    if(form.value.horaentrada!='' && form.value.horasalida!=''){
+    if (form.value.horaentrada !== '' && form.value.horasalida !== '') {
+        const date1 = dayjs(hoy + ' ' + form.value.horasalida);
+        const date2 = dayjs(hoy + ' ' + form.value.horaentrada);
 
-        const date1 = dayjs(hoy+' ' + form.value.horasalida)
-        const date2 = dayjs(hoy+' ' + form.value.horaentrada)
+        const diferenciaminutos = date1.diff(date2, 'minute');
+        let cont =
+            parseInt(form.value.dialunes) +
+            parseInt(form.value.diamartes) +
+            parseInt(form.value.diamiercoles) +
+            parseInt(form.value.diajueves) +
+            parseInt(form.value.diaviernes) +
+            parseInt(form.value.diasabado) +
+            parseInt(form.value.diadomingo);
 
-        // // const date1 = dayjs('2023-09-26 00:20:20')
-        //const date2 = dayjs('2023-09-26 00:10:10')
+        const horassemanales = cont * (date1.diff(date2, 'hour'));
+        const diferenciahoras = parseInt(diferenciaminutos / 60);
 
-        const diferenciaminutos = date1.diff(date2, 'minute')
-        let cont = parseInt(form.value.dialunes)+
-        parseInt(form.value.diamartes)+
-        parseInt(form.value.diamiercoles)+
-        parseInt(form.value.diajueves)+
-        parseInt(form.value.diaviernes)+
-        parseInt(form.value.diasabado)+
-        parseInt(form.value.diadomingo);        
-        const horassemanales = cont * (date1.diff(date2, 'Hour'))
-        const diferenciahoras = parseInt(diferenciaminutos/60)
-        const diferenciaminutosdscto = diferenciaminutos%60;
-
-        form.value.totalhoras = `${diferenciahoras}:${diferenciaminutosdscto}:00`;
+        form.value.totalhoras = diferenciahoras; // Mostrar solo las horas como un número entero
         form.value.totalhorassemanal = horassemanales;
-
-    }else{
+    } else {
         form.value.totalhoras = '';
     }
 }
@@ -96,13 +91,13 @@ const guardar = () => {
                                 <div class="card-body">
                                     <div class="mb-3">
                                         <label for="horaentrada" class="form-label">Hora de Entrada </label>
-                                        <input type="time" class="form-control" v-model="form.horaentrada" :class="{ 'is-invalid': form.errors.horaentrada }">
+                                        <input type="time" class="form-control" v-model="form.horaentrada" :class="{ 'is-invalid': form.errors.horaentrada }" @change="calcularHoras()">
                                         <small class="text-danger" v-for="error in form.errors.horaentrada" :key="error">{{ error
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
                                         <label for="horasalida" class="form-label">Hora de Salida </label>
-                                        <input type="time" class="form-control" v-model="form.horasalida" :class="{ 'is-invalid': form.errors.horasalida }">
+                                        <input type="time" class="form-control" v-model="form.horasalida" :class="{ 'is-invalid': form.errors.horasalida }" @change="calcularHoras()">
                                         <small class="text-danger" v-for="error in form.errors.horasalida" :key="error">{{ error
                                                 }}</small>
                                     </div>
@@ -219,13 +214,13 @@ const guardar = () => {
                                     </div>
                                     <div class="mb-3">
                                         <label for="totalhoras" class="form-label">Total de Horas Diario</label>
-                                        <input type="text" class="form-control" v-model="form.totalhoras" :class="{ 'is-invalid': form.errors.totalhoras }" @focus="calcularHoras()">
+                                        <input type="text" class="form-control" v-model="form.totalhoras" :class="{ 'is-invalid': form.errors.totalhoras }">
                                         <small class="text-danger" v-for="error in form.errors.totalhoras" :key="error">{{ error
                                                 }}</small>
                                     </div>
                                     <div class="mb-3">
                                         <label for="totalhorassemanal" class="form-label">Total de Horas Semanal</label>
-                                        <input type="text" class="form-control" v-model="form.totalhorassemanal" :class="{ 'is-invalid': form.errors.totalhorassemanal }" @focus="calcularHoras()">
+                                        <input type="text" class="form-control" v-model="form.totalhorassemanal" :class="{ 'is-invalid': form.errors.totalhorassemanal }">
                                         <small class="text-danger" v-for="error in form.errors.totalhorassemanal" :key="error">{{ error
                                                 }}</small>
                                     </div>

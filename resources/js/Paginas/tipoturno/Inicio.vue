@@ -64,8 +64,8 @@
         diaviernes:'',
         diasabado:'',
         diadomingo:'0',
-        totalhoras:'',
-        totalhorassemanal:'',
+        totalhoras:'0',
+        totalhorassemanal:'0',
         estadoCrud:'',
         errors:[]
     });    
@@ -104,8 +104,8 @@
         formhorario.value.diaviernes=1;
         formhorario.value.diasabado=1;
         formhorario.value.diadomingo=0;
-        formhorario.value.totalhoras='';
-        formhorario.value.totalhorassemanal='';
+        formhorario.value.totalhoras=0;
+        formhorario.value.totalhorassemanal=0;
         formhorario.value.errors = []
         errors.value = []
     }
@@ -153,6 +153,7 @@
             formhorario.value.diasabado=horario.value.diasabado;
             formhorario.value.diadomingo=horario.value.diadomingo;
             formhorario.value.totalhoras=horario.value.totalhoras;
+            formhorario.value.totalhorassemanal=horario.value.totalhoras*5;
         }
     }
     const editar = (id) => {

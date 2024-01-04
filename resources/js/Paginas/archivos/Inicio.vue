@@ -21,9 +21,9 @@
                 </h6>
             </div>
             <div class="card-body">
-                <a href="/public/manuales/register_personal.pdf" target="_blank" class="btn btn-info">Registro de Personales</a>&nbsp;
-                <a href="/public/manuales/register_update_permiso.pdf" target="_blank" class="btn btn-info">Permisos</a>&nbsp;
-                <a href="" target="_blank" class="btn btn-info">Guardar</a>&nbsp;
+                <a href="/manuales/register_personal.pdf" target="_blank" class="btn btn-info">Registro de Personales</a>&nbsp;
+                <a href="/manuales/register_update_permiso.pdf" target="_blank" class="btn btn-info">Permisos</a>&nbsp;
+                <a href="/manuales/user_clave_modify.pdf" target="_blank" class="btn btn-info">Cambio de Clave</a>&nbsp;
             </div>
         </div>
       </div>

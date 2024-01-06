@@ -38,7 +38,6 @@
     }
     const marcarComoModificado=(index)=> {
         personales.value.personales[index].modificado = true;
-        let suma = 0;
 
         personales.value.personales[index].total_horas = 0;
 

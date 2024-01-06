@@ -8,6 +8,7 @@
     import useTipoTurno from '@/Composables/tipoturno.js';
     import useTipoTrabajador from '@/Composables/tipotrabajador.js';
     import useProfesion from '@/Composables/profesiones.js';
+    import JsonExcel from 'vue-json-excel3';
     const {
         profesiones, listaProfesiones
     } = useProfesion();
@@ -31,6 +32,42 @@
       vista: ""
     });
     const mostrarRoles = ref(false);
+    const jsonFields = ref({
+        "DNI" : "numero_dni",
+        "Apellidos y Nombres": "apellidos_nombres",
+        "1": "d1",
+        "2": "d2",
+        "3": "d3",
+        "4": "d4",
+        "5": "d5",
+        "6": "d6",
+        "7": "d7",
+        "8": "d8",
+        "9": "d9",
+        "10": "d10",
+        "11": "d11",
+        "12": "d12",
+        "13": "d13",
+        "14": "d14",
+        "15": "d15",
+        "16": "d16",
+        "17": "d17",
+        "18": "d18",
+        "19": "d19",
+        "20": "d20",
+        "21": "d21",
+        "22": "d22",
+        "23": "d23",
+        "24": "d24",
+        "25": "d25",
+        "26": "d26",
+        "27": "d27",
+        "28": "d28",
+        "29": "d29",
+        "30": "d30",
+        "31": "d31",
+        "Total Horas": "total_horas",
+    })
 
     const generarRoles=async()=>{
         mostrarRoles.value=true
@@ -55,8 +92,7 @@
         // });
 
         personales.value.personales.forEach(persona => {
-        
-            let suma = 0;
+
             persona.total_horas = 0;
             for (let i = 1; i <= 31; i++) {
                 const dayKey = `d${i}`;
@@ -164,7 +200,10 @@
                     </div>                                     
                     <div class="col-md-2 mb-1">
                         <br>
-                        <button class="btn btn-primary" @click="generarRoles()">Cargar</button>
+                        <button class="btn btn-primary" @click="generarRoles()">Cargar</button>&nbsp;
+                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="personales.personales">
+                            <i class="fa-solid fa-file-excel"></i> Descargar
+                        </JsonExcel>
                     </div>
                 </div>
                 <div class="row" v-if="mostrarRoles">

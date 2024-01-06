@@ -46,7 +46,7 @@
     const anhoactual=formatoFecha(null,"YYYY");
     const dato = ref({
         dni : '',
-        mes : formatoFecha(null,"MM"),
+        mes : parseInt(formatoFecha(null,"MM")),
         anho : anhoactual,
         errors:[]
     });

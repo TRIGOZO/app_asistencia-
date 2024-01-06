@@ -99,7 +99,22 @@ class TipoTurnoController extends Controller
     }
 
     public function todos(){
-        $tipoturnos = TipoTurno::get();
+        $tipoturnos = DB::table('tipo_turnos as tt')
+        ->leftjoin('turno_horario as th', 'tt.id', '=', 'th.tipo_turno_id')
+        ->select(
+            'tt.id',
+            'tt.abreviatura',
+            'tt.nombre',
+            DB::raw("IF(tt.abreviatura='MT', 8, th.totalhoras) as totalhoras")
+        )
+        ->get();
+
+
+        // $tipoturnos = TipoTurno::select('id', 'nombre', 'turno_horario.totalhoras as totalhoras')
+        // ->with(['horario:id,tipo_turno_id,totalhoras'])
+        // ->get();
+
+        //$tipoturnos = TipoTurno::with('horario:id,tipo_turno_id,totalhoras')->get();
         return $tipoturnos;
     }
     public function listar(Request $request){

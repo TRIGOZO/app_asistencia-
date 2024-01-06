@@ -36,11 +36,41 @@
         mostrarRoles.value=true
         await listaTipoTurnos()
         await obtenerPersonalesEstablecimiento(form.value);
-        // let registros = personales.value
-        // registros.personales.forEach(item => {
-        //     item.regdias = registros.dias.map(dia => ({ dia: dia.dia, rol: '' }));
-        //     item.mes = form.value.mes_numero
+
+        
+
+        // personales.value.forEach(persona => {
+        // console.log("Persona:", persona);  // Mostrar información sobre la persona
+
+        // let suma = 0;
+        // if (persona.d1 !== null) {
+        //     var turno = tipoturnos.value.find(t => t.abreviatura == persona.d1);
+        //     console.log("Turno encontrado:", turno);  // Mostrar información sobre el turno encontrado
+
+        //     if (turno) {
+        //     persona.total_horas += (turno.totalhoras == null) ? 0 : parseInt(turno.totalhoras);
+        //     console.log("Persona actualizada con total_horas:", persona.total_horas);
+        //     }
+        // }
         // });
+
+        personales.value.personales.forEach(persona => {
+        
+            let suma = 0;
+            persona.total_horas = 0;
+            for (let i = 1; i <= 31; i++) {
+                const dayKey = `d${i}`;
+                if (persona[dayKey] !== null) {
+                    const turno = tipoturnos.value.find(t => t.abreviatura === persona[dayKey]);
+                    if (turno) {
+                        persona.total_horas += (turno.totalhoras == null) ? 0 : parseInt(turno.totalhoras);
+                        //console.log(`Persona actualizada con total_horas para ${dayKey}:`, persona.total_horas);
+                    }
+                }
+            }
+
+        });
+
     }
     const form = ref({
         establecimiento_id:'',

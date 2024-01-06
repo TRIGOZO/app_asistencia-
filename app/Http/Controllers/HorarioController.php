@@ -39,6 +39,8 @@ class HorarioController extends Controller
                 $q->where('establecimiento_id', Auth::user()->establecimiento_id);
             }
         })
+        ->orderBy('created_at', 'desc')
+        ->limit(60) 
         ->paginate($paginacion);
 
 

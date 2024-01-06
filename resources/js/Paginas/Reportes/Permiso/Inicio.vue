@@ -47,7 +47,7 @@
     const dato = ref({
         numero_dni : '',
         condicion_laboral_id : 0,
-        mes : formatoFecha(null,"MM"),
+        mes : parseInt(formatoFecha(null,"MM")),
         tipo_permiso_id : 0,
         anho : anhoactual,
         errors:[]

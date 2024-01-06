@@ -42,7 +42,7 @@
         buscar:'',
         paginacion: 10,
         horario:'',
-        mes : formatoFecha(null,"MM"),
+        mes : parseInt(formatoFecha(null,"MM")),
         establecimiento_id: usuario2.value.establecimiento_id,
         errors:[],
     });

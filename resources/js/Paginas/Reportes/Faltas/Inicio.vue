@@ -67,7 +67,7 @@
     const dato = ref({
         condicion_laboral_id : 0,
         establecimiento_id : '',
-        mes : formatoFecha(null,"MM"),
+        mes : parseInt(formatoFecha(null,"MM")),
         anho : anhoactual,
         errors:[]
     });

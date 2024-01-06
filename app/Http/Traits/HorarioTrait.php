@@ -21,6 +21,7 @@ $profesion_id=$request->profesion_id;
             'p.profesion_id as profesion_id',
             'p.establecimiento_id as establecimiento_id',
             DB::raw("false as modificado"),
+            DB::Raw("0 as total_horas"),
             DB::raw("
                 MAX(
                     CASE 
@@ -36,7 +37,7 @@ $profesion_id=$request->profesion_id;
                                         AND DAY(horarios.fecha) = dm.dia
                                 ) = 2 THEN 'MT'
                                 ELSE (
-                                    SELECT MAX(tipo_turnos.abreviatura) 
+                                    SELECT MAX(tipo_turnos.abreviatura)
                                     FROM horarios
                                     JOIN horario_personals ON horarios.horario_personal_id = horario_personals.id
                                     JOIN turno_horario ON horarios.turno_horario_id = turno_horario.id

@@ -25,12 +25,6 @@
     } = useHorario();  
     const { usuario2, obtenerUsuario2 } = useUsuario();
     
-
-    ;    
-    // const {
-    //     horario, obtenerHorario
-    // } = useHorario();
-
     const titleHeader = ref({
       titulo: "Generacion de Horarios (Administrativo)",
       subTitulo: "Inicio",
@@ -97,6 +91,7 @@
         await obtenerPersonales(dato.value)
     }
     const estado=ref(1);
+
     const cargarMasivo = async()=>{
         estado.value=2;
         await guardarHorarioMasivo(dato.value)
@@ -114,6 +109,8 @@
             }        
         }
     }
+
+
     const getUsuario=async()=>{
         const user_id =  localStorage.getItem('userSession') ? JSON.parse( JSON.stringify(jwt_decode(localStorage.getItem('userSession')).user)) : null;
         await obtenerUsuario2(user_id)
@@ -238,18 +235,16 @@
                                 </template>
                                 <template v-else>
                                     <div class="sk-chase">
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
-                                    <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
+                                        <div class="sk-chase-dot"></div>
                                     </div>
                                 </template>
-                                
                             </div>
                         </div>
-
                     </div>
                 </div>  
             </div>

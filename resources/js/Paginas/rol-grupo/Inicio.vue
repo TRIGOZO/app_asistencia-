@@ -33,6 +33,7 @@
       icon: "",
       vista: ""
     });
+    const estado=ref(1);
     const mostrarRoles = ref(false);
     const jsonFields = ref({
         "DNI" : "numero_dni",
@@ -70,58 +71,43 @@
         "DIA 31": "d31",
         "DIA Total Horas": "total_horas",
     })
-    const downloadPDF=()=>{
+    const verPDF=()=>{
         let canvas = document.getElementById('canvas')
+        let ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = true;
+        ctx.webkitImageSmoothingEnabled = true;
+        ctx.mozImageSmoothingEnabled = true;
+        ctx.msImageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const iframe = document.getElementById('pdfPreview');
+        iframe.src = '';
         openModal('#modalreporterolturno')
         html2canvas(canvas).then((canvas) => {
             let img = '/img/logo.jpg';
             let doc = new jspdf();
-
             const textToCenter = "GOBIERNO REGIONAL HUANUCO";
             let posy = 20
             let textWidth = doc.getTextDimensions(textToCenter).w;
             let centerX = (doc.internal.pageSize.getWidth() - textWidth) / 2;
-
             doc.addImage(img, 'png', 8, 2);
-
             doc.setFontSize(14);
-            //doc.setFont("Arial", "italic", "bold");
             doc.text(textToCenter, centerX+15, posy);
             let texto = "DIRECCIÓN REGIONAL DE SALUD";
             posy+=10
             doc.text(texto, centerX, posy);
             posy+=10
             texto = "UNIDAD EJECUTORA 404 - RED DE SALUD HUÁNUCO";
-
-           
-            //doc.save("output.pdf");
             let pdfData = doc.output('blob');
-
-            // Crea un objeto Blob con los datos del PDF
             let blob = new Blob([pdfData], { type: 'application/pdf' });
-
-            // Crea una URL para el Blob
             let url = URL.createObjectURL(blob);
-
-
-            // let link = document.createElement('a');
-            // link.href = url;
-            // link.target = '_blank';
-            // link.textContent = 'Abrir PDF';
-          
-            // document.body.appendChild(link);
-
-
-            const iframe = document.getElementById('pdfPreview');
             iframe.src = url;
-            iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts');
-
-
-
+            iframe.setAttribute('sandbox', 'allow-scripts');
         })
     }
     const generarRoles=async()=>{
         mostrarRoles.value=true
+        estado.value=2;
         await listaTipoTurnos()
         await obtenerPersonalesEstablecimiento(form.value);
 
@@ -138,7 +124,7 @@
                     }
                 }
             }
-
+            estado.value=1;
         });
 
     }
@@ -238,11 +224,24 @@
                         <JsonExcel class="btn btn-success" :fields="jsonFields" :data="personales.personales">
                             <i class="fa-solid fa-file-excel"></i>
                         </JsonExcel>&nbsp;
-                        <button class="btn btn-danger" @click="downloadPDF()"><i class="fa-solid fa-file-pdf"></i></button>
+                        <button class="btn btn-danger" @click="verPDF()"><i class="fa-solid fa-file-pdf"></i></button>
                     </div>
                 </div>
+
                 <div class="row" v-if="mostrarRoles">
-                    <roles :personales="personales" :tipoturnos="tipoturnos" :form="formRolePersonal"></roles>
+                    <template v-if="estado==2">
+                        <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>
+                    </template>
+                    <template v-else>
+                        <roles :personales="personales" :tipoturnos="tipoturnos" :form="formRolePersonal"></roles>
+                    </template>
                 </div>
             </div>
         </div>
@@ -265,7 +264,6 @@
                             <div class="col">
                                 <canvas id="canvas"></canvas>
                             </div>
-
                         </div>
                     </div>
                     <div class="modal-footer">

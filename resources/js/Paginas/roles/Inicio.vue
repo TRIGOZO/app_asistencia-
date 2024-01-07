@@ -248,7 +248,6 @@
                                     <a href="#" aria-label="Previous" class="page-link"
                                         title="Primera Página"
                                         @click.prevent="cambiarPagina(1)">
-
                                         <span><i class="fas fa-backward-fast"></i></span>
                                     </a>
                                 </li>

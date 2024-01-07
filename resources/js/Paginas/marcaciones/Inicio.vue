@@ -17,10 +17,17 @@
       vista: ""
     });
     const total=ref(0);
+    const anios = ref([]);
+    const listarAnios=()=>{
+        const anioActual=parseInt(formatoFecha(null,"YYYY"))
+        for (let index = anioActual; index >= anioActual - 4; index--) {
+            anios.value.push(index);
+        }
+    }
     const dato = ref({
         dni:'',
         anho:formatoFecha(null,'YYYY'),
-        mes:formatoFecha(null,'MM'),
+        mes:parseInt(formatoFecha(null,'MM')),
         errors:[]
     });
     const cargar=async()=>{
@@ -50,6 +57,9 @@
         "Hora Marcada Salida":"fecha_hora_salida_marcada",
         "Diferencia Hora Salida":"diferencia_salida",
     })
+    onMounted(() => {
+        listarAnios()
+    })   
 </script>
 <template>
     <ContentHeader :title-header="titleHeader"></ContentHeader>
@@ -83,6 +93,20 @@
                         <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
                                 }}<br></small>
                     </div>
+                    <div class="col-md-2 mb-1">
+                        <div class="input-group mb-1">
+                            <span class="input-group-text" id="basic-addon1">Año</span>
+                            <select v-model="dato.anho" class="form-control"
+                            :class="{ 'is-invalid': dato.errors.anho }">
+                                <option v-for="anho in anios" :key="anho" :value="anho"
+                                    :title="anho">
+                                    {{ anho }}
+                                </option>
+                            </select>
+                        </div>
+                        <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
+                                }}<br></small>
+                    </div>     
                     <div class="col-md-2 mb-1">
                         <button class="btn btn-primary" @click="cargar()">
                             Cargar

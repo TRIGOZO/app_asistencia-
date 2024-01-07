@@ -161,7 +161,7 @@
                                         <td>{{ registro.apenom }}</td>
                                         <td>{{ registro.cargo }}</td>
                                         <td>{{ registro.nivel }}</td>
-                                        <td><td><button class="btn btn-sm btn-warning" title="Formato" @click="downloadPDF(registro )"><i class="fa-solid fa-file"></i></button></td></td>
+                                        <td><td><button class="btn btn-sm btn-warning" title="Formato" @click="downloadPDF(registro)"><i class="fa-solid fa-file"></i></button></td></td>
                                     </tr>
                                 </tbody>
                             </table>

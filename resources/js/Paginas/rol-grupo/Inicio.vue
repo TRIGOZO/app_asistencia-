@@ -9,6 +9,8 @@
     import useTipoTrabajador from '@/Composables/tipotrabajador.js';
     import useProfesion from '@/Composables/profesiones.js';
     import JsonExcel from 'vue-json-excel3';
+    import html2canvas from 'html2canvas'
+    import jspdf from 'jspdf'
     const {
         profesiones, listaProfesiones
     } = useProfesion();
@@ -18,7 +20,7 @@
     const {
         tipotrabajadores, listaTipoTrabajadores
     } = useTipoTrabajador();        
-    const { meses, formatoFecha } = useHelper();
+    const { meses, formatoFecha, openModal } = useHelper();
     const {
         establecimientos, listaEstablecimientos
     } = useEstablecimiento();
@@ -35,61 +37,93 @@
     const jsonFields = ref({
         "DNI" : "numero_dni",
         "Apellidos y Nombres": "apellidos_nombres",
-        "1": "d1",
-        "2": "d2",
-        "3": "d3",
-        "4": "d4",
-        "5": "d5",
-        "6": "d6",
-        "7": "d7",
-        "8": "d8",
-        "9": "d9",
-        "10": "d10",
-        "11": "d11",
-        "12": "d12",
-        "13": "d13",
-        "14": "d14",
-        "15": "d15",
-        "16": "d16",
-        "17": "d17",
-        "18": "d18",
-        "19": "d19",
-        "20": "d20",
-        "21": "d21",
-        "22": "d22",
-        "23": "d23",
-        "24": "d24",
-        "25": "d25",
-        "26": "d26",
-        "27": "d27",
-        "28": "d28",
-        "29": "d29",
-        "30": "d30",
-        "31": "d31",
-        "Total Horas": "total_horas",
+        "DIA 1": "d1",
+        "DIA 2": "d2",
+        "DIA 3": "d3",
+        "DIA 4": "d4",
+        "DIA 5": "d5",
+        "DIA 6": "d6",
+        "DIA 7": "d7",
+        "DIA 8": "d8",
+        "DIA 9": "d9",
+        "DIA 10": "d10",
+        "DIA 11": "d11",
+        "DIA 12": "d12",
+        "DIA 13": "d13",
+        "DIA 14": "d14",
+        "DIA 15": "d15",
+        "DIA 16": "d16",
+        "DIA 17": "d17",
+        "DIA 18": "d18",
+        "DIA 19": "d19",
+        "DIA 20": "d20",
+        "DIA 21": "d21",
+        "DIA 22": "d22",
+        "DIA 23": "d23",
+        "DIA 24": "d24",
+        "DIA 25": "d25",
+        "DIA 26": "d26",
+        "DIA 27": "d27",
+        "DIA 28": "d28",
+        "DIA 29": "d29",
+        "DIA 30": "d30",
+        "DIA 31": "d31",
+        "DIA Total Horas": "total_horas",
     })
+    const downloadPDF=()=>{
+        let canvas = document.getElementById('canvas')
+        openModal('#modalreporterolturno')
+        html2canvas(canvas).then((canvas) => {
+            let img = '/img/logo.jpg';
+            let doc = new jspdf();
 
+            const textToCenter = "GOBIERNO REGIONAL HUANUCO";
+            let posy = 20
+            let textWidth = doc.getTextDimensions(textToCenter).w;
+            let centerX = (doc.internal.pageSize.getWidth() - textWidth) / 2;
+
+            doc.addImage(img, 'png', 8, 2);
+
+            doc.setFontSize(14);
+            //doc.setFont("Arial", "italic", "bold");
+            doc.text(textToCenter, centerX+15, posy);
+            let texto = "DIRECCIÓN REGIONAL DE SALUD";
+            posy+=10
+            doc.text(texto, centerX, posy);
+            posy+=10
+            texto = "UNIDAD EJECUTORA 404 - RED DE SALUD HUÁNUCO";
+
+           
+            //doc.save("output.pdf");
+            let pdfData = doc.output('blob');
+
+            // Crea un objeto Blob con los datos del PDF
+            let blob = new Blob([pdfData], { type: 'application/pdf' });
+
+            // Crea una URL para el Blob
+            let url = URL.createObjectURL(blob);
+
+
+            // let link = document.createElement('a');
+            // link.href = url;
+            // link.target = '_blank';
+            // link.textContent = 'Abrir PDF';
+          
+            // document.body.appendChild(link);
+
+
+            const iframe = document.getElementById('pdfPreview');
+            iframe.src = url;
+            iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts');
+
+
+
+        })
+    }
     const generarRoles=async()=>{
         mostrarRoles.value=true
         await listaTipoTurnos()
         await obtenerPersonalesEstablecimiento(form.value);
-
-        
-
-        // personales.value.forEach(persona => {
-        // console.log("Persona:", persona);  // Mostrar información sobre la persona
-
-        // let suma = 0;
-        // if (persona.d1 !== null) {
-        //     var turno = tipoturnos.value.find(t => t.abreviatura == persona.d1);
-        //     console.log("Turno encontrado:", turno);  // Mostrar información sobre el turno encontrado
-
-        //     if (turno) {
-        //     persona.total_horas += (turno.totalhoras == null) ? 0 : parseInt(turno.totalhoras);
-        //     console.log("Persona actualizada con total_horas:", persona.total_horas);
-        //     }
-        // }
-        // });
 
         personales.value.personales.forEach(persona => {
 
@@ -200,10 +234,11 @@
                     </div>                                     
                     <div class="col-md-2 mb-1">
                         <br>
-                        <button class="btn btn-primary" @click="generarRoles()">Cargar</button>&nbsp;
+                        <button class="btn btn-primary" @click="generarRoles()"><i class="fa-solid fa-download"></i>&nbsp;Generar</button>&nbsp;
                         <JsonExcel class="btn btn-success" :fields="jsonFields" :data="personales.personales">
-                            <i class="fa-solid fa-file-excel"></i> Descargar
-                        </JsonExcel>
+                            <i class="fa-solid fa-file-excel"></i>
+                        </JsonExcel>&nbsp;
+                        <button class="btn btn-danger" @click="downloadPDF()"><i class="fa-solid fa-file-pdf"></i></button>
                     </div>
                 </div>
                 <div class="row" v-if="mostrarRoles">
@@ -212,6 +247,34 @@
             </div>
         </div>
       </div>
+        <div class="modal fade" id="modalreporterolturno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalreporterolturnoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalreporterolturnoLabel">PDF</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <iframe id="pdfPreview" width="100%" height="500"></iframe>
+                            </div>                            
+                        </div>
+                        <div class="row d-none">
+                            <div class="col">
+                                <canvas id="canvas"></canvas>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">{{ (form.estadoCrud=='nuevo') ? 'Guardar' : 'Actualizar' }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

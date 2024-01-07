@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import {useAutenticacion} from '@/Composables/autenticacion';
-import imgLogo from '../../../../public/img/logo.webp';
+import imgLogo from '../../../../public/img/logored.png';
 
     const user = ref({
         username:'',
@@ -22,8 +22,8 @@ import imgLogo from '../../../../public/img/logo.webp';
 </script>
 
 <template>
-    <div class="login-logo ">
-        <img :src="imgLogo">
+    <div class="login-logo">
+        <img :src="imgLogo" class="img-fluid img-thumbnail rounded-circle"><br>&nbsp;<br>
         <h2 class="text-white"><b>ASISTENCIA </b>APP</h2>
     </div>
     <div class="card">

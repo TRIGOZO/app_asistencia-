@@ -98,6 +98,7 @@
                             <th>29</th>
                             <th>30</th>
                             <th>31</th>
+                            <th>Total Horas</th>
                             <th>Accion</th>
                         </tr>
                     </thead>
@@ -323,6 +324,7 @@
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
+                            <td>{{ personal.total_horas }}</td>
                             <td>
                                 <button title="Guardar" class="btn btn-sm btn-primary" :disabled="!personal.modificado" @click="Guardar(pindex)">
                                     <i class="fa-solid fa-floppy-disk"></i>

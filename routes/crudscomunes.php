@@ -37,6 +37,8 @@ Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
     Route::post('listar-reporte', [PersonalController::class, 'listarReporte']);
     Route::get('mostrar-dni', [PersonalController::class, 'obtetenerDni']);
     Route::post('obtener-personales-establecimiento', [PersonalController::class, 'obtenerPersonalesEstablecimiento']);
+    Route::get('prueba', [PersonalController::class, 'prueba']);
+    
 });
 
 Route::group(['prefix' => 'cargo', 'middleware' => 'auth'], function () {

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 trait HorarioTrait
 {
     public static function getAllPersonalesConTurnos($request){
-$profesion_id=$request->profesion_id;
+        $profesion_id=$request->profesion_id;
         return DB::table('personales as p')
         ->join('dia_mes as dm', DB::raw('1'), '=', DB::raw('1'))
         ->select(

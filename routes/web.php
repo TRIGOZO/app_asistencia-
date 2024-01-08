@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::get('/obtener-menu-slug',[MenuController::class,'mostrarmenuslug']);
     Route::post('/actualizar-perfil',[UserController::class,'actualizarperfil']);
     Route::post('/cambiar-clave',[UserController::class,'cambiarclaveperfil']);
+    
 });
 
 require __DIR__."/crudscomunes.php";

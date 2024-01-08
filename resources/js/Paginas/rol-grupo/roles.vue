@@ -52,6 +52,10 @@
 
         }       
     }
+    const existeDia=(dia)=>{
+        const respuesta = personales.value.diasDelMes.find(dm => dm.dia===dia);
+        return respuesta;
+    }
 
 
 </script>
@@ -67,37 +71,12 @@
                             <th class="text-center">#</th>
                             <th>DNI</th>
                             <th>APENOM</th>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
-                            <th>5</th>
-                            <th>6</th>
-                            <th>7</th>
-                            <th>8</th>
-                            <th>9</th>
-                            <th>10</th>
-                            <th>11</th>
-                            <th>12</th>
-                            <th>13</th>
-                            <th>14</th>
-                            <th>15</th>
-                            <th>16</th>
-                            <th>17</th>
-                            <th>18</th>
-                            <th>19</th>
-                            <th>20</th>
-                            <th>21</th>
-                            <th>22</th>
-                            <th>23</th>
-                            <th>24</th>
-                            <th>25</th>
-                            <th>26</th>
-                            <th>27</th>
-                            <th>28</th>
-                            <th>29</th>
-                            <th>30</th>
-                            <th>31</th>
+                            <template v-for="dia in personales.diasDelMes">
+                                <th class="tex-center">
+                                    {{ dia.dia }}<br>
+                                    {{ dia.nombreDia }}
+                                </th>
+                            </template>
                             <th>Total Horas</th>
                             <th>Accion</th>
                         </tr>
@@ -107,217 +86,217 @@
                             <td class="fs-8">{{ pindex+1 }}</td>
                             <td class="fs-8">{{ personal.numero_dni }}</td>
                             <td class="fs-8">{{ personal.apellidos_nombres }}</td>
-                            <td>
+                            <td v-if="existeDia(1)">
                                 <select v-model="personal.d1" class="form-control custom-select-sm" :name="'turno['+pindex+'][d1]'"
                                 :class="{ 'is-invalid': personal.errors?.d1 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(2)">
                                 <select v-model="personal.d2" class="form-control custom-select-sm" :name="'turno['+pindex+'][d2]'"
                                 :class="{ 'is-invalid': personal.errors?.d2 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(3)">
                                 <select v-model="personal.d3" class="form-control custom-select-sm" :name="'turno['+pindex+'][d3]'"
                                 :class="{ 'is-invalid': personal.errors?.d3 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(4)">
                                 <select v-model="personal.d4" class="form-control custom-select-sm" :name="'turno['+pindex+'][d4]'"
                                 :class="{ 'is-invalid': personal.errors?.d4 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(5)">
                                 <select v-model="personal.d5" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d5 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(6)">
                                 <select v-model="personal.d6" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d6 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(7)">
                                 <select v-model="personal.d7" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d7 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(8)">
                                 <select v-model="personal.d8" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d8 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(9)">
                                 <select v-model="personal.d9" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d9 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(10)">
                                 <select v-model="personal.d10" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d10 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(11)">
                                 <select v-model="personal.d11" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d11 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(12)">
                                 <select v-model="personal.d12" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d12 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(13)">
                                 <select v-model="personal.d13" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d13 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(14)">
                                 <select v-model="personal.d14" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d14 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(15)">
                                 <select v-model="personal.d15" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d15 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(16)">
                                 <select v-model="personal.d16" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d16 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(17)">
                                 <select v-model="personal.d17" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d17 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(18)">
                                 <select v-model="personal.d18" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d18 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(19)">
                                 <select v-model="personal.d19" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d19 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(20)">
                                 <select v-model="personal.d20" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d20 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(21)">
                                 <select v-model="personal.d21" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d21 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(22)">
                                 <select v-model="personal.d22" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d22 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(23)">
                                 <select v-model="personal.d23" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d23 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(24)">
                                 <select v-model="personal.d24" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d24 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(25)">
                                 <select v-model="personal.d25" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d25 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(26)">
                                 <select v-model="personal.d26" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d26 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(27)">
                                 <select v-model="personal.d27" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d27 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(28)">
                                 <select v-model="personal.d28" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d28 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(29)">
                                 <select v-model="personal.d29" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d29 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(30)">
                                 <select v-model="personal.d30" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d30 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>
                                     <option v-for="tt in tipoturnos" :value="tt.abreviatura" :data-totalhoras="tt.totalhoras">{{ tt.abreviatura }}</option>
                                 </select>
                             </td>
-                            <td>
+                            <td v-if="existeDia(31)">
                                 <select v-model="personal.d31" class="form-control custom-select-sm" 
                                 :class="{ 'is-invalid': personal.errors?.d31 }" @change="marcarComoModificado(pindex)">
                                     <option :value="null">--</option>

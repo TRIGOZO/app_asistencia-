@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class PersonalController extends Controller
 {
+    public function __construct() {
+        setlocale(LC_TIME, 'es_ES');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -188,8 +191,24 @@ class PersonalController extends Controller
 
     public function obtenerPersonalesEstablecimiento(Request $request){
         $personales = Personal::getAllPersonalesConTurnos($request);
+
+
+        $fecha = Carbon::create($request->anio, $request->mes_numero, 1);
+        $diasDelMes = [];
+        while ($fecha->month == $request->mes_numero) {
+            $nombreDia = $fecha->formatLocalized('%A');
+            $nombreDia= strtoupper(substr($nombreDia,0,1));
+            $dia = $fecha->day;           
+            $diasDelMes[] = [
+                'dia'       => $dia,
+                'nombreDia' => $nombreDia,
+            ];
+            $fecha->addDay();
+        }
+
         return response()->json([
             'personales' => $personales,
+            'diasDelMes' => $diasDelMes,
         ],200);
     }
     public function mostrarpersonadetalle(Request $request){
@@ -205,5 +224,28 @@ class PersonalController extends Controller
     public function estados_civiles(){
         $estadosciviles = EstadoCivil::get();
         return $estadosciviles;
+    }
+
+    public function prueba(){
+
+        $fecha = Carbon::create('2024', '2', 1);
+        $diasDelMes = [];
+        while ($fecha->month == 2) {
+            $nombreDia = $fecha->formatLocalized('%A');
+            $nombreDia= strtoupper(substr($nombreDia,0,1));
+            $dia = $fecha->day;
+            echo $dia.' - '.$nombreDia.'<br>';
+            
+            // $diasDelMes[] = [
+            //     'dia'       => $dia,
+            //     'nombreDia' => $nombreDia,
+            // ];
+            $fecha->addDay();
+        }
+
+
+
+        
+        //return mb_strtoupper($fecha->formatLocalized('%A'));
     }
 }

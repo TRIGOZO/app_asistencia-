@@ -85,19 +85,47 @@
         openModal('#modalreporterolturno')
         html2canvas(canvas).then((canvas) => {
             let img = '/img/logo.jpg';
-            let doc = new jspdf();
+            let doc = new jspdf('l');
             const textToCenter = "GOBIERNO REGIONAL HUANUCO";
-            let posy = 20
+            let y = 20
             let textWidth = doc.getTextDimensions(textToCenter).w;
             let centerX = (doc.internal.pageSize.getWidth() - textWidth) / 2;
             doc.addImage(img, 'png', 8, 2);
             doc.setFontSize(14);
-            doc.text(textToCenter, centerX+15, posy);
+            doc.text(textToCenter, centerX+15, y);
             let texto = "DIRECCIÓN REGIONAL DE SALUD";
-            posy+=10
-            doc.text(texto, centerX, posy);
-            posy+=10
-            texto = "UNIDAD EJECUTORA 404 - RED DE SALUD HUÁNUCO";
+            y+=10
+            doc.text(texto, centerX, y);
+            texto = "UNIDAD EJECUTORA 404 - RED DE SALUD HUÁNUCO "+personales.value.diasDelMes.length+" "+doc.internal.pageSize.getWidth();
+            y+=10
+            doc.text(texto, centerX, y);
+            y+=5
+            //tabla
+            let x = 5;
+            let ycelda = y+8;
+            let xcelda = x;
+            doc.rect(xcelda, ycelda, 26, 9);
+            y+=6;
+            doc.text('DNI', x+8, y+8);
+            x += 30;
+            xcelda+=26;
+
+            doc.rect(xcelda, ycelda, 50, 9);
+            doc.text('APENOM', x, y+8);
+            xcelda+=50;
+            x += 48;
+            let espaciocelda = 7;
+            for (let dia of personales.value.diasDelMes) {
+                doc.rect(xcelda, ycelda-9, espaciocelda, 9);
+                doc.rect(xcelda, ycelda, espaciocelda, 9);
+                let diaText = dia.nombreDia;
+                let diaNum = dia.dia;
+                // let diaText = `${dia.dia}\n${dia.nombreDia}`;
+                doc.text(diaText, x, y);
+                doc.text(diaNum.toString(), x, y+8);
+                x+=7
+                xcelda+=espaciocelda
+            }
             let pdfData = doc.output('blob');
             let blob = new Blob([pdfData], { type: 'application/pdf' });
             let url = URL.createObjectURL(blob);
@@ -110,9 +138,7 @@
         estado.value=2;
         await listaTipoTurnos()
         await obtenerPersonalesEstablecimiento(form.value);
-
         personales.value.personales.forEach(persona => {
-
             persona.total_horas = 0;
             for (let i = 1; i <= 31; i++) {
                 const dayKey = `d${i}`;
@@ -221,23 +247,24 @@
                     <div class="col-md-2 mb-1">
                         <br>
                         <button class="btn btn-primary" @click="generarRoles()"><i class="fa-solid fa-download"></i>&nbsp;Generar</button>&nbsp;
-                        <JsonExcel class="btn btn-success" :fields="jsonFields" :data="personales.personales">
-                            <i class="fa-solid fa-file-excel"></i>
-                        </JsonExcel>&nbsp;
-                        <button class="btn btn-danger" @click="verPDF()"><i class="fa-solid fa-file-pdf"></i></button>
+                        <template v-if="mostrarRoles">
+                            <JsonExcel class="btn btn-success" :fields="jsonFields" :data="personales.personales">
+                                <i class="fa-solid fa-file-excel"></i>
+                            </JsonExcel>&nbsp;
+                            <button class="btn btn-danger" @click="verPDF()"><i class="fa-solid fa-file-pdf"></i></button>
+                        </template>
                     </div>
                 </div>
-
                 <div class="row" v-if="mostrarRoles">
                     <template v-if="estado==2">
                         <div class="sk-chase">
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                    </div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                            <div class="sk-chase-dot"></div>
+                        </div>
                     </template>
                     <template v-else>
                         <roles :personales="personales" :tipoturnos="tipoturnos" :form="formRolePersonal"></roles>
@@ -265,10 +292,6 @@
                                 <canvas id="canvas"></canvas>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">{{ (form.estadoCrud=='nuevo') ? 'Guardar' : 'Actualizar' }}</button>
                     </div>
                 </div>
             </div>

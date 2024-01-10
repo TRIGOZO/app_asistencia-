@@ -87,34 +87,40 @@
             let img = '/img/logo.jpg';
             let doc = new jspdf('l');
             const textToCenter = "GOBIERNO REGIONAL HUANUCO";
-            let y = 20
+            let y = 10
             let textWidth = doc.getTextDimensions(textToCenter).w;
             let centerX = (doc.internal.pageSize.getWidth() - textWidth) / 2;
             doc.addImage(img, 'png', 8, 2);
             doc.setFontSize(14);
             doc.text(textToCenter, centerX+15, y);
             let texto = "DIRECCIÓN REGIONAL DE SALUD";
-            y+=10
+            y+=7
             doc.text(texto, centerX, y);
-            texto = "UNIDAD EJECUTORA 404 - RED DE SALUD HUÁNUCO "+personales.value.diasDelMes.length+" "+doc.internal.pageSize.getWidth();
-            y+=10
+            texto = "UNIDAD EJECUTORA 404 - RED DE SALUD HUÁNUCO "+personales.value.personales.length+" "+doc.internal.pageSize.getWidth();
+            y+=7
             doc.text(texto, centerX, y);
             y+=5
             //tabla
             let x = 5;
             let ycelda = y+8;
             let xcelda = x;
-            doc.rect(xcelda, ycelda, 26, 9);
+            let espaciodni = 20;
+            let espacioapenom = 48;
+            let espaciocelda = 7.1;            
+            doc.rect(xcelda, ycelda, espaciodni, 9);
             y+=6;
             doc.text('DNI', x+8, y+8);
             x += 30;
-            xcelda+=26;
-
-            doc.rect(xcelda, ycelda, 50, 9);
+            xcelda+=espaciodni;
+            if(personales.value.diasDelMes.length<30){
+                espacioapenom = 75;
+                espaciocelda = 6.5;
+            }
+            doc.rect(xcelda, ycelda, espacioapenom, 9);
             doc.text('APENOM', x, y+8);
-            xcelda+=50;
-            x += 48;
-            let espaciocelda = 7;
+            xcelda+=espacioapenom;
+            x = espacioapenom+espaciodni+7;
+
             for (let dia of personales.value.diasDelMes) {
                 doc.rect(xcelda, ycelda-9, espaciocelda, 9);
                 doc.rect(xcelda, ycelda, espaciocelda, 9);
@@ -123,8 +129,50 @@
                 // let diaText = `${dia.dia}\n${dia.nombreDia}`;
                 doc.text(diaText, x, y);
                 doc.text(diaNum.toString(), x, y+8);
-                x+=7
+                x+=espaciocelda
+                if(diaNum==10){
+                    x=x-0.6;
+                }
                 xcelda+=espaciocelda
+            }
+            y+=18;
+            doc.setFontSize(10);
+            ycelda=y-7;
+            let contador=1;
+            for (let persona of personales.value.personales) {
+                x=5;
+                xcelda=x;
+                doc.rect(xcelda, ycelda, espaciodni, 8);
+                doc.text(persona.numero_dni, x+2, y);
+                x+=espaciodni;
+                xcelda+=espaciodni;
+                doc.setFontSize(8);
+                const lineas = doc.splitTextToSize(persona.apellidos_nombres, espacioapenom-1);
+                lineas.forEach((linea, index) => {
+                    const yActual = (y-3) + (index * 3);
+                    doc.text(linea, x + 1, yActual, { align: 'justify' });
+                });               
+                doc.rect(xcelda, ycelda, espacioapenom, 8);
+                xcelda=espaciodni+espacioapenom+5;
+                x=xcelda;
+                doc.setFontSize(10);
+                for(let i=1; i<=personales.value.diasDelMes.length; i++){
+                    const dayKey = `d${i}`;
+                    doc.rect(xcelda, ycelda, espaciocelda, 8);
+                    if (persona[dayKey] !== null) {
+                        doc.text(persona[dayKey].toString(), x+1, y);
+                    }
+                    xcelda+=espaciocelda
+                    x+=espaciocelda
+                }
+                y+=8;
+                ycelda+=8;
+                contador+=1;
+                if(contador % 20==0){
+                    y=22;
+                    ycelda=y-7;
+                    doc.addPage();
+                }
             }
             let pdfData = doc.output('blob');
             let blob = new Blob([pdfData], { type: 'application/pdf' });

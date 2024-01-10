@@ -49,7 +49,6 @@
                     personales.value.personales[index].total_horas += (turno.totalhoras == null) ? 0 : parseInt(turno.totalhoras);
                 }
             }
-
         }       
     }
     const existeDia=(dia)=>{

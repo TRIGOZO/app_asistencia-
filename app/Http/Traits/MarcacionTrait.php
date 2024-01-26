@@ -91,7 +91,7 @@ trait MarcacionTrait
             ) > 0
             then 0
             when
-                tipo_turnos.id = 1
+                tipo_turnos.id in (1,57,59)
             then 0            
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
@@ -199,6 +199,9 @@ trait MarcacionTrait
                 )>0
             then
             0
+            when
+                tipo_turnos.id in (1,57,59)
+            then 0   
             when 
                 ROUND(TIMESTAMPDIFF(
                     SECOND,

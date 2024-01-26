@@ -143,10 +143,10 @@
                                         <td>{{ marcacion.apenom }}</td>
                                         <td>{{ marcacion.turno }}</td>
                                         <td>{{ marcacion.hora_entrada }}</td>
-                                        <td v-text="marcacion.fecha_hora_entrada_marcada ?? (marcacion.diferencia_entrada==0 ? 'S/DSCTO' : 'FALTA')"></td>
+                                        <td v-text="marcacion.fecha_hora_entrada_marcada ?? (marcacion.diferencia_entrada==0 ? 'S/DSCTO ' : 'FALTA')"></td>
                                         <td>{{ marcacion.diferencia_entrada }}</td>
                                         <td>{{ marcacion.hora_salida }}</td>
-                                        <td v-text="marcacion.fecha_hora_salida_marcada ?? (marcacion.diferencia_salida==0 ? 'S/DSCTO' : 'FALTA')"></td>
+                                        <td v-text="marcacion.fecha_hora_salida_marcada ?? (marcacion.diferencia_salida==0 ? 'S/DSCTO ' : 'FALTA')"></td>
                                         <td>{{ marcacion.diferencia_salida }}</td>
                                     </tr>
                                 </tbody>

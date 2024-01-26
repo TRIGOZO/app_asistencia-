@@ -32,7 +32,7 @@ class HorarioTurnoSeeder extends Seeder
             'diaviernes'        => 1,
             'diasabado'         => 0,
             'diadomingo'        => 0,
-            'totalhoras'        => '05:00:00',
+            'totalhoras'        => 5,
         ],
         [
             'tipo_turno_id' => TipoTurno::where('nombre','TARDE')->value('id'),
@@ -51,7 +51,7 @@ class HorarioTurnoSeeder extends Seeder
             'diaviernes' => 1,
             'diasabado' => 0,
             'diadomingo' => 0,
-            'totalhoras' => '15:00:00',
+            'totalhoras' => 3,
         ],
         [
             'tipo_turno_id' => 9,
@@ -70,7 +70,7 @@ class HorarioTurnoSeeder extends Seeder
             'diaviernes' => 1,
             'diasabado' => 0,
             'diadomingo' => 0,
-            'totalhoras' => '05:00:00',
+            'totalhoras' => 5,
         ],
         [
             'tipo_turno_id' => TipoTurno::where('nombre','LIM ADM')->value('id'),
@@ -89,7 +89,7 @@ class HorarioTurnoSeeder extends Seeder
             'diaviernes' => 1,
             'diasabado' => 0,
             'diadomingo' => 0,
-            'totalhoras' => '08:00:00',
+            'totalhoras' => 5,
         ],
         [
             'tipo_turno_id' => TipoTurno::where('nombre','VIG ADM')->value('id'),
@@ -108,7 +108,7 @@ class HorarioTurnoSeeder extends Seeder
             'diaviernes' => 1,
             'diasabado' => 1,
             'diadomingo' => 1,
-            'totalhoras' => '00:00:00',
+            'totalhoras' => 5,
         ],
     ];
     foreach($registros as $fila){

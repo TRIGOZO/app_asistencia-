@@ -15,7 +15,7 @@
     const { openModal, Toast, Swal, formatoFecha, meses } = useHelper();
     const {
         personales,
-        obtenerPersonales,obtenerPersonal, personal
+        obtenerPersonalesReporte,obtenerPersonal, personal
     } = usePersonal();
     const {
         listaEstablecimientos, establecimientos
@@ -37,13 +37,23 @@
         paginacion: 10,
         horario:'',
         mes : parseInt(formatoFecha(null,"MM")),
+        anio : parseInt(formatoFecha(null,"YYYY")),
         establecimiento_id: usuario2.value.establecimiento_id,
         errors:[],
     });
+    const formEnvio = ref({
+        establecimiento_id: usuario2.value.establecimiento_id,
+    });
     const limpiarDato = ()=> {
         dato.value.establecimiento_id =usuario2.value.establecimiento_id
-
-    }    
+    }
+    const anios = ref([]);
+    const listarAnios=()=>{
+        const anioActual=parseInt(formatoFecha(null,"YYYY"))
+        for (let index = anioActual; index >= anioActual - 4; index--) {
+            anios.value.push(index);
+        }
+    }
     const hoy= formatoFecha(null,"YYYY-MM-DD")
     const horaHoy = formatoFecha(null,"HH:mm")
     const form = ref({
@@ -88,12 +98,14 @@
     }
     const listarPersonales = async(page=1) => {
         dato.value.page= page
-        await obtenerPersonales(dato.value)
+        formEnvio.value.establecimiento_id = dato.value.establecimiento_id,
+        await obtenerPersonalesReporte(dato.value, formEnvio.value)
     }
     const estado=ref(1);
 
     const cargarMasivo = async()=>{
         estado.value=2;
+        
         await guardarHorarioMasivo(dato.value)
         dato.value.errors = []
         if(errors.value)
@@ -120,7 +132,7 @@
         defineTitle(titleHeader.value.titulo)
         listaEstablecimientos()
         getUsuario()
-        
+        listarAnios()
     })
 
 </script>
@@ -137,40 +149,20 @@
                         </h6>
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-md-8">
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text" id="basic-addon1">Apellidos y Nombres</span>
-                                    <input class="form-control" placeholder="Ingrese nombre, código ciiu" type="text" v-model="dato.buscar"
-                                        @change="buscar" />
-                                </div>
+                                <label for="establecimiento_id" class="mb-2">Apellidos y Nombres</label>
+                                <input class="form-control" placeholder="Ingrese nombre, código ciiu" type="text" v-model="dato.buscar"
+                                    @change="buscar" />
                             </div>
-                            <div class="col-md-4">
-                                <div class="input-group mb-1">
-                                    <span class="input-group-text" id="basic-addon1">Mes</span>
-                                    <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
-                                        <option value="">--Seleccione--</option>
-                                        <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
-                                            {{ mes.nombre }}
-                                        </option>
-                                    </select>
-                                </div>
-                                <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
-                                        }}<br></small>
-                            </div>
-                            <div class="col-md-6" v-if="usuario.role_id!=2">
-                                <div class="input-group">
-                                    <div class="input-group mb-1">
-                                        <span class="input-group-text" id="basic-addon1">Establecimiento</span>
-                                        <select v-model="dato.establecimiento_id" class="form-control" :class="{ 'is-invalid': dato.errors.establecimiento_id }">
-                                            <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id">
-                                                {{ establecimiento.nombre }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <small class="text-danger" v-for="error in dato.errors.establecimiento_id" :key="error">{{ error
-                                        }}</small>
-                                </div>
+                            <div class="col-md-4" v-if="usuario.role_id!=2">
+                                <label for="establecimiento_id" class="mb-2">Establecimiento</label>
+                                <select class="form-control" v-model="dato.establecimiento_id">
+                                    <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id"
+                                        :title="establecimiento.nombre">
+                                        {{ establecimiento.nombre }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -216,21 +208,28 @@
                         </h6>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group mb-1">
-                                    <span class="input-group-text" id="basic-addon1">Mes</span>
-                                    <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
-                                        <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
-                                            {{ mes.nombre }}
-                                        </option>
-                                    </select>
-                                </div>
-                                <small class="text-danger" v-for="error in dato.errors.mes" :key="error">{{ error
-                                        }}<br></small>
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <label for="mes" class="mb-2">Mes</label>
+                                <select v-model="dato.mes" class="form-control" :class="{ 'is-invalid': dato.errors.mes }">
+                                    <option v-for="mes in meses" :key="mes.numero" :value="mes.numero">
+                                        {{ mes.nombre }}
+                                    </option>
+                                </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label for="anio" class="form-label">Año</label>
+                                <select v-model="dato.anio" class="form-control"
+                                    :class="{ 'is-invalid': dato.errors.anio }">
+                                    <option v-for="anho in anios" :key="anho" :value="anho"
+                                        :title="anho">
+                                        {{ anho }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
                                 <template v-if="estado==1">
+                                    <br>
                                     <button class="btn btn-warning" @click="cargarMasivo()">Generar</button>
                                 </template>
                                 <template v-else>

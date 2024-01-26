@@ -293,7 +293,7 @@
                                 </thead>
                                 <tbody>
                                     <tr v-if="personales.total == 0">
-                                        <td class="text-danger text-center" colspan="7">
+                                        <td class="text-danger text-center" colspan="12">
                                             -- Datos No Registrados - Tabla Vacía --
                                         </td>
                                     </tr>

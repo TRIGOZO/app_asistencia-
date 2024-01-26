@@ -90,6 +90,9 @@ trait MarcacionTrait
                     )
             ) > 0
             then 0
+            when
+                tipo_turnos.id = 1
+            then 0            
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 

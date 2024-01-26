@@ -16,7 +16,6 @@ export const useUsuarioStore = defineStore("usuario", {
                 : null;
             this.usuario = await axios.get('usuario-session-data/',{params:{id:user_id}}).then((respuesta) => respuesta.data)
             if(this.usuario)
-            
             {
                 this.role = this.usuario.role
             }

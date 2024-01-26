@@ -244,7 +244,7 @@
                         <label for="name" class="form-label">Establecimiento</label>
                         <select v-model="form.establecimiento_id" class="form-control"
                             :class="{ 'is-invalid': form.errors.establecimiento_id }">
-                            <option value="">--Seleccione--</option>
+                            <option value="" disabled>--Seleccione--</option>
                             <option v-for="establecimiento in establecimientos" :key="establecimiento.id" :value="establecimiento.id"
                                 :title="establecimiento.nombre">
                                 {{ establecimiento.nombre }}

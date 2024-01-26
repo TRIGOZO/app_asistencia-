@@ -152,7 +152,7 @@ class HorarioController extends Controller
         $administrativos = Personal::where('tipo_trabajador_id', $idtipotrabajador)
         ->where('establecimiento_id', $request->establecimiento_id)
         ->get();
-        $anio = Carbon::now()->year;
+        $anio = $request->anio;
         $fechaInicio = Carbon::create($anio, $request->mes, 1);
         $fechaFin = Carbon::create($anio, $request->mes, 1)->endOfMonth();
         $registros = HorarioTurno::with('tipo_turno:id,abreviatura')

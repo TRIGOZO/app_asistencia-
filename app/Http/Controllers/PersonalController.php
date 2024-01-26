@@ -150,7 +150,8 @@ class PersonalController extends Controller
                 ->orWhereRaw('UPPER(apellido_materno) LIKE ?', ['%'.$buscar.'%'])
                 ->orWhereRaw('numero_dni LIKE ?', ['%'.$buscar.'%']);
         })->orderBy('apellido_paterno');
-        if( Auth::user()->role_id==2){//si es admin
+        if( Auth::user()->role_id!=1){//si es super usuario
+            //$establecimiento_id = $request->establecimiento_id;
             $consulta->where('establecimiento_id', $establecimiento_id);
         }
         return $consulta->paginate($paginacion);

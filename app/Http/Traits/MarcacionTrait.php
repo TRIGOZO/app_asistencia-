@@ -620,7 +620,7 @@ trait MarcacionTrait
         LEFT JOIN feriados ON horarios.fecha = feriados.fecha
         WHERE 
 			personales.establecimiento_id=?
-            personales.condicion_laboral_id=?
+            AND personales.condicion_laboral_id=?
             and year(horarios.fecha) = ?
             AND MONTH(horarios.fecha) = ?
             AND feriados.fecha is null

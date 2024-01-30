@@ -552,4 +552,81 @@ trait MarcacionTrait
         return $result;
 
     }
+    public static function reporteHrasExtras(Request $request){
+        return DB::select("
+        SELECT concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
+        personales.nombres) as apenom, personales.numero_dni,
+        sum(
+            case
+            when 
+                (
+				select count(permisos.id) from permisos where personal_id=personales.id and 
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) >= 
+							CAST(CONCAT(permisos.fecha_desde, ' ', permisos.hora_inicio) AS DATETIME)
+						)
+						AND
+						(
+							CAST(CONCAT(horarios.fecha, ' ', horarios.hora_salida) AS DATETIME) <= 
+							CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
+						)
+                )>0
+            then
+            0
+            when
+                tipo_turnos.id in (1,57,59)
+            then 0   
+            when 
+                ROUND(TIMESTAMPDIFF(
+                    SECOND,
+                    concat(horarios.fecha,' ',horarios.hora_salida),
+                    (
+                        SELECT min(marcaciones.fecha_hora)
+                        FROM marcaciones 
+                        WHERE marcaciones.personal_id = personales.id
+                            AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                            AND (
+                                TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                                AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+                            )
+                    )
+                )/60,0) is null
+            then (
+					0
+                )
+            else 
+                ROUND(TIMESTAMPDIFF(
+                    SECOND,
+                    concat(horarios.fecha,' ',horarios.hora_salida),
+                    (
+                        SELECT min(marcaciones.fecha_hora)
+                        FROM marcaciones 
+                        WHERE marcaciones.personal_id = personales.id
+                            AND horarios.fecha = DATE(marcaciones.fecha_hora)
+                            AND (
+                                TIME(marcaciones.fecha_hora)>= turno_horario.iniciosalida 
+                                AND TIME(marcaciones.fecha_hora) <= turno_horario.finsalida
+                            )
+                    )
+                )/60,0)
+			end
+        )
+        AS diferencia_salida
+        FROM personales
+        inner JOIN horario_personals ON personales.id = horario_personals.personal_id
+        INNER JOIN horarios ON horario_personals.id = horarios.horario_personal_id    
+        INNER JOIN turno_horario on ( horarios.turno_horario_id=turno_horario.id )
+        INNER join tipo_turnos on turno_horario.tipo_turno_id=tipo_turnos.id
+        LEFT JOIN feriados ON horarios.fecha = feriados.fecha
+        WHERE 
+			personales.establecimiento_id=?
+            and year(horarios.fecha) = ?
+            AND MONTH(horarios.fecha) = ?
+            AND feriados.fecha is null
+            and turno_horario.tipo_turno_id <> 2
+		group by personales.numero_dni;
+        ",[
+            $request->establecimiento_id,$request->anho,$request->mes
+        ]);
+    }
 }

@@ -43,6 +43,7 @@ import ReportePermisosSinGoce from '@/Paginas/Reportes/PermisosSinGoce/Inicio.vu
 import ReportePermisosHoras from '@/Paginas/Reportes/PermisosHorasParticulares/Inicio.vue'
 import ReporteVacaciones from '@/Paginas/Reportes/vacaciones/Inicio.vue'
 import ReportePersonal from '@/Paginas/Reportes/personal/Inicio.vue'
+import ReporteHorasExtras from '@/Paginas/Reportes/HorasExtras/Inicio.vue'
 import faltasDia from '@/Paginas/Reportes/FaltasDia/Inicio.vue'
 import Importacion from '@/Paginas/importaciones/Inicio.vue'
 import archivos from '@/Paginas/archivos/Inicio.vue'
@@ -182,7 +183,11 @@ const routes = [
     {
         path: '/reporte-vacaciones', name:'Reporte Horas Particulares', component: ReporteVacaciones ,
         meta:{layout: LayoutDefault}
-    },      
+    },
+    {
+        path: '/horas-extras', name:'Reporte Horas Extras', component: ReporteHorasExtras ,
+        meta:{layout: LayoutDefault}
+    },    
     {
         path: '/faltas', name:'Faltas', component: faltas ,
         meta:{layout: LayoutDefault}

@@ -8,7 +8,8 @@ export default function useMarcacion() {
     const marcacion = ref({})
     const respuesta = ref([])
     const faltas = ref([])
-    const faltasdetalle = ref([])    
+    const faltasdetalle = ref([])
+    const registrosHorariosExtras =  ref([])
     const obtenerMarcacion = async(id) => {
         let respuesta = await axios.get('marcacion/mostrar?id='+id,getConfigHeader())
         marcacion.value = respuesta.data
@@ -124,11 +125,21 @@ export default function useMarcacion() {
                 errors.value = error.response.data.errors
             }
         }
-    }    
+    }
+    const  cargarReporteHorasExtras = async(data)=>{
+        try {
+            let respond = await axios.post('marcacion/reporte-horas-extras', data,getConfigHeader())
+            registrosHorariosExtras.value =respond.data
+        } catch (error) {
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }        
+    }
     return {
         errors, marcaciones, marcacion, obtenerMarcacion, obtenerMarcaciones, 
         agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy,
         cargarMarcacionHorario, marcacionesHorarios, cargarTardanzas, cargarFaltas, faltas, cargarFaltasEstablecimiento,
-        faltasdetalle, cargarFaltasxFecha, importarMarcaciones
+        faltasdetalle, cargarFaltasxFecha, importarMarcaciones, cargarReporteHorasExtras, registrosHorariosExtras
     }
 }

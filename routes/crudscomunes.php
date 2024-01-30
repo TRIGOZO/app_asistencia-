@@ -214,6 +214,7 @@ Route::group(['prefix' => 'marcacion', 'middleware' => 'auth'], function () {
     Route::post('reporte-faltas-fecha', [MarcacionController::class, 'reporteFaltasxFecha']);
     Route::post('faltas', [MarcacionController::class, 'faltas']);
     Route::post('importacion', [MarcacionController::class, 'importarData']);
+    Route::post('reporte-horas-extras', [MarcacionController::class, 'reporteHorasExtras']);
 });
 
 //USUARIOS

@@ -620,13 +620,14 @@ trait MarcacionTrait
         LEFT JOIN feriados ON horarios.fecha = feriados.fecha
         WHERE 
 			personales.establecimiento_id=?
+            personales.condicion_laboral_id=?
             and year(horarios.fecha) = ?
             AND MONTH(horarios.fecha) = ?
             AND feriados.fecha is null
             and turno_horario.tipo_turno_id <> 2
 		group by personales.numero_dni;
         ",[
-            $request->establecimiento_id,$request->anho,$request->mes
+            $request->establecimiento_id,$request->condicion_laboral_id,$request->anho,$request->mes
         ]);
     }
 }

@@ -204,10 +204,10 @@ const routes = [
         path: '/importar-marcaciones', name:'Importar Marcaciones', component: Importacion ,
         meta:{layout: LayoutDefault}
     },    
-    {
-        path: '/archivos', name:'Importar Marcaciones', component: archivos ,
-        meta:{layout: LayoutDefault}
-    },    
+    // {
+    //     path: '/archivos', name:'Importar Marcaciones', component: archivos ,
+    //     meta:{layout: LayoutDefault}
+    // },    
 ]
 
 export default createRouter({

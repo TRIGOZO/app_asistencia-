@@ -109,10 +109,7 @@ trait MarcacionTrait
             when
                 tipo_turnos.id in (1,57,59)
             then 0
-            when
-                tipo_turnos.id in (6,7,8)
-            then
-                720 
+
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -124,6 +121,10 @@ trait MarcacionTrait
                         )
                     ))< horarios.hora_entrada
             then 0
+            when
+                tipo_turnos.id in (6,7,8)
+            then
+                720 
             when 
                 minute((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -169,7 +170,7 @@ trait MarcacionTrait
                     ) - horarios.hora_entrada) >=0
             then 0
             when
-                tipo_turnos.id in (55)
+                tipo_turnos.id in (53,54,55)
             then
                 720   
             when 
@@ -319,12 +320,7 @@ trait MarcacionTrait
             when
                 tipo_turnos.id in (1,57,59)
             then
-                0
-            when
-                tipo_turnos.id in (6,7,8)
-            then
-                720
-              
+                0            
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -336,6 +332,10 @@ trait MarcacionTrait
                         )
                     ))< horarios.hora_entrada
             then 0
+            when
+                tipo_turnos.id in (6,7,8)
+            then
+                720
             when 
                 minute((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -381,7 +381,7 @@ trait MarcacionTrait
                     ) - horarios.hora_entrada) >=0
             then 0
             when
-                tipo_turnos.id in (55)
+                tipo_turnos.id in (53,54,55)
             then
                 720   
             when 

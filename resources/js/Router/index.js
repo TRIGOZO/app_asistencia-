@@ -47,6 +47,7 @@ import ReporteHorasExtras from '@/Paginas/Reportes/HorasExtras/Inicio.vue'
 import faltasDia from '@/Paginas/Reportes/FaltasDia/Inicio.vue'
 import Importacion from '@/Paginas/importaciones/Inicio.vue'
 import archivos from '@/Paginas/archivos/Inicio.vue'
+import MarcacionReal from '@/Paginas/Reportes/marcaciones/Inicio.vue'
 const routes = [
     {
         path: '/',name: 'Login', component: Login,
@@ -204,10 +205,14 @@ const routes = [
         path: '/importar-marcaciones', name:'Importar Marcaciones', component: Importacion ,
         meta:{layout: LayoutDefault}
     },    
-    // {
-    //     path: '/archivos', name:'Importar Marcaciones', component: archivos ,
-    //     meta:{layout: LayoutDefault}
-    // },    
+    {
+        path: '/archivos', name:'Ver Archivos', component: archivos ,
+        meta:{layout: LayoutDefault}
+    },
+    {
+        path: '/marcacion-real', name:'Marcaciones Real', component: MarcacionReal ,
+        meta:{layout: LayoutDefault}
+    },    
 ]
 
 export default createRouter({

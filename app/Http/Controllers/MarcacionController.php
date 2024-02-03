@@ -151,16 +151,18 @@ class MarcacionController extends Controller
             ],200);
         }
     }
+    //----
     public function cargarMarcacionVsHorario(BuscarMarcacionesvsHorarioRequest $request){
-
         return Marcacion::getByPersonal($request);
-
     }
     public function reporteTardanza(Request $request){
         return Marcacion::getTardanzasByEstablecimiento($request);
     }
+    //-----
+    public function cargarMarcacionesReales(BuscarMarcacionesvsHorarioRequest $request){
+        return Marcacion::getMarcacionRealByPersonal($request);
+    }
     public function faltas(Request $request){
-        
         return Marcacion::getFaltasByPersonal($request);
     }
     public function reporteFaltas(Request $request){

@@ -61,6 +61,22 @@ trait MarcacionTrait
 	return false;
 
     }
+
+    public static function getMarcacionRealByPersonal(Request $request){
+        return DB::select("
+        SELECT concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
+        personales.nombres) as apenom, personales.numero_dni, marcaciones.fecha_hora as fecha_hora_marcada
+        FROM personales
+        JOIN marcaciones ON personales.id = marcaciones.personal_id
+        WHERE personales.numero_dni = ?
+            AND year(marcaciones.fecha_hora) = ?
+            AND MONTH(marcaciones.fecha_hora) = ?;
+        ",[
+            $request->dni,$request->anho,$request->mes
+        ]);
+    }
+
+
     public static function getByPersonal(Request $request){
         return DB::select("
         SELECT horarios.fecha, horarios.hora_entrada, horarios.hora_salida, concat(personales.apellido_paterno, ' ',personales.apellido_materno, ', ', 
@@ -92,7 +108,11 @@ trait MarcacionTrait
             then 0
             when
                 tipo_turnos.id in (1,57,59)
-            then 0            
+            then 0
+            when
+                tipo_turnos.id in (6,7,8)
+            then
+                720 
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -148,6 +168,10 @@ trait MarcacionTrait
                         )
                     ) - horarios.hora_entrada) >=0
             then 0
+            when
+                tipo_turnos.id in (55)
+            then
+                720   
             when 
                 minute((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -170,6 +194,7 @@ trait MarcacionTrait
                         CAST(CONCAT(permisos.fecha_hasta, ' ', permisos.hora_hasta) AS DATETIME)
                     )
                 )
+  
         end
              as diferencia_entrada,
         (
@@ -291,6 +316,15 @@ trait MarcacionTrait
         personales.nivel_id as nivel, personales.sueldo,
         sum(
         case
+            when
+                tipo_turnos.id in (1,57,59)
+            then
+                0
+            when
+                tipo_turnos.id in (6,7,8)
+            then
+                720
+              
             when 
                 time((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 
@@ -346,6 +380,10 @@ trait MarcacionTrait
                         )
                     ) - horarios.hora_entrada) >=0
             then 0
+            when
+                tipo_turnos.id in (55)
+            then
+                720   
             when 
                 minute((SELECT min(time(marcaciones.fecha_hora))
                     FROM marcaciones 

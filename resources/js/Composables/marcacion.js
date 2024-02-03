@@ -86,6 +86,16 @@ export default function useMarcacion() {
             }
         }
     }
+    const cargarMarcacionReales = async(data) => {
+        try {
+            let respond = await axios.post('marcacion/marcaciones-realizadas', data,getConfigHeader())
+            marcacionesHorarios.value =respond.data
+        } catch (error) {
+            if(error.response.status === 422) {
+                errors.value = error.response.data.errors
+            }
+        }
+    }    
     const cargarTardanzas = async(data) =>{
         try {
             let respond = await axios.post('marcacion/reporte-tardanzas', data,getConfigHeader())
@@ -140,6 +150,7 @@ export default function useMarcacion() {
         errors, marcaciones, marcacion, obtenerMarcacion, obtenerMarcaciones, 
         agregarMarcacion, actualizarMarcacion, eliminarMarcacion, respuesta, obtenerMarcacionesHoy,
         cargarMarcacionHorario, marcacionesHorarios, cargarTardanzas, cargarFaltas, faltas, cargarFaltasEstablecimiento,
-        faltasdetalle, cargarFaltasxFecha, importarMarcaciones, cargarReporteHorasExtras, registrosHorariosExtras
+        faltasdetalle, cargarFaltasxFecha, importarMarcaciones, cargarReporteHorasExtras, registrosHorariosExtras,
+        cargarMarcacionReales
     }
 }
